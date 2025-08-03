@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { setActiveTab } from '../../store/slices/bookingsSlice';
 import LinkedBookingsTable from './LinkedBookingsTable';
+import DocumentsTable from './DocumentsTable';
 import EmailReader from '../email/EmailReader';
 
 const BookingTabs: React.FC = () => {
@@ -35,7 +36,7 @@ const BookingTabs: React.FC = () => {
     {
       key: 'documents',
       label: 'Documents',
-      children: <div style={{ padding: '12px' }}>Documents content</div>
+      children: <DocumentsTable />
     },
     {
       key: 'emails',

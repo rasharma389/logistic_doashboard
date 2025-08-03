@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+src/data/pdf/HL-24933427.PDF
+.gitignore
+src/data/pdf/SG123456.pdf

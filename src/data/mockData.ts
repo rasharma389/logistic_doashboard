@@ -46,6 +46,15 @@ export interface ActivityItem {
   details?: string;
 }
 
+export interface DocumentItem {
+  id: string;
+  tmsId: string;
+  pdfRevision: string;
+  pdfLink: string;
+  uploadDate: string;
+  fileSize: string;
+}
+
 
 // NOTE in the destination i need to use "Cust. Code"
 // Carrier Bookings List
@@ -1514,6 +1523,82 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       title: "SO Submitted",
       description: "CRD: 2023-10-07",
       date: "Oct 5"
+    }
+  ]
+};
+
+// Documents Data - organized by TMS ID
+export const documentsData: Record<string, DocumentItem[]> = {
+  "CB-185901640": [
+    {
+      id: "1",
+      tmsId: "CB-185901640",
+      pdfRevision: "Original Version",
+      pdfLink: "https://example.com/pdf1.pdf",
+      uploadDate: "2024-01-15",
+      fileSize: "2.3 MB"
+    },
+    {
+      id: "2",
+      tmsId: "CB-185901640",
+      pdfRevision: "Version 1",
+      pdfLink: "https://example.com/pdf1_v1.pdf",
+      uploadDate: "2024-01-20",
+      fileSize: "2.5 MB"
+    }
+  ],
+  "CB-185901641": [
+    {
+      id: "3",
+      tmsId: "CB-185901641",
+      pdfRevision: "Original Version",
+      pdfLink: "https://example.com/pdf2.pdf",
+      uploadDate: "2024-01-18",
+      fileSize: "1.8 MB"
+    }
+  ],
+  "CB-185901642": [
+    {
+      id: "4",
+      tmsId: "CB-185901642",
+      pdfRevision: "Original Version",
+      pdfLink: "https://example.com/pdf3.pdf",
+      uploadDate: "2024-01-22",
+      fileSize: "3.1 MB"
+    },
+    {
+      id: "5",
+      tmsId: "CB-185901642",
+      pdfRevision: "Version 1",
+      pdfLink: "https://example.com/pdf3_v1.pdf",
+      uploadDate: "2024-01-25",
+      fileSize: "3.2 MB"
+    },
+    {
+      id: "6",
+      tmsId: "CB-185901642",
+      pdfRevision: "Version 2",
+      pdfLink: "https://example.com/pdf3_v2.pdf",
+      uploadDate: "2024-01-28",
+      fileSize: "3.3 MB"
+    }
+  ],
+  "CB-186605681": [
+    {
+      id: "7",
+      tmsId: "CB-186605681",
+      pdfRevision: "Original Version",
+      pdfLink: "https://example.com/pdf4.pdf",
+      uploadDate: "2024-02-01",
+      fileSize: "4.2 MB"
+    },
+    {
+      id: "8",
+      tmsId: "CB-186605681",
+      pdfRevision: "Version 1",
+      pdfLink: "https://example.com/pdf4_v1.pdf",
+      uploadDate: "2024-02-05",
+      fileSize: "4.3 MB"
     }
   ]
 };

@@ -3,7 +3,8 @@ import type {
   CarrierBooking,
   BookingDetail,
   LinkedBooking,
-  ActivityItem
+  ActivityItem,
+  DocumentItem
 } from '../data/mockData';
 
 /**
@@ -74,6 +75,23 @@ export class BookingService {
   }
 
   /**
+   * Get documents with validation
+   */
+  static async getDocuments(bookingId: string): Promise<DocumentItem[]> {
+    if (!bookingId?.trim()) {
+      throw new Error('Booking ID is required');
+    }
+
+    try {
+      return await BookingAPI.getDocuments(bookingId);
+    } catch (error) {
+      console.error(`BookingService: Failed to fetch documents for ${bookingId}`, error);
+      // Return empty array instead of throwing for documents
+      return [];
+    }
+  }
+
+  /**
    * Update booking details with validation
    */
   static async updateBookingDetails(
@@ -128,12 +146,13 @@ export class BookingService {
   }
 
   /**
-   * Get complete booking data (details + linked bookings + activities)
+   * Get complete booking data (details + linked bookings + activities + documents)
    */
   static async getCompleteBookingData(bookingId: string): Promise<{
     details: BookingDetail | null;
     linkedBookings: LinkedBooking[];
     activities: ActivityItem[];
+    documents: DocumentItem[];
   }> {
     if (!bookingId?.trim()) {
       throw new Error('Booking ID is required');
@@ -141,16 +160,18 @@ export class BookingService {
 
     try {
       // Fetch all data in parallel for better performance
-      const [details, linkedBookings, activities] = await Promise.allSettled([
+      const [details, linkedBookings, activities, documents] = await Promise.allSettled([
         this.getBookingDetails(bookingId),
         this.getLinkedBookings(bookingId),
-        this.getActivities(bookingId)
+        this.getActivities(bookingId),
+        this.getDocuments(bookingId)
       ]);
 
       return {
         details: details.status === 'fulfilled' ? details.value : null,
         linkedBookings: linkedBookings.status === 'fulfilled' ? linkedBookings.value : [],
-        activities: activities.status === 'fulfilled' ? activities.value : []
+        activities: activities.status === 'fulfilled' ? activities.value : [],
+        documents: documents.status === 'fulfilled' ? documents.value : []
       };
     } catch (error) {
       console.error(`BookingService: Failed to fetch complete booking data for ${bookingId}`, error);

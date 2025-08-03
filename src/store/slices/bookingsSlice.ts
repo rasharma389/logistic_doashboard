@@ -4,7 +4,8 @@ import type {
   BookingDetail,
   CarrierBooking,
   LinkedBooking,
-  ActivityItem
+  ActivityItem,
+  DocumentItem
 } from '../../data/mockData';
 
 interface BookingsState {
@@ -13,6 +14,7 @@ interface BookingsState {
   bookingDetails: BookingDetail | null;
   linkedBookings: LinkedBooking[];
   activities: ActivityItem[];
+  documents: DocumentItem[];
   activeTab: string;
   loading: boolean;
   loadingDetails: boolean;
@@ -25,6 +27,7 @@ const initialState: BookingsState = {
   bookingDetails: null,
   linkedBookings: [],
   activities: [],
+  documents: [],
   activeTab: 'linkedBookings',
   loading: false,
   loadingDetails: false,
@@ -56,6 +59,9 @@ const bookingsSlice = createSlice({
     setActivities: (state, action: PayloadAction<ActivityItem[]>) => {
       state.activities = action.payload;
     },
+    setDocuments: (state, action: PayloadAction<DocumentItem[]>) => {
+      state.documents = action.payload;
+    },
     selectBooking: (state, action: PayloadAction<string | null>) => {
       state.selectedBookingId = action.payload;
       state.carrierBookings = state.carrierBookings.map(booking => ({
@@ -82,6 +88,7 @@ export const {
   setBookingDetails,
   setLinkedBookings,
   setActivities,
+  setDocuments,
   selectBooking, 
   setActiveTab, 
   updateBookingDetails 
@@ -130,11 +137,12 @@ export const fetchBookingData = (bookingId: string) => async (dispatch: any) => 
     dispatch(setError(null));
     
     // Use the service method that fetches all data
-    const { details, linkedBookings, activities } = await BookingService.getCompleteBookingData(bookingId);
+    const { details, linkedBookings, activities, documents } = await BookingService.getCompleteBookingData(bookingId);
     
     dispatch(setBookingDetails(details));
     dispatch(setLinkedBookings(linkedBookings));
     dispatch(setActivities(activities));
+    dispatch(setDocuments(documents));
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : `Failed to fetch booking data for ${bookingId}`;
     dispatch(setError(errorMessage));
@@ -144,6 +152,7 @@ export const fetchBookingData = (bookingId: string) => async (dispatch: any) => 
     dispatch(setBookingDetails(null));
     dispatch(setLinkedBookings([]));
     dispatch(setActivities([]));
+    dispatch(setDocuments([]));
   } finally {
     dispatch(setLoadingDetails(false));
   }

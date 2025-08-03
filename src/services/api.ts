@@ -3,10 +3,12 @@ import {
   bookingDetailsData, 
   linkedBookingsData, 
   activitiesData,
+  documentsData,
   type CarrierBooking,
   type BookingDetail,
   type LinkedBooking,
-  type ActivityItem
+  type ActivityItem,
+  type DocumentItem
 } from '../data/mockData';
 
 // Simulate API delay
@@ -69,6 +71,20 @@ export class BookingAPI {
     
     const activities = activitiesData[bookingId] || [];
     return activities.map(activity => ({ ...activity })); // Return copies
+  }
+
+  /**
+   * Fetch documents for a specific booking
+   */
+  static async getDocuments(bookingId: string): Promise<DocumentItem[]> {
+    await delay(150 + Math.random() * 100); // 150-250ms delay
+    
+    if (shouldSimulateError()) {
+      throw new Error(`Failed to fetch documents for ${bookingId}`);
+    }
+    
+    const documents = documentsData[bookingId] || [];
+    return documents.map(document => ({ ...document })); // Return copies
   }
 
   /**
