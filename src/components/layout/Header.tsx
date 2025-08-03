@@ -16,7 +16,11 @@ import { FaGlobe } from 'react-icons/fa';
 
 const { Header: AntHeader } = Layout;
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onMenuClick?: (key: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const userMenuItems = [
     {
       key: 'profile',
@@ -48,7 +52,16 @@ const Header: React.FC = () => {
       label: 'Test Bookings',
       icon: <CarOutlined />,
     },
+    {
+      key: 'email-reader',
+      label: 'Email Reader',
+      icon: <MailOutlined />,
+    },
   ];
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    onMenuClick?.(key);
+  };
 
   return (
     <AntHeader style={{ 
@@ -77,6 +90,7 @@ const Header: React.FC = () => {
           mode="horizontal"
           defaultSelectedKeys={['carrier-bookings']}
           items={headerMenuItems}
+          onClick={handleMenuClick}
           style={{ 
             backgroundColor: 'transparent',
             borderBottom: 'none',

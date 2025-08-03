@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nivo/bar": "^0.99.0",
+    "@nivo/core": "^0.99.0",
+    "@nivo/pie": "^0.99.0",
+    "@nivo/treemap": "^0.99.0",
     "@reduxjs/toolkit": "^2.8.2",
     "@types/react-redux": "^7.1.34",
     "antd": "^5.26.6",

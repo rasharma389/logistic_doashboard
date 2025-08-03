@@ -12,14 +12,30 @@ import { fetchCarrierBookings } from '../../store/slices/bookingsSlice';
 import { RootState } from '../../store';
 import { toggleRightPanel } from '../../store/slices/uiSlice';
 import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
+import Dashboard from '../dashboard/Dashboard';
+import EmailReader from '../email/EmailReader';
 
 const MainLayoutContent: React.FC = () => {
   const dispatch = useDispatch();
   const rightPanelCollapsed = useSelector((state: RootState) => state.ui.rightPanelCollapsed);
 
-  return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Header />
+  const [activeView, setActiveView] = React.useState('carrier-bookings');
+
+  const handleMenuClick = (key: string) => {
+    setActiveView(key);
+  };
+
+  const renderContent = () => {
+    if (activeView === 'dashboards') {
+      return <Dashboard />;
+    }
+    
+    if (activeView === 'email-reader') {
+      return <EmailReader />;
+    }
+    
+    return (
+      <>
       <Layout style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 64px)' }}>
         {/* Left Sidebar (always visible) */}
         <div style={{ width: 200, height: '100%', overflow: 'hidden', borderRight: '1px solid #e0e0e0' }}>
@@ -74,7 +90,15 @@ const MainLayoutContent: React.FC = () => {
           </div>
         </div>
       </Layout>
-    </Layout>
+      </>
+    );
+  };
+  
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+        <Header onMenuClick={handleMenuClick} />
+        {renderContent()}
+      </Layout>
   );
 };
 
