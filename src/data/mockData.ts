@@ -31,12 +31,10 @@ export interface CarrierBooking {
 }
 
 export interface LinkedBooking {
-  cb: string;
-  status: string;
-  pol: string;
-  pod: string;
-  carrier: string;
-  etd: string;
+  id: string;
+  shipper_bkg_no: string;
+  crd_date: string;
+  consignee: string;
 }
 
 export interface ActivityItem {
@@ -146,37 +144,7 @@ export const carrierBookingsList: CarrierBooking[] = [
     id: "CB-13545758",
     destination: "CN S. - BBY",
     date: "2025-08-07"
-  },
-  // {
-  //   id: "CB-45012178",
-  //   destination: "US W. - Costco",
-  //   date: "Oct 15th"
-  // },
-  // {
-  //   id: "CB-45012179",
-  //   destination: "US E. - Walmart",
-  //   date: "Oct 15th"
-  // },
-  // {
-  //   id: "CB-45012180",
-  //   destination: "US W. - Lenovo",
-  //   date: "Oct 15th"
-  // },
-  // {
-  //   id: "CB-45012181",
-  //   destination: "CA W. - Princess Auto",
-  //   date: "Oct 15th"
-  // },
-  // {
-  //   id: "CB-45012182",
-  //   destination: "US W. - Costco",
-  //   date: "Oct 15th"
-  // },
-  // {
-  //   id: "CB-45012183",
-  //   destination: "US E. - Ferguson",
-  //   date: "Oct 7th"
-  // }
+  }
 ];
 
 // Booking Details
@@ -811,270 +779,112 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
 export const linkedBookingsData: Record<string, LinkedBooking[]> = {
   "CB-185901640": [
     {
-      cb: "MAEU-229120444",
-      status: "Confirmed",
-      pol: "CNSHA",
-      pod: "NLRTM",
-      carrier: "MAEU",
-      etd: "Jul 1"
+      "id": "1",
+      "shipper_bkg_no": "202347293044",
+      "crd_date": "24-Jun",
+      "consignee": "H&M Home"
     }
   ],
   "CB-185901641": [
     {
-      cb: "MAEU-229120447",
-      status: "In Transit",
-      pol: "CNSHA",
-      pod: "NLRTM",
-      carrier: "MAEU",
-      etd: "Jul 1"
+      "id": "2",
+      "shipper_bkg_no": "202347293046",
+      "crd_date": "21-Jun",
+      "consignee": "H&M Home"
     }
   ],
   "CB-185901642": [
     {
-      cb: "COSU-413892",
-      status: "Accepted",
-      pol: "CNSHA",
-      pod: "DEHAM",
-      carrier: "COSCO",
-      etd: "Jul 1"
+      "id": "3",
+      "shipper_bkg_no": "202347293048",
+      "crd_date": "25-Jun",
+      "consignee": "H&M Home"
     }
   ],
   "CB-185901646": [
     {
-      cb: "MSC-450891",
-      status: "Requested",
-      pol: "CNSHA",
-      pod: "GBFXT",
-      carrier: "MSC",
-      etd: "Jul 1"
+      "id": "4",
+      "shipper_bkg_no": "202347293049",
+      "crd_date": "23-Jun",
+      "consignee": "H&M Home"
     }
   ],
   "CB-185901647": [
     {
-      cb: "EMC-426781",
-      status: "Pending",
-      pol: "CNSHA",
-      pod: "NLRTM",
-      carrier: "EVERGREEN",
-      etd: "TBD"
+      "id": "5",
+      "shipper_bkg_no": "202347293050",
+      "crd_date": "24-Jun",
+      "consignee": "H&M Home"
     }
   ],
   "CB-185231641": [
     {
-      cb: "HLCU-318665",
-      status: "Draft",
-      pol: "CNNGB",
-      pod: "NLRTM",
-      carrier: "HAPAG-LLOYD",
-      etd: "TBD"
+      "id": "6",
+      "shipper_bkg_no": "202347356278",
+      "crd_date": "27-Jun",
+      "consignee": "H&M Home"
+    }
+  ],
+  "CB-185231643": [
+    {
+      "id": "7",
+      "shipper_bkg_no": "202347356278",
+      "crd_date": "28-Jun",
+      "consignee": "H&M Home"
     }
   ],
   "CB-185216294": [
     {
-      cb: "CMAU-789010",
-      status: "Delivered",
-      pol: "CNYTN",
-      pod: "USLGB",
-      carrier: "CMA-CGM",
-      etd: "Jul 13"
+      "id": "8",
+      "shipper_bkg_no": "202347261043",
+      "crd_date": "05-Jul",
+      "consignee": "Best Buy"
     }
   ],
   "CB-186512627": [
     {
-      cb: "HLCU-861395",
-      status: "Exception",
-      pol: "CNNGB",
-      pod: "NLRTM",
-      carrier: "HAPAG-LLOYD",
-      etd: "Aug 8"
+      "id": "9",
+      "shipper_bkg_no": "202347320098",
+      "crd_date": "31-Jul",
+      "consignee": "Triumph"
     }
   ],
   "CB-186512653": [
     {
-      cb: "MAEU-861394",
-      status: "Confirmed",
-      pol: "CNNGB",
-      pod: "NLRTM",
-      carrier: "MAEU",
-      etd: "Aug 8"
+      "id": "10",
+      "shipper_bkg_no": "202347341746",
+      "crd_date": "31-Jul",
+      "consignee": "Triumph"
     }
   ],
   "CB-186512790": [
     {
-      cb: "COSU-861392",
-      status: "Accepted",
-      pol: "CNNGB",
-      pod: "USLAX",
-      carrier: "COSCO",
-      etd: "Aug 8"
+      "id": "11",
+      "shipper_bkg_no": "202347238889, 202347443978",
+      "crd_date": "01-Aug",
+      "consignee": "Home Depot"
     }
   ],
   "CB-186605681": [
-    {
-      cb: "MSC-861440",
-      status: "In Transit",
-      pol: "CNNGB",
-      pod: "USOAK",
-      carrier: "MSC",
-      etd: "Aug 8"
-    }
+    {"id": "12.1", "shipper_bkg_no": "202347471558", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.2", "shipper_bkg_no": "202347291582", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.3", "shipper_bkg_no": "202347326823", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.4", "shipper_bkg_no": "202347465267", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.5", "shipper_bkg_no": "202347403134", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.6", "shipper_bkg_no": "202347384223", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.7", "shipper_bkg_no": "202347185490", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.8", "shipper_bkg_no": "202347056575", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.9", "shipper_bkg_no": "202347374241", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.10", "shipper_bkg_no": "202347364836", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.11", "shipper_bkg_no": "202347355804", "crd_date": "31-Jul", "consignee": "Costco"},
+    {"id": "12.12", "shipper_bkg_no": "202347338355", "crd_date": "31-Jul", "consignee": "Costco"}
   ],
   "CB-186624133": [
     {
-      cb: "EMC-861484",
-      status: "Requested",
-      pol: "CNNGB",
-      pod: "DEHAM",
-      carrier: "EVERGREEN",
-      etd: "Aug 8"
-    }
-  ],
-  "CB-186512583": [
-    {
-      cb: "CMAU-512583",
-      status: "Pending",
-      pol: "CNSHA",
-      pod: "USLGB",
-      carrier: "CMA-CGM",
-      etd: "TBD"
-    }
-  ],
-  "CB-187024912": [
-    {
-      cb: "HLCU-024912",
-      status: "Delivered",
-      pol: "CNTAO",
-      pod: "GBFXT",
-      carrier: "HAPAG-LLOYD",
-      etd: "Aug 12"
-    }
-  ],
-  "CB-187024945": [
-    {
-      cb: "MAEU-024945",
-      status: "Exception",
-      pol: "CNTAO",
-      pod: "NLRTM",
-      carrier: "MAEU",
-      etd: "Aug 11"
-    }
-  ],
-  "CB-187024977": [
-    {
-      cb: "COSU-024977",
-      status: "Confirmed",
-      pol: "CNTAO",
-      pod: "DEHAM",
-      carrier: "COSCO",
-      etd: "Aug 11"
-    }
-  ],
-  "CB-187025046": [
-    {
-      cb: "MSC-025046",
-      status: "In Transit",
-      pol: "CNTAO",
-      pod: "GBFXT",
-      carrier: "MSC",
-      etd: "Aug 12"
-    }
-  ],
-  "CB-185901648": [
-    {
-      cb: "EMC-901648",
-      status: "Accepted",
-      pol: "CNSHA",
-      pod: "NLRTM",
-      carrier: "EVERGREEN",
-      etd: "Aug 11"
-    }
-  ],
-  "CB-186734576": [
-    {
-      cb: "CMAU-734576",
-      status: "Draft",
-      pol: "CNYTN",
-      pod: "USLAX",
-      carrier: "CMA-CGM",
-      etd: "TBD"
-    }
-  ],
-  "CB-13545758": [
-    {
-      cb: "HLCU-545758",
-      status: "Pending",
-      pol: "CNSZX",
-      pod: "USLGB",
-      carrier: "HAPAG-LLOYD",
-      etd: "TBD"
-    }
-  ],
-  "CB-45012178": [
-    {
-      cb: "COSU-891234",
-      status: "In Transit",
-      pol: "CNSHA",
-      pod: "USLAX",
-      carrier: "COSCO",
-      etd: "Oct 18"
-    }
-  ],
-  "CB-45012179": [
-    {
-      cb: "MSC-567890",
-      status: "Accepted",
-      pol: "CNYTN",
-      pod: "USNYC",
-      carrier: "MSC",
-      etd: "Oct 20"
-    }
-  ],
-  "CB-45012180": [
-    {
-      cb: "EMC-345678",
-      status: "Requested",
-      pol: "CNQIN",
-      pod: "USLGB",
-      carrier: "EVERGREEN",
-      etd: "Oct 22"
-    }
-  ],
-  "CB-45012181": [
-    {
-      cb: "HLCU-789012",
-      status: "Delivered",
-      pol: "DEHAM",
-      pod: "CAVAN",
-      carrier: "HAPAG-LLOYD",
-      etd: "Oct 16"
-    }
-  ],
-  "CB-45012182": [
-    {
-      cb: "CMAU-480911",
-      status: "Requested",
-      pol: "CNSHA",
-      pod: "USLGB",
-      carrier: "CMA-CGM",
-      etd: "Oct 19"
-    },
-    {
-      cb: "CMAU-480910",
-      status: "Cancelled",
-      pol: "CNSHA",
-      pod: "USLAX",
-      carrier: "CMA-CGM",
-      etd: "Oct 20"
-    }
-  ],
-  "CB-45012183": [
-    {
-      cb: "MAEU-123456",
-      status: "Draft",
-      pol: "BRSSZ",
-      pod: "USMIA",
-      carrier: "MAERSK",
-      etd: "TBD"
+      "id": "13",
+      "shipper_bkg_no": "202347239816",
+      "crd_date": "31-Jul",
+      "consignee": "Triumph"
     }
   ]
 };

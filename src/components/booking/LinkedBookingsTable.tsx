@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Table, Tag, Space, Tooltip, Button, Input, Pagination } from 'antd';
+import { Table, Space, Tooltip, Button, Input, Pagination } from 'antd';
 import { InfoCircleOutlined, EyeOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import type { ColumnsType } from 'antd/es/table';
-import type { LinkedBooking } from '../../store/slices/bookingsSlice';
+import type { LinkedBooking } from '../../data/mockData';
 import dayjs from 'dayjs';
 
 const LinkedBookingsTable: React.FC = () => {
@@ -13,85 +13,47 @@ const LinkedBookingsTable: React.FC = () => {
   const [current, setCurrent] = useState(1);
   const [goToPage, setGoToPage] = useState('');
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Requested':
-        return 'purple';
-      case 'Cancelled':
-        return 'red';
-      default:
-        return 'default';
-    }
-  };
+
 
   const columns: ColumnsType<LinkedBooking> = [
     {
-      title: 'CB#',
-      dataIndex: 'cb',
-      key: 'cb',
+      title: 'Shipper Bkg #',
+      dataIndex: 'shipper_bkg_no',
+      key: 'shipper_bkg_no',
       render: (text: string) => (
         <Space>
           <span style={{ color: '#0ea5e9', fontWeight: '500' }}>{text}</span>
-          <Tooltip title="Carrier booking information">
+          <Tooltip title="Shipper booking number">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip>
         </Space>
       ),
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
-      render: (status: string) => (
-        <Tag color={getStatusColor(status)} style={{ fontSize: '12px' }}>
-          {status}
-        </Tag>
-      ),
-    },
-    {
-      title: 'POL',
-      dataIndex: 'pol',
-      key: 'pol',
-      render: (text: string) => (
-        <Space>
-          <span style={{ color: '#0ea5e9', fontWeight: '500' }}>{text}</span>
-          <Tooltip title="Port of loading">
-            <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
-        </Space>
-      ),
-    },
-    {
-      title: 'POD',
-      dataIndex: 'pod',
-      key: 'pod',
-      render: (text: string) => (
-        <Space>
-          <span style={{ color: '#0ea5e9', fontWeight: '500' }}>{text}</span>
-          <Tooltip title="Port of discharge">
-            <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
-        </Space>
-      ),
-    },
-    {
-      title: 'Carrier',
-      dataIndex: 'carrier',
-      key: 'carrier',
+      title: 'CRD Date',
+      dataIndex: 'crd_date',
+      key: 'crd_date',
       render: (text: string) => (
         <Space>
           <span>{text}</span>
-          <Tooltip title="Carrier information">
+          <Tooltip title="Cargo ready date">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip>
         </Space>
       ),
     },
     {
-      title: 'ETD',
-      dataIndex: 'etd',
-      key: 'etd',
-      render: (etd: string) => (dayjs(etd).isValid() ? dayjs(etd).format('DD MMM') : etd),
+      title: 'Consignee',
+      dataIndex: 'consignee',
+      key: 'consignee',
+      render: (text: string) => (
+        <Space>
+          <span>{text}</span>
+          <Tooltip title="Consignee information">
+            <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
+          </Tooltip>
+        </Space>
+      ),
     },
   ];
 
@@ -137,7 +99,7 @@ const LinkedBookingsTable: React.FC = () => {
       <Table
         columns={columns}
         dataSource={linkedBookings}
-        rowKey="cb"
+        rowKey="id"
         pagination={false}
         size="small"
         bordered
