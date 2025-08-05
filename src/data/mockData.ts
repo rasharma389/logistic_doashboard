@@ -1534,7 +1534,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "1",
       tmsId: "CB-185901640",
       pdfRevision: "Original Version",
-      pdfLink: "https://example.com/pdf1.pdf",
+      pdfLink: "/SG123456.pdf",
       uploadDate: "2024-01-15",
       fileSize: "2.3 MB"
     },
@@ -1542,7 +1542,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "2",
       tmsId: "CB-185901640",
       pdfRevision: "Version 1",
-      pdfLink: "https://example.com/pdf1_v1.pdf",
+      pdfLink: "/HL-24933427.PDF",
       uploadDate: "2024-01-20",
       fileSize: "2.5 MB"
     }
@@ -1552,7 +1552,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "3",
       tmsId: "CB-185901641",
       pdfRevision: "Original Version",
-      pdfLink: "https://example.com/pdf2.pdf",
+      pdfLink: "/SG123456.pdf",
       uploadDate: "2024-01-18",
       fileSize: "1.8 MB"
     }
@@ -1562,7 +1562,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "4",
       tmsId: "CB-185901642",
       pdfRevision: "Original Version",
-      pdfLink: "https://example.com/pdf3.pdf",
+      pdfLink: "/SG123456.pdf",
       uploadDate: "2024-01-22",
       fileSize: "3.1 MB"
     },
@@ -1570,7 +1570,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "5",
       tmsId: "CB-185901642",
       pdfRevision: "Version 1",
-      pdfLink: "https://example.com/pdf3_v1.pdf",
+      pdfLink: "/HL-24933427.PDF",
       uploadDate: "2024-01-25",
       fileSize: "3.2 MB"
     },
@@ -1578,7 +1578,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "6",
       tmsId: "CB-185901642",
       pdfRevision: "Version 2",
-      pdfLink: "https://example.com/pdf3_v2.pdf",
+      pdfLink: "/SG123456.pdf",
       uploadDate: "2024-01-28",
       fileSize: "3.3 MB"
     }
@@ -1588,7 +1588,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "7",
       tmsId: "CB-186605681",
       pdfRevision: "Original Version",
-      pdfLink: "https://example.com/pdf4.pdf",
+      pdfLink: "/SG123456.pdf",
       uploadDate: "2024-02-01",
       fileSize: "4.2 MB"
     },
@@ -1596,7 +1596,7 @@ export const documentsData: Record<string, DocumentItem[]> = {
       id: "8",
       tmsId: "CB-186605681",
       pdfRevision: "Version 1",
-      pdfLink: "https://example.com/pdf4_v1.pdf",
+      pdfLink: "/HL-24933427.PDF",
       uploadDate: "2024-02-05",
       fileSize: "4.3 MB"
     }

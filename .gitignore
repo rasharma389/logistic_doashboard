@@ -26,3 +26,9 @@ dist-ssr
 src/data/pdf/HL-24933427.PDF
 .gitignore
 src/data/pdf/SG123456.pdf
+data/pdf/HL-24933427.PDF
+data/pdf/SG123456.pdf
+.gitignore
+.gitignore
+public/HL-24933427.PDF
+public/SG123456.pdf

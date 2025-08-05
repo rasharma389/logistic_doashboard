@@ -10,14 +10,16 @@ import ActivityPanel from '../activity/ActivityPanel';
 import { useEffect } from 'react';
 import { fetchCarrierBookings } from '../../store/slices/bookingsSlice';
 import { RootState } from '../../store';
-import { toggleRightPanel } from '../../store/slices/uiSlice';
+import { toggleRightPanel, closePDFViewer } from '../../store/slices/uiSlice';
 import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
 import Dashboard from '../dashboard/Dashboard';
 import EmailReader from '../email/EmailReader';
+import PDFViewerModal from '../pdf/PDFViewerModal';
 
 const MainLayoutContent: React.FC = () => {
   const dispatch = useDispatch();
   const rightPanelCollapsed = useSelector((state: RootState) => state.ui.rightPanelCollapsed);
+  const pdfViewerVisible = useSelector((state: RootState) => state.ui.pdfViewerVisible);
 
   const [activeView, setActiveView] = React.useState('carrier-bookings');
 
@@ -94,11 +96,15 @@ const MainLayoutContent: React.FC = () => {
     );
   };
   
-  return (
+    return (
     <Layout style={{ minHeight: '100vh' }}>
         <Header onMenuClick={handleMenuClick} />
         {renderContent()}
-      </Layout>
+        <PDFViewerModal 
+          visible={pdfViewerVisible} 
+          onClose={() => dispatch(closePDFViewer())}
+        />
+    </Layout>
   );
 };
 

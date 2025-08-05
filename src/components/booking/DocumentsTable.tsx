@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Table, Space, Tooltip, Button, Input, Pagination, Tag } from 'antd';
 import { InfoCircleOutlined, EyeOutlined, FilePdfOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
+import { openPDFViewer } from '../../store/slices/uiSlice';
 import type { ColumnsType } from 'antd/es/table';
 import type { DocumentItem } from '../../data/mockData';
 import dayjs from 'dayjs';
 
 const DocumentsTable: React.FC = () => {
+  const dispatch = useDispatch();
   const { selectedBookingId, documents } = useSelector((state: RootState) => state.bookings);
   const [pageSize, setPageSize] = useState(10);
   const [current, setCurrent] = useState(1);
@@ -25,8 +27,11 @@ const DocumentsTable: React.FC = () => {
     }
   };
 
-  const handleViewPdf = (link: string) => {
-    window.open(link, '_blank');
+  const handleViewPdf = (documentIndex: number) => {
+    dispatch(openPDFViewer({ 
+      documents, 
+      initialIndex: documentIndex 
+    }));
   };
 
   const columns: ColumnsType<DocumentItem> = [
@@ -65,13 +70,13 @@ const DocumentsTable: React.FC = () => {
       title: 'Link',
       dataIndex: 'pdfLink',
       key: 'pdfLink',
-      render: (link: string) => (
+      render: (link: string, record: DocumentItem, index: number) => (
         <Space>
           <Button
             type="link"
             size="small"
             icon={<FilePdfOutlined />}
-            onClick={() => handleViewPdf(link)}
+            onClick={() => handleViewPdf(index)}
             style={{ 
               fontSize: '12px', 
               color: '#0ea5e9',
