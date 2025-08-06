@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Tag, Progress, Button, Space, Tooltip, Divider } from 'antd';
+import { Row, Col, Card, Tag, Button, Space, Tooltip, Divider } from 'antd';
 import { ShareAltOutlined, EditOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -11,9 +11,44 @@ const BookingHeader: React.FC = () => {
 
   if (!bookingDetails) return null;
 
-  const getStatusProgress = (level: number) => {
-    return (level / 6) * 100;
+  // Status color mapping based on the screenshot
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case 'confirmed':
+        return {
+          backgroundColor: '#10b981', // light green
+          color: '#ffffff',
+          textColor: '#10b981'
+        };
+      case 'pending':
+        return {
+          backgroundColor: '#fbbf24', // light yellow
+          color: '#000000',
+          textColor: '#fbbf24'
+        };
+      case 'cancelled by requestor':
+      case 'cancelled by carrier':
+        return {
+          backgroundColor: '#a78bfa', // light purple
+          color: '#ffffff',
+          textColor: '#a78bfa'
+        };
+      case 'closed':
+        return {
+          backgroundColor: '#60a5fa', // light blue
+          color: '#ffffff',
+          textColor: '#60a5fa'
+        };
+      default:
+        return {
+          backgroundColor: '#6b7280', // gray
+          color: '#ffffff',
+          textColor: '#6b7280'
+        };
+    }
   };
+
+  const statusColors = getStatusColor(bookingDetails.status);
 
   return (
     <Card 
@@ -65,11 +100,11 @@ const BookingHeader: React.FC = () => {
         </Col>
         <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Contract #</div>
-          <div style={{ fontSize: '14px', fontWeight: '500', color: '#7c3aed', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.contractNumber}</div>
+          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.contractNumber}</div>
         </Col>
         <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Customer</div>
-          <div style={{ fontSize: '14px', fontWeight: '500', color: '#dc2626', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.customer}</div>
+          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.customer}</div>
         </Col>
         <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Region</div>
@@ -77,23 +112,51 @@ const BookingHeader: React.FC = () => {
         </Col>
         <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Trade Lane</div>
-          <div style={{ fontSize: '14px', fontWeight: '500', color: '#ea580c', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.tradeLane}</div>
+          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.tradeLane}</div>
+        </Col>
+        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+          <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Exception</div>
+          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', alignItems: 'center' }}>
+            <div
+              style={{
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                backgroundColor: bookingDetails.exception ? '#ef4444' : '#10b981',
+                display: 'inline-block',
+                marginRight: '8px',
+                flexShrink: 0
+              }}
+            />
+            <span style={{ color: bookingDetails.exception ? '#ef4444' : '#10b981' }}>
+              {bookingDetails.exception ? "Exception" : "Normal"}
+            </span>
+          </div>
         </Col>
       </Row>
       <Row style={{ padding: '0 12px 8px 12px' }}>
         <Col span={24}>
           <div>
             <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>Status</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '14px', fontWeight: '500' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <span
+                style={{
+                  color: statusColors.textColor,
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  alignSelf: 'flex-start'
+                }}
+              >
                 {bookingDetails.status}
               </span>
-              <div style={{ flex: 1, maxWidth: '200px' }}>
-                <Progress 
-                  percent={getStatusProgress(bookingDetails.statusLevel)} 
-                  showInfo={false}
-                  strokeColor="#3b82f6"
-                  size="small"
+              <div style={{ width: '150px' }}>
+                <div
+                  style={{
+                    width: '100%',
+                    height: '4px',
+                    backgroundColor: statusColors.backgroundColor,
+                    borderRadius: '2px'
+                  }}
                 />
               </div>
             </div>

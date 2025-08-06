@@ -21,6 +21,7 @@ export interface BookingDetail {
   contractNumber: string;
   tradeLane: string;
   vesselNVoyage: string;
+  exception: boolean;
 }
 
 export interface CarrierBooking {
@@ -164,7 +165,7 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     carrier: "MAEU",
     carrierBookingNumber: "229120444",
     region: "CN E.",
-    status: "Confirmed",
+    status: "confirmed",
     statusLevel: 5,
     placeOfReceipt: "CNSHA",
     portOfLoad: "CNSHA",
@@ -180,7 +181,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "27",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ELLY MAERSK 527W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: true
   },
   "CB-185901641": {
     id: "CB-185901641",
@@ -188,8 +190,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     carrier: "MAEU",
     carrierBookingNumber: "229120447",
     region: "CN E.",
-    status: "In Transit",
-    statusLevel: 6,
+    status: "pending",
+    statusLevel: 3,
     placeOfReceipt: "CNSHA",
     portOfLoad: "CNSHA",
     portOfDischarge: "NLRTM",
@@ -204,7 +206,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "27",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ELLY MAERSK 527W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-185901642": {
     id: "CB-185901642",
@@ -212,8 +215,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     carrier: "COSCO",
     carrierBookingNumber: "COSU-413892",
     region: "CN E.",
-    status: "Accepted",
-    statusLevel: 4,
+    status: "cancelled by requestor",
+    statusLevel: 1,
     placeOfReceipt: "CNSHA",
     portOfLoad: "CNSHA",
     portOfDischarge: "DEHAM",
@@ -228,7 +231,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "27",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ELLY MAERSK 527W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-185901646": {
     id: "CB-185901646",
@@ -236,8 +240,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     carrier: "MSC",
     carrierBookingNumber: "MSC-450891",
     region: "CN E.",
-    status: "CB Requested",
-    statusLevel: 3,
+    status: "Cancelled by carrier",
+    statusLevel: 1,
     placeOfReceipt: "CNSHA",
     portOfLoad: "CNSHA",
     portOfDischarge: "GBFXT",
@@ -252,7 +256,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "27",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ELLY MAERSK 527W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-185901647": {
     id: "CB-185901647",
@@ -260,8 +265,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     carrier: "EVERGREEN",
     carrierBookingNumber: "EMC-426781",
     region: "CN E.",
-    status: "Requested",
-    statusLevel: 2,
+    status: "Closed",
+    statusLevel: 6,
     placeOfReceipt: "CNSHA",
     portOfLoad: "CNSHA",
     portOfDischarge: "NLRTM",
@@ -276,7 +281,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "27",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ELLY MAERSK 527W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-185231641": {
     id: "CB-185231641",
@@ -284,8 +290,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     carrier: "HAPAG-LLOYD",
     carrierBookingNumber: "HLCU-318665",
     region: "CN E.",
-    status: "Draft",
-    statusLevel: 1,
+    status: "pending",
+    statusLevel: 2,
     placeOfReceipt: "CNNGB",
     portOfLoad: "CNNGB",
     portOfDischarge: "NLRTM",
@@ -300,55 +306,58 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "27",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ELLY MAERSK 527W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-185216294": {
     id: "CB-185216294",
-    customer: "Best Buy",
-    carrier: "CMA-CGM",
-    carrierBookingNumber: "CMAU-789010",
+    customer: "H&M Home",
+    carrier: "MAEU",
+    carrierBookingNumber: "229120450",
     region: "CN S.",
-    status: "Delivered",
-    statusLevel: 7,
-    placeOfReceipt: "CNYTN",
-    portOfLoad: "CNYTN",
-    portOfDischarge: "USLGB",
-    placeOfDelivery: "USLGB",
-    equipments: "40RFx1",
-    crd: "Jul 5, 2025",
+    status: "confirmed",
+    statusLevel: 5,
+    placeOfReceipt: "CNSHA",
+    portOfLoad: "CNSHA",
+    portOfDischarge: "GBFXT",
+    placeOfDelivery: "GBFXT",
+    equipments: "40HCx1",
+    crd: "Aug 5, 2025",
     moveType: "CYP/CYP",
-    placeOfReceiptEtd: "Jul 13, 2025",
-    portOfLoadEtd: "Jul 13, 2025",
-    portOfDischargeEta: "Jul 28, 2025",
-    placeOfDeliveryEta: "Jul 28, 2025",
-    requestedEtdWeek: "28",
-    contractNumber: "HD23500",
+    placeOfReceiptEtd: "Aug 12, 2025",
+    portOfLoadEtd: "Aug 12, 2025",
+    portOfDischargeEta: "Sep 30, 2025",
+    placeOfDeliveryEta: "Sep 30, 2025",
+    requestedEtdWeek: "33",
+    contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "COSCO NETHER 058E"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-186512627": {
     id: "CB-186512627",
-    customer: "Triumph",
-    carrier: "HCLU",
-    carrierBookingNumber: "HLCU-861395",
+    customer: "H&M Home",
+    carrier: "COSCO",
+    carrierBookingNumber: "COSU-413900",
     region: "CN E.",
-    status: "Exception",
-    statusLevel: 2,
-    placeOfReceipt: "CNNGB",
-    portOfLoad: "CNNGB",
+    status: "Closed",
+    statusLevel: 6,
+    placeOfReceipt: "CNSHA",
+    portOfLoad: "CNSHA",
     portOfDischarge: "NLRTM",
     placeOfDelivery: "NLRTM",
-    equipments: "40HCx2",
+    equipments: "40HCx1",
     crd: "Jul 31, 2025",
     moveType: "CYP/CYP",
-    placeOfReceiptEtd: "Aug 8, 2025",
-    portOfLoadEtd: "Aug 8, 2025",
-    portOfDischargeEta: "--:--",
-    placeOfDeliveryEta: "--:--",
+    placeOfReceiptEtd: "Aug 7, 2025",
+    portOfLoadEtd: "Aug 7, 2025",
+    portOfDischargeEta: "Sep 25, 2025",
+    placeOfDeliveryEta: "Sep 25, 2025",
     requestedEtdWeek: "32",
-    contractNumber: "HH2000",
+    contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ESTELLE MAERSK 532W"
+    vesselNVoyage: "ELLY MAERSK 527W",
+    exception: false
   },
   "CB-186512653": {
     id: "CB-186512653",
@@ -372,7 +381,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "32",
     contractNumber: "HH2000",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ESTELLE MAERSK 532W"
+    vesselNVoyage: "ESTELLE MAERSK 532W",
+    exception: false
   },
   "CB-186512790": {
     id: "CB-186512790",
@@ -396,7 +406,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "32",
     contractNumber: "HH2000",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ESTELLE MAERSK 532W"
+    vesselNVoyage: "ESTELLE MAERSK 532W",
+    exception: false
   },
   "CB-186605681": {
     id: "CB-186605681",
@@ -420,7 +431,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "32",
     contractNumber: "HH2000",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ESTELLE MAERSK 532W"
+    vesselNVoyage: "ESTELLE MAERSK 532W",
+    exception: false
   },
   "CB-186624133": {
     id: "CB-186624133",
@@ -444,7 +456,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "32",
     contractNumber: "HH2000",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ESTELLE MAERSK 532W"
+    vesselNVoyage: "ESTELLE MAERSK 532W",
+    exception: false
   },
   "CB-186512583": {
     id: "CB-186512583",
@@ -468,7 +481,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "32",
     contractNumber: "HH2000",
     tradeLane: "AP > EU",
-    vesselNVoyage: "ESTELLE MAERSK 532W"
+    vesselNVoyage: "ESTELLE MAERSK 532W",
+    exception: false
   },
   "CB-187024912": {
     id: "CB-187024912",
@@ -492,7 +506,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: false
   },
   "CB-187024945": {
     id: "CB-187024945",
@@ -516,7 +531,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: true
   },
   "CB-187024977": {
     id: "CB-187024977",
@@ -540,7 +556,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: false
   },
   "CB-187025046": {
     id: "CB-187025046",
@@ -564,7 +581,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: false
   },
   "CB-185901648": {
     id: "CB-185901648",
@@ -588,7 +606,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: false
   },
   "CB-186734576": {
     id: "CB-186734576",
@@ -612,7 +631,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: false
   },
   "CB-13545758": {
     id: "CB-13545758",
@@ -636,7 +656,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "33",
     contractNumber: "90-0080",
     tradeLane: "AP > EU",
-    vesselNVoyage: "MUNICH MAERSK 533W"
+    vesselNVoyage: "MUNICH MAERSK 533W",
+    exception: false
   },
   "CB-45012178": {
     id: "CB-45012178",
@@ -660,7 +681,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "42",
     contractNumber: "CNTR-021",
     tradeLane: "Asia-NorthAmerica",
-    vesselNVoyage: "VesselU/021"
+    vesselNVoyage: "VesselU/021",
+    exception: false
   },
   "CB-45012179": {
     id: "CB-45012179",
@@ -684,7 +706,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "42",
     contractNumber: "CNTR-022",
     tradeLane: "Asia-NorthAmerica",
-    vesselNVoyage: "VesselV/022"
+    vesselNVoyage: "VesselV/022",
+    exception: false
   },
   "CB-45012180": {
     id: "CB-45012180",
@@ -708,7 +731,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "42",
     contractNumber: "CNTR-023",
     tradeLane: "Asia-NorthAmerica",
-    vesselNVoyage: "VesselW/023"
+    vesselNVoyage: "VesselW/023",
+    exception: false
   },
   "CB-45012181": {
     id: "CB-45012181",
@@ -732,7 +756,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "44",
     contractNumber: "CNTR-024",
     tradeLane: "Europe-Canada",
-    vesselNVoyage: "VesselX/024"
+    vesselNVoyage: "VesselX/024",
+    exception: false
   },
   "CB-45012182": {
     id: "CB-45012182",
@@ -756,7 +781,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "42",
     contractNumber: "CNTR-025",
     tradeLane: "Asia-NorthAmerica",
-    vesselNVoyage: "VesselY/025"
+    vesselNVoyage: "VesselY/025",
+    exception: false
   },
   "CB-45012183": {
     id: "CB-45012183",
@@ -780,7 +806,8 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     requestedEtdWeek: "41",
     contractNumber: "CNTR-026",
     tradeLane: "SouthAmerica-NorthAmerica",
-    vesselNVoyage: "VesselZ/026"
+    vesselNVoyage: "VesselZ/026",
+    exception: false
   }
 };
 

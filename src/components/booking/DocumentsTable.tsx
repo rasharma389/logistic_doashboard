@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Table, Space, Tooltip, Button, Input, Pagination, Tag } from 'antd';
 import { InfoCircleOutlined, EyeOutlined, FilePdfOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,6 +15,26 @@ const DocumentsTable: React.FC = () => {
   const [current, setCurrent] = useState(1);
   const [goToPage, setGoToPage] = useState('');
 
+  // Helper function to get version number for sorting
+  const getVersionNumber = (revision: string) => {
+    if (revision === 'Original Version') return 0;
+    const match = revision.match(/Version (\d+)/);
+    return match ? parseInt(match[1]) : -1;
+  };
+
+  // Sort documents by pdfRevision in reverse chronological order (latest first)
+  const sortedDocuments = useMemo(() => {
+    const sorted = [...documents].sort((a, b) => {
+      const versionA = getVersionNumber(a.pdfRevision);
+      const versionB = getVersionNumber(b.pdfRevision);
+      
+      // Reverse order: latest version first (Version 2, Version 1, Original Version)
+      return versionB - versionA;
+    });
+    
+    return sorted;
+  }, [documents, selectedBookingId]); // Add selectedBookingId to dependencies to re-sort when switching bookings
+
   const handlePageSizeChange = (value: number) => {
     setPageSize(value);
   };
@@ -29,7 +49,7 @@ const DocumentsTable: React.FC = () => {
 
   const handleViewPdf = (documentIndex: number) => {
     dispatch(openPDFViewer({ 
-      documents, 
+      documents: sortedDocuments, 
       initialIndex: documentIndex 
     }));
   };
@@ -39,6 +59,7 @@ const DocumentsTable: React.FC = () => {
       title: 'TMS #',
       dataIndex: 'tmsId',
       key: 'tmsId',
+      sorter: (a, b) => a.tmsId.localeCompare(b.tmsId),
       render: (text: string) => (
         <Space>
           <span style={{ color: '#0ea5e9', fontWeight: '500' }}>{text}</span>
@@ -52,6 +73,15 @@ const DocumentsTable: React.FC = () => {
       title: 'PDF Revision',
       dataIndex: 'pdfRevision',
       key: 'pdfRevision',
+      sorter: (a, b) => {
+        const versionA = getVersionNumber(a.pdfRevision);
+        const versionB = getVersionNumber(b.pdfRevision);
+        
+        // Reverse order: latest version first (Version 2, Version 1, Original Version)
+        return versionB - versionA;
+      },
+      defaultSortOrder: 'ascend' as const,
+      sortDirections: ['descend', 'ascend'] as const,
       render: (text: string) => (
         <Space>
           <Tag 
@@ -70,6 +100,7 @@ const DocumentsTable: React.FC = () => {
       title: 'Link',
       dataIndex: 'pdfLink',
       key: 'pdfLink',
+      sorter: (a, b) => a.pdfLink.localeCompare(b.pdfLink),
       render: (link: string, record: DocumentItem, index: number) => (
         <Space>
           <Button
@@ -96,6 +127,7 @@ const DocumentsTable: React.FC = () => {
       title: 'Upload Date',
       dataIndex: 'uploadDate',
       key: 'uploadDate',
+      sorter: (a, b) => dayjs(a.uploadDate).unix() - dayjs(b.uploadDate).unix(),
       render: (date: string) => (
         <Space>
           <span>{dayjs(date).format('DD MMM')}</span>
@@ -109,6 +141,14 @@ const DocumentsTable: React.FC = () => {
       title: 'File Size',
       dataIndex: 'fileSize',
       key: 'fileSize',
+      sorter: (a, b) => {
+        // Extract numeric value from file size (e.g., "2.3 MB" -> 2.3)
+        const getSizeValue = (size: string) => {
+          const match = size.match(/(\d+\.?\d*)/);
+          return match ? parseFloat(match[1]) : 0;
+        };
+        return getSizeValue(a.fileSize) - getSizeValue(b.fileSize);
+      },
       render: (size: string) => (
         <Space>
           <span style={{ color: '#6b7280' }}>{size}</span>
@@ -128,7 +168,7 @@ const DocumentsTable: React.FC = () => {
         alignItems: 'center',
         marginBottom: '16px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {/* <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ fontSize: '14px', fontWeight: '500' }}>Documents</span>
           <Button 
             type="text" 
@@ -144,12 +184,13 @@ const DocumentsTable: React.FC = () => {
           style={{ fontSize: '12px', color: '#6b7280' }}
         >
           Upload Document
-        </Button>
+        </Button> */}
       </div>
 
       <Table
+        key={`documents-table-${selectedBookingId}`} // Force re-render when switching bookings
         columns={columns}
-        dataSource={documents}
+        dataSource={sortedDocuments}
         rowKey="id"
         pagination={false}
         size="small"
@@ -165,14 +206,14 @@ const DocumentsTable: React.FC = () => {
         fontSize: '13px'
       }}>
         <div style={{ color: '#6b7280' }}>
-          {documents.length} Records
+          {sortedDocuments.length} Records
         </div>
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <Pagination
             current={current}
             pageSize={pageSize}
-            total={documents.length}
+            total={sortedDocuments.length}
             showSizeChanger={false}
             simple
             onChange={setCurrent}
