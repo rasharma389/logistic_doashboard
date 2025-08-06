@@ -124,14 +124,14 @@ const DocumentsTable: React.FC = () => {
       ),
     },
     {
-      title: 'Upload Date',
+      title: 'Receipt Date',
       dataIndex: 'uploadDate',
       key: 'uploadDate',
       sorter: (a, b) => dayjs(a.uploadDate).unix() - dayjs(b.uploadDate).unix(),
       render: (date: string) => (
         <Space>
           <span>{dayjs(date).format('DD MMM')}</span>
-          <Tooltip title="Document upload date">
+          <Tooltip title="Document receipt date">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip>
         </Space>
