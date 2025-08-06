@@ -55,6 +55,19 @@ const LinkedBookingsTable: React.FC = () => {
         </Space>
       ),
     },
+    {
+      title: 'Ship Window',
+      dataIndex: 'shipWindow',
+      key: 'shipWindow',
+      render: (text: string) => (
+        <Space>
+          <span style={{ color: '#059669', fontWeight: '500' }}>{text}</span>
+          <Tooltip title="Ship window duration">
+            <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
+          </Tooltip>
+        </Space>
+      ),
+    },
   ];
 
   const handlePageSizeChange = (value: number) => {

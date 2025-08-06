@@ -36,6 +36,7 @@ export interface LinkedBooking {
   shipper_bkg_no: string;
   crd_date: string;
   consignee: string;
+  shipWindow: string;
 }
 
 export interface ActivityItem {
@@ -818,7 +819,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "1",
       "shipper_bkg_no": "202347293044",
       "crd_date": "24-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "10 days"
     }
   ],
   "CB-185901641": [
@@ -826,7 +828,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "2",
       "shipper_bkg_no": "202347293046",
       "crd_date": "21-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "7 days"
     }
   ],
   "CB-185901642": [
@@ -834,7 +837,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "3",
       "shipper_bkg_no": "202347293048",
       "crd_date": "25-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "14 days"
     }
   ],
   "CB-185901646": [
@@ -842,7 +846,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "4",
       "shipper_bkg_no": "202347293049",
       "crd_date": "23-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "12 days"
     }
   ],
   "CB-185901647": [
@@ -850,7 +855,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "5",
       "shipper_bkg_no": "202347293050",
       "crd_date": "24-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "8 days"
     }
   ],
   "CB-185231641": [
@@ -858,7 +864,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "6",
       "shipper_bkg_no": "202347356278",
       "crd_date": "27-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "15 days"
     }
   ],
   "CB-185231643": [
@@ -866,7 +873,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "7",
       "shipper_bkg_no": "202347356278",
       "crd_date": "28-Jun",
-      "consignee": "H&M Home"
+      "consignee": "H&M Home",
+      "shipWindow": "11 days"
     }
   ],
   "CB-185216294": [
@@ -874,7 +882,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "8",
       "shipper_bkg_no": "202347261043",
       "crd_date": "05-Jul",
-      "consignee": "Best Buy"
+      "consignee": "Best Buy",
+      "shipWindow": "9 days"
     }
   ],
   "CB-186512627": [
@@ -882,7 +891,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "9",
       "shipper_bkg_no": "202347320098",
       "crd_date": "31-Jul",
-      "consignee": "Triumph"
+      "consignee": "Triumph",
+      "shipWindow": "13 days"
     }
   ],
   "CB-186512653": [
@@ -890,7 +900,8 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "10",
       "shipper_bkg_no": "202347341746",
       "crd_date": "31-Jul",
-      "consignee": "Triumph"
+      "consignee": "Triumph",
+      "shipWindow": "6 days"
     }
   ],
   "CB-186512790": [
@@ -898,29 +909,31 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "id": "11",
       "shipper_bkg_no": "202347238889, 202347443978",
       "crd_date": "01-Aug",
-      "consignee": "Home Depot"
+      "consignee": "Home Depot",
+      "shipWindow": "16 days"
     }
   ],
   "CB-186605681": [
-    {"id": "12.1", "shipper_bkg_no": "202347471558", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.2", "shipper_bkg_no": "202347291582", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.3", "shipper_bkg_no": "202347326823", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.4", "shipper_bkg_no": "202347465267", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.5", "shipper_bkg_no": "202347403134", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.6", "shipper_bkg_no": "202347384223", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.7", "shipper_bkg_no": "202347185490", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.8", "shipper_bkg_no": "202347056575", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.9", "shipper_bkg_no": "202347374241", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.10", "shipper_bkg_no": "202347364836", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.11", "shipper_bkg_no": "202347355804", "crd_date": "31-Jul", "consignee": "Costco"},
-    {"id": "12.12", "shipper_bkg_no": "202347338355", "crd_date": "31-Jul", "consignee": "Costco"}
+    {"id": "12.1", "shipper_bkg_no": "202347471558", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "10 days"},
+    {"id": "12.2", "shipper_bkg_no": "202347291582", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "8 days"},
+    {"id": "12.3", "shipper_bkg_no": "202347326823", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "12 days"},
+    {"id": "12.4", "shipper_bkg_no": "202347465267", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "7 days"},
+    {"id": "12.5", "shipper_bkg_no": "202347403134", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "14 days"},
+    {"id": "12.6", "shipper_bkg_no": "202347384223", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "9 days"},
+    {"id": "12.7", "shipper_bkg_no": "202347185490", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "11 days"},
+    {"id": "12.8", "shipper_bkg_no": "202347056575", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "13 days"},
+    {"id": "12.9", "shipper_bkg_no": "202347374241", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "15 days"},
+    {"id": "12.10", "shipper_bkg_no": "202347364836", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "10 days"},
+    {"id": "12.11", "shipper_bkg_no": "202347355804", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "8 days"},
+    {"id": "12.12", "shipper_bkg_no": "202347338355", "crd_date": "31-Jul", "consignee": "Costco", "shipWindow": "12 days"}
   ],
   "CB-186624133": [
     {
       "id": "13",
       "shipper_bkg_no": "202347239816",
       "crd_date": "31-Jul",
-      "consignee": "Triumph"
+      "consignee": "Triumph",
+      "shipWindow": "10 days"
     }
   ]
 };
