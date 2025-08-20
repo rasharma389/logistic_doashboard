@@ -58,8 +58,10 @@ const BookingHeader: React.FC = () => {
         borderBottom: '1px solid #f0f0f0',
         borderRadius: '0'
       }}
-      bodyStyle={{ 
-        padding: '0',
+      styles={{ 
+        body: { 
+          padding: '0',
+        }
       }}
     >
       <div style={{ 

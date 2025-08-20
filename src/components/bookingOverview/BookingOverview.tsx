@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useCallback, useState } from 'react';
 import { Layout, Table, Input, Select, Button, Space, Checkbox, Tag, Progress, Tooltip, Pagination, Typography, Card, DatePicker, Divider, Alert } from 'antd';
 import { SearchOutlined, DownOutlined, InfoCircleOutlined, DownloadOutlined, SettingOutlined, ReloadOutlined, FilterOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState, AppDispatch } from '../../store';
 import { 
   fetchBookings, 
@@ -29,6 +30,7 @@ interface BookingOverviewProps {
 
 const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { 
     bookings, 
     totalItems, 
@@ -978,7 +980,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
               size="small"
             />
             <Tooltip title="Go to Carrier Bookings">
-              <Button icon={<MenuUnfoldOutlined />} size="small" onClick={() => onMenuClick?.('carrier-bookings')} />
+              <Button icon={<MenuUnfoldOutlined />} size="small" onClick={() => navigate('/carrier-bookings')} />
             </Tooltip>
             {/* <Button icon={<SettingOutlined />} size="small">Settings</Button> */}
             <Button icon={<ReloadOutlined />} size="small" loading={loading} onClick={() => dispatch(fetchBookings())} />

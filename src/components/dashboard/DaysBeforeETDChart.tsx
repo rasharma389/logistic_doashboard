@@ -27,7 +27,12 @@ const DaysBeforeETDChart: React.FC = () => {
         </div>
       }
       style={{ height: '320px' }}
-      bodyStyle={{ padding: '16px', height: 'calc(100% - 57px)' }}
+      styles={{ 
+        body: { 
+          padding: '16px', 
+          height: 'calc(100% - 57px)' 
+        }
+      }}
       headStyle={{ 
         borderBottom: '1px solid #f0f0f0',
         minHeight: '48px',

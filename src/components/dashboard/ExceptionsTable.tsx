@@ -196,7 +196,11 @@ const ExceptionsTable: React.FC = () => {
         </div>
       }
       style={{ marginTop: '24px' }}
-      bodyStyle={{ padding: '0' }}
+      styles={{ 
+        body: { 
+          padding: '0' 
+        }
+      }}
       headStyle={{ 
         borderBottom: '1px solid #f0f0f0',
         minHeight: '48px',

@@ -1,6 +1,13 @@
 import React from 'react';
 import { ConfigProvider } from 'antd';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store';
+import AppLayout from './components/layout/AppLayout';
 import MainLayout from './components/layout/MainLayout';
+import BookingOverview from './components/bookingOverview/BookingOverview';
+import Dashboard from './components/dashboard/Dashboard';
+import EmailReader from './components/email/EmailReader';
 import 'antd/dist/reset.css';
 
 const theme = {
@@ -29,9 +36,20 @@ const theme = {
 
 function App() {
   return (
-    <ConfigProvider theme={theme}>
-      <MainLayout />
-    </ConfigProvider>
+    <Provider store={store}>
+      <ConfigProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Navigate to="/carrier-bookings" replace />} />
+            <Route path="carrier-bookings" element={<MainLayout />} />
+            <Route path="booking-overview" element={<BookingOverview />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="email-reader" element={<EmailReader />} />
+            <Route path="*" element={<Navigate to="/carrier-bookings" replace />} />
+          </Route>
+        </Routes>
+      </ConfigProvider>
+    </Provider>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Avatar, Dropdown, Space, Button } from 'antd';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   DashboardOutlined,
   CarOutlined,
@@ -16,11 +17,10 @@ import { FaGlobe } from 'react-icons/fa';
 
 const { Header: AntHeader } = Layout;
 
-interface HeaderProps {
-  onMenuClick?: (key: string) => void;
-}
+const Header: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const userMenuItems = [
     {
       key: 'profile',
@@ -38,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
   const headerMenuItems = [
     {
-      key: 'dashboards',
+      key: 'dashboard',
       label: 'Dashboards',
       icon: <DashboardOutlined />,
     },
@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   ];
 
   const handleMenuClick = ({ key }: { key: string }) => {
-    onMenuClick?.(key);
+    navigate(`/${key}`);
   };
 
   return (
@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['carrier-bookings']}
+          selectedKeys={[location.pathname.substring(1)]}
           items={headerMenuItems}
           onClick={handleMenuClick}
           style={{ 
