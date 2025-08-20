@@ -15,7 +15,7 @@ import {
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Simulate network errors occasionally
-const shouldSimulateError = () => Math.random() < 0.05; // 5% chance of error
+const shouldSimulateError = () => false;
 
 export class BookingAPI {
   /**

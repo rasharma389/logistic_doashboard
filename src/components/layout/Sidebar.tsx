@@ -1,9 +1,10 @@
 import React from 'react';
-import { Layout, List, Typography, Spin, Input } from 'antd';
+import { Layout, List, Typography, Spin, Input, Space, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { selectBookingWithData } from '../../store/slices/bookingsSlice';
 import dayjs from 'dayjs';
+import {MenuFoldOutlined} from '@ant-design/icons';
 
 const { Sider } = Layout;
 const { Text } = Typography;
@@ -41,14 +42,21 @@ const Sidebar: React.FC = () => {
         backgroundColor: 'white',
         height: '65px'
       }}>
-        <Text strong style={{ fontSize: '16px', color: '#1f2937' }}>
-          Carrier Bookings
-        </Text>
-        <br />
-        <Text style={{ fontSize: '12px', color: '#6b7280' }}>
-          {loading ? 'Loading...' : `${carrierBookings.length} Bookings`}
-        </Text>
+        <Space align="baseline">
+          <div>
+          <Text strong style={{ fontSize: '16px', color: '#1f2937' }}>
+            Carrier Bookings
+          </Text>
+          <br />
+          <Text style={{ fontSize: '12px', color: '#6b7280' }}>
+            {loading ? 'Loading...' : `${carrierBookings.length} Bookings`}
+          </Text>
+          </div>
+          <Button icon={<MenuFoldOutlined />} size="small"></Button>
+        </Space>
+        
       </div>
+      
       <div style={{ 
         padding: '12px 5px',
         borderBottom: '1px solid #e2e8f0',

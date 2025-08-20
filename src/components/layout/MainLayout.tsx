@@ -15,6 +15,7 @@ import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
 import Dashboard from '../dashboard/Dashboard';
 import EmailReader from '../email/EmailReader';
 import PDFViewerModal from '../pdf/PDFViewerModal';
+import BookingOverview from '../bookingOverview/BookingOverview';
 
 const MainLayoutContent: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ const MainLayoutContent: React.FC = () => {
   const renderContent = () => {
     if (activeView === 'dashboards') {
       return <Dashboard />;
+    }
+    
+    if (activeView === 'booking-overview') {
+      return <BookingOverview />;
     }
     
     if (activeView === 'email-reader') {
@@ -97,7 +102,7 @@ const MainLayoutContent: React.FC = () => {
   };
   
     return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout>
         <Header onMenuClick={handleMenuClick} />
         {renderContent()}
         <PDFViewerModal 

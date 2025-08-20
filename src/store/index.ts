@@ -3,6 +3,7 @@ import bookingsReducer from './slices/bookingsSlice';
 import uiReducer from './slices/uiSlice';
 import dashboardReducer from './slices/dashboardSlice';
 import emailReducer from './slices/emailSlice';
+import bookingOverviewReducer from './slices/bookingOverviewSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     ui: uiReducer,
     dashboard: dashboardReducer,
     email: emailReducer,
+    bookingOverview: bookingOverviewReducer,
   },
 });
 

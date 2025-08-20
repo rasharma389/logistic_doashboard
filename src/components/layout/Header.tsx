@@ -43,6 +43,11 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
       icon: <DashboardOutlined />,
     },
     {
+      key: 'booking-overview',
+      label: 'Booking Overview',
+      icon: <FileTextOutlined />,
+    },
+    {
       key: 'carrier-bookings',
       label: 'Carrier Bookings',
       icon: <CarOutlined />,
