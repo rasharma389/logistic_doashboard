@@ -143,4 +143,38 @@ export const changePageSizeAndRefresh = (pageSize: number) => async (dispatch: a
   dispatch(fetchBookings());
 };
 
+// Thunk to share filtered data with carrier bookings page
+export const shareFilteredDataWithCarrierBookings = () => async (dispatch: any, getState: any) => {
+  try {
+    const { bookingOverview } = getState();
+    const { bookings, filters, searchQuery } = bookingOverview;
+    
+    // Get the current filtered data
+    let filteredData = bookings;
+    
+    // If we have filters applied, we need to re-apply them to get the complete filtered dataset
+    if (Object.values(filters).some(filter => filter !== 'All') || searchQuery) {
+      const result = await BookingOverviewService.getShipperBookings(
+        1, // Start from first page
+        1000, // Get a large number to capture all filtered results
+        filters,
+        searchQuery
+      );
+      filteredData = result.bookings;
+    }
+    
+    // Import the mapping function
+    const { mapShipperBookingToCarrierBooking } = await import('../../utils/dataMapping');
+    
+    // Map ShipperBooking data to CarrierBooking format
+    const mappedCarrierBookings = mapShipperBookingToCarrierBooking(filteredData);
+    
+    // Dispatch to the bookings slice to update filteredBookingsFromOverview
+    dispatch({ type: 'bookings/setFilteredBookingsFromOverview', payload: mappedCarrierBookings });
+    
+  } catch (error) {
+    console.error('Failed to share filtered data:', error);
+  }
+};
+
 export default bookingOverviewSlice.reducer;

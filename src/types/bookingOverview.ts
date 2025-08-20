@@ -30,6 +30,12 @@ export interface ShipperBooking {
   'BC:Version': string;
   'BR:Req. FEU': string;
   'BC:Conf. FEU': string;
+  'FEU difference (BC-BR)': string;
+  'Excpt. Eqp?': string;
+  'ETD difference (BC-BR)': string;
+  'ETD range (BC-BR) formula': string;
+  'ETD info': string;
+  'Excpt. ETD?': string;
   'BC: CY Cut-off Date': string;
   'BC: CY Cut-off Time': string;
   'BC: VGM Cut-off Date': string;
@@ -40,23 +46,44 @@ export interface ShipperBooking {
   'BC:1st ETA POD': string;
   'BC:1st Release Date': string;
   'BC:Released': string;
-  'BR:2nd Vessel': string;
-  'BR:2nd Voyage #': string;
+  'BC:2nd Vessel': string;
+  'BC:2nd Voyage #': string;
   Consignee: string;
   Region: string;
   'Bkg Type': string;
   'Shipper Bkg Linked?': string;
+  'Linked Shipper bkg #': string;
+  'BR:Req. ETD intial': string;
+  'BR:PRE (full name)': string;
+  'BR:POL (full name)': string;
+  'BR:POD (full name)': string;
+  'BR:DEL (full name)': string;
+  'BR:POL Group': string;
+  'BR:POD Group': string;
+  'Ack:301 ETD POL': string;
+  'Ack: 301 ETA POD': string;
+  'Ack:301 ETA PODelivery': string;
+  'NVOCC/Agent Bkg #': string;
+  'Bkg Template?': string;
+  'Bkg Form Sent?': string;
+  'Bkg Form Email Sent Date': string;
+  'Created At': string;
+  'Updated At': string;
+  'BR create date': string;
+  'Updated At (Date)': string;
+  'BR Month': string;
+  '300/301 Status': string;
+  'Bkg Agent ID': string;
   CRD: string;
   'Date between BR creattion / ETD req': string;
   Check: string;
-  x4: string;
-  x5: string;
-  x6: string;
-  x7: string;
-  x8: string;
-  x9: string;
-  stage: string;
-  stageProgress: number;
+  'T/S port 1': string;
+  'T/S port 2': string;
+  'BC:3rd Vessel': string;
+  'BC:3rd Voyage #': string;
+  'BC:1st Vessel': string;
+  'BC:1st Voyage #': string;
+  'Vessel mismatch': string;
   selected?: boolean;
 }
 
@@ -73,6 +100,9 @@ export interface BookingOverviewFilters {
   'Exception?': string;
   Region: string;
   'Bkg Type': string;
+  'Excpt. Eqp?': string;
+  'Excpt. ETD?': string;
+  '300/301 Status': string;
 }
 
 export interface BookingOverviewState {

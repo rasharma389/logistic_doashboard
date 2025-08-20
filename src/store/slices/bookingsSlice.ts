@@ -10,6 +10,7 @@ import type {
 
 interface BookingsState {
   carrierBookings: CarrierBooking[];
+  filteredBookingsFromOverview: CarrierBooking[]; // For sharing filtered data from booking overview
   selectedBookingId: string | null;
   bookingDetails: BookingDetail | null;
   linkedBookings: LinkedBooking[];
@@ -23,6 +24,7 @@ interface BookingsState {
 
 const initialState: BookingsState = {
   carrierBookings: [],
+  filteredBookingsFromOverview: [], // Will contain filtered data from booking overview
   selectedBookingId: null,
   bookingDetails: null,
   linkedBookings: [],
@@ -49,6 +51,9 @@ const bookingsSlice = createSlice({
     },
     setCarrierBookings: (state, action: PayloadAction<CarrierBooking[]>) => {
       state.carrierBookings = action.payload;
+    },
+    setFilteredBookingsFromOverview: (state, action: PayloadAction<CarrierBooking[]>) => {
+      state.filteredBookingsFromOverview = action.payload;
     },
     setBookingDetails: (state, action: PayloadAction<BookingDetail | null>) => {
       state.bookingDetails = action.payload;
@@ -85,6 +90,7 @@ export const {
   setError,
   setLoadingDetails,
   setCarrierBookings,
+  setFilteredBookingsFromOverview,
   setBookingDetails,
   setLinkedBookings,
   setActivities,

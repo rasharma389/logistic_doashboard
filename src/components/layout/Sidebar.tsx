@@ -3,6 +3,7 @@ import { Layout, List, Typography, Spin, Input, Space, Button, Tooltip } from 'a
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { selectBookingWithData } from '../../store/slices/bookingsSlice';
+import type { CarrierBooking } from '../../data/mockData';
 import dayjs from 'dayjs';
 import {MenuFoldOutlined} from '@ant-design/icons';
 
@@ -11,11 +12,15 @@ const { Text } = Typography;
 
 interface SidebarProps {
   onMenuClick?: (key: string) => void;
+  displayBookings?: CarrierBooking[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ onMenuClick }) => {
+const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
   const dispatch = useDispatch();
   const { carrierBookings, selectedBookingId, loading } = useSelector((state: RootState) => state.bookings);
+  
+  // Use displayBookings if provided, otherwise fall back to carrierBookings
+  const bookingsToDisplay = displayBookings || carrierBookings;
   const [search, setSearch] = React.useState('');
 
   const handleBookingSelect = (bookingId: string) => {
@@ -23,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick }) => {
   };
 
   // Filter bookings by id or destination
-  const filteredBookings = carrierBookings.filter(
+  const filteredBookings = bookingsToDisplay.filter(
     booking =>
       booking.id.toLowerCase().includes(search.toLowerCase()) ||
       booking.destination.toLowerCase().includes(search.toLowerCase())
@@ -53,7 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick }) => {
           </Text>
           <br />
           <Text style={{ fontSize: '12px', color: '#6b7280' }}>
-            {loading ? 'Loading...' : `${carrierBookings.length} Bookings`}
+            {loading ? 'Loading...' : `${bookingsToDisplay.length} Bookings`}
           </Text>
           </div>
           <Tooltip title="Go to Booking Overview">

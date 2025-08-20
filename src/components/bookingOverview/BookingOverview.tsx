@@ -13,7 +13,8 @@ import {
   changePageSizeAndRefresh,
   toggleBookingSelection,
   selectAllBookings,
-  clearBookingSelection
+  clearBookingSelection,
+  shareFilteredDataWithCarrierBookings
 } from '../../store/slices/bookingOverviewSlice';
 import type { ColumnsType } from 'antd/es/table';
 import type { ShipperBooking } from '../../types/bookingOverview';
@@ -928,8 +929,8 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
       pagination: false as const,
       loading,
       size: 'small' as const,
-      scroll: { x: 2000, y: 600 },
-      style: { backgroundColor: '#fff', marginTop: '16px' },
+      scroll: { x: 2000, y: 650 },
+      style: { backgroundColor: '#fff', marginTop: '0px' },
       rowSelection,
     };
   }, [columns, bookings, loading, rowSelection]);
@@ -970,17 +971,24 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
               </Text>
             )} */}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <Input
               placeholder="Search for 'TMS #' (CB-xxxxx)"
               prefix={<SearchOutlined />}
               value={localSearchQuery}
               onChange={(e) => handleSearchInputChange(e.target.value)}
-              style={{ width: 400 }}
+              style={{ width: 500 }}
               size="small"
             />
             <Tooltip title="Go to Carrier Bookings">
-              <Button icon={<MenuUnfoldOutlined />} size="small" onClick={() => navigate('/carrier-bookings')} />
+              <Button 
+                icon={<MenuUnfoldOutlined />} 
+                size="small" 
+                onClick={() => {
+                  dispatch(shareFilteredDataWithCarrierBookings());
+                  navigate('/carrier-bookings');
+                }} 
+              />
             </Tooltip>
             {/* <Button icon={<SettingOutlined />} size="small">Settings</Button> */}
             <Button icon={<ReloadOutlined />} size="small" loading={loading} onClick={() => dispatch(fetchBookings())} />
@@ -1120,7 +1128,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center',
-          padding: '16px 0',
+          padding: '16px',
           backgroundColor: '#fff',
           borderTop: '1px solid #f0f0f0'
         }}>
@@ -1136,7 +1144,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
               onChange={handlePageChange}
               onShowSizeChange={handlePageSizeChange}
               showSizeChanger
-              showQuickJumper
+              // showQuickJumper
               showTotal={(total, range) => 
                 `${range[0]}-${range[1]} of ${total} items`
               }
@@ -1144,7 +1152,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
               size="small"
             />
             
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Text style={{ fontSize: '13px', color: '#666' }}>
                 {pageSize} / page
               </Text>
@@ -1162,7 +1170,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
                   }
                 }}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

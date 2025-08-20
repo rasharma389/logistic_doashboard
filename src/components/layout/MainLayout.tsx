@@ -14,17 +14,21 @@ const MainLayout: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const rightPanelCollapsed = useSelector((state: RootState) => state.ui.rightPanelCollapsed);
+  const { carrierBookings, filteredBookingsFromOverview } = useSelector((state: RootState) => state.bookings);
 
   const handleMenuClick = (key: string) => {
     navigate(`/${key}`);
   };
 
+  // Use filtered data from overview if available, otherwise use regular carrier bookings
+  const displayBookings = filteredBookingsFromOverview.length > 0 ? filteredBookingsFromOverview : carrierBookings;
+
   return (
     <Layout style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 56px)' }}>
-      {/* Left Sidebar (always visible) */}
-      <div style={{ width: 200, height: '100%', overflow: 'hidden', borderRight: '1px solid #e0e0e0' }}>
-        <Sidebar onMenuClick={handleMenuClick} />
-      </div>
+              {/* Left Sidebar (always visible) */}
+        <div style={{ width: 200, height: '100%', overflow: 'hidden', borderRight: '1px solid #e0e0e0' }}>
+          <Sidebar onMenuClick={handleMenuClick} displayBookings={displayBookings} />
+        </div>
 
       {/* Center Content */}
       <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', backgroundColor: '#f8fafc' }}>
