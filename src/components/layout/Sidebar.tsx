@@ -24,8 +24,19 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
   const [search, setSearch] = React.useState('');
 
   const handleBookingSelect = (bookingId: string) => {
+    console.log('Sidebar: Selecting booking:', bookingId);
     dispatch(selectBookingWithData(bookingId) as any);
   };
+
+  // Debug logging to see what bookings are available
+  React.useEffect(() => {
+    console.log('Sidebar: Available bookings:', {
+      displayBookingsCount: displayBookings?.length || 0,
+      carrierBookingsCount: carrierBookings.length,
+      totalAvailable: bookingsToDisplay.length,
+      firstFew: bookingsToDisplay.slice(0, 3).map(b => ({ id: b.id, destination: b.destination, selected: b.selected }))
+    });
+  }, [displayBookings, carrierBookings, bookingsToDisplay]);
 
   // Filter bookings by id or destination
   const filteredBookings = bookingsToDisplay.filter(

@@ -1,20 +1,37 @@
 import type { ShipperBooking } from '../types/bookingOverview';
 import type { CarrierBooking } from '../data/mockData';
 
+// Import the mock data to check for available booking details
+import { bookingDetailsData } from '../data/mockData';
+
 /**
  * Maps ShipperBooking data to CarrierBooking format for the carrier booking page
  * Uses TMS # (id field) as the connection point
+ * Only includes bookings that have corresponding details in the carrier booking system
  */
 export const mapShipperBookingToCarrierBooking = (shipperBookings: ShipperBooking[]): CarrierBooking[] => {
-  const mappedBookings = shipperBookings.map(booking => ({
-    id: `CB-${booking['TMS #']}` || `CB-${booking.id}`, // Add CB- prefix to TMS #
-    destination: `${booking['Origin region'] || 'N/A'} - ${booking['Cust. Code'] || 'N/A'}`,
-    date: booking.CRD || 'N/A', // Use CRD date
-    selected: false
-  }));
+  const mappedBookings: CarrierBooking[] = [];
+  
+  shipperBookings.forEach(booking => {
+    const carrierBookingId = `CB-${booking['TMS #']}` || `CB-${booking.id}`;
+    
+    // Only include bookings that have corresponding details in the carrier booking system
+    if (bookingDetailsData[carrierBookingId]) {
+      mappedBookings.push({
+        id: carrierBookingId,
+        destination: `${booking['district'] || 'N/A'} - ${booking['Cust. Code'] || 'N/A'}`,
+        date: booking.CRD || 'N/A',
+        selected: false
+      });
+    } else {
+      console.log(`Skipping booking with TMS # ${booking['TMS #']} - no carrier booking details available`);
+    }
+  });
   
   console.log('Mapping ShipperBooking to CarrierBooking:', {
-    original: shipperBookings.slice(0, 3), // Show first 3 for debugging
+    originalCount: shipperBookings.length,
+    mappedCount: mappedBookings.length,
+    original: shipperBookings.slice(0, 3),
     mapped: mappedBookings.slice(0, 3)
   });
   

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Layout } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import BookingTabs from '../booking/BookingTabs';
 import ActivityPanel from '../activity/ActivityPanel';
 import { RootState } from '../../store';
 import { toggleRightPanel } from '../../store/slices/uiSlice';
+import { autoSelectFirstFilteredBooking } from '../../store/slices/bookingsSlice';
 import { DoubleLeftOutlined } from '@ant-design/icons';
 
 const MainLayout: React.FC = () => {
@@ -15,6 +16,7 @@ const MainLayout: React.FC = () => {
   const navigate = useNavigate();
   const rightPanelCollapsed = useSelector((state: RootState) => state.ui.rightPanelCollapsed);
   const { carrierBookings, filteredBookingsFromOverview } = useSelector((state: RootState) => state.bookings);
+  const autoSelectionTriggered = useRef(false);
 
   const handleMenuClick = (key: string) => {
     navigate(`/${key}`);
@@ -22,6 +24,18 @@ const MainLayout: React.FC = () => {
 
   // Use filtered data from overview if available, otherwise use regular carrier bookings
   const displayBookings = filteredBookingsFromOverview.length > 0 ? filteredBookingsFromOverview : carrierBookings;
+
+  // Auto-select first booking when filtered data is available (only once)
+  useEffect(() => {
+    if (filteredBookingsFromOverview.length > 0 && !autoSelectionTriggered.current) {
+      console.log('Triggering auto-selection for filtered data');
+      autoSelectionTriggered.current = true;
+      dispatch(autoSelectFirstFilteredBooking() as any);
+    } else if (filteredBookingsFromOverview.length === 0) {
+      // Reset the flag when filtered data is cleared
+      autoSelectionTriggered.current = false;
+    }
+  }, [filteredBookingsFromOverview.length, dispatch]);
 
   return (
     <Layout style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 56px)' }}>

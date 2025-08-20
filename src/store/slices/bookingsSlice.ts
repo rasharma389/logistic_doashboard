@@ -165,8 +165,74 @@ export const fetchBookingData = (bookingId: string) => async (dispatch: any) => 
 };
 
 export const selectBookingWithData = (bookingId: string) => async (dispatch: any) => {
-  dispatch(selectBooking(bookingId));
-  await dispatch(fetchBookingData(bookingId));
+  try {
+    console.log('selectBookingWithData: Selecting booking:', bookingId);
+    dispatch(selectBooking(bookingId));
+    await dispatch(fetchBookingData(bookingId));
+  } catch (error) {
+    console.error('selectBookingWithData: Failed to select booking:', bookingId, error);
+    // Set an error message to inform the user
+    dispatch(setError(`Unable to load details for booking ${bookingId}. Please try another booking.`));
+  }
+};
+
+// Auto-select first booking from filtered data and fetch its details
+export const autoSelectFirstFilteredBooking = () => async (dispatch: any, getState: any) => {
+  try {
+    const { filteredBookingsFromOverview, carrierBookings } = getState().bookings;
+    
+    console.log('Auto-selecting first filtered booking:', {
+      filteredCount: filteredBookingsFromOverview.length,
+      carrierCount: carrierBookings.length
+    });
+    
+    // Use filtered data if available, otherwise use regular carrier bookings
+    const bookingsToProcess = filteredBookingsFromOverview.length > 0 ? filteredBookingsFromOverview : carrierBookings;
+    
+    if (bookingsToProcess.length > 0) {
+      const firstBooking = bookingsToProcess[0];
+      const firstBookingId = firstBooking.id;
+      
+      console.log('First booking to select:', {
+        id: firstBookingId,
+        destination: firstBooking.destination,
+        date: firstBooking.date
+      });
+      
+      // Check if the first booking is already selected to avoid unnecessary updates
+      const isFirstBookingSelected = firstBooking.selected === true;
+      
+      if (!isFirstBookingSelected) {
+        // Update all bookings to set the first one as selected
+        const updatedBookings = bookingsToProcess.map((booking: any, index: number) => ({
+          ...booking,
+          selected: index === 0
+        }));
+        
+        // Update the appropriate store based on which data we're using
+        if (filteredBookingsFromOverview.length > 0) {
+          console.log('Updating filteredBookingsFromOverview with selection');
+          dispatch(setFilteredBookingsFromOverview(updatedBookings));
+        } else {
+          console.log('Updating carrierBookings with selection');
+          dispatch(setCarrierBookings(updatedBookings));
+        }
+      } else {
+        console.log('First booking already selected, skipping update');
+      }
+      
+      // Select the first booking and fetch its details
+      console.log('Selecting booking and fetching details:', firstBookingId);
+      dispatch(selectBooking(firstBookingId));
+      await dispatch(fetchBookingData(firstBookingId));
+      
+      console.log('Auto-selection completed successfully');
+    } else {
+      console.log('No bookings to process for auto-selection');
+    }
+  } catch (error) {
+    console.error('Failed to auto-select first filtered booking:', error);
+  }
 };
 
 // New action to update booking and refresh data

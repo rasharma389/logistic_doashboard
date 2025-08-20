@@ -146,14 +146,22 @@ export const changePageSizeAndRefresh = (pageSize: number) => async (dispatch: a
 // Thunk to share filtered data with carrier bookings page
 export const shareFilteredDataWithCarrierBookings = () => async (dispatch: any, getState: any) => {
   try {
+    console.log('Sharing filtered data with carrier bookings...');
     const { bookingOverview } = getState();
     const { bookings, filters, searchQuery } = bookingOverview;
+    
+    console.log('Current state:', {
+      bookingsCount: bookings.length,
+      hasFilters: Object.values(filters).some(filter => filter !== 'All'),
+      hasSearch: !!searchQuery
+    });
     
     // Get the current filtered data
     let filteredData = bookings;
     
     // If we have filters applied, we need to re-apply them to get the complete filtered dataset
     if (Object.values(filters).some(filter => filter !== 'All') || searchQuery) {
+      console.log('Re-applying filters to get complete dataset...');
       const result = await BookingOverviewService.getShipperBookings(
         1, // Start from first page
         1000, // Get a large number to capture all filtered results
@@ -161,6 +169,7 @@ export const shareFilteredDataWithCarrierBookings = () => async (dispatch: any, 
         searchQuery
       );
       filteredData = result.bookings;
+      console.log('Filtered data count:', filteredData.length);
     }
     
     // Import the mapping function
@@ -169,8 +178,16 @@ export const shareFilteredDataWithCarrierBookings = () => async (dispatch: any, 
     // Map ShipperBooking data to CarrierBooking format
     const mappedCarrierBookings = mapShipperBookingToCarrierBooking(filteredData);
     
+    console.log('Mapped carrier bookings:', {
+      originalCount: filteredData.length,
+      mappedCount: mappedCarrierBookings.length,
+      firstMapped: mappedCarrierBookings[0]
+    });
+    
     // Dispatch to the bookings slice to update filteredBookingsFromOverview
     dispatch({ type: 'bookings/setFilteredBookingsFromOverview', payload: mappedCarrierBookings });
+    
+    console.log('Successfully shared filtered data');
     
   } catch (error) {
     console.error('Failed to share filtered data:', error);

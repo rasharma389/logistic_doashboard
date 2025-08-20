@@ -136,7 +136,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
 
   // Initial data fetch
   useEffect(() => {
-    console.log('Initial data fetch - current state:', { bookings, totalItems, loading });
+    // console.log('Initial data fetch - current state:', { bookings, totalItems, loading });
     dispatch(fetchBookings());
   }, [dispatch]);
 
@@ -325,12 +325,12 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
       ...getColumnSelectProps('req ETD wk', 'Req ETD Week'),
       render: (text: string, record: ShipperBooking) => {
         const value = text || record['req ETD wk'] || 'N/A';
-        console.log('Req ETD Week render debug:', { 
-          text, 
-          recordValue: record['req ETD wk'],
-          finalValue: value,
-          recordId: record.id
-        });
+        // console.log('Req ETD Week render debug:', { 
+        //   text, 
+        //   recordValue: record['req ETD wk'],
+        //   finalValue: value,
+        //   recordId: record.id
+        // });
         return (
             <Text style={{ fontSize: '13px', color: '#059669', fontWeight: '500' }}>
               {value}
@@ -912,15 +912,15 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
     // Fallback to mock data if Redux data is empty
     const tableData = bookings.length > 0 ? bookings : shipperBookingsData;
     
-    console.log('Table props debug:', {
-      bookingsCount: bookings.length,
-      mockDataCount: shipperBookingsData.length,
-      tableDataCount: tableData.length,
-      firstBooking: tableData[0],
-      firstBookingReqEtdWk: tableData[0]?.['req ETD wk'],
-      columnsCount: columns.length,
-      reqEtdWkColumn: columns.find(col => 'dataIndex' in col && col.dataIndex === 'req ETD wk')
-    });
+    // console.log('Table props debug:', {
+    //   bookingsCount: bookings.length,
+    //   mockDataCount: shipperBookingsData.length,
+    //   tableDataCount: tableData.length,
+    //   firstBooking: tableData[0],
+    //   firstBookingReqEtdWk: tableData[0]?.['req ETD wk'],
+    //   columnsCount: columns.length,
+    //   reqEtdWkColumn: columns.find(col => 'dataIndex' in col && col.dataIndex === 'req ETD wk')
+    // });
     
     return {
       columns,
