@@ -20,7 +20,7 @@ export class BookingOverviewService {
     currentPage: number;
   }> {
     // Reduced delay for better performance
-    await delay(100);
+    await delay(50);
 
     let filteredBookings = [...shipperBookingsData];
 
@@ -30,10 +30,13 @@ export class BookingOverviewService {
       
       // Pre-compile search patterns for better performance
       const searchPatterns = [
-        (booking: any) => `CB-${booking.tmsNumber || ''}`.toLowerCase(),
-        (booking: any) => (booking.tmsNumber || '').toLowerCase(),
-        (booking: any) => (booking['TMS #'] || '').toLowerCase(),
-        (booking: any) => `CB-${booking['TMS #'] || ''}`.toLowerCase()
+        (booking: ShipperBooking) => `CB-${booking['TMS #'] || ''}`.toLowerCase(),
+        (booking: ShipperBooking) => (booking['TMS #'] || '').toLowerCase(),
+        (booking: ShipperBooking) => (booking['Bkg Party #'] || '').toLowerCase(),
+        (booking: ShipperBooking) => (booking['Cust. Code'] || '').toLowerCase(),
+        (booking: ShipperBooking) => (booking['Contract #'] || '').toLowerCase(),
+        (booking: ShipperBooking) => (booking['BR:1st Vessel'] || '').toLowerCase(),
+        (booking: ShipperBooking) => (booking['BR:1st Voyage #'] || '').toLowerCase(),
       ];
       
       filteredBookings = filteredBookings.filter(booking => 
@@ -41,39 +44,39 @@ export class BookingOverviewService {
       );
     }
 
-    // Apply filters
-    if (filters.trade && filters.trade !== 'All') {
+    // Apply filters with correct field names
+    if (filters.Trade && filters.Trade !== 'All') {
       const tradeValues = filters.Trade.split(',').filter(v => v.trim() !== '');
       if (tradeValues.length > 0) {
         filteredBookings = filteredBookings.filter(booking =>
-          tradeValues.includes(booking.trade)
+          tradeValues.includes(booking.Trade)
         );
       }
     }
 
-    if (filters['originRegion'] && filters['originRegion'] !== 'All') {
+    if (filters['Origin region'] && filters['Origin region'] !== 'All') {
       const originRegionValues = filters['Origin region'].split(',').filter(v => v.trim() !== '');
       if (originRegionValues.length > 0) {
         filteredBookings = filteredBookings.filter(booking =>
-          originRegionValues.includes(booking['originRegion'])
+          originRegionValues.includes(booking['Origin region'])
         );
       }
     }
 
-    if (filters['destinationRegion'] && filters['destinationRegion'] !== 'All') {
+    if (filters['Destination region'] && filters['Destination region'] !== 'All') {
       const destRegionValues = filters['Destination region'].split(',').filter(v => v.trim() !== '');
       if (destRegionValues.length > 0) {
         filteredBookings = filteredBookings.filter(booking =>
-          destRegionValues.includes(booking['destinationRegion'])
+          destRegionValues.includes(booking['Destination region'])
         );
       }
     }
 
-    if (filters['originCountry'] && filters['originCountry'] !== 'All') {
+    if (filters['Origin country'] && filters['Origin country'] !== 'All') {
       const originCountryValues = filters['Origin country'].split(',').filter(v => v.trim() !== '');
       if (originCountryValues.length > 0) {
         filteredBookings = filteredBookings.filter(booking =>
-          originCountryValues.includes(booking['originCountry'])
+          originCountryValues.includes(booking['Origin country'])
         );
       }
     }
@@ -91,7 +94,7 @@ export class BookingOverviewService {
       const etdWkValues = filters['req ETD wk'].split(',').filter(v => v.trim() !== '');
       if (etdWkValues.length > 0) {
         filteredBookings = filteredBookings.filter(booking =>
-          etdWkValues.includes(booking['req ETD wk '])
+          etdWkValues.includes(booking['req ETD wk'])
         );
       }
     }
@@ -164,7 +167,7 @@ export class BookingOverviewService {
     byStage: Record<string, number>;
     byDivision: Record<string, number>;
   }> {
-    await delay(200);
+    await delay(100);
 
     const stats = {
       totalBookings: shipperBookingsData.length,
@@ -174,11 +177,15 @@ export class BookingOverviewService {
 
     shipperBookingsData.forEach(booking => {
       // Count by stage
-      const stageKey = booking.stage.split(' - ')[0];
-      stats.byStage[stageKey] = (stats.byStage[stageKey] || 0) + 1;
+      if (booking.stage) {
+        const stageKey = booking.stage.split(' - ')[0];
+        stats.byStage[stageKey] = (stats.byStage[stageKey] || 0) + 1;
+      }
 
-      // Count by division
-      stats.byDivision[booking.division] = (stats.byDivision[booking.division] || 0) + 1;
+      // Count by division (if exists)
+      if (booking.Region) {
+        stats.byDivision[booking.Region] = (stats.byDivision[booking.Region] || 0) + 1;
+      }
     });
 
     return stats;

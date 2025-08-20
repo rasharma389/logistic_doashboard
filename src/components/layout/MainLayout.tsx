@@ -34,7 +34,7 @@ const MainLayoutContent: React.FC = () => {
     }
     
     if (activeView === 'booking-overview') {
-      return <BookingOverview />;
+      return <BookingOverview onMenuClick={handleMenuClick} />;
     }
     
     if (activeView === 'email-reader') {
@@ -46,7 +46,7 @@ const MainLayoutContent: React.FC = () => {
       <Layout style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 64px)' }}>
         {/* Left Sidebar (always visible) */}
         <div style={{ width: 200, height: '100%', overflow: 'hidden', borderRight: '1px solid #e0e0e0' }}>
-          <Sidebar />
+          <Sidebar onMenuClick={handleMenuClick} />
         </div>
 
         {/* Center Content */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, List, Typography, Spin, Input, Space, Button } from 'antd';
+import { Layout, List, Typography, Spin, Input, Space, Button, Tooltip } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { selectBookingWithData } from '../../store/slices/bookingsSlice';
@@ -9,7 +9,11 @@ import {MenuFoldOutlined} from '@ant-design/icons';
 const { Sider } = Layout;
 const { Text } = Typography;
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  onMenuClick?: (key: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onMenuClick }) => {
   const dispatch = useDispatch();
   const { carrierBookings, selectedBookingId, loading } = useSelector((state: RootState) => state.bookings);
   const [search, setSearch] = React.useState('');
@@ -52,7 +56,9 @@ const Sidebar: React.FC = () => {
             {loading ? 'Loading...' : `${carrierBookings.length} Bookings`}
           </Text>
           </div>
-          <Button icon={<MenuFoldOutlined />} size="small"></Button>
+          <Tooltip title="Go to Booking Overview">
+            <Button icon={<MenuFoldOutlined />} size="small" onClick={() => onMenuClick?.('booking-overview')}></Button>
+          </Tooltip>
         </Space>
         
       </div>
