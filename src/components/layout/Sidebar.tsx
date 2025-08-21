@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { selectBookingWithData } from '../../store/slices/bookingsSlice';
 import type { CarrierBooking } from '../../data/mockData';
+import { shipperBookingsData } from '../../data/bookingOverviewData';
 import dayjs from 'dayjs';
 import {MenuFoldOutlined} from '@ant-design/icons';
 
@@ -25,6 +26,18 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
 
   const handleBookingSelect = (bookingId: string) => {
     dispatch(selectBookingWithData(bookingId) as any);
+  };
+
+  // Function to check if a TMS number has exceptions
+  const hasException = (tmsNumber: string): boolean => {
+    // Remove CB- prefix if present
+    const cleanTmsNumber = tmsNumber.startsWith('CB-') ? tmsNumber.substring(3) : tmsNumber;
+    
+    // Find the booking in shipperBookingsData
+    const booking = shipperBookingsData.find(booking => booking['TMS #'] === cleanTmsNumber);
+    
+    // Return true if exception exists
+    return booking ? booking['Exception?'] === 'Y' : false;
   };
 
   // Filter bookings by id or destination
@@ -116,9 +129,24 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
                     fontSize: '14px', 
                     fontWeight: booking.selected ? '600' : '500',
                     color: '#0ea5e9',
-                    marginBottom: '4px'
+                    marginBottom: '4px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px'
                   }}>
                     {booking.id}
+                    {hasException(booking.id) && (
+                      <Tooltip title="This booking has exceptions that require attention">
+                        <div style={{
+                          width: '6px',
+                          height: '6px',
+                          backgroundColor: '#ff4d4f',
+                          borderRadius: '50%',
+                          cursor: 'help',
+                          flexShrink: 0
+                        }} />
+                      </Tooltip>
+                    )}
                   </div>
                   <div style={{ 
                     fontSize: '13px', 
