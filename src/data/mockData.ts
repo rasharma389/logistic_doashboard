@@ -104,42 +104,42 @@ export const carrierBookingsList: CarrierBooking[] = [
   {
     id: "CB-185231643",
     destination: "CN E. - HMH",
-    date: "2025-06-27"
+    date: "2025-06-28"
   },
   {
     id: "CB-185216294",
     destination: "CN S. - BBY",
-    date: "2025-08-05"
+    date: "2025-07-05"
   },
   {
     id: "CB-185789327",
-    destination: "CN E. - HMH",
-    date: "2025-06-25"
+    destination: "IN W. - HMH",
+    date: "2025-07-07"
   },
   {
     id: "CB-186025014",
-    destination: "CN E. - HMH",
-    date: "2025-06-26"
+    destination: "IN W. - HMH",
+    date: "2025-07-07"
   },
   {
     id: "CB-186067396",
-    destination: "CN E. - HMH",
-    date: "2025-06-27"
+    destination: "IN W. - HMH",
+    date: "2025-07-07"
   },
   {
     id: "CB-186284713",
-    destination: "CN E. - HMH",
-    date: "2025-06-28"
+    destination: "IN W. - HMH",
+    date: "2025-07-21"
   },
   {
     id: "CB-186317816",
-    destination: "CN E. - HMH",
-    date: "2025-06-29"
+    destination: "IN W. - HMH",
+    date: "2025-07-21"
   },
   {
     id: "CB-186355903",
-    destination: "CN E. - HMH",
-    date: "2025-06-30"
+    destination: "IN S. - HMH",
+    date: "2025-07-28"
   },
   {
     id: "CB-186512627",
@@ -153,13 +153,13 @@ export const carrierBookingsList: CarrierBooking[] = [
   },
   {
     id: "CB-186512790",
-    destination: "CN E. - COS",
-    date: "2025-07-31"
+    destination: "CN E. - HOD",
+    date: "2025-08-01"
   },
   {
     id: "CB-186605681",
-    destination: "CN E. - HMH",
-    date: "2025-07-01"
+    destination: "CN E. - COS",
+    date: "2025-07-31"
   },
   {
     id: "CB-186624133",
@@ -193,13 +193,13 @@ export const carrierBookingsList: CarrierBooking[] = [
   },
   {
     id: "CB-185901648",
-    destination: "CN S. - HCLU",
+    destination: "CN S. - HMH",
     date: "2025-08-04"
   },
   {
     id: "CB-186322183",
-    destination: "CN E. - HMH",
-    date: "2025-07-02"
+    destination: "CN S. - HMH",
+    date: "2025-08-05"
   },
   {
     id: "CB-186734576",
@@ -208,43 +208,8 @@ export const carrierBookingsList: CarrierBooking[] = [
   },
   {
     id: "CB-264229065",
-    destination: "CN E. - HMH",
-    date: "2025-07-03"
-  },
-  {
-    id: "CB-13545758",
     destination: "CN S. - BBY",
     date: "2025-08-07"
-  },
-  {
-    id: "CB-45012178",
-    destination: "CN E. - HMH",
-    date: "2025-07-04"
-  },
-  {
-    id: "CB-45012179",
-    destination: "CN E. - HMH",
-    date: "2025-07-05"
-  },
-  {
-    id: "CB-45012180",
-    destination: "CN E. - HMH",
-    date: "2025-07-06"
-  },
-  {
-    id: "CB-45012181",
-    destination: "CN E. - HMH",
-    date: "2025-07-07"
-  },
-  {
-    id: "CB-45012182",
-    destination: "CN E. - HMH",
-    date: "2025-07-08"
-  },
-  {
-    id: "CB-45012183",
-    destination: "CN E. - HMH",
-    date: "2025-07-09"
   }
 ];
 
