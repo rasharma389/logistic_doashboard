@@ -212,13 +212,59 @@ const TransportPlan: React.FC = () => {
     },
   ];
 
-  if (!transportData) {
+  // Check if booking status is confirmed
+  if (!transportData || !bookingData || bookingData['Booking Status']?.toLowerCase() !== 'confirmed') {
+    const getStatusMessage = () => {
+      if (!bookingData) return 'No booking data available';
+      
+      const status = bookingData['Booking Status'];
+      if (!status) return 'No booking status available';
+      
+      const lowerStatus = status.toLowerCase();
+      if (lowerStatus === 'pending') {
+        return 'Transport plan will be available once the booking is confirmed. Current status: Pending';
+      } else if (lowerStatus.includes('canceled') || lowerStatus.includes('cancelled')) {
+        return 'Transport plan is not available for canceled bookings. Current status: ' + status;
+      } else {
+        return `Transport plan is only available for confirmed bookings. Current status: ${status}`;
+      }
+    };
+
+    const getStatusStyle = () => {
+      if (!bookingData) return { backgroundColor: '#fef2f2', border: '1px solid #fecaca' };
+      
+      const status = bookingData['Booking Status']?.toLowerCase();
+      if (status === 'pending') {
+        return { backgroundColor: '#fef3c7', border: '1px solid #fcd34d' }; // Yellow for pending
+      } else if (status?.includes('canceled') || status?.includes('cancelled')) {
+        return { backgroundColor: '#fef2f2', border: '1px solid #fecaca' }; // Red for canceled
+      } else {
+        return { backgroundColor: '#f3f4f6', border: '1px solid #d1d5db' }; // Gray for other statuses
+      }
+    };
+
+    const getStatusColor = () => {
+      if (!bookingData) return '#dc2626';
+      
+      const status = bookingData['Booking Status']?.toLowerCase();
+      if (status === 'pending') return '#d97706'; // Orange for pending
+      else if (status?.includes('canceled') || status?.includes('cancelled')) return '#dc2626'; // Red for canceled
+      else return '#6b7280'; // Gray for other statuses
+    };
+
     return (
-      <Card title="Transport Plan" style={{ margin: '16px 0' }}>
-        <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-          <Text type="secondary">No transport plan data available for the selected booking</Text>
+      <div style={{ padding: '12px' }}>
+        <div style={{ 
+          ...getStatusStyle(),
+          padding: '16px', 
+          borderRadius: '6px', 
+          textAlign: 'center'
+        }}>
+          <Text type="secondary" style={{ color: getStatusColor() }}>
+            {getStatusMessage()}
+          </Text>
         </div>
-      </Card>
+      </div>
     );
   }
 
