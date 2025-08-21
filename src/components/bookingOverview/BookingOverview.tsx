@@ -29,7 +29,7 @@ interface BookingOverviewProps {
   onMenuClick?: (key: string) => void;
 }
 
-const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
+const BookingOverview: React.FC<BookingOverviewProps> = React.memo(({ onMenuClick }) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { 
@@ -136,14 +136,15 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
 
   // Initial data fetch
   useEffect(() => {
-    console.log('Initial data fetch - current state:', { bookings, totalItems, loading });
     dispatch(fetchBookings());
   }, [dispatch]);
 
-  // Sync local search with Redux state
+  // Sync local search with Redux state - only when searchQuery actually changes
   useEffect(() => {
-    setLocalSearchQuery(searchQuery);
-  }, [searchQuery]);
+    if (localSearchQuery !== searchQuery) {
+      setLocalSearchQuery(searchQuery);
+    }
+  }, [searchQuery, localSearchQuery]);
 
   // Simplified debounced search effect
   useEffect(() => {
@@ -245,7 +246,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
     }
   }, []);
 
-  // Table columns definition
+  // Table columns definition - memoized to prevent recreation on every render
   const columns: ColumnsType<ShipperBooking> = useMemo(() => [
     {
       title: 'Trade',
@@ -729,23 +730,23 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
       ),
     },
     {
-      title: 'BR 2nd Vessel',
-      dataIndex: 'BR:2nd Vessel',
-      key: 'BR:2nd Vessel',
-      width: calculateColumnWidth('BR:2nd Vessel'),
-      sorter: (a, b) => (a['BR:2nd Vessel'] || '').localeCompare(b['BR:2nd Vessel'] || ''),
-      ...getColumnSearchProps('BR:2nd Vessel', 'BR 2nd Vessel'),
+      title: 'BC 2nd Vessel',
+      dataIndex: 'BC:2nd Vessel',
+      key: 'BC:2nd Vessel',
+      width: calculateColumnWidth('BC:2nd Vessel'),
+      sorter: (a, b) => (a['BC:2nd Vessel'] || '').localeCompare(b['BC:2nd Vessel'] || ''),
+      ...getColumnSearchProps('BC:2nd Vessel', 'BC 2nd Vessel'),
       render: (text: string) => (
         <Text style={{ fontSize: '13px', color: '#333' }}>{text}</Text>
       ),
     },
     {
-      title: 'BR 2nd Voyage #',
-      dataIndex: 'BR:2nd Voyage #',
-      key: 'BR:2nd Voyage #',
-      width: calculateColumnWidth('BR:2nd Voyage #'),
-      sorter: (a, b) => (a['BR:2nd Voyage #'] || '').localeCompare(b['BR:2nd Voyage #'] || ''),
-      ...getColumnSearchProps('BR:2nd Voyage #', 'BR 2nd Voyage #'),
+      title: 'BC 2nd Voyage #',
+      dataIndex: 'BC:2nd Voyage #',
+      key: 'BC:2nd Voyage #',
+      width: calculateColumnWidth('BC:2nd Voyage #'),
+      sorter: (a, b) => (a['BC:2nd Voyage #'] || '').localeCompare(b['BC:2nd Voyage #'] || ''),
+      ...getColumnSearchProps('BC:2nd Voyage #', 'BC 2nd Voyage #'),
       render: (text: string) => (
         <Text style={{ fontSize: '13px', color: '#333' }}>{text}</Text>
       ),
@@ -911,16 +912,6 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
   const tableProps = useMemo(() => {
     // Fallback to mock data if Redux data is empty
     const tableData = bookings.length > 0 ? bookings : shipperBookingsData;
-    
-    console.log('Table props debug:', {
-      bookingsCount: bookings.length,
-      mockDataCount: shipperBookingsData.length,
-      tableDataCount: tableData.length,
-      firstBooking: tableData[0],
-      firstBookingReqEtdWk: tableData[0]?.['req ETD wk'],
-      columnsCount: columns.length,
-      reqEtdWkColumn: columns.find(col => 'dataIndex' in col && col.dataIndex === 'req ETD wk')
-    });
     
     return {
       columns,
@@ -1207,6 +1198,6 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
       `}</style>
     </Layout>
   );
-};
+});
 
 export default BookingOverview;

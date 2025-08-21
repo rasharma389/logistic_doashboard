@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { setActiveTab } from '../../store/slices/bookingsSlice';
 import TransportPlan from './TransportPlan';
+import ExceptionDetails from './ExceptionDetails';
 import LinkedBookingsTable from './LinkedBookingsTable';
 import DocumentsTable from './DocumentsTable';
 import EmailReader from '../email/EmailReader';
@@ -73,7 +74,7 @@ const BookingTabs: React.FC = () => {
     {
       key: 'exceptions',
       label: 'Exceptions',
-      children: <div style={{ padding: '12px' }}>Exceptions content</div>
+      children: <ExceptionDetails />
     },
     {
       key: 'documents',
