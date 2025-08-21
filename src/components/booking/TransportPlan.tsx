@@ -29,6 +29,7 @@ const TransportPlan: React.FC = () => {
 
   // Generate transport plan dynamically from actual booking data
   const transportData = useMemo(() => {
+    console.log(bookingData)
     if (!bookingData) return null;
 
     const ts: TransportPlanItem[] = [];

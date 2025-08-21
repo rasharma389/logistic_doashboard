@@ -325,12 +325,12 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
       ...getColumnSelectProps('req ETD wk', 'Req ETD Week'),
       render: (text: string, record: ShipperBooking) => {
         const value = text || record['req ETD wk'] || 'N/A';
-        console.log('Req ETD Week render debug:', { 
-          text, 
-          recordValue: record['req ETD wk'],
-          finalValue: value,
-          recordId: record.id
-        });
+        // console.log('Req ETD Week render debug:', { 
+        //   text, 
+        //   recordValue: record['req ETD wk'],
+        //   finalValue: value,
+        //   recordId: record.id
+        // });
         return (
             <Text style={{ fontSize: '13px', color: '#059669', fontWeight: '500' }}>
               {value}
