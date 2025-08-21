@@ -1,15 +1,10 @@
 import React from 'react';
-import { Layout, Menu, Avatar, Dropdown, Space, Button } from 'antd';
+import { Layout, Menu, Avatar, Dropdown, Space } from 'antd';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   DashboardOutlined,
-  CarOutlined,
-  TruckOutlined,
   FileTextOutlined,
-  ExceptionOutlined,
   MailOutlined,
-  MoreOutlined,
-  QuestionCircleOutlined,
   UserOutlined,
   DownOutlined
 } from '@ant-design/icons';
@@ -22,14 +17,6 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   const userMenuItems = [
-    {
-      key: 'profile',
-      label: 'Profile',
-    },
-    {
-      key: 'settings',
-      label: 'Settings',
-    },
     {
       key: 'logout',
       label: 'Logout',
@@ -62,6 +49,14 @@ const Header: React.FC = () => {
     }
   };
 
+  const handleUserMenuClick = ({ key }: { key: string }) => {
+    if (key === 'logout') {
+      // Handle logout logic here
+      console.log('User logged out');
+      // You can add actual logout logic like clearing localStorage, redirecting to login, etc.
+    }
+  };
+
   return (
     <AntHeader style={{ 
       backgroundColor: '#1f2937', 
@@ -72,16 +67,17 @@ const Header: React.FC = () => {
       height: '56px',
       borderBottom: '1px solid #374151'
     }}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0 }}>
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          marginRight: '32px',
+          marginRight: '24px',
           color: 'white',
           fontSize: '18px',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          flexShrink: 0
         }}>
-          <FaGlobe style={{ marginRight: '8px', color: '#3b82f6' }} />
+          <FaGlobe style={{ marginRight: '8px', color: '#3b82e6' }} />
           Winmore.app
         </div>
         <Menu
@@ -93,26 +89,25 @@ const Header: React.FC = () => {
           style={{ 
             backgroundColor: 'transparent',
             borderBottom: 'none',
-            fontSize: '14px'
+            fontSize: '14px',
+            overflow: 'visible',
+            flex: 1,
+            minWidth: 0,
+            whiteSpace: 'nowrap'
           }}
+          overflowedIndicator={null}
+          inlineCollapsed={false}
         />
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <Button type="link" style={{ color: 'white' }}>
-          Master Data
-        </Button>
-        <QuestionCircleOutlined style={{ color: 'white', fontSize: '16px' }} />
+      <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
         <Dropdown
-          menu={{ items: userMenuItems }}
+          menu={{ items: userMenuItems, onClick: handleUserMenuClick }}
           placement="bottomRight"
         >
-          <Space style={{ color: 'white', cursor: 'pointer' }}>
+          <Space style={{ color: 'white', cursor: 'pointer', padding: '8px 12px' }}>
             <Avatar size="small" icon={<UserOutlined />} />
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Jia C.</span>
-              <span style={{ fontSize: '12px', opacity: 0.8 }}>LSP Operators</span>
-            </div>
+            <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Stephanie</span>
             <DownOutlined style={{ fontSize: '12px' }} />
           </Space>
         </Dropdown>
