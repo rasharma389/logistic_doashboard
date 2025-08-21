@@ -4,14 +4,29 @@ import { InfoCircleOutlined, EyeOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import type { ColumnsType } from 'antd/es/table';
-import type { LinkedBooking } from '../../data/mockData';
+import type { LinkedBooking } from '../../data/linkedBookingData';
+import { linkedBookingData } from '../../data/linkedBookingData';
 import dayjs from 'dayjs';
 
 const LinkedBookingsTable: React.FC = () => {
-  const { linkedBookings } = useSelector((state: RootState) => state.bookings);
+  const { selectedBookingId } = useSelector((state: RootState) => state.bookings);
   const [pageSize, setPageSize] = useState(10);
   const [current, setCurrent] = useState(1);
   const [goToPage, setGoToPage] = useState('');
+
+  // Get the TMS number from the selected booking
+  const getTmsNumber = (): string | null => {
+    if (!selectedBookingId) return null;
+    
+    // Remove CB- prefix if present
+    const cleanId = selectedBookingId.startsWith('CB-') ? selectedBookingId.substring(3) : selectedBookingId;
+    return cleanId;
+  };
+
+  const tmsNumber = getTmsNumber();
+  
+  // Get linked bookings for the selected TMS number
+  const linkedBookings = tmsNumber ? (linkedBookingData[`CB-${tmsNumber}`] || []) : [];
 
 
 
