@@ -30,7 +30,7 @@ const initialState: BookingsState = {
   linkedBookings: [],
   activities: [],
   documents: [],
-  activeTab: 'linkedBookings',
+  activeTab: 'transportPlans',
   loading: false,
   loadingDetails: false,
   error: null,

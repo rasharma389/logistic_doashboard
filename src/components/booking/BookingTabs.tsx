@@ -3,6 +3,7 @@ import { Tabs, Card } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { setActiveTab } from '../../store/slices/bookingsSlice';
+import TransportPlan from './TransportPlan';
 import LinkedBookingsTable from './LinkedBookingsTable';
 import DocumentsTable from './DocumentsTable';
 import EmailReader from '../email/EmailReader';
@@ -21,7 +22,7 @@ const BookingTabs: React.FC = () => {
     {
       key: 'transportPlans',
       label: 'Transport Plan',
-      children: <div style={{ padding: '12px' }}>Transport Plans content</div>
+      children: <TransportPlan />
     },
     {
       key: 'linkedBookings',
