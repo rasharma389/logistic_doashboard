@@ -48,16 +48,6 @@ const Header: React.FC = () => {
       icon: <FileTextOutlined />,
     },
     {
-      key: 'carrier-bookings',
-      label: 'Carrier Bookings',
-      icon: <CarOutlined />,
-    },
-    {
-      key: 'test-bookings',
-      label: 'Test Bookings',
-      icon: <CarOutlined />,
-    },
-    {
       key: 'email-reader',
       label: 'Email Reader',
       icon: <MailOutlined />,
@@ -65,7 +55,11 @@ const Header: React.FC = () => {
   ];
 
   const handleMenuClick = ({ key }: { key: string }) => {
-    navigate(`/${key}`);
+    if (key === 'carrier-bookings') {
+      navigate('/booking-overview/carrier-bookings');
+    } else {
+      navigate(`/${key}`);
+    }
   };
 
   return (
@@ -93,7 +87,7 @@ const Header: React.FC = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          selectedKeys={[location.pathname.substring(1)]}
+          selectedKeys={[location.pathname.startsWith('/booking-overview/carrier-bookings') ? 'carrier-bookings' : location.pathname.substring(1)]}
           items={headerMenuItems}
           onClick={handleMenuClick}
           style={{ 

@@ -986,7 +986,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = ({ onMenuClick }) => {
                 size="small" 
                 onClick={() => {
                   dispatch(shareFilteredDataWithCarrierBookings());
-                  navigate('/carrier-bookings');
+                  navigate('/booking-overview/carrier-bookings');
                 }} 
               />
             </Tooltip>

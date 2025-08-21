@@ -40,12 +40,12 @@ function App() {
       <ConfigProvider theme={theme}>
         <Routes>
           <Route path="/" element={<AppLayout />}>
-            <Route index element={<Navigate to="/carrier-bookings" replace />} />
-            <Route path="carrier-bookings" element={<MainLayout />} />
+            <Route index element={<Navigate to="/booking-overview" replace />} />
             <Route path="booking-overview" element={<BookingOverview />} />
+            <Route path="booking-overview/carrier-bookings" element={<MainLayout />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="email-reader" element={<EmailReader />} />
-            <Route path="*" element={<Navigate to="/carrier-bookings" replace />} />
+            <Route path="*" element={<Navigate to="/booking-overview" replace />} />
           </Route>
         </Routes>
       </ConfigProvider>

@@ -17,7 +17,11 @@ const MainLayout: React.FC = () => {
   const { carrierBookings, filteredBookingsFromOverview } = useSelector((state: RootState) => state.bookings);
 
   const handleMenuClick = (key: string) => {
-    navigate(`/${key}`);
+    if (key === 'booking-overview') {
+      navigate('/booking-overview');
+    } else {
+      navigate(`/${key}`);
+    }
   };
 
   // Use filtered data from overview if available, otherwise use regular carrier bookings
@@ -32,6 +36,29 @@ const MainLayout: React.FC = () => {
 
       {/* Center Content */}
       <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', backgroundColor: '#f8fafc' }}>
+        {/* Breadcrumb Navigation */}
+        <div style={{ 
+          padding: '12px 16px', 
+          backgroundColor: 'white', 
+          borderBottom: '1px solid #e2e8f0',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
+        }}>
+          <span 
+            style={{ 
+              color: '#0ea5e9', 
+              cursor: 'pointer',
+              fontSize: '14px'
+            }}
+            onClick={() => navigate('/booking-overview')}
+          >
+            Booking Overview
+          </span>
+          <span style={{ color: '#6b7280' }}>/</span>
+          <span style={{ color: '#374151', fontWeight: '500' }}>Carrier Bookings</span>
+        </div>
+        
         <div style={{ flex: 0 }}>
           <BookingHeader />
         </div>
