@@ -35,6 +35,11 @@ const Header: React.FC = () => {
       icon: <FileTextOutlined />,
     },
     {
+      key: 'booking-overview-new',
+      label: 'Booking Overview New',
+      icon: <FileTextOutlined />,
+    },
+    {
       key: 'email-reader',
       label: 'Email Reader',
       icon: <MailOutlined />,

@@ -6,6 +6,7 @@ import { store } from './store';
 import AppLayout from './components/layout/AppLayout';
 import MainLayout from './components/layout/MainLayout';
 import BookingOverview from './components/bookingOverview/BookingOverview';
+import BookingOverviewNew from './components/bookingOverview/BookingOverviewNew';
 import Dashboard from './components/dashboard/Dashboard';
 import EmailReader from './components/email/EmailReader';
 import 'antd/dist/reset.css';
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Navigate to="/booking-overview" replace />} />
             <Route path="booking-overview" element={<BookingOverview />} />
+            <Route path="booking-overview-new" element={<BookingOverviewNew />} />
             <Route path="booking-overview/carrier-bookings" element={<MainLayout />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="email-reader" element={<EmailReader />} />
