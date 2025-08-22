@@ -93,12 +93,19 @@ const ViewsTab: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '16px' }}>
+    <div style={{ 
+      padding: '16px', 
+      height: 'calc(100vh - 350px)', 
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <div style={{ 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        marginBottom: '24px' 
+        marginBottom: '24px',
+        flexShrink: 0
       }}>
         <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '600' }}>
           Custom Views
@@ -122,7 +129,18 @@ const ViewsTab: React.FC = () => {
           </Button>
         </Card>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+        <div 
+          className="views-container"
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+            gap: '16px',
+            flex: 1,
+            overflowY: 'auto',
+            paddingRight: '8px',
+            paddingBottom: '20px'
+          }}
+        >
           {customViews.map((view) => (
             <Card
               key={view.id}
@@ -266,6 +284,39 @@ const ViewsTab: React.FC = () => {
           </Form.Item>
         </Form>
       </Modal>
+
+      <style>{`
+        /* Custom scrollbar styling */
+        .views-container::-webkit-scrollbar {
+          width: 8px;
+        }
+        .views-container::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+        .views-container::-webkit-scrollbar-thumb {
+          background: #c1c1c1;
+          border-radius: 4px;
+        }
+        .views-container::-webkit-scrollbar-thumb:hover {
+          background: #a8a8a8;
+        }
+        
+        /* Add a subtle shadow at the bottom when scrollable */
+        .views-container {
+          position: relative;
+        }
+        .views-container::after {
+          content: '';
+          position: sticky;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background: linear-gradient(transparent, rgba(0,0,0,0.05));
+          pointer-events: none;
+        }
+      `}</style>
     </div>
   );
 };
