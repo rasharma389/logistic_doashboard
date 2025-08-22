@@ -64,7 +64,6 @@ const Header: React.FC = () => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: '56px',
       borderBottom: '1px solid #374151'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', flex: 1, minWidth: 0 }}>
@@ -78,7 +77,7 @@ const Header: React.FC = () => {
           flexShrink: 0
         }}>
           <FaGlobe style={{ marginRight: '8px', color: '#3b82e6' }} />
-          Winmore.app
+          AllocationAI
         </div>
         <Menu
           theme="dark"

@@ -951,7 +951,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = React.memo(({ onMenuClic
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Text style={{ fontSize: '18px', fontWeight: '600', color: '#1f2937' }}>
-              Shipper Bookings
+              Carrier Bookings
             </Text>
             <Text style={{ fontSize: '14px', color: '#6b7280' }}>
               {totalItems.toLocaleString()} Total Items

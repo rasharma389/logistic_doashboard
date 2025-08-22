@@ -59,18 +59,18 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
       }}
     >
       <div style={{ 
-        padding: '12px',
+        padding: '8px',
         borderBottom: '1px solid #e2e8f0',
         backgroundColor: 'white',
-        height: '65px'
+        height: '55px'
       }}>
         <Space align="baseline">
           <div>
-          <Text strong style={{ fontSize: '16px', color: '#1f2937' }}>
+          <Text strong style={{ fontSize: '14px', color: '#1f2937' }}>
             Carrier Bookings
           </Text>
           <br />
-          <Text style={{ fontSize: '12px', color: '#6b7280' }}>
+          <Text style={{ fontSize: '11px', color: '#6b7280' }}>
             {loading ? 'Loading...' : `${bookingsToDisplay.length} Bookings`}
           </Text>
           </div>
@@ -82,7 +82,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
       </div>
       
       <div style={{ 
-        padding: '12px 5px',
+        padding: '8px 4px',
         borderBottom: '1px solid #e2e8f0',
         backgroundColor: 'white',
         height: 'auto'
@@ -116,7 +116,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
                 onClick={() => handleBookingSelect(booking.id)}
                 style={{
                   cursor: 'pointer',
-                  padding: '12px 16px',
+                  padding: '8px 12px',
                   backgroundColor: booking.selected ? '#e0f2fe' : 'transparent',
                   borderLeft: booking.selected ? '3px solid #0ea5e9' : '3px solid transparent',
                   borderBottom: '1px solid #f1f5f9',
@@ -126,20 +126,20 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
               >
                 <div style={{ width: '100%' }}>
                   <div style={{ 
-                    fontSize: '14px', 
+                    fontSize: '13px', 
                     fontWeight: booking.selected ? '600' : '500',
                     color: '#0ea5e9',
-                    marginBottom: '4px',
+                    marginBottom: '2px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '6px'
+                    gap: '4px'
                   }}>
                     {booking.id}
                     {hasException(booking.id) && (
                       <Tooltip title="This booking has exceptions that require attention">
                         <div style={{
-                          width: '6px',
-                          height: '6px',
+                          width: '5px',
+                          height: '5px',
                           backgroundColor: '#ff4d4f',
                           borderRadius: '50%',
                           cursor: 'help',
@@ -149,14 +149,14 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
                     )}
                   </div>
                   <div style={{ 
-                    fontSize: '13px', 
+                    fontSize: '12px', 
                     color: '#374151',
-                    marginBottom: '2px'
+                    marginBottom: '1px'
                   }}>
                     {booking.destination}
                   </div>
                   <div style={{ 
-                    fontSize: '12px', 
+                    fontSize: '11px', 
                     color: '#6b7280'
                   }}>
                     {dayjs(booking.date).isValid() ? dayjs(booking.date).format('DD MMM') : booking.date}

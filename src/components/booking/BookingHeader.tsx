@@ -87,36 +87,36 @@ const BookingHeader: React.FC = () => {
         </Space>
       </div>
     <Divider style={{ margin: '0' }}/>
-      <Row gutter={[16, 0]} style={{ padding: '12px', marginBottom: 0, flexWrap: 'wrap', display: 'flex' }}>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+      <Row gutter={[8, 0]} style={{ padding: '12px', marginBottom: 0, flexWrap: 'nowrap', display: 'flex' }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Carrier</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.carrier}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Req ETD WK</div>
           <div style={{ fontSize: '14px', fontWeight: '500', color: '#059669', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.requestedEtdWeek}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Carrier BKG #</div>
           <div style={{ fontSize: '14px', fontWeight: '500', color: '#0ea5e9', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.carrierBookingNumber}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Contract #</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.contractNumber}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Customer</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.customer}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Region</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.region}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Trade Lane</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.tradeLane}</div>
         </Col>
-        <Col xs={24} sm={12} md={8} lg={3} style={{ marginBottom: 8 }}>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Exception</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', alignItems: 'center' }}>
             <div
@@ -135,33 +135,13 @@ const BookingHeader: React.FC = () => {
             </span>
           </div>
         </Col>
-      </Row>
-      <Row style={{ padding: '0 12px 8px 12px' }}>
-        <Col span={24}>
-          <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '8px' }}>Status</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <span
-                style={{
-                  color: statusColors.textColor,
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  alignSelf: 'flex-start'
-                }}
-              >
-                {bookingDetails.status}
-              </span>
-              <div style={{ width: '150px' }}>
-                <div
-                  style={{
-                    width: '100%',
-                    height: '4px',
-                    backgroundColor: statusColors.backgroundColor,
-                    borderRadius: '2px'
-                  }}
-                />
-              </div>
-            </div>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
+          <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Status</div>
+          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: statusColors.textColor }}>
+              {bookingDetails.status}
+            </span>
+            <div style={{ width: '30px', height: '4px', backgroundColor: statusColors.backgroundColor, borderRadius: '2px', flexShrink: 0 }} />
           </div>
         </Col>
       </Row>

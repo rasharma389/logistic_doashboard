@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { type TransportPlanItem } from '../../data/transportPlanData';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
+import dayjs from 'dayjs';
 
 const { Title, Text } = Typography;
 
@@ -21,6 +22,33 @@ const TransportPlan: React.FC = () => {
   };
 
   const tmsNumber = getTmsNumber();
+  
+  // Function to format time in 24-hour format
+  const formatTime24Hour = (dateStr: string, timeStr: string): string => {
+    if (!dateStr || !timeStr) return '';
+    
+    try {
+      // Parse the date and time
+      const dateTimeStr = `${dateStr} ${timeStr}`;
+      const dateTime = dayjs(dateTimeStr, 'DD-MMM HH:mm:ss A');
+      
+      if (dateTime.isValid()) {
+        // Format as DD-MMM HH:mm (24-hour)
+        return dateTime.format('DD-MMM HH:mm');
+      }
+      
+      // Fallback: try different format
+      const dateTime2 = dayjs(dateTimeStr, 'h:mm:ss A');
+      if (dateTime2.isValid()) {
+        return `${dateStr} ${dateTime2.format('HH:mm')}`;
+      }
+      
+      // If parsing fails, return original
+      return `${dateStr} ${timeStr}`;
+    } catch (error) {
+      return `${dateStr} ${timeStr}`;
+    }
+  };
   
   // Get the actual booking data from shipperBookingsData
   const bookingData = useMemo(() => {
@@ -119,9 +147,9 @@ const TransportPlan: React.FC = () => {
       tmsNumber: tmsNumber,
       ts: ts,
       cutoff: {
-        si: bookingData['BC: SI Cut-off Date'] + ' ' + bookingData['BC: SI Cut-off Time'] || '',
-        vgm: bookingData['BC: VGM Cut-off Date'] + ' ' + bookingData['BC: VGM Cut-off Time'] || '',
-        cy: bookingData['BC: CY Cut-off Date'] + ' ' + bookingData['BC: CY Cut-off Time'] || ''
+        si: formatTime24Hour(bookingData['BC: SI Cut-off Date'], bookingData['BC: SI Cut-off Time']),
+        vgm: formatTime24Hour(bookingData['BC: VGM Cut-off Date'], bookingData['BC: VGM Cut-off Time']),
+        cy: formatTime24Hour(bookingData['BC: CY Cut-off Date'], bookingData['BC: CY Cut-off Time'])
       }
     };
   }, [bookingData, tmsNumber]);
@@ -451,18 +479,18 @@ const TransportPlan: React.FC = () => {
         <Title level={5} style={{ margin: '0 0 12px 0', color: '#374151', fontSize: '14px' }}>
           Cut-off Dates
         </Title>
-        <Space size="small">
-          <div>
-            <Text strong style={{ color: '#6b7280', fontSize: '12px' }}>SI:</Text>
-            <Text style={{ marginLeft: '8px', fontSize: '12px' }}>{transportData.cutoff.si}</Text>
+        <Space size="large" style={{ width: '100%', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Text strong style={{ color: '#374151', fontSize: '13px', fontWeight: '600' }}>SI:</Text>
+            <Text style={{ fontSize: '12px', color: '#6b7280' }}>{transportData.cutoff.si}</Text>
           </div>
-          <div>
-            <Text strong style={{ color: '#6b7280', fontSize: '12px' }}>VGM:</Text>
-            <Text style={{ marginLeft: '8px', fontSize: '12px' }}>{transportData.cutoff.vgm}</Text>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Text strong style={{ color: '#374151', fontSize: '13px', fontWeight: '600' }}>VGM:</Text>
+            <Text style={{ fontSize: '12px', color: '#6b7280' }}>{transportData.cutoff.vgm}</Text>
           </div>
-          <div>
-            <Text strong style={{ color: '#6b7280', fontSize: '12px' }}>CY:</Text>
-            <Text style={{ marginLeft: '8px', fontSize: '12px' }}>{transportData.cutoff.cy}</Text>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Text strong style={{ color: '#374151', fontSize: '13px', fontWeight: '600' }}>CY:</Text>
+            <Text style={{ fontSize: '12px', color: '#6b7280' }}>{transportData.cutoff.cy}</Text>
           </div>
         </Space>
       </div>
