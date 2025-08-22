@@ -38,7 +38,11 @@ const initialState: BookingOverviewState = {
     districtFilter: [],
     reqEtdWeekFilter: [],
     tmsSearchQuery: ''
-  }
+  },
+  // Page size for BookingOverviewNew
+  newPageSize: 20,
+  // Selected rows for BookingOverviewNew
+  selectedRows: []
 };
 
 const bookingOverviewSlice = createSlice({
@@ -117,6 +121,24 @@ const bookingOverviewSlice = createSlice({
         reqEtdWeekFilter: [],
         tmsSearchQuery: ''
       };
+    },
+    setNewPageSize: (state, action: PayloadAction<number>) => {
+      state.newPageSize = action.payload;
+    },
+    setSelectedRows: (state, action: PayloadAction<string[]>) => {
+      state.selectedRows = action.payload;
+    },
+    toggleRowSelection: (state, action: PayloadAction<string>) => {
+      const rowId = action.payload;
+      const index = state.selectedRows.indexOf(rowId);
+      if (index > -1) {
+        state.selectedRows.splice(index, 1);
+      } else {
+        state.selectedRows.push(rowId);
+      }
+    },
+    clearSelectedRows: (state) => {
+      state.selectedRows = [];
     }
   },
 });
@@ -134,7 +156,11 @@ export const {
   clearBookingSelection,
   clearError,
   setNewFilters,
-  clearNewFilters
+  clearNewFilters,
+  setNewPageSize,
+  setSelectedRows,
+  toggleRowSelection,
+  clearSelectedRows
 } = bookingOverviewSlice.actions;
 
 // Async thunks

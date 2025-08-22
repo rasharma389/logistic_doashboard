@@ -126,4 +126,8 @@ export interface BookingOverviewState {
     reqEtdWeekFilter: string[];
     tmsSearchQuery: string;
   };
+  // Page size for BookingOverviewNew
+  newPageSize: number;
+  // Selected rows for BookingOverviewNew
+  selectedRows: string[];
 }
