@@ -3,9 +3,10 @@ import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip } from
 import type { SortOrder } from 'antd/es/table/interface';
 import { SearchOutlined, FilterTwoTone } from '@ant-design/icons';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
-import { MdFilterAltOff } from "react-icons/md";
+import { FilterOutlined } from '@ant-design/icons';
 import { MenuOutlined } from '@ant-design/icons';
-import { shareFilteredDataWithCarrierBookings } from '../../store/slices/bookingOverviewSlice';
+import { mapShipperBookingToCarrierBooking } from '../../utils/dataMapping';
+
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
 import { useNavigate } from 'react-router-dom';
@@ -144,7 +145,9 @@ const BookingOverviewNew: React.FC = () => {
                             <MenuOutlined 
                                 style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
                                 onClick={() => {
-                                    dispatch(shareFilteredDataWithCarrierBookings());
+                                    // Share the current filtered data with carrier bookings
+                                    const mappedCarrierBookings = mapShipperBookingToCarrierBooking(filteredData);
+                                    dispatch({ type: 'bookings/setFilteredBookingsFromOverview', payload: mappedCarrierBookings });
                                     navigate('/booking-overview/carrier-bookings');
                                 }}
                             />
@@ -152,8 +155,8 @@ const BookingOverviewNew: React.FC = () => {
                         {(tradeFilter.length > 0 || originRegionFilter.length > 0 || destinationRegionFilter.length > 0 || 
                          originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || tmsSearchQuery) && (
                             <Tooltip title="Clear All Filters">
-                                <MdFilterAltOff 
-                                    style={{ color: '#0ea5e9', fontSize: 20, cursor: 'pointer' }} 
+                                <FilterOutlined 
+                                    style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
                                     onClick={clearAllFilters}
                                 />
                             </Tooltip>
@@ -310,6 +313,7 @@ const BookingOverviewNew: React.FC = () => {
                  </div>
                  <div style={{ flex: 1, overflow: 'auto' }}>
                      <Table
+                         key="booking-overview-table"
                          columns={columns}
                          dataSource={filteredData}
                          rowKey="id"

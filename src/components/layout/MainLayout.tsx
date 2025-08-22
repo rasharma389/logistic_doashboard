@@ -17,8 +17,8 @@ const MainLayout: React.FC = () => {
   const { carrierBookings, filteredBookingsFromOverview } = useSelector((state: RootState) => state.bookings);
 
   const handleMenuClick = (key: string) => {
-    if (key === 'booking-overview') {
-      navigate('/booking-overview');
+    if (key === 'booking-overview-new') {
+      navigate('/booking-overview-new');
     } else {
       navigate(`/${key}`);
     }
@@ -51,9 +51,9 @@ const MainLayout: React.FC = () => {
               cursor: 'pointer',
               fontSize: '14px'
             }}
-            onClick={() => navigate('/booking-overview')}
+            onClick={() => navigate('/booking-overview-new')}
           >
-            Booking Overview
+            Booking Overview New
           </span>
           <span style={{ color: '#6b7280' }}>/</span>
           <span style={{ color: '#374151', fontWeight: '500' }}>Carrier Bookings</span>

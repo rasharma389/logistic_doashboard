@@ -39,6 +39,11 @@ const Header: React.FC = () => {
       label: 'Booking Overview New',
       icon: <FileTextOutlined />,
     },
+    // {
+    //   key: 'carrier-bookings',
+    //   label: 'Carrier Bookings',
+    //   icon: <FileTextOutlined />,
+    // },
     {
       key: 'email-reader',
       label: 'Email Reader',
@@ -87,7 +92,10 @@ const Header: React.FC = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          selectedKeys={[location.pathname.startsWith('/booking-overview/carrier-bookings') ? 'carrier-bookings' : location.pathname.substring(1)]}
+          selectedKeys={[
+            location.pathname.startsWith('/booking-overview/carrier-bookings') ? 'carrier-bookings' : 
+            location.pathname.substring(1)
+          ]}
           items={headerMenuItems}
           onClick={handleMenuClick}
           style={{ 
@@ -100,7 +108,6 @@ const Header: React.FC = () => {
             whiteSpace: 'nowrap'
           }}
           overflowedIndicator={null}
-          inlineCollapsed={false}
         />
       </div>
 
