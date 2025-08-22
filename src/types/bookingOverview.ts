@@ -130,4 +130,13 @@ export interface BookingOverviewState {
   newPageSize: number;
   // Selected rows for BookingOverviewNew
   selectedRows: string[];
+  // Custom views for column configurations
+  customViews: {
+    id: string;
+    name: string;
+    columns: string[];
+    createdAt: string;
+  }[];
+  // Current active view
+  activeViewId: string | null;
 }

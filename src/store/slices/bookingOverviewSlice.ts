@@ -42,7 +42,11 @@ const initialState: BookingOverviewState = {
   // Page size for BookingOverviewNew
   newPageSize: 20,
   // Selected rows for BookingOverviewNew
-  selectedRows: []
+  selectedRows: [],
+  // Custom views for column configurations
+  customViews: [],
+  // Current active view
+  activeViewId: null
 };
 
 const bookingOverviewSlice = createSlice({
@@ -139,6 +143,44 @@ const bookingOverviewSlice = createSlice({
     },
     clearSelectedRows: (state) => {
       state.selectedRows = [];
+    },
+    // View management actions
+    createCustomView: (state, action: PayloadAction<{
+      id: string;
+      name: string;
+      columns: string[];
+    }>) => {
+      const newView = {
+        ...action.payload,
+        createdAt: new Date().toISOString()
+      };
+      state.customViews.push(newView);
+      state.activeViewId = newView.id;
+    },
+    updateCustomView: (state, action: PayloadAction<{
+      id: string;
+      name: string;
+      columns: string[];
+    }>) => {
+      const index = state.customViews.findIndex(view => view.id === action.payload.id);
+      if (index !== -1) {
+        state.customViews[index] = {
+          ...state.customViews[index],
+          ...action.payload
+        };
+      }
+    },
+    deleteCustomView: (state, action: PayloadAction<string>) => {
+      const index = state.customViews.findIndex(view => view.id === action.payload);
+      if (index !== -1) {
+        state.customViews.splice(index, 1);
+        if (state.activeViewId === action.payload) {
+          state.activeViewId = null;
+        }
+      }
+    },
+    setActiveView: (state, action: PayloadAction<string | null>) => {
+      state.activeViewId = action.payload;
     }
   },
 });
@@ -160,7 +202,11 @@ export const {
   setNewPageSize,
   setSelectedRows,
   toggleRowSelection,
-  clearSelectedRows
+  clearSelectedRows,
+  createCustomView,
+  updateCustomView,
+  deleteCustomView,
+  setActiveView
 } = bookingOverviewSlice.actions;
 
 // Async thunks

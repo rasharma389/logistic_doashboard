@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip } from 'antd';
+import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App } from 'antd';
 import type { SortOrder } from 'antd/es/table/interface';
 import { SearchOutlined, FilterTwoTone } from '@ant-design/icons';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 import { FilterOutlined } from '@ant-design/icons';
 import { MenuOutlined } from '@ant-design/icons';
 import { mapShipperBookingToCarrierBooking } from '../../utils/dataMapping';
+import ViewsTab from './ViewsTab';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
@@ -19,8 +20,8 @@ const BookingOverviewNew: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     
-    // Get filter states, page size, and selected rows from Redux
-    const { newFilters, newPageSize, selectedRows } = useSelector((state: RootState) => state.bookingOverview);
+    // Get filter states, page size, selected rows, and custom views from Redux
+    const { newFilters, newPageSize, selectedRows, customViews, activeViewId } = useSelector((state: RootState) => state.bookingOverview);
     const {
         tradeFilter,
         originRegionFilter,
@@ -107,7 +108,13 @@ const BookingOverviewNew: React.FC = () => {
         if (shipperBookingsData.length === 0) return [];
 
         const firstItem = shipperBookingsData[0];
-        const columnKeys = Object.keys(firstItem);
+        const allColumnKeys = Object.keys(firstItem);
+        
+        // Use active view columns if available, otherwise use all columns
+        const activeView = activeViewId ? customViews.find(view => view.id === activeViewId) : null;
+        const columnKeys = activeView && Array.isArray(activeView.columns) 
+            ? activeView.columns 
+            : allColumnKeys;
 
         return columnKeys.map(key => {
             // Get unique values for this column for filter options
@@ -168,7 +175,7 @@ const BookingOverviewNew: React.FC = () => {
                                 key.includes('Contract') || key.includes('Carrier') ? 120 : 110)
             };
         });
-    }, [shipperBookingsData]);
+    }, [shipperBookingsData, customViews, activeViewId]);
 
          return (
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
@@ -343,90 +350,113 @@ const BookingOverviewNew: React.FC = () => {
                     </Col>
                 </Row>
             </Card>
-                           {/* Data Table */}
-              <Card style={{ height: 'calc(100vh - 180px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                 <div style={{ 
-                     display: 'flex', 
-                     justifyContent: 'space-between', 
-                     alignItems: 'center', 
-                     marginBottom: '10px' 
-                 }}>
-                     <div style={{ fontSize: '12px', color: '#6b7280', fontWeight: 'bold' }}>
-                         Total <strong>{filteredData.length}</strong> bookings
-                         {filteredData.length !== shipperBookingsData.length && (
-                             <span style={{ marginLeft: '8px', color: '#059669' }}>
-                                 (filtered from {shipperBookingsData.length})
-                             </span>
-                         )}
-                     </div>
-                     
-                     {selectedRows.length > 0 && (
-                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                             <span style={{ fontSize: '12px', color: '#6b7280' }}>
-                                 {selectedRows.length} row(s) selected
-                             </span>
-                             <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-                                 <input
-                                     type="checkbox"
-                                     checked={showOnlySelected}
-                                     onChange={(e) => setShowOnlySelected(e.target.checked)}
-                                     style={{ margin: 0 }}
-                                 />
-                                 <span style={{ fontSize: '12px', color: '#6b7280' }}>
-                                     Show only selected
-                                 </span>
-                             </label>
-                         </div>
-                     )}
-                 </div>
-                 <div style={{ flex: 1, overflow: 'auto' }}>
-                     <Table
-                         key="booking-overview-table"
-                         columns={columns}
-                         dataSource={showOnlySelected ? filteredData.filter(item => selectedRows.includes(item.id)) : filteredData}
-                         rowKey="id"
-                         rowSelection={{
-                             selectedRowKeys: selectedRows,
-                             onChange: handleRowSelection,
-                             selections: [
-                                 {
-                                     key: 'all',
-                                     text: 'Select All',
-                                     onSelect: handleSelectAll,
-                                 },
-                                 {
-                                     key: 'clear',
-                                     text: 'Clear Selection',
-                                     onSelect: handleClearSelection,
-                                 },
-                             ],
-                         }}
-                         pagination={{
-                             pageSize: newPageSize,
-                             showSizeChanger: true,
-                             showQuickJumper: true,
-                             showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-                             pageSizeOptions: ['10', '20', '50', '100'],
-                             onShowSizeChange: (current, size) => {
-                                 dispatch(setNewPageSize(size));
-                             }
-                         }}
-                         scroll={{ x: 'max-content', y: 'calc(100vh - 450px)' }}
-                         size="small"
-                         bordered
-                         style={{
-                             backgroundColor: 'white',
-                             borderRadius: '6px'
-                         }}
-                         rowClassName={(record) => {
-                             if (record['Exception?'] === 'Y') {
-                                 return 'exception-row';
-                             }
-                             return '';
-                         }}
-                     />
-                 </div>
-             </Card>
+
+            {/* Views and Data Table Tabs */}
+            <Tabs
+                defaultActiveKey="overview"
+                style={{ marginBottom: '16px' }}
+                items={[
+                    {
+                        key: 'overview',
+                        label: 'Overview',
+                        children: (
+                            <Card style={{ height: 'calc(100vh - 280px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                                <div style={{ 
+                                    display: 'flex', 
+                                    justifyContent: 'space-between', 
+                                    alignItems: 'center', 
+                                    marginBottom: '10px' 
+                                }}>
+                                    <div style={{ fontSize: '12px', color: '#6b7280', fontWeight: 'bold' }}>
+                                        Total <strong>{filteredData.length}</strong> bookings
+                                        {filteredData.length !== shipperBookingsData.length && (
+                                            <span style={{ marginLeft: '8px', color: '#059669' }}>
+                                                (filtered from {shipperBookingsData.length})
+                                            </span>
+                                        )}
+                                    </div>
+                                    
+                                    {selectedRows.length > 0 && (
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                            <span style={{ fontSize: '12px', color: '#6b7280' }}>
+                                                {selectedRows.length} row(s) selected
+                                            </span>
+                                            <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
+                                                <input
+                                                    type="checkbox"
+                                                    checked={showOnlySelected}
+                                                    onChange={(e) => setShowOnlySelected(e.target.checked)}
+                                                    style={{ margin: 0 }}
+                                                />
+                                                <span style={{ fontSize: '12px', color: '#6b7280' }}>
+                                                    Show only selected
+                                                </span>
+                                            </label>
+                                        </div>
+                                    )}
+                                </div>
+                                
+                                <div style={{ flex: 1, overflow: 'auto' }}>
+                                    <Table
+                                        key="booking-overview-table"
+                                        columns={columns}
+                                        dataSource={showOnlySelected ? filteredData.filter(item => selectedRows.includes(item.id)) : filteredData}
+                                        rowKey="id"
+                                        rowSelection={{
+                                            selectedRowKeys: selectedRows,
+                                            onChange: handleRowSelection,
+                                            selections: [
+                                                {
+                                                    key: 'all',
+                                                    text: 'Select All',
+                                                    onSelect: handleSelectAll,
+                                                },
+                                                {
+                                                    key: 'clear',
+                                                    text: 'Clear Selection',
+                                                    onSelect: handleClearSelection,
+                                                },
+                                            ],
+                                        }}
+                                        pagination={{
+                                            pageSize: newPageSize,
+                                            showSizeChanger: true,
+                                            showQuickJumper: true,
+                                            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+                                            pageSizeOptions: ['10', '20', '50', '100'],
+                                            onShowSizeChange: (current, size) => {
+                                                dispatch(setNewPageSize(size));
+                                            }
+                                        }}
+                                        scroll={{ x: 'max-content', y: 'calc(100vh - 450px)' }}
+                                        size="small"
+                                        bordered
+                                        style={{
+                                            backgroundColor: 'white',
+                                            borderRadius: '6px'
+                                        }}
+                                        rowClassName={(record) => {
+                                            if (record['Exception?'] === 'Y') {
+                                                return 'exception-row';
+                                            }
+                                            return '';
+                                        }}
+                                    />
+                                </div>
+                            </Card>
+                        )
+                    },
+                    {
+                        key: 'views',
+                        label: 'Views',
+                        children: (
+                            <App>
+                                <ViewsTab />
+                            </App>
+                        )
+                    }
+                ]}
+            />
 
             <style>{`
         .exception-row {
