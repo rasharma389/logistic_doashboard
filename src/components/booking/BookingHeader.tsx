@@ -89,6 +89,15 @@ const BookingHeader: React.FC = () => {
     <Divider style={{ margin: '0' }}/>
       <Row gutter={[8, 0]} style={{ padding: '12px', marginBottom: 0, flexWrap: 'nowrap', display: 'flex' }}>
         <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
+          <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Status</div>
+          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
+            <span style={{ color: statusColors.textColor }}>
+              {bookingDetails.status}
+            </span>
+            <div style={{ width: '100px', height: '4px', backgroundColor: statusColors.backgroundColor, borderRadius: '2px', flexShrink: 0 }} />
+          </div>
+        </Col>
+        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Carrier</div>
           <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{bookingDetails.carrier}</div>
         </Col>
@@ -133,15 +142,6 @@ const BookingHeader: React.FC = () => {
             <span style={{ color: bookingDetails.exception ? '#ef4444' : '#10b981' }}>
               {bookingDetails.exception ? "Exception" : "Normal"}
             </span>
-          </div>
-        </Col>
-        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
-          <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Status</div>
-          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: statusColors.textColor }}>
-              {bookingDetails.status}
-            </span>
-            <div style={{ width: '30px', height: '4px', backgroundColor: statusColors.backgroundColor, borderRadius: '2px', flexShrink: 0 }} />
           </div>
         </Col>
       </Row>
