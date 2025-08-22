@@ -6,7 +6,7 @@ import { selectBookingWithData } from '../../store/slices/bookingsSlice';
 import type { CarrierBooking } from '../../data/mockData';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 import dayjs from 'dayjs';
-import {MenuFoldOutlined} from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined, DoubleLeftOutlined, DoubleRightOutlined, MenuOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 const { Text } = Typography;
@@ -23,6 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
   // Use displayBookings if provided, otherwise fall back to carrierBookings
   const bookingsToDisplay = displayBookings || carrierBookings;
   const [search, setSearch] = React.useState('');
+  const [collapsed, setCollapsed] = React.useState(false);
 
   const handleBookingSelect = (bookingId: string) => {
     dispatch(selectBookingWithData(bookingId) as any);
@@ -49,7 +50,10 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
 
   return (
     <Sider 
-      width={200} 
+      // width={200}
+      width={collapsed ? 80 : 200}
+      collapsed={collapsed}
+      collapsedWidth={80}
       style={{ 
         backgroundColor: '#f8fafc',
         borderRight: '1px solid #e2e8f0',
@@ -62,10 +66,13 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
         padding: '8px',
         borderBottom: '1px solid #e2e8f0',
         backgroundColor: 'white',
-        height: '55px'
+        height: '55px',
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: 'center'
       }}>
         <Space align="baseline">
-          <div>
+          <div style={{ flex: 1, display: collapsed ? 'none' : 'block' }}>
           <Text strong style={{ fontSize: '14px', color: '#1f2937' }}>
             Carrier Bookings
           </Text>
@@ -74,28 +81,35 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
             {loading ? 'Loading...' : `${bookingsToDisplay.length} Bookings`}
           </Text>
           </div>
-          <Tooltip title="Go to Booking Overview">
-            <Button icon={<MenuFoldOutlined />} size="small" onClick={() => onMenuClick?.('booking-overview')}></Button>
-          </Tooltip>
+          <Space>
+            <Tooltip title="Go to Booking Overview">
+                <MenuOutlined style={{ color: '#0ea5e9', fontSize: 16}} onClick={() => onMenuClick?.('booking-overview')}/>
+            </Tooltip>
+            <Tooltip title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}>
+            {collapsed ? <DoubleRightOutlined style={{ color: '#0ea5e9', fontSize: 16}}  onClick={() => setCollapsed(!collapsed)} /> : <DoubleLeftOutlined style={{ color: '#0ea5e9', fontSize: 16}}  onClick={() => setCollapsed(!collapsed)} />} 
+            </Tooltip>
+          </Space>
         </Space>
         
       </div>
       
-      <div style={{ 
-        padding: '8px 4px',
-        borderBottom: '1px solid #e2e8f0',
-        backgroundColor: 'white',
-        height: 'auto'
-      }}>
-        <Input.Search
-          placeholder="Search by ID or destination"
-          allowClear
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          style={{width: '100%' }}
-          size="small"
-        />
-      </div>
+      {!collapsed && (
+        <div style={{ 
+          padding: '8px 4px',
+          borderBottom: '1px solid #e2e8f0',
+          backgroundColor: 'white',
+          height: 'auto'
+        }}>
+          <Input.Search
+            placeholder="Search by ID or destination"
+            allowClear
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            style={{width: '100%' }}
+            size="small"
+          />
+        </div>
+      )}
       <div style={{ 
         flex: 1, 
         overflowY: 'auto',
@@ -116,7 +130,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
                 onClick={() => handleBookingSelect(booking.id)}
                 style={{
                   cursor: 'pointer',
-                  padding: '8px 12px',
+                  padding: collapsed ? '8px 4px' : '8px 12px',
                   backgroundColor: booking.selected ? '#e0f2fe' : 'transparent',
                   borderLeft: booking.selected ? '3px solid #0ea5e9' : '3px solid transparent',
                   borderBottom: '1px solid #f1f5f9',
@@ -124,22 +138,27 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
                 }}
                 className="booking-list-item"
               >
-                <div style={{ width: '100%' }}>
+                {collapsed ? (
                   <div style={{ 
-                    fontSize: '13px', 
-                    fontWeight: booking.selected ? '600' : '500',
-                    color: '#0ea5e9',
-                    marginBottom: '2px',
-                    display: 'flex',
+                    display: 'flex', 
+                    flexDirection: 'column', 
                     alignItems: 'center',
-                    gap: '4px'
+                    gap: '2px'
                   }}>
-                    {booking.id}
+                    <div style={{ 
+                      fontSize: '10px', 
+                      fontWeight: booking.selected ? '600' : '500',
+                      color: '#0ea5e9',
+                      textAlign: 'center',
+                      wordBreak: 'break-all'
+                    }}>
+                      {booking.id}
+                    </div>
                     {hasException(booking.id) && (
                       <Tooltip title="This booking has exceptions that require attention">
                         <div style={{
-                          width: '5px',
-                          height: '5px',
+                          width: '8px',
+                          height: '8px',
                           backgroundColor: '#ff4d4f',
                           borderRadius: '50%',
                           cursor: 'help',
@@ -148,20 +167,46 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
                       </Tooltip>
                     )}
                   </div>
-                  <div style={{ 
-                    fontSize: '12px', 
-                    color: '#374151',
-                    marginBottom: '1px'
-                  }}>
-                    {booking.destination}
+                ) : (
+                  <div style={{ width: '100%' }}>
+                    <div style={{ 
+                      fontSize: '13px', 
+                      fontWeight: booking.selected ? '600' : '500',
+                      color: '#0ea5e9',
+                      marginBottom: '2px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}>
+                      {booking.id}
+                      {hasException(booking.id) && (
+                        <Tooltip title="This booking has exceptions that require attention">
+                          <div style={{
+                            width: '8px',
+                            height: '8px',
+                            backgroundColor: '#ff4d4f',
+                            borderRadius: '50%',
+                            cursor: 'help',
+                            flexShrink: 0
+                          }} />
+                        </Tooltip>
+                      )}
+                    </div>
+                    <div style={{ 
+                      fontSize: '12px', 
+                      color: '#374151',
+                      marginBottom: '1px'
+                    }}>
+                      {booking.destination}
+                    </div>
+                    <div style={{ 
+                      fontSize: '11px', 
+                      color: '#6b7280'
+                    }}>
+                      {dayjs(booking.date).isValid() ? dayjs(booking.date).format('DD MMM') : booking.date}
+                    </div>
                   </div>
-                  <div style={{ 
-                    fontSize: '11px', 
-                    color: '#6b7280'
-                  }}>
-                    {dayjs(booking.date).isValid() ? dayjs(booking.date).format('DD MMM') : booking.date}
-                  </div>
-                </div>
+                )}
               </List.Item>
             )}
           />

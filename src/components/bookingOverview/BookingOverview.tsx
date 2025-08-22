@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useCallback, useState } from 'react';
 import { Layout, Table, Input, Select, Button, Space, Checkbox, Tag, Progress, Tooltip, Pagination, Typography, Card, DatePicker, Divider, Alert } from 'antd';
-import { SearchOutlined, DownOutlined, InfoCircleOutlined, DownloadOutlined, SettingOutlined, ReloadOutlined, FilterOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { SearchOutlined, DownOutlined, InfoCircleOutlined, DownloadOutlined, SettingOutlined, ReloadOutlined, FilterOutlined, MenuUnfoldOutlined, MenuOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState, AppDispatch } from '../../store';
@@ -971,8 +971,14 @@ const BookingOverview: React.FC<BookingOverviewProps> = React.memo(({ onMenuClic
               style={{ width: 500 }}
               size="small"
             />
+            {/* <Tooltip title="Go to Carrier Bookings"> */}
             <Tooltip title="Go to Carrier Bookings">
-              <Button 
+                <MenuOutlined style={{ color: '#0ea5e9', fontSize: 16}} onClick={() => {
+                  dispatch(shareFilteredDataWithCarrierBookings());
+                  navigate('/booking-overview/carrier-bookings');
+                }}/>
+            </Tooltip>
+              {/* <Button 
                 icon={<MenuUnfoldOutlined />} 
                 size="small" 
                 onClick={() => {
@@ -980,7 +986,7 @@ const BookingOverview: React.FC<BookingOverviewProps> = React.memo(({ onMenuClic
                   navigate('/booking-overview/carrier-bookings');
                 }} 
               />
-            </Tooltip>
+            </Tooltip> */}
             {/* <Button icon={<SettingOutlined />} size="small">Settings</Button> */}
             <Button icon={<ReloadOutlined />} size="small" loading={loading} onClick={() => dispatch(fetchBookings())} />
           </div>
