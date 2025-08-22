@@ -20,12 +20,25 @@ const initialState: BookingOverviewState = {
     'Booking Status': 'All',
     'Exception?': 'All',
     Region: 'All',
-    'Bkg Type': 'All'
+    'Bkg Type': 'All',
+    'Excpt. Eqp?': 'All',
+    'Excpt. ETD?': 'All',
+    '300/301 Status': 'All'
   },
   searchQuery: '',
   selectedBookings: [],
   loading: false,
   error: null,
+  // New filter states for BookingOverviewNew
+  newFilters: {
+    tradeFilter: [],
+    originRegionFilter: [],
+    destinationRegionFilter: [],
+    originCountryFilter: [],
+    districtFilter: [],
+    reqEtdWeekFilter: [],
+    tmsSearchQuery: ''
+  }
 };
 
 const bookingOverviewSlice = createSlice({
@@ -81,6 +94,29 @@ const bookingOverviewSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+    },
+    // Actions for BookingOverviewNew filters
+    setNewFilters: (state, action: PayloadAction<Partial<{
+      tradeFilter: string[];
+      originRegionFilter: string[];
+      destinationRegionFilter: string[];
+      originCountryFilter: string[];
+      districtFilter: string[];
+      reqEtdWeekFilter: string[];
+      tmsSearchQuery: string;
+    }>>) => {
+      state.newFilters = { ...state.newFilters, ...action.payload };
+    },
+    clearNewFilters: (state) => {
+      state.newFilters = {
+        tradeFilter: [],
+        originRegionFilter: [],
+        destinationRegionFilter: [],
+        originCountryFilter: [],
+        districtFilter: [],
+        reqEtdWeekFilter: [],
+        tmsSearchQuery: ''
+      };
     }
   },
 });
@@ -96,7 +132,9 @@ export const {
   toggleBookingSelection,
   selectAllBookings,
   clearBookingSelection,
-  clearError
+  clearError,
+  setNewFilters,
+  clearNewFilters
 } = bookingOverviewSlice.actions;
 
 // Async thunks

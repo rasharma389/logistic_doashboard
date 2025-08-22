@@ -116,4 +116,14 @@ export interface BookingOverviewState {
   selectedBookings: string[];
   loading: boolean;
   error: string | null;
+  // New filter states for BookingOverviewNew
+  newFilters: {
+    tradeFilter: string[];
+    originRegionFilter: string[];
+    destinationRegionFilter: string[];
+    originCountryFilter: string[];
+    districtFilter: string[];
+    reqEtdWeekFilter: string[];
+    tmsSearchQuery: string;
+  };
 }

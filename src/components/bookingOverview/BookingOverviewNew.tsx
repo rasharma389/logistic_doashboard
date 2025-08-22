@@ -7,9 +7,10 @@ import { FilterOutlined } from '@ant-design/icons';
 import { MenuOutlined } from '@ant-design/icons';
 import { mapShipperBookingToCarrierBooking } from '../../utils/dataMapping';
 
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
+import { setNewFilters, clearNewFilters } from '../../store/slices/bookingOverviewSlice';
 const { Search } = Input;
 const { Option } = Select;
 
@@ -17,14 +18,27 @@ const BookingOverviewNew: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
-    // Filter states
-    const [tradeFilter, setTradeFilter] = useState<string[]>([]);
-    const [originRegionFilter, setOriginRegionFilter] = useState<string[]>([]);
-    const [destinationRegionFilter, setDestinationRegionFilter] = useState<string[]>([]);
-    const [originCountryFilter, setOriginCountryFilter] = useState<string[]>([]);
-    const [districtFilter, setDistrictFilter] = useState<string[]>([]);
-    const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>([]);
-    const [tmsSearchQuery, setTmsSearchQuery] = useState<string>('');
+    
+    // Get filter states from Redux
+    const { newFilters } = useSelector((state: RootState) => state.bookingOverview);
+    const {
+        tradeFilter,
+        originRegionFilter,
+        destinationRegionFilter,
+        originCountryFilter,
+        districtFilter,
+        reqEtdWeekFilter,
+        tmsSearchQuery
+    } = newFilters;
+
+    // Setter functions that dispatch to Redux
+    const setTradeFilter = (value: string[]) => dispatch(setNewFilters({ tradeFilter: value }));
+    const setOriginRegionFilter = (value: string[]) => dispatch(setNewFilters({ originRegionFilter: value }));
+    const setDestinationRegionFilter = (value: string[]) => dispatch(setNewFilters({ destinationRegionFilter: value }));
+    const setOriginCountryFilter = (value: string[]) => dispatch(setNewFilters({ originCountryFilter: value }));
+    const setDistrictFilter = (value: string[]) => dispatch(setNewFilters({ districtFilter: value }));
+    const setReqEtdWeekFilter = (value: string[]) => dispatch(setNewFilters({ reqEtdWeekFilter: value }));
+    const setTmsSearchQuery = (value: string) => dispatch(setNewFilters({ tmsSearchQuery: value }));
 
     // Get unique values for filter options
     const filterOptions = useMemo(() => {
@@ -65,13 +79,7 @@ const BookingOverviewNew: React.FC = () => {
 
     // Clear all filters
     const clearAllFilters = () => {
-        setTradeFilter([]);
-        setOriginRegionFilter([]);
-        setDestinationRegionFilter([]);
-        setOriginCountryFilter([]);
-        setDistrictFilter([]);
-        setReqEtdWeekFilter([]);
-        setTmsSearchQuery('');
+        dispatch(clearNewFilters());
     };
 
     // Generate table columns dynamically from the data
@@ -137,7 +145,7 @@ const BookingOverviewNew: React.FC = () => {
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
             {/* Filters Section */}
                          <Card
-                 title="Booking Overview"
+                 title="Carrier Bookings"
                  style={{ marginBottom: '16px' }}
                  extra={
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
