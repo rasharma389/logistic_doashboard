@@ -41,11 +41,14 @@ export interface LinkedBooking {
 
 export interface ActivityItem {
   id: string;
-  type: 'secondary' | 'exception' | 'confirmed' | 'accepted' | 'linked' | 'approved' | 'submitted' | 'departed' | 'arrived' | 'delayed';
+  type: 'pending' | 'secondary' | 'exception' | 'confirmed' | 'accepted' | 'linked' | 'approved' | 'submitted' | 'departed' | 'arrived' | 'delayed' | 'cutoff' | 'loaded' | 'eta' | 'delivered' | 'etd_change' | 'equipment_mismatch';
   title: string;
   description: string;
   date: string;
   details?: string;
+  severity: 'info' | 'success' | 'warning' | 'error' | 'high';
+  highlight: boolean;
+  tags: string[];
 }
 
 export interface DocumentItem {
@@ -2997,627 +3000,6551 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
 export const activitiesData: Record<string, ActivityItem[]> = {
   "CB-180080002": [
     {
-      id: "1",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "MAEU-229120444 confirmed by carrier",
-      date: "Jun 25",
-      details: "ETD: Jul 1, 2025"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 24",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "Carrier accepted booking request",
-      date: "Jun 24",
-      details: "Response time: 2 hours"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 24",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "Shipping order submitted to carrier",
-      date: "Jun 24"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229120444 confirmed by carrier",
+      "date": "Jun 25",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 21:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 14:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "27-Jun",
+      "details": "Cutoff time: 16:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNSHA",
+      "date": "Jul 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-185901641": [
+  "CB-180080004": [
     {
-      id: "1",
-      type: "departed",
-      title: "Vessel Departed",
-      description: "Container departed from CNSHA",
-      date: "Jul 1",
-      details: "On schedule departure"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "MAEU-229120447 confirmed",
-      date: "Jun 22",
-      details: "ETD: Jul 1, 2025"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 21",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "Carrier accepted booking",
-      date: "Jun 21"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229120447 confirmed by carrier",
+      "date": "Jun 22",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "Shipping order submitted",
-      date: "Jun 21"
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 21:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 14:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "27-Jun",
+      "details": "Cutoff time: 16:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNSHA",
+      "date": "Jul 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-185901642": [
+  "CB-180080003": [
     {
-      id: "1",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "COSU-413892 accepted by COSCO",
-      date: "Jun 26",
-      details: "ETD: Jul 1, 2025"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 25",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "Allocated by Slync System",
-      date: "Jun 25"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 25",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jun 25, 2025",
-      date: "Jun 25"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229120413 confirmed by carrier",
+      "date": "Jun 26",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 21:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 14:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "27-Jun",
+      "details": "Cutoff time: 16:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNSHA",
+      "date": "Jul 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-185901646": [
+  "CB-180080005": [
     {
-      id: "1",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "MSC-450891 allocated",
-      date: "Jun 24",
-      details: "Allocated by Slync System"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "approved",
-      title: "SO Approved",
-      description: "CRD: Jun 23, 2025",
-      date: "Jun 23"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 23",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "Shipping order submitted",
-      date: "Jun 23"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229120450 confirmed by carrier",
+      "date": "Jun 24",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 21:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 14:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "27-Jun",
+      "details": "Cutoff time: 16:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNSHA",
+      "date": "Jul 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-185901647": [
+  "CB-180080001": [
     {
-      id: "1",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jun 24, 2025",
-      date: "Jun 24"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 24",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 24",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229120426 confirmed by carrier",
+      "date": "Jun 25",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 21:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "28-Jun",
+      "details": "Cutoff time: 14:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "27-Jun",
+      "details": "Cutoff time: 16:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNSHA",
+      "date": "Jul 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080006": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 23",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-228835193 confirmed by carrier",
+      "date": "Jun 24",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jun 24",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 01-Jul to 08-Jul (delayed by 7 days)",
+      "date": "Jun 24",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "05-Jul",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "05-Jul",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "05-Jul",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MAERSK SEBAROK 327S loaded at INMUN",
+      "date": "Jul 08",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Aug 10",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Aug 11",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080007": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 23",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-228849192 confirmed by carrier",
+      "date": "Jun 24",
+      "details": "ETD: Jul 01, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jun 24",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 01-Jul to 08-Jul (delayed by 7 days)",
+      "date": "Jun 24",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "05-Jul",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "05-Jul",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "05-Jul",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MAERSK SEBAROK 327S loaded at INMUN",
+      "date": "Jul 08",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Aug 10",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Aug 11",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
   "CB-185231641": [
     {
-      id: "1",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jun 28, 2025",
-      date: "Jun 28"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 27",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 27",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-264318575 confirmed by carrier",
+      "date": "Jun 28",
+      "details": "ETD: Jul 05, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "02-Jul",
+      "details": "Cutoff time: 22:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "02-Jul",
+      "details": "Cutoff time: 16:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "01-Jul",
+      "details": "Cutoff time: 20:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNNGB",
+      "date": "Jul 05",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-185216294": [
+  "CB-185231643": [
     {
-      id: "1",
-      type: "arrived",
-      title: "Cargo Delivered",
-      description: "Container delivered at USLGB",
-      date: "Jul 28",
-      details: "Delivery completed successfully"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jun 28",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "arrived",
-      title: "Vessel Arrived",
-      description: "Vessel arrived at USLGB",
-      date: "Jul 28"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jun 28",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "departed",
-      title: "Vessel Departed",
-      description: "Container departed from CNYTN",
-      date: "Jul 13"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-264318665 confirmed by carrier",
+      "date": "Jun 29",
+      "details": "ETD: Jul 05, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "CMAU-789010 confirmed",
-      date: "Jul 6"
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jun 29",
+      "details": "equipment mismatch",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40GPx1 (N/A), confirmed 20GPx1 (N/A)",
+      "date": "Jun 29",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "02-Jul",
+      "details": "Cutoff time: 22:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "02-Jul",
+      "details": "Cutoff time: 16:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "01-Jul",
+      "details": "Cutoff time: 20:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "ELLY MAERSK 527W loaded at CNNGB",
+      "date": "Jul 05",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Aug 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-186512627": [
+  "CB-180080008": [
     {
-      id: "1",
-      type: "exception",
-      title: "Exception - Vessel Delay",
-      description: "Vessel delayed due to port congestion",
-      date: "Aug 8",
-      details: "New ETD: TBD"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 05",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "HLCU-861395 allocated",
-      date: "Aug 1"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 05",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jul 31, 2025",
-      date: "Jul 31"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "COSU-6359789010 confirmed by carrier",
+      "date": "Jul 06",
+      "details": "ETD: Jul 13, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "09-Jul",
+      "details": "Cutoff time: 15:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "08-Jul",
+      "details": "Cutoff time: 12:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "08-Jul",
+      "details": "Cutoff time: 12:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "COSCO NETHERLANDS 058E loaded at CNYTN",
+      "date": "Jul 13",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at USLGB",
+      "date": "Jul 28",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to USLGB",
+      "date": "Jul 29",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-186512653": [
+  "CB-180080011": [
     {
-      id: "1",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "MAEU-861394 confirmed by MAEU",
-      date: "Aug 2",
-      details: "ETD: Aug 8, 2025"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "Carrier accepted booking",
-      date: "Aug 1"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 07",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jul 31, 2025",
-      date: "Jul 31"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229048498 confirmed by carrier",
+      "date": "Jul 08",
+      "details": "ETD: Jul 15, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jul 08",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Jul to 22-Jul (delayed by 7 days)",
+      "date": "Jul 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MAERSK SEBAROK 329S loaded at INMUN",
+      "date": "Jul 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Aug 24",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Aug 25",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-186512790": [
+  "CB-180080009": [
     {
-      id: "1",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "COSU-861392 accepted by COSCO",
-      date: "Aug 2",
-      details: "ETD: Aug 8, 2025"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "Allocated by Slync System",
-      date: "Aug 1"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 07",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 1, 2025",
-      date: "Aug 1"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229200436 confirmed by carrier",
+      "date": "Jul 08",
+      "details": "ETD: Jul 15, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jul 08",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Jul to 22-Jul (delayed by 7 days)",
+      "date": "Jul 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MAERSK SEBAROK 329S loaded at INMUN",
+      "date": "Jul 17",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Aug 17",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Aug 18",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-186605681": [
+  "CB-180080010": [
     {
-      id: "1",
-      type: "departed",
-      title: "Vessel Departed",
-      description: "Container departed from CNNGB",
-      date: "Aug 8",
-      details: "On schedule departure"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "MSC-861440 confirmed",
-      date: "Aug 2"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 07",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "MSC accepted booking",
-      date: "Aug 1"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229233808 confirmed by carrier",
+      "date": "Jul 08",
+      "details": "ETD: Jul 15, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jul 31, 2025",
-      date: "Jul 31"
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jul 08",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Jul to 22-Jul (delayed by 7 days)",
+      "date": "Jul 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "19-Jul",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MAERSK SEBAROK 329S loaded at INMUN",
+      "date": "Jul 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Aug 24",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Aug 25",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-186624133": [
+  "CB-180080014": [
     {
-      id: "1",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "EMC-861484 allocated",
-      date: "Aug 2",
-      details: "Allocated by Slync System"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "approved",
-      title: "SO Approved",
-      description: "CRD: Jul 31, 2025",
-      date: "Aug 1"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 21",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "Shipping order submitted",
-      date: "Jul 31"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229366525 confirmed by carrier",
+      "date": "Jul 22",
+      "details": "ETD: Jul 29, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jul 22",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 29-Jul to 05-Aug (delayed by 7 days)",
+      "date": "Jul 22",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "SEASPAN JAKARTA 331S loaded at INMUN",
+      "date": "Jul 29",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Aug 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Sep 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080015": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 21",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229383930 confirmed by carrier",
+      "date": "Jul 22",
+      "details": "ETD: Jul 29, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jul 22",
+      "details": "ETD delayed by 7 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 29-Jul to 05-Aug (delayed by 7 days)",
+      "date": "Jul 22",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "SEASPAN JAKARTA 331S loaded at INMUN",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Sep 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Sep 08",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080013": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 23",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-228970692 confirmed by carrier",
+      "date": "Jul 24",
+      "details": "ETD: Jul 31, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MUNICH MAERSK 329W loaded at CNNGB",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEBRV",
+      "date": "Sep 06",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHBO",
+      "date": "Sep 07",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080016": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 23",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    }
+  ],
+  "CB-180080017": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 26",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 26",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    }
+  ],
+  "CB-180080018": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 25",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 25",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "HDMU-NBOZ23075500 confirmed by carrier",
+      "date": "Jul 26",
+      "details": "ETD: Aug 02, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "YM TROPHY 008E loaded at CNNGB",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at USLGB",
+      "date": "",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to USLGB",
+      "date": "",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080019": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 25",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 25",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MSCU-177UGLGLN31883A confirmed by carrier",
+      "date": "Jul 26",
+      "details": "ETD: Aug 02, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MSC KATIE 330N loaded at CNNGB",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at USLGB",
+      "date": "",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to USLGB",
+      "date": "",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080020": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 25",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 25",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MSCU-177UGLGLN31882A confirmed by carrier",
+      "date": "Jul 26",
+      "details": "ETD: Aug 02, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MSC KATIE 330N loaded at CNNGB",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at USLGB",
+      "date": "",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to USLGB",
+      "date": "",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080021": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 25",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 25",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MSCU-177UGLGLN31878A confirmed by carrier",
+      "date": "Jul 26",
+      "details": "ETD: Aug 02, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MSC KATIE 330N loaded at CNNGB",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at USLGB",
+      "date": "",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to USLGB",
+      "date": "",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080023": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 23",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    }
+  ],
+  "CB-180080035": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 24",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 24",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx6 (N/A), confirmed nan (N/A)",
+      "date": "Jul 25",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 02-Aug to nan (unchanged by nan days)",
+      "date": "Jul 25",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080024": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 28",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 28",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229412035 confirmed by carrier",
+      "date": "Jul 29",
+      "details": "ETD: Aug 05, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 8:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 12:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "02-Aug",
+      "details": "Cutoff time: 1:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "KUO LUNG 562S loaded at INTUT",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEBRV",
+      "date": "Sep 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHBO",
+      "date": "Sep 08",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080036": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 30",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229121670 confirmed by carrier",
+      "date": "Jul 31",
+      "details": "ETD: Aug 07, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MORTEN MAERSK 330W loaded at CNNGB",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEBRV",
+      "date": "Sep 13",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHBO",
+      "date": "Sep 14",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080037": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 30",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229121969 confirmed by carrier",
+      "date": "Jul 31",
+      "details": "ETD: Aug 07, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MORTEN MAERSK 330W loaded at CNNGB",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEBRV",
+      "date": "Sep 13",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHBO",
+      "date": "Sep 14",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080051": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 30",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229121825 confirmed by carrier",
+      "date": "Jul 31",
+      "details": "ETD: Aug 07, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MORTEN MAERSK 330W loaded at CNNGB",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEBRV",
+      "date": "Sep 13",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHBO",
+      "date": "Sep 14",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080052": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 30",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "MAEU-229121822 confirmed by carrier",
+      "date": "Jul 31",
+      "details": "ETD: Aug 07, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Jul 31",
+      "details": "ETD delayed by 8 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 07-Aug to 15-Aug (delayed by 8 days)",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MARIBO MAERSK 331W loaded at CNNGB",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEBRV",
+      "date": "Sep 13",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHBO",
+      "date": "Sep 14",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080025": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 31",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx2 (N/A), confirmed nan (N/A)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080026": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 31",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to 09-Aug (delayed by 1 days)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080027": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080038": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 31",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx3 (N/A), confirmed nan (N/A)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080039": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 31",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx2 (N/A), confirmed nan (N/A)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
     }
   ],
   "CB-186512583": [
     {
-      id: "1",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Jul 31, 2025",
-      date: "Jul 31"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 31",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     }
   ],
-  "CB-187024912": [
+  "CB-180080012": [
     {
-      id: "1",
-      type: "arrived",
-      title: "Cargo Delivered",
-      description: "Container delivered at GBFXT",
-      date: "Sep 2",
-      details: "Delivery completed successfully"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "arrived",
-      title: "Vessel Arrived",
-      description: "Vessel arrived at GBFXT",
-      date: "Sep 2"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 31",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "departed",
-      title: "Vessel Departed",
-      description: "Container departed from CNTAO",
-      date: "Aug 12"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "EGLV-EGLV143370387491 confirmed by carrier",
+      "date": "Aug 01",
+      "details": "ETD: Aug 08, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "HLCU-024912 confirmed",
-      date: "Aug 6"
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "nan",
+      "details": "Cutoff time: nan",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER FRANK 1076-015E loaded at CNNGB",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at USLAX",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to USLAX",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-187024945": [
+  "CB-180080028": [
     {
-      id: "1",
-      type: "exception",
-      title: "Exception - Documentation Issue",
-      description: "Missing export documentation",
-      date: "Aug 11",
-      details: "Pending customs clearance"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "MAEU-024945 allocated",
-      date: "Aug 5"
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 30",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 4, 2025",
-      date: "Aug 4"
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
     }
   ],
-  "CB-187024977": [
+  "CB-180080029": [
     {
-      id: "1",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "COSU-024977 confirmed by COSCO",
-      date: "Aug 6",
-      details: "ETD: Aug 11, 2025"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "Carrier accepted booking",
-      date: "Aug 5"
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Jul 30",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 4, 2025",
-      date: "Aug 4"
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
     }
   ],
-  "CB-187025046": [
+  "CB-180080030": [
     {
-      id: "1",
-      type: "departed",
-      title: "Vessel Departed",
-      description: "Container departed from CNTAO",
-      date: "Aug 12",
-      details: "On schedule departure"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "confirmed",
-      title: "Booking Confirmed",
-      description: "MSC-025046 confirmed",
-      date: "Aug 6"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 30",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    }
+  ],
+  "CB-180080031": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "MSC accepted booking",
-      date: "Aug 5"
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 02",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
     },
     {
-      id: "4",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 5, 2025",
-      date: "Aug 5"
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080032": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 02",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "CMDU-TSL202307210986 confirmed by carrier",
+      "date": "Aug 03",
+      "details": "ETD: Aug 11, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "10-Aug",
+      "details": "Cutoff time: 10:30:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "10-Aug",
+      "details": "Cutoff time: 10:30:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "09-Aug",
+      "details": "Cutoff time: 2:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER ARM 0LAKVW1MA loaded at CNNGB",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Sep 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Sep 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080033": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 02",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40GPx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080034": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 02",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080040": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 03",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 45HCx2 (N/A), confirmed nan (N/A)",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080041": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 02",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx4 (N/A), confirmed nan (N/A)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080042": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 03",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 45HCx2 (N/A), confirmed nan (N/A)",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080043": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 02",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 45HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 11-Aug to nan (unchanged by nan days)",
+      "date": "Aug 03",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080044": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 04",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "CMDU-TSL202307240131 confirmed by carrier",
+      "date": "Aug 05",
+      "details": "ETD: Aug 11, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "10-Aug",
+      "details": "Cutoff time: 10:30:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "10-Aug",
+      "details": "Cutoff time: 10:30:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "09-Aug",
+      "details": "Cutoff time: 2:00:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER ARM 0LAKVW1MA loaded at CNNGB",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Sep 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Sep 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    }
+  ],
+  "CB-180080045": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080046": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40GPx1, 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080047": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40GPx2 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080048": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080049": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080050": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 01",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 45HCx2 (N/A), confirmed nan (N/A)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 08-Aug to nan (unchanged by nan days)",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080067": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 05",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 06",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 12-Aug to nan (unchanged by nan days)",
+      "date": "Aug 06",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080068": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 04",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 12-Aug to nan (unchanged by nan days)",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080069": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 04",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 04",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 12-Aug to nan (unchanged by nan days)",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080070": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 05",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 06",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 12-Aug to nan (unchanged by nan days)",
+      "date": "Aug 06",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
     }
   ],
   "CB-185901648": [
     {
-      id: "1",
-      type: "accepted",
-      title: "Booking Accepted",
-      description: "EMC-901648 accepted by EVERGREEN",
-      date: "Aug 6",
-      details: "ETD: Aug 11, 2025"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "linked",
-      title: "Primary CB Linked",
-      description: "Allocated by Slync System",
-      date: "Aug 5"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 05",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 4, 2025",
-      date: "Aug 4"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "HLCU-38538244 confirmed by carrier",
+      "date": "Aug 06",
+      "details": "ETD: Aug 12, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "exception",
+      "title": "Exception Raised",
+      "description": "Carrier booking exception flagged",
+      "date": "Aug 06",
+      "details": "ETD delayed by 4 days",
+      "severity": "high",
+      "highlight": true,
+      "tags": [
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 12-Aug to 16-Aug (delayed by 4 days)",
+      "date": "Aug 06",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "15-Aug",
+      "details": "Cutoff time: 3:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "14-Aug",
+      "details": "Cutoff time: 15:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "13-Aug",
+      "details": "Cutoff time: 18:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MARGRETHE MAERSK 532W loaded at CNYTN",
+      "date": "Aug 12",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Sep 15",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "11",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Sep 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-186734576": [
+  "CB-180080022": [
     {
-      id: "1",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 7, 2025",
-      date: "Aug 7"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 05",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 05",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "HLCU-37549729 confirmed by carrier",
+      "date": "Aug 06",
+      "details": "ETD: Aug 13, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 13-Aug to 12-Aug (advanced by 1 days)",
+      "date": "Aug 06",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "10-Aug",
+      "details": "Cutoff time: 13:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "10-Aug",
+      "details": "Cutoff time: 13:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "09-Aug",
+      "details": "Cutoff time: 14:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MARGRETHE MAERSK 532W loaded at CNYTN",
+      "date": "Aug 13",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at PLGDY",
+      "date": "Sep 30",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to PLGDY",
+      "date": "Oct 01",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-13545758": [
+  "CB-180080053": [
     {
-      id: "1",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: Aug 7, 2025",
-      date: "Aug 7"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 07",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx4 (N/A), confirmed nan (N/A)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to 16-Aug (delayed by 1 days)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
     }
   ],
-  "CB-45012178": [
+  "CB-264229065": [
     {
-      id: "1",
-      type: "departed",
-      title: "Shipment Departed",
-      description: "Vessel departed from CNSHA",
-      date: "Oct 18",
-      details: "On schedule departure"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "confirmed",
-      title: "Booking Confirmed: COSU-891234",
-      description: "BC POL ETD: 2023-10-18",
-      date: "Oct 10"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 07",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "accepted",
-      title: "Booking Accepted: COSU-891234",
-      description: "ETD POL: 2023-10-18",
-      date: "Oct 8"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "HCLU-13545758 confirmed by carrier",
+      "date": "Aug 08",
+      "details": "ETD: Aug 15, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: 2023-10-15",
-      date: "Oct 1"
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to 16-Aug (delayed by 1 days)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "15-Aug",
+      "details": "Cutoff time: 3:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "14-Aug",
+      "details": "Cutoff time: 15:30",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "13-Aug",
+      "details": "Cutoff time: 18:00",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "MUNICH MAERSK 533W loaded at CNYTN",
+      "date": "Aug 16",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at DEHAM",
+      "date": "Sep 23",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "10",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to DEHAM",
+      "date": "Sep 24",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-45012179": [
+  "CB-180080054": [
     {
-      id: "1",
-      type: "accepted",
-      title: "Booking Accepted: MSC-567890",
-      description: "ETD POL: 2023-10-20",
-      date: "Oct 12"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Jul 31",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "linked",
-      title: "Primary CB Linked: MSC-567890",
-      description: "Allocated by Slync System",
-      date: "Oct 10"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Jul 31",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "approved",
-      title: "SO Approved",
-      description: "CRD: 2023-10-15, Status: Approved",
-      date: "Oct 8"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "CMDU-6362312780 confirmed by carrier",
+      "date": "Aug 01",
+      "details": "ETD: Aug 09, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: 2023-10-15",
-      date: "Oct 5"
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "11-Aug",
+      "details": "Cutoff time: 11:00:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER ARM 0LAKVW1MA loaded at CNSHA",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Sep 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Sep 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-45012180": [
+  "CB-180080055": [
     {
-      id: "1",
-      type: "linked",
-      title: "Primary CB Linked: EMC-345678",
-      description: "Allocated by Slync System",
-      date: "Oct 14"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "approved",
-      title: "SO Approved",
-      description: "CRD: 2023-10-15, Status: Approved",
-      date: "Oct 12"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 02",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: 2023-10-15",
-      date: "Oct 10"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "CMDU-6362376580 confirmed by carrier",
+      "date": "Aug 03",
+      "details": "ETD: Aug 09, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "11-Aug",
+      "details": "Cutoff time: 11:00:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER ARM 0LAKVW1MA loaded at CNSHA",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at NLRTM",
+      "date": "Sep 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to NLRTM",
+      "date": "Sep 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-45012181": [
+  "CB-180080056": [
     {
-      id: "1",
-      type: "arrived",
-      title: "Cargo Delivered",
-      description: "Container delivered at CAVAN",
-      date: "Nov 1",
-      details: "Delivery completed successfully"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 02",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "arrived",
-      title: "Vessel Arrived",
-      description: "Vessel arrived at CAVAN",
-      date: "Oct 28"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 02",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "departed",
-      title: "Shipment Departed",
-      description: "Vessel departed from DEHAM",
-      date: "Oct 16"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "CMDU-6362376650 confirmed by carrier",
+      "date": "Aug 03",
+      "details": "ETD: Aug 09, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "confirmed",
-      title: "Booking Confirmed: HLCU-789012",
-      description: "BC POL ETD: 2023-10-16",
-      date: "Oct 12"
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
     },
     {
-      id: "5",
-      type: "accepted",
-      title: "Booking Accepted: HLCU-789012",
-      description: "ETD POL: 2023-10-16",
-      date: "Oct 8"
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "11-Aug",
+      "details": "Cutoff time: 11:00:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER ARM 0LAKVW1MA loaded at CNSHA",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at GBFXT",
+      "date": "Sep 21",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to GBFXT",
+      "date": "Sep 22",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-45012182": [
+  "CB-180080057": [
     {
-      id: "1",
-      type: "secondary",
-      title: "Secondary CB linked: CMAU-480911",
-      description: "POL ETD: Oct 19, 2023",
-      date: "Oct 12",
-      details: "Allocated by Slync System"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 01",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "2",
-      type: "exception",
-      title: "Exception - Primary CB cancelled: CMAU-480910",
-      description: "Cancelled by Carrier",
-      date: "Oct 5"
+      "id": "2",
+      "type": "accepted",
+      "title": "Booking Accepted",
+      "description": "Carrier accepted booking request",
+      "date": "Aug 01",
+      "details": "Acknowledged (301)",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "3",
-      type: "confirmed",
-      title: "Booking Confirmed: CMAU-480910",
-      description: "BC POL ETD: 2023-10-20",
-      date: "Oct 5"
+      "id": "3",
+      "type": "confirmed",
+      "title": "Booking Confirmed",
+      "description": "CMDU-6362376570 confirmed by carrier",
+      "date": "Aug 02",
+      "details": "ETD: Aug 09, 2025",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
     },
     {
-      id: "4",
-      type: "accepted",
-      title: "Booking Accepted (301): CMAU-480910",
-      description: "ETD POL: 2023-10-20",
-      date: "Oct 1"
+      "id": "4",
+      "type": "cutoff",
+      "title": "CY Cutoff",
+      "description": "Container yard cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
     },
     {
-      id: "5",
-      type: "linked",
-      title: "Primary CB Linked: CMAU-480910",
-      description: "Allocated by Slync System",
-      date: "Oct 1"
+      "id": "5",
+      "type": "cutoff",
+      "title": "VGM Cutoff",
+      "description": "VGM cutoff reached",
+      "date": "12-Aug",
+      "details": "Cutoff time: 1:30:00 PM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
     },
     {
-      id: "6",
-      type: "approved",
-      title: "SO Approved",
-      description: "CRD: 2023-10-15, Status: Approved",
-      date: "Oct 1"
+      "id": "6",
+      "type": "cutoff",
+      "title": "SI Cutoff",
+      "description": "Shipping instruction cutoff reached",
+      "date": "11-Aug",
+      "details": "Cutoff time: 11:00:00 AM",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "cutoff"
+      ]
     },
     {
-      id: "7",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: 2023-10-15",
-      date: "Sept 15"
+      "id": "7",
+      "type": "loaded",
+      "title": "Vessel Loaded",
+      "description": "EVER ARM 0LAKVW1MA loaded at CNSHA",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "8",
+      "type": "eta",
+      "title": "ETA at Port of Discharge",
+      "description": "ETA at GBFXT",
+      "date": "Sep 25",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
+    },
+    {
+      "id": "9",
+      "type": "delivered",
+      "title": "Delivered",
+      "description": "Delivered to GBFXT",
+      "date": "Sep 26",
+      "details": "",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "movement"
+      ]
     }
   ],
-  "CB-45012183": [
+  "CB-180080058": [
     {
-      id: "1",
-      type: "submitted",
-      title: "SO Submitted",
-      description: "CRD: 2023-10-07",
-      date: "Oct 5"
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 08",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080059": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 07",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080060": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 08",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080061": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 07",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 07",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080062": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 08",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080063": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 09",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 10",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 10",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080064": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 08",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080065": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 08",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 08",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
+    }
+  ],
+  "CB-180080066": [
+    {
+      "id": "1",
+      "type": "submitted",
+      "title": "SO Submitted",
+      "description": "Shipping order submitted to carrier",
+      "date": "Aug 09",
+      "details": "",
+      "severity": "info",
+      "highlight": false,
+      "tags": [
+        "lifecycle"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "pending",
+      "title": "Booking Pending",
+      "description": "Awaiting carrier response",
+      "date": "Aug 09",
+      "details": "301 acknowledgment received",
+      "severity": "success",
+      "highlight": false,
+      "tags": [
+        "status"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "equipment_mismatch",
+      "title": "Equipment Mismatch",
+      "description": "Requested 40HCx1 (N/A), confirmed nan (N/A)",
+      "date": "Aug 10",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "equipment",
+        "exception"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "etd_change",
+      "title": "ETD Changed",
+      "description": "ETD updated from 15-Aug to nan (unchanged by nan days)",
+      "date": "Aug 10",
+      "details": "",
+      "severity": "warning",
+      "highlight": true,
+      "tags": [
+        "schedule",
+        "exception"
+      ]
     }
   ]
 };
