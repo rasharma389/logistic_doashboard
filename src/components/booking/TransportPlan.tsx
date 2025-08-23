@@ -6,6 +6,8 @@ import { RootState } from '../../store';
 import { type TransportPlanItem } from '../../data/transportPlanData';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 import dayjs from 'dayjs';
+import { LiaShipSolid } from "react-icons/lia";
+import TransportPlanNew from './TransportPlanNew';
 
 const { Title, Text } = Typography;
 
@@ -331,31 +333,44 @@ const TransportPlan: React.FC = () => {
           <ClockCircleOutlined style={{ fontSize: '14px', color: '#8c8c8c' }} />
         ),
         color: isPortLocation ? '#1890ff' : isVessel ? '#52c41a' : '#d9d9d9',
-        children: (
-          <div style={{ paddingBottom: '16px' }}>
+        children: (<>
+          <div style={{ paddingBottom: '8px' }}>
             <div style={{ 
-              backgroundColor: isPortLocation ? '#f0f9ff' : 'white',
-              padding: '12px',
+              backgroundColor: isPortLocation ? '#f8fafc' : '#f8fafc',
+              padding: '8px',
               borderRadius: '6px',
-              border: isPortLocation ? '1px solid #bae7ff' : '1px solid #f0f0f0',
-              position: 'relative'
+              // border: isPortLocation ? '1px solid #bae7ff' : '1px solid #f0f0f0',
+              position: 'relative',
+              width: '500px'
             }}>
               {/* Port/Location Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <Title level={5} style={{ margin: 0, fontSize: '16px', color: isPortLocation ? '#1890ff' : '#262626' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                <Title level={5} style={{ margin: 0, fontSize: '16px', color: isPortLocation ? '#1890ff' : '#1890ff' }}>
                   {item.port || item.term}
                 </Title>
-                <div style={{ textAlign: 'right' }}>
+                {/* Date Information */}
+                {(<>
+                  {/* <div style={{ marginBottom: '8px' }}> */}
+                    <Text strong style={{ color: '#1890ff', fontSize: '16px', width: 100, textAlign: 'center' }}>
+                      {item.departureArrival === 'Departure' ? 'ETD: ' : 'ETA: '}
+                    </Text>
+                    <Text style={{ fontSize: '16px', fontWeight: '500', width: 100 }}>
+                      {item.date} 
+                    </Text>
+                  {/* </div> */}
+                  </>
+                )}
+                {/* <div style={{ textAlign: 'right' }}>
                   {item.departureArrival && (
                     <Tag color={item.departureArrival === 'Departure' ? 'orange' : 'green'} style={{ fontSize: '11px' }}>
                       {item.departureArrival === 'Departure' ? 'ETD' : 'ETA'}
                     </Tag>
                   )}
-                </div>
+                </div> */}
               </div>
 
               {/* Date Information */}
-              {item.date && (
+              {/* {item.date && (
                 <div style={{ marginBottom: '8px' }}>
                   <Text strong style={{ color: '#1890ff', fontSize: '12px' }}>
                     {item.departureArrival === 'Departure' ? 'ETD: ' : 'ETA: '}
@@ -364,10 +379,10 @@ const TransportPlan: React.FC = () => {
                     {item.date}
                   </Text>
                 </div>
-              )}
+              )} */}
 
               {/* Vessel Information */}
-              {item.vesselVoyage && item.vesselVoyage !== ' + ' && (
+              {/* {item.vesselVoyage && item.vesselVoyage !== ' + ' && (
                 <div style={{ 
                   marginTop: '12px',
                   padding: '6px 10px',
@@ -387,10 +402,33 @@ const TransportPlan: React.FC = () => {
                     </Text>
                   )}
                 </div>
-              )}
+              )} */}
             </div>
           </div>
-        )
+          {/* Vessel Information */}
+          {item.vesselVoyage && item.vesselVoyage !== ' + ' && (
+            <div style={{
+              marginLeft: '20px',
+              // padding: '6px 10px',
+              // backgroundColor: '#f6ffed',
+              borderRadius: '4px',
+              // border: '1px solid #b7eb8f',
+              width: '300px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <LiaShipSolid style={{ fontSize: '30px', color: '#52c41a' }}/>
+                <Text strong style={{ color: '#389e0d', fontSize: '12px' }}>
+                  {item.vesselVoyage.replace(' + ', ' ')}
+                </Text>
+              </div>
+              {transitTime && (
+                <Text type="secondary" style={{ fontSize: '11px' }}>
+                  Transit time: {transitTime}
+                </Text>
+              )}
+            </div>
+          )}
+        </>)
       };
     });
   }, [transportData]);
@@ -425,11 +463,12 @@ const TransportPlan: React.FC = () => {
       ),
       children: (
         <div style={{ padding: '16px 0' }}>
-          <Timeline
+          {/* <Timeline
             mode="left"
             items={timelineItems}
             style={{ marginTop: '16px' }}
-          />
+          /> */}
+          <TransportPlanNew data={transportData} />
         </div>
       )
     },
