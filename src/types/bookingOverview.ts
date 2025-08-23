@@ -1,5 +1,6 @@
 export interface ShipperBooking {
   id: string;
+  Golden: string; // New field for PDF status and flags
   Trade: string;
   'Origin region': string;
   'Destination region': string;
@@ -84,6 +85,25 @@ export interface ShipperBooking {
   'BC:1st Vessel': string;
   'BC:1st Voyage #': string;
   'Vessel mismatch': string;
+  // New equipment-related fields from Book7.csv
+  'BR:Eqp type 1': string;
+  'BR:Eqp Qty 1': string;
+  'BR:Eqp type 2': string;
+  'BR:Eqp Qty 2': string;
+  'BC:Eqp qty 2.1': string;
+  'BR:Eqp type 3': string;
+  'BR:Eqp Qty 3': string;
+  'BR:Eqp type 1 - row seq': string;
+  'BR:Eqp type 2 - row seq': string;
+  'BR:Eqp type 3 - row seq': string;
+  'BC:Eqp type 1': string;
+  'BC:Eqp qty 2': string;
+  'BC:Eqp type 2': string;
+  'BC:Eqp type 3': string;
+  'BC:Eqp qty 3': string;
+  'BC:Eqp type 1 - row seq': string;
+  'BC:Eqp type 2 - row seq': string;
+  'BC:Eqp type 3 - row seq': string;
   selected?: boolean;
 }
 

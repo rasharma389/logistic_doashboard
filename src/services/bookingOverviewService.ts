@@ -177,10 +177,10 @@ export class BookingOverviewService {
 
     shipperBookingsData.forEach(booking => {
       // Count by stage
-      if (booking.stage) {
-        const stageKey = booking.stage.split(' - ')[0];
-        stats.byStage[stageKey] = (stats.byStage[stageKey] || 0) + 1;
-      }
+      // if (booking.stage) {
+      //   const stageKey = booking.stage.split(' - ')[0];
+      //   stats.byStage[stageKey] = (stats.byStage[stageKey] || 0) + 1;
+      // }
 
       // Count by division (if exists)
       if (booking.Region) {
