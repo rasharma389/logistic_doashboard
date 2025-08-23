@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Card, Button, Input, Modal, Form, Space, Tooltip, Popconfirm, Checkbox, App, Row, Col } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, EyeOutlined, SaveOutlined, SearchOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { PlusOutlined, EditOutlined, DeleteOutlined, EyeOutlined, SearchOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { createCustomView, updateCustomView, deleteCustomView, setActiveView } from '../../store/slices/bookingOverviewSlice';
@@ -17,8 +17,10 @@ const ViewsTab: React.FC = () => {
   const [columnSearchQuery, setColumnSearchQuery] = useState('');
   const [selectedColumns, setSelectedColumns] = useState<string[]>([]);
 
-  // Get all available columns from the data
-  const allColumns = shipperBookingsData.length > 0 ? Object.keys(shipperBookingsData[0]) : [];
+  // Get all available columns from the data - memoized to prevent recreation
+  const allColumns = useMemo(() => {
+    return shipperBookingsData.length > 0 ? Object.keys(shipperBookingsData[0]) : [];
+  }, []);
 
   // Filter columns based on search query
   const filteredColumns = useMemo(() => {
@@ -28,8 +30,8 @@ const ViewsTab: React.FC = () => {
     );
   }, [allColumns, columnSearchQuery]);
 
-  // Update form values when editing view changes
-  React.useEffect(() => {
+  // Update form values when editing view changes - removed form and allColumns from dependencies
+  useEffect(() => {
     if (editingView) {
       const columns = editingView.columns || [];
       setSelectedColumns(columns);
@@ -37,7 +39,8 @@ const ViewsTab: React.FC = () => {
         name: editingView.name,
         columns: columns
       });
-    } else {
+    } else if (isModalVisible) {
+      // Only reset when modal is visible to avoid unnecessary resets
       const defaultColumns = allColumns.slice(0, 10);
       setSelectedColumns(defaultColumns);
       form.setFieldsValue({
@@ -45,17 +48,17 @@ const ViewsTab: React.FC = () => {
         columns: defaultColumns
       });
     }
-  }, [editingView, form, allColumns]);
+  }, [editingView, isModalVisible]);
 
-  const handleCreateView = () => {
+  const handleCreateView = useCallback(() => {
     setEditingView(null);
     form.resetFields();
     setColumnSearchQuery('');
     setSelectedColumns(allColumns.slice(0, 10));
     setIsModalVisible(true);
-  };
+  }, [form, allColumns]);
 
-  const handleEditView = (view: any) => {
+  const handleEditView = useCallback((view: any) => {
     setEditingView(view);
     setSelectedColumns(view.columns || []);
     setColumnSearchQuery('');
@@ -64,19 +67,19 @@ const ViewsTab: React.FC = () => {
       columns: view.columns
     });
     setIsModalVisible(true);
-  };
+  }, [form]);
 
-  const handleDeleteView = (viewId: string) => {
+  const handleDeleteView = useCallback((viewId: string) => {
     dispatch(deleteCustomView(viewId));
     message.success('View deleted successfully');
-  };
+  }, [dispatch, message]);
 
-  const handleActivateView = (viewId: string) => {
+  const handleActivateView = useCallback((viewId: string) => {
     dispatch(setActiveView(viewId));
     message.success('View activated successfully');
-  };
+  }, [dispatch, message]);
 
-  const handleModalOk = async () => {
+  const handleModalOk = useCallback(async () => {
     try {
       const values = await form.validateFields();
       console.log('Form values submitted:', values); // Debug log
@@ -104,15 +107,34 @@ const ViewsTab: React.FC = () => {
     } catch (error) {
       console.error('Validation failed:', error);
     }
-  };
+  }, [form, editingView, dispatch, message]);
 
-  const handleModalCancel = () => {
+  const handleModalCancel = useCallback(() => {
     setIsModalVisible(false);
     form.resetFields();
     setEditingView(null);
     setColumnSearchQuery('');
     setSelectedColumns([]);
-  };
+  }, [form]);
+
+  const handleSelectAllColumns = useCallback(() => {
+    const newSelection = [...filteredColumns];
+    setSelectedColumns(newSelection);
+    form.setFieldsValue({ columns: newSelection });
+  }, [filteredColumns, form]);
+
+  const handleDeselectAllColumns = useCallback(() => {
+    setSelectedColumns([]);
+    form.setFieldsValue({ columns: [] });
+  }, [form]);
+
+  const handleColumnToggle = useCallback((column: string, checked: boolean) => {
+    const newSelection = checked
+      ? [...selectedColumns, column]
+      : selectedColumns.filter((col: string) => col !== column);
+    setSelectedColumns(newSelection);
+    form.setFieldsValue({ columns: newSelection });
+  }, [selectedColumns, form]);
 
   return (
     <div style={{ 
@@ -303,21 +325,14 @@ const ViewsTab: React.FC = () => {
                   <Space>
                     <Button 
                       size="small" 
-                      onClick={() => {
-                        const newSelection = [...filteredColumns];
-                        setSelectedColumns(newSelection);
-                        form.setFieldsValue({ columns: newSelection });
-                      }}
+                      onClick={handleSelectAllColumns}
                       icon={<CheckOutlined />}
                     >
                       Select All
                     </Button>
                     <Button 
                       size="small" 
-                      onClick={() => {
-                        setSelectedColumns([]);
-                        form.setFieldsValue({ columns: [] });
-                      }}
+                      onClick={handleDeselectAllColumns}
                       icon={<CloseOutlined />}
                     >
                       Deselect All
@@ -347,23 +362,11 @@ const ViewsTab: React.FC = () => {
                         cursor: 'pointer',
                         transition: 'all 0.2s'
                       }}
-                      onClick={() => {
-                        const newSelection = selectedColumns.includes(column)
-                          ? selectedColumns.filter((col: string) => col !== column)
-                          : [...selectedColumns, column];
-                        setSelectedColumns(newSelection);
-                        form.setFieldsValue({ columns: newSelection });
-                      }}
+                      onClick={() => handleColumnToggle(column, !selectedColumns.includes(column))}
                       >
                         <Checkbox
                           checked={selectedColumns.includes(column)}
-                          onChange={(e) => {
-                            const newSelection = e.target.checked
-                              ? [...selectedColumns, column]
-                              : selectedColumns.filter((col: string) => col !== column);
-                            setSelectedColumns(newSelection);
-                            form.setFieldsValue({ columns: newSelection });
-                          }}
+                          onChange={(e) => handleColumnToggle(column, e.target.checked)}
                           style={{ marginRight: '8px' }}
                         />
                         <span style={{ 
