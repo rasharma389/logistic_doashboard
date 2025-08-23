@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Table, Tag, Space, Typography, Tabs, Timeline } from 'antd';
+import { Table, Tag, Space, Typography, Tabs, Timeline, Row, Col, Card } from 'antd';
 import { EnvironmentOutlined, ContainerOutlined, ClockCircleOutlined, TableOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -482,33 +482,91 @@ const TransportPlan: React.FC = () => {
       ),
       children: (
         <div style={{ marginTop: '16px' }}>
-          <Table
-            columns={columns}
-            dataSource={transportData.ts}
-            rowKey="term"
-            pagination={false}
-            size="small"
-            bordered
-            style={{ 
-              backgroundColor: 'white',
-              borderRadius: '6px'
-            }}
-            rowClassName={(record) => {
-              if (record.term === 'POL' || record.term === 'POD') {
-                return 'pol-pod-row';
-              }
-              return '';
-            }}
-          />
+          <Row gutter={24}>
+            {/* Table Column */}
+            <Col flex="1">
+              <Card 
+                style={{ 
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
+                }}
+                bodyStyle={{ padding: '16px' }}
+              >
+                <Table
+                  columns={columns}
+                  dataSource={transportData.ts}
+                  rowKey="term"
+                  pagination={false}
+                  size="small"
+                  bordered={false}
+                  style={{ 
+                    backgroundColor: 'transparent'
+                  }}
+                  rowClassName={(record) => {
+                    if (record.term === 'POL' || record.term === 'POD') {
+                      return 'pol-pod-row';
+                    }
+                    return '';
+                  }}
+                />
+              </Card>
+            </Col>
+
+            {/* Cutoffs Card */}
+            <Col style={{ width: '240px' }}>
+              <Card 
+                title="Cut-off Dates"
+                style={{ 
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
+                }}
+                headStyle={{
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#333333',
+                  backgroundColor: '#fafafa',
+                  borderBottom: '1px solid #f0f0f0'
+                }}
+                bodyStyle={{ padding: '16px' }}
+              >
+                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                  <Row justify="space-between" align="middle" style={{ marginBottom: '10px' }}>
+                    <Col>
+                      <Text style={{ fontSize: '14px', fontWeight: 500, color: '#666666' }}>SI:</Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ fontSize: '14px', fontWeight: 600, color: '#333333' }}>{transportData.cutoff.si}</Text>
+                    </Col>
+                  </Row>
+                  <Row justify="space-between" align="middle" style={{ marginBottom: '10px' }}>
+                    <Col>
+                      <Text style={{ fontSize: '14px', fontWeight: 500, color: '#666666' }}>VGM:</Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ fontSize: '14px', fontWeight: 600, color: '#333333' }}>{transportData.cutoff.vgm}</Text>
+                    </Col>
+                  </Row>
+                  <Row justify="space-between" align="middle" style={{ marginBottom: '10px' }}>
+                    <Col>
+                      <Text style={{ fontSize: '14px', fontWeight: 500, color: '#666666' }}>CY:</Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ fontSize: '14px', fontWeight: 600, color: '#333333' }}>{transportData.cutoff.cy}</Text>
+                    </Col>
+                  </Row>
+                </Space>
+              </Card>
+            </Col>
+          </Row>
         </div>
       )
     }
   ];
 
   return (
-    <div style={{ padding: '12px' }}>
+    <div>
       {/* Cutoff Information */}
-      <div style={{ 
+      {/* <div style={{ 
         backgroundColor: '#f8fafc', 
         padding: '16px', 
         borderRadius: '6px', 
@@ -532,7 +590,7 @@ const TransportPlan: React.FC = () => {
             <Text style={{ fontSize: '12px', color: '#6b7280' }}>{transportData.cutoff.cy}</Text>
           </div>
         </Space>
-      </div>
+      </div> */}
 
       {/* Transport Plan Views */}
       <Tabs

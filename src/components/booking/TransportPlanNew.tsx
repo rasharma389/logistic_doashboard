@@ -63,12 +63,13 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
   const containerStyle: React.CSSProperties = {
     minHeight: '100vh',
     backgroundColor: '#ffffff',
-    padding: '10px'
+    padding: '0'
   };
 
   const mainContainerStyle: React.CSSProperties = {
-    maxWidth: '1080px',
-    margin: '0 auto'
+    maxWidth: '100%',
+    margin: '0',
+    padding: '20px'
   };
 
   const portCardStyle: React.CSSProperties = {
@@ -79,39 +80,34 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
   };
 
   const vesselStyle: React.CSSProperties = {
-    marginLeft: '16px',
+    marginLeft: '32px',
     marginBottom: '10px',
     display: 'flex',
     alignItems: 'center'
   };
 
   const vesselTextStyle: React.CSSProperties = {
-    fontSize: '16px',
+    fontSize: '14px',
     fontWeight: 600,
     color: '#13c2c2'
   };
 
   const portTitleStyle: React.CSSProperties = {
-    fontSize: '16px',
+    fontSize: '14px',
     fontWeight: 600,
     margin: 0
   };
 
   const dateStyle: React.CSSProperties = {
-    fontSize: '16px',
+    fontSize: '14px',
     fontWeight: 600,
     margin: 0
   };
 
   const etaEtdStyle: React.CSSProperties = {
-    fontSize: '16px',
-    fontWeight: 600,
+    fontSize: '13px',
+    fontWeight: 500,
     color: '#666666'
-  };
-
-  const sidebarStyle: React.CSSProperties = {
-    width: '320px',
-    paddingTop: '16px'
   };
 
   const milestoneRowStyle: React.CSSProperties = {
@@ -119,13 +115,13 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
   };
 
   const milestoneKeyStyle: React.CSSProperties = {
-    fontSize: '24px',
+    fontSize: '14px',
     fontWeight: 500,
     color: '#666666'
   };
 
   const milestoneValueStyle: React.CSSProperties = {
-    fontSize: '24px',
+    fontSize: '14px',
     fontWeight: 600,
     color: '#333333'
   };
@@ -139,16 +135,16 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
   return (
     <div style={containerStyle}>
       <div style={mainContainerStyle}>
-        <Row gutter={64}>
+        <Row gutter={24}>
           {/* Main Route Visualization */}
-          <Col flex="1">
+          <Col>
             <Space direction="vertical" size="small" style={{ width: '100%' }}>
               {groupedEntries.map((group, groupIndex) => (
                 <React.Fragment key={`${group.term}-${group.port}-${groupIndex}`}>
                   {/* Port Section */}
                   <Space align="center" size="small" style={{ width: '100%' }}>
                     <div style={iconContainerStyle}>
-                      <EnvironmentOutlined style={{ fontSize: '32px', color: '#333333' }} />
+                      <EnvironmentOutlined style={{ fontSize: '24px', color: '#333333' }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
@@ -156,11 +152,11 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
                           <Card 
                             key={`${entry.term}-${entry.departureArrival}-${entryIndex}`} 
                             style={portCardStyle}
-                            bodyStyle={{ padding: '12px' }}
+                            bodyStyle={{ padding: '10px' }}
                           >
                             <Row justify="space-between" align="middle">
                               <Col>
-                                <Title level={2} style={portTitleStyle}>
+                                <Title level={5} style={portTitleStyle}>
                                   {entry.port}
                                 </Title>
                               </Col>
@@ -170,7 +166,7 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
                                 </Text>
                               </Col>
                               <Col>
-                                <Title level={2} style={dateStyle}>
+                                <Title level={5} style={dateStyle}>
                                   {entry.date}
                                 </Title>
                               </Col>
@@ -185,7 +181,7 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
                   {groupIndex < groupedEntries.length - 1 && (
                     <div style={vesselStyle}>
                       <Space align="center" size="large" style={{ width: '100%' }}>
-                        <FaShip style={{ fontSize: '28px', color: '#666666' }} />
+                        <FaShip style={{ fontSize: '20px', color: '#666666' }} />
                         <div>
                           <Text style={vesselTextStyle}>
                             {group.entries[group.entries.length - 1].vesselVoyage}
@@ -213,34 +209,50 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
             <Divider type="vertical" style={{ height: '100%', borderColor: '#d9d9d9' }} />
           </Col>
 
-          {/* Milestones Sidebar */}
-          <Col style={sidebarStyle}>
-            <Space direction="vertical" size="large" style={{ width: '100%' }}>
-              <Row justify="space-between" align="middle" style={milestoneRowStyle}>
-                <Col>
-                  <Text style={milestoneKeyStyle}>SI:</Text>
-                </Col>
-                <Col>
-                  <Text style={milestoneValueStyle}>{data.cutoff.si}</Text>
-                </Col>
-              </Row>
-              <Row justify="space-between" align="middle" style={milestoneRowStyle}>
-                <Col>
-                  <Text style={milestoneKeyStyle}>VGM:</Text>
-                </Col>
-                <Col>
-                  <Text style={milestoneValueStyle}>{data.cutoff.vgm}</Text>
-                </Col>
-              </Row>
-              <Row justify="space-between" align="middle" style={milestoneRowStyle}>
-                <Col>
-                  <Text style={milestoneKeyStyle}>CY:</Text>
-                </Col>
-                <Col>
-                  <Text style={milestoneValueStyle}>{data.cutoff.cy}</Text>
-                </Col>
-              </Row>
-            </Space>
+          {/* Cutoffs Card Sidebar */}
+          <Col style={{ width: '240px' }}>
+            <Card 
+              title="Cut-off Dates"
+              style={{ 
+                borderRadius: '8px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
+              }}
+              headStyle={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#333333',
+                backgroundColor: '#fafafa',
+                borderBottom: '1px solid #f0f0f0'
+              }}
+              bodyStyle={{ padding: '16px' }}
+            >
+              <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                <Row justify="space-between" align="middle" style={milestoneRowStyle}>
+                  <Col>
+                    <Text style={milestoneKeyStyle}>SI:</Text>
+                  </Col>
+                  <Col>
+                    <Text style={milestoneValueStyle}>{data.cutoff.si}</Text>
+                  </Col>
+                </Row>
+                <Row justify="space-between" align="middle" style={milestoneRowStyle}>
+                  <Col>
+                    <Text style={milestoneKeyStyle}>VGM:</Text>
+                  </Col>
+                  <Col>
+                    <Text style={milestoneValueStyle}>{data.cutoff.vgm}</Text>
+                  </Col>
+                </Row>
+                <Row justify="space-between" align="middle" style={milestoneRowStyle}>
+                  <Col>
+                    <Text style={milestoneKeyStyle}>CY:</Text>
+                  </Col>
+                  <Col>
+                    <Text style={milestoneValueStyle}>{data.cutoff.cy}</Text>
+                  </Col>
+                </Row>
+              </Space>
+            </Card>
           </Col>
         </Row>
       </div>
