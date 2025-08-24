@@ -37,6 +37,11 @@ const initialState: BookingOverviewState = {
     originCountryFilter: [],
     districtFilter: [],
     reqEtdWeekFilter: [],
+    carrierFilter: [],
+    bookingStatusFilter: [],
+    exceptionStatusFilter: [],
+    moveTypeFilter: [],
+    bkgTypeFilter: [],
     tmsSearchQuery: ''
   },
   // Page size for BookingOverviewNew
@@ -111,6 +116,11 @@ const bookingOverviewSlice = createSlice({
       originCountryFilter: string[];
       districtFilter: string[];
       reqEtdWeekFilter: string[];
+      carrierFilter: string[];
+      bookingStatusFilter: string[];
+      exceptionStatusFilter: string[];
+      moveTypeFilter: string[];
+      bkgTypeFilter: string[];
       tmsSearchQuery: string;
     }>>) => {
       state.newFilters = { ...state.newFilters, ...action.payload };
@@ -123,6 +133,11 @@ const bookingOverviewSlice = createSlice({
         originCountryFilter: [],
         districtFilter: [],
         reqEtdWeekFilter: [],
+        carrierFilter: [],
+        bookingStatusFilter: [],
+        exceptionStatusFilter: [],
+        moveTypeFilter: [],
+        bkgTypeFilter: [],
         tmsSearchQuery: ''
       };
     },

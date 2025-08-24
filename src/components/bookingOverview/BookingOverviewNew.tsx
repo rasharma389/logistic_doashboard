@@ -29,6 +29,8 @@ const BookingOverviewNew: React.FC = () => {
         originCountryFilter,
         districtFilter,
         reqEtdWeekFilter,
+        carrierFilter,
+        bookingStatusFilter,
         tmsSearchQuery
     } = newFilters;
 
@@ -39,6 +41,8 @@ const BookingOverviewNew: React.FC = () => {
     const setOriginCountryFilter = (value: string[]) => dispatch(setNewFilters({ originCountryFilter: value }));
     const setDistrictFilter = (value: string[]) => dispatch(setNewFilters({ districtFilter: value }));
     const setReqEtdWeekFilter = (value: string[]) => dispatch(setNewFilters({ reqEtdWeekFilter: value }));
+    const setCarrierFilter = (value: string[]) => dispatch(setNewFilters({ carrierFilter: value }));
+    const setBookingStatusFilter = (value: string[]) => dispatch(setNewFilters({ bookingStatusFilter: value }));
     const setTmsSearchQuery = (value: string) => dispatch(setNewFilters({ tmsSearchQuery: value }));
 
     // Toggle for showing only selected rows
@@ -52,6 +56,8 @@ const BookingOverviewNew: React.FC = () => {
         const originCountries = [...new Set(shipperBookingsData.map(item => item['Origin country']).filter(Boolean))];
         const districts = [...new Set(shipperBookingsData.map(item => item['district']).filter(Boolean))];
         const reqEtdWeeks = [...new Set(shipperBookingsData.map(item => item['req ETD wk']).filter(Boolean))];
+        const carriers = [...new Set(shipperBookingsData.map(item => item['Carrier (Std)']).filter(Boolean))];
+        const bookingStatuses = [...new Set(shipperBookingsData.map(item => item['Booking Status']).filter(Boolean))];
 
         return {
             trades: trades.sort(),
@@ -59,9 +65,11 @@ const BookingOverviewNew: React.FC = () => {
             destinationRegions: destinationRegions.sort(),
             originCountries: originCountries.sort(),
             districts: districts.sort(),
-            reqEtdWeeks: reqEtdWeeks.sort()
+            reqEtdWeeks: reqEtdWeeks.sort(),
+            carriers: carriers.sort(),
+            bookingStatuses: bookingStatuses.sort()
         };
-    }, []);
+    }, [shipperBookingsData]);
 
     // Filter data based on all filters
     const filteredData = useMemo(() => {
@@ -72,14 +80,17 @@ const BookingOverviewNew: React.FC = () => {
             const matchesOriginCountry = originCountryFilter.length === 0 || originCountryFilter.includes(item['Origin country']);
             const matchesDistrict = districtFilter.length === 0 || districtFilter.includes(item['district']);
             const matchesReqEtdWeek = reqEtdWeekFilter.length === 0 || reqEtdWeekFilter.includes(item['req ETD wk']);
+            const matchesCarrier = carrierFilter.length === 0 || carrierFilter.includes(item['Carrier (Std)']);
+            const matchesBookingStatus = bookingStatusFilter.length === 0 || bookingStatusFilter.includes(item['Booking Status']);
             const matchesTmsSearch = !tmsSearchQuery ||
                 item['TMS #']?.toLowerCase().includes(tmsSearchQuery.toLowerCase()) ||
                 item.id?.toLowerCase().includes(tmsSearchQuery.toLowerCase());
 
             return matchesTrade && matchesOriginRegion && matchesDestinationRegion &&
-                matchesOriginCountry && matchesDistrict && matchesReqEtdWeek && matchesTmsSearch;
+                matchesOriginCountry && matchesDistrict && matchesReqEtdWeek && 
+                matchesCarrier && matchesBookingStatus && matchesTmsSearch;
         });
-    }, [tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, tmsSearchQuery]);
+    }, [tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, carrierFilter, bookingStatusFilter, tmsSearchQuery]);
 
     // Clear all filters
     const clearAllFilters = () => {
@@ -197,7 +208,8 @@ const BookingOverviewNew: React.FC = () => {
                             />
                         </Tooltip>
                         {(tradeFilter.length > 0 || originRegionFilter.length > 0 || destinationRegionFilter.length > 0 || 
-                         originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || tmsSearchQuery) && (
+                         originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || 
+                         carrierFilter.length > 0 || bookingStatusFilter.length > 0 || tmsSearchQuery) && (
                             <Tooltip title="Clear All Filters">
                                 <FilterOutlined 
                                     style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
@@ -221,7 +233,7 @@ const BookingOverviewNew: React.FC = () => {
                                 <div style={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                                     {/* Filter Dropdowns */}
                                     <Row gutter={[16, 16]} style={{ marginBottom: '16px', padding: '16px', backgroundColor: '#fafafa', borderRadius: '6px' }}>
-                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                    <Col xs={24} sm={12} md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="Trade"
@@ -239,7 +251,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="Origin Region"
@@ -257,7 +269,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="Destination Region"
@@ -275,7 +287,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="Origin Country"
@@ -293,7 +305,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="District"
@@ -311,7 +323,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="Req ETD Week"
@@ -328,6 +340,44 @@ const BookingOverviewNew: React.FC = () => {
                                             ))}
                                         </Select>
                                     </Col>
+
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Carrier"
+                                            value={carrierFilter}
+                                            onChange={setCarrierFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.carriers.map(carrier => (
+                                                <Option key={carrier} value={carrier}>{carrier}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12}  md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Booking Status"
+                                            value={bookingStatusFilter}
+                                            onChange={setBookingStatusFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.bookingStatuses.map(status => (
+                                                <Option key={status} value={status}>{status}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+
 
                                     <Col xs={24} sm={12} md={6} lg={6}>
                                         <Search

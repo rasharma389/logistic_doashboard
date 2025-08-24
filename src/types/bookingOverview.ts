@@ -144,6 +144,11 @@ export interface BookingOverviewState {
     originCountryFilter: string[];
     districtFilter: string[];
     reqEtdWeekFilter: string[];
+    carrierFilter: string[];
+    bookingStatusFilter: string[];
+    exceptionStatusFilter: string[];
+    moveTypeFilter: string[];
+    bkgTypeFilter: string[];
     tmsSearchQuery: string;
   };
   // Page size for BookingOverviewNew
