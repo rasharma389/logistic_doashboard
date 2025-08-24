@@ -179,11 +179,11 @@ const BookingOverviewNew: React.FC = () => {
 
          return (
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
-            {/* Filters Section */}
-                         <Card
-                 title="Carrier Bookings"
-                 style={{ marginBottom: '16px' }}
-                 extra={
+            {/* Header Section */}
+            <Card
+                title="Carrier Bookings"
+                style={{ marginBottom: '16px' }}
+                extra={
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <Tooltip title="Go to Carrier Bookings">
                             <MenuOutlined 
@@ -207,128 +207,7 @@ const BookingOverviewNew: React.FC = () => {
                         )}
                     </div>
                  }
-             >
-                <Row gutter={[16, 16]}>
-                    <Col xs={24} sm={12} md={4} lg={3}>
-                        <Select
-                            mode="multiple"
-                            placeholder="Trade"
-                            value={tradeFilter}
-                            onChange={setTradeFilter}
-                            allowClear
-                            style={{ width: '100%' }}
-                            size="small"
-                            maxTagCount={2}
-                            maxTagTextLength={10}
-                        >
-                            {filterOptions.trades.map(trade => (
-                                <Option key={trade} value={trade}>{trade}</Option>
-                            ))}
-                        </Select>
-                    </Col>
-
-                    <Col xs={24} sm={12} md={4} lg={3}>
-                        <Select
-                            mode="multiple"
-                            placeholder="Origin Region"
-                            value={originRegionFilter}
-                            onChange={setOriginRegionFilter}
-                            allowClear
-                            style={{ width: '100%' }}
-                            size="small"
-                            maxTagCount={2}
-                            maxTagTextLength={10}
-                        >
-                            {filterOptions.originRegions.map(region => (
-                                <Option key={region} value={region}>{region}</Option>
-                            ))}
-                        </Select>
-                    </Col>
-
-                    <Col xs={24} sm={12} md={4} lg={3}>
-                        <Select
-                            mode="multiple"
-                            placeholder="Destination Region"
-                            value={destinationRegionFilter}
-                            onChange={setDestinationRegionFilter}
-                            allowClear
-                            style={{ width: '100%' }}
-                            size="small"
-                            maxTagCount={2}
-                            maxTagTextLength={10}
-                        >
-                            {filterOptions.destinationRegions.map(region => (
-                                <Option key={region} value={region}>{region}</Option>
-                            ))}
-                        </Select>
-                    </Col>
-
-                    <Col xs={24} sm={12} md={4} lg={3}>
-                        <Select
-                            mode="multiple"
-                            placeholder="Origin Country"
-                            value={originCountryFilter}
-                            onChange={setOriginCountryFilter}
-                            allowClear
-                            style={{ width: '100%' }}
-                            size="small"
-                            maxTagCount={2}
-                            maxTagTextLength={10}
-                        >
-                            {filterOptions.originCountries.map(country => (
-                                <Option key={country} value={country}>{country}</Option>
-                            ))}
-                        </Select>
-                    </Col>
-
-                    <Col xs={24} sm={12} md={4} lg={3}>
-                        <Select
-                            mode="multiple"
-                            placeholder="District"
-                            value={districtFilter}
-                            onChange={setDistrictFilter}
-                            allowClear
-                            style={{ width: '100%' }}
-                            size="small"
-                            maxTagCount={2}
-                            maxTagTextLength={10}
-                        >
-                            {filterOptions.districts.map(district => (
-                                <Option key={district} value={district}>{district}</Option>
-                            ))}
-                        </Select>
-                    </Col>
-
-                    <Col xs={24} sm={12} md={4} lg={3}>
-                        <Select
-                            mode="multiple"
-                            placeholder="Req ETD Week"
-                            value={reqEtdWeekFilter}
-                            onChange={setReqEtdWeekFilter}
-                            allowClear
-                            style={{ width: '100%' }}
-                            size="small"
-                            maxTagCount={2}
-                            maxTagTextLength={10}
-                        >
-                            {filterOptions.reqEtdWeeks.map(week => (
-                                <Option key={week} value={week}>{week}</Option>
-                            ))}
-                        </Select>
-                    </Col>
-                    <Col span={6}>
-                        <Search
-                            placeholder="Search by TMS ID or Booking ID"
-                            value={tmsSearchQuery}
-                            onChange={(e) => setTmsSearchQuery(e.target.value)}
-                            allowClear
-                            style={{ width: '100%', maxWidth: '400px' }}
-                            size="small"
-                            prefix={<SearchOutlined style={{ color: '#9ca3af' }} />}
-                        />
-                    </Col>
-                </Row>
-            </Card>
+             />
 
             {/* Views and Data Table Tabs */}
             <Tabs
@@ -340,6 +219,129 @@ const BookingOverviewNew: React.FC = () => {
                         label: 'Overview',
                         children: (
                             <Card style={{ height: 'calc(100vh - 280px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                                {/* Filter Dropdowns */}
+                                <Row gutter={[16, 16]} style={{ marginBottom: '16px', padding: '16px', backgroundColor: '#fafafa', borderRadius: '6px' }}>
+                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Trade"
+                                            value={tradeFilter}
+                                            onChange={setTradeFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.trades.map(trade => (
+                                                <Option key={trade} value={trade}>{trade}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Origin Region"
+                                            value={originRegionFilter}
+                                            onChange={setOriginRegionFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.originRegions.map(region => (
+                                                <Option key={region} value={region}>{region}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Destination Region"
+                                            value={destinationRegionFilter}
+                                            onChange={setDestinationRegionFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.destinationRegions.map(region => (
+                                                <Option key={region} value={region}>{region}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Origin Country"
+                                            value={originCountryFilter}
+                                            onChange={setOriginCountryFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.originCountries.map(country => (
+                                                <Option key={country} value={country}>{country}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="District"
+                                            value={districtFilter}
+                                            onChange={setDistrictFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.districts.map(district => (
+                                                <Option key={district} value={district}>{district}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12} md={4} lg={3}>
+                                        <Select
+                                            mode="multiple"
+                                            placeholder="Req ETD Week"
+                                            value={reqEtdWeekFilter}
+                                            onChange={setReqEtdWeekFilter}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            maxTagCount={2}
+                                            maxTagTextLength={10}
+                                        >
+                                            {filterOptions.reqEtdWeeks.map(week => (
+                                                <Option key={week} value={week}>{week}</Option>
+                                            ))}
+                                        </Select>
+                                    </Col>
+
+                                    <Col xs={24} sm={12} md={6} lg={6}>
+                                        <Search
+                                            placeholder="Search by TMS ID or Booking ID"
+                                            value={tmsSearchQuery}
+                                            onChange={(e) => setTmsSearchQuery(e.target.value)}
+                                            allowClear
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            prefix={<SearchOutlined style={{ color: '#9ca3af' }} />}
+                                        />
+                                    </Col>
+                                </Row>
+
                                 <div style={{ 
                                     display: 'flex', 
                                     justifyContent: 'space-between', 
