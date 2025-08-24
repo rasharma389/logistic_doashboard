@@ -210,12 +210,9 @@ const BookingOverviewNew: React.FC = () => {
              >
                 <Row gutter={[16, 16]}>
                     <Col xs={24} sm={12} md={4} lg={3}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>Trade</label>
-                        </div>
                         <Select
                             mode="multiple"
-                            placeholder="Select Trade"
+                            placeholder="Trade"
                             value={tradeFilter}
                             onChange={setTradeFilter}
                             allowClear
@@ -231,12 +228,9 @@ const BookingOverviewNew: React.FC = () => {
                     </Col>
 
                     <Col xs={24} sm={12} md={4} lg={3}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>Origin Region</label>
-                        </div>
                         <Select
                             mode="multiple"
-                            placeholder="Select Origin Region"
+                            placeholder="Origin Region"
                             value={originRegionFilter}
                             onChange={setOriginRegionFilter}
                             allowClear
@@ -252,12 +246,9 @@ const BookingOverviewNew: React.FC = () => {
                     </Col>
 
                     <Col xs={24} sm={12} md={4} lg={3}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>Destination Region</label>
-                        </div>
                         <Select
                             mode="multiple"
-                            placeholder="Select Destination Region"
+                            placeholder="Destination Region"
                             value={destinationRegionFilter}
                             onChange={setDestinationRegionFilter}
                             allowClear
@@ -273,12 +264,9 @@ const BookingOverviewNew: React.FC = () => {
                     </Col>
 
                     <Col xs={24} sm={12} md={4} lg={3}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>Origin Country</label>
-                        </div>
                         <Select
                             mode="multiple"
-                            placeholder="Select Origin Country"
+                            placeholder="Origin Country"
                             value={originCountryFilter}
                             onChange={setOriginCountryFilter}
                             allowClear
@@ -294,12 +282,9 @@ const BookingOverviewNew: React.FC = () => {
                     </Col>
 
                     <Col xs={24} sm={12} md={4} lg={3}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>District</label>
-                        </div>
                         <Select
                             mode="multiple"
-                            placeholder="Select District"
+                            placeholder="District"
                             value={districtFilter}
                             onChange={setDistrictFilter}
                             allowClear
@@ -315,12 +300,9 @@ const BookingOverviewNew: React.FC = () => {
                     </Col>
 
                     <Col xs={24} sm={12} md={4} lg={3}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>Req ETD Week</label>
-                        </div>
                         <Select
                             mode="multiple"
-                            placeholder="Select ETD Week"
+                            placeholder="Req ETD Week"
                             value={reqEtdWeekFilter}
                             onChange={setReqEtdWeekFilter}
                             allowClear
@@ -335,11 +317,8 @@ const BookingOverviewNew: React.FC = () => {
                         </Select>
                     </Col>
                     <Col span={6}>
-                        <div style={{ marginBottom: '8px' }}>
-                            <label style={{ fontSize: '12px', color: '#6b7280', fontWeight: '500' }}>Search by TMS ID</label>
-                        </div>
                         <Search
-                            placeholder="Enter TMS ID or Booking ID to search..."
+                            placeholder="Search by TMS ID or Booking ID"
                             value={tmsSearchQuery}
                             onChange={(e) => setTmsSearchQuery(e.target.value)}
                             allowClear
