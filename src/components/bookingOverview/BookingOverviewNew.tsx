@@ -179,10 +179,10 @@ const BookingOverviewNew: React.FC = () => {
 
          return (
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
-            {/* Header Section */}
+            {/* Main Card with Tabs */}
             <Card
                 title="Carrier Bookings"
-                style={{ marginBottom: '16px' }}
+                style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
                 extra={
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <Tooltip title="Go to Carrier Bookings">
@@ -207,20 +207,20 @@ const BookingOverviewNew: React.FC = () => {
                         )}
                     </div>
                  }
-             />
+             >
 
-            {/* Views and Data Table Tabs */}
-            <Tabs
-                defaultActiveKey="overview"
-                style={{ marginBottom: '16px' }}
-                items={[
-                    {
-                        key: 'overview',
-                        label: 'Overview',
-                        children: (
-                            <Card style={{ height: 'calc(100vh - 280px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                                {/* Filter Dropdowns */}
-                                <Row gutter={[16, 16]} style={{ marginBottom: '16px', padding: '16px', backgroundColor: '#fafafa', borderRadius: '6px' }}>
+                {/* Views and Data Table Tabs */}
+                <Tabs
+                    defaultActiveKey="overview"
+                    style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+                    items={[
+                        {
+                            key: 'overview',
+                            label: 'Overview',
+                            children: (
+                                <div style={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                                    {/* Filter Dropdowns */}
+                                    <Row gutter={[16, 16]} style={{ marginBottom: '16px', padding: '16px', backgroundColor: '#fafafa', borderRadius: '6px' }}>
                                     <Col xs={24} sm={12} md={4} lg={3}>
                                         <Select
                                             mode="multiple"
@@ -424,7 +424,7 @@ const BookingOverviewNew: React.FC = () => {
                                         }}
                                     />
                                 </div>
-                            </Card>
+                            </div>
                         )
                     },
                     {
@@ -437,7 +437,8 @@ const BookingOverviewNew: React.FC = () => {
                         )
                     }
                 ]}
-            />
+                />
+            </Card>
 
             <style>{`
         .exception-row {
