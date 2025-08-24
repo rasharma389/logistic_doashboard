@@ -289,113 +289,155 @@ const ExceptionDetailsNew: React.FC = () => {
   ];
 
   // Check if we should show the exception details or status message
-  if (!equipmentData || equipmentData.length === 0) {
+  if (!selectedBookingId) {
     return (
       <div style={{ padding: '16px', textAlign: 'center' }}>
         <Text style={{ color: '#8c8c8c', fontSize: '14px' }}>
-          {!selectedBookingId 
-            ? 'No booking selected' 
-            : !bookingData 
-              ? 'Booking not found' 
-              : 'No equipment data available for this booking'
-          }
+          No booking selected
         </Text>
+      </div>
+    );
+  }
+
+  if (!bookingData) {
+    return (
+      <div style={{ padding: '16px', textAlign: 'center' }}>
+        <Text style={{ color: '#8c8c8c', fontSize: '14px' }}>
+          Booking not found
+        </Text>
+      </div>
+    );
+  }
+
+  // Check exception flags
+  const hasException = bookingData['Exception?'] === 'Y';
+  const hasEquipmentException = hasException && bookingData['Excpt. Eqp?'] === 'Y';
+  const hasETDException = hasException && bookingData['Excpt. ETD?'] === 'Y';
+
+  if (!hasException) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+        <div style={{ fontSize: '24px', color: '#52c41a', marginBottom: '16px' }}>
+          ✅ Everything is fine here :)
+        </div>
+        <div style={{ fontSize: '16px', color: '#666' }}>
+          No exceptions found for this booking.
+        </div>
+      </div>
+    );
+  }
+
+  // If no specific exceptions, show the same message
+  if (!hasEquipmentException && !hasETDException) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+        <div style={{ fontSize: '24px', color: '#52c41a', marginBottom: '16px' }}>
+          ✅ Everything is fine here :)
+        </div>
+        <div style={{ fontSize: '16px', color: '#666' }}>
+          No specific exceptions found for this booking.
+        </div>
       </div>
     );
   }
 
   return (
     <div style={{ padding: '16px' }}>
-      <Card
-        title="Equipment Comparison"
-        style={{ 
-          borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
-        }}
-        headStyle={{
-          fontSize: '16px',
-          fontWeight: '600',
-          color: '#333333',
-          backgroundColor: '#fafafa',
-          borderBottom: '1px solid #f0f0f0'
-        }}
-        bodyStyle={{ padding: '16px' }}
-      >
-        <Table
-          columns={columns}
-          dataSource={equipmentData}
-          rowKey="key"
-          pagination={false}
-          size="small"
-          bordered
+      {/* Equipment Table - Only show if there's an equipment exception */}
+      {hasEquipmentException && (
+        <Card
+          title="Equipment Comparison"
           style={{ 
-            backgroundColor: 'white',
-            borderRadius: '6px'
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
           }}
-          rowClassName={(record) => {
-            if (record.isTotal) return 'total-row';
-            if (record.isFeuEquivalent) return 'feu-row';
-            return '';
+          headStyle={{
+            fontSize: '16px',
+            fontWeight: '600',
+            color: '#333333',
+            backgroundColor: '#fafafa',
+            borderBottom: '1px solid #f0f0f0'
           }}
-        />
-        
-        <style>{`
-          .total-row {
-            background-color: #f0f9ff !important;
-            font-weight: 600;
-          }
-          .total-row:hover {
-            background-color: #e0f2fe !important;
-          }
-          .feu-row {
-            background-color: #f6ffed !important;
-            font-weight: 600;
-          }
-          .feu-row:hover {
-            background-color: #d9f7be !important;
-          }
-          .ant-table-thead > tr > th {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 8px 12px;
-            background-color: #fafafa;
-          }
-          .ant-table-tbody > tr > td {
-            padding: 8px 12px;
-          }
-        `}</style>
-      </Card>
+          bodyStyle={{ padding: '16px' }}
+        >
+          <Table
+            columns={columns}
+            dataSource={equipmentData}
+            rowKey="key"
+            pagination={false}
+            size="small"
+            bordered
+            style={{ 
+              backgroundColor: 'white',
+              borderRadius: '6px'
+            }}
+            rowClassName={(record) => {
+              if (record.isTotal) return 'total-row';
+              if (record.isFeuEquivalent) return 'feu-row';
+              return '';
+            }}
+          />
+          
+          <style>{`
+            .total-row {
+              background-color: #f0f9ff !important;
+              font-weight: 600;
+            }
+            .total-row:hover {
+              background-color: #e0f2fe !important;
+            }
+            .feu-row {
+              background-color: #f6ffed !important;
+              font-weight: 600;
+            }
+            .feu-row:hover {
+              background-color: #d9f7be !important;
+            }
+            .ant-table-thead > tr > th {
+              font-size: 12px;
+              font-weight: 600;
+              padding: 8px 12px;
+              background-color: #fafafa;
+            }
+            .ant-table-tbody > tr > td {
+              padding: 8px 12px;
+            }
+          `}</style>
+        </Card>
+      )}
 
-      {/* ETD Mismatch Table */}
-      <Card
-        title="ETD, Vessel / Voyage Mismatch Details"
-        style={{ 
-          borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-          marginTop: '16px'
-        }}
-        headStyle={{
-          fontSize: '16px',
-          fontWeight: '600',
-          color: '#333333',
-          backgroundColor: '#fafafa',
-          borderBottom: '1px solid #f0f0f0'
-        }}
-        bodyStyle={{ padding: '16px' }}
-      >
-        <Table
-          columns={etdMismatchColumns}
-          dataSource={etdMismatchData}
-          rowKey="key"
-          pagination={false}
-          size="small"
-          bordered
+      {/* ETD Mismatch Table - Only show if there's an ETD exception */}
+      {hasETDException && (
+        <Card
+          title="ETD, Vessel / Voyage Mismatch Details"
           style={{ 
-            backgroundColor: 'white',
-            borderRadius: '6px'
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+            marginTop: hasEquipmentException ? '16px' : '0px'
           }}
-        />
-      </Card>
+          headStyle={{
+            fontSize: '16px',
+            fontWeight: '600',
+            color: '#333333',
+            backgroundColor: '#fafafa',
+            borderBottom: '1px solid #f0f0f0'
+          }}
+          bodyStyle={{ padding: '16px' }}
+        >
+          <Table
+            columns={etdMismatchColumns}
+            dataSource={etdMismatchData}
+            rowKey="key"
+            pagination={false}
+            size="small"
+            bordered
+            style={{ 
+              backgroundColor: 'white',
+              borderRadius: '6px'
+            }}
+          />
+        </Card>
+      )}
     </div>
   );
 };
