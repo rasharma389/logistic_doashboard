@@ -143,6 +143,28 @@ const ExceptionDetailsNew: React.FC = () => {
     return data;
   }, [bookingData]);
 
+  // Generate ETD mismatch data from actual booking data
+  const etdMismatchData = useMemo(() => {
+    if (!bookingData) return [];
+
+    return [
+      {
+        key: 'etd',
+        field: 'ETD',
+        bkgRequest: bookingData['BR:Req. ETD'] || '-',
+        confirmation: bookingData['BC:ETD POL'] || '-',
+        comment: bookingData['ETD info'] || '-'
+      },
+      {
+        key: 'vessel',
+        field: 'Vessel / Voyage',
+        bkgRequest: `${bookingData['BR:1st Vessel'] || ''} + ${bookingData['BC:1st Voyage #'] || ''}`.replace(' + ', ' ').trim() || '-',
+        confirmation: `${bookingData['BC:1st Vessel'] || ''} + ${bookingData['BC:1st Voyage #'] || ''}`.replace(' + ', ' ').trim() || '-',
+        comment: bookingData['Vessel mismatch'] || '-'
+      }
+    ];
+  }, [bookingData]);
+
   // Define table columns based on the second image
   const columns = [
     {
@@ -213,6 +235,54 @@ const ExceptionDetailsNew: React.FC = () => {
           }}
         >
           {value}
+        </Text>
+      ),
+    }
+  ];
+
+  // Define ETD mismatch table columns
+  const etdMismatchColumns = [
+    {
+      title: '',
+      dataIndex: 'field',
+      key: 'field',
+      width: 150,
+      render: (text: string) => (
+        <Text style={{ fontSize: '13px', fontWeight: '500' }}>
+          {text}
+        </Text>
+      ),
+    },
+    {
+      title: 'Bkg Request',
+      dataIndex: 'bkgRequest',
+      key: 'bkgRequest',
+      width: 200,
+      render: (text: string) => (
+        <Text style={{ fontSize: '13px' }}>
+          {text}
+        </Text>
+      ),
+    },
+    {
+      title: 'Confirmation',
+      dataIndex: 'confirmation',
+      key: 'confirmation',
+      width: 200,
+      render: (text: string) => (
+        <Text style={{ fontSize: '13px' }}>
+          {text}
+        </Text>
+      ),
+    },
+    {
+      title: 'Comment',
+      dataIndex: 'comment',
+      key: 'comment',
+      width: 200,
+      render: (text: string) => (
+        <Text style={{ fontSize: '13px', color: '#8c8c8c' }}>
+          {text || '-'}
         </Text>
       ),
     }
@@ -294,6 +364,37 @@ const ExceptionDetailsNew: React.FC = () => {
             padding: 8px 12px;
           }
         `}</style>
+      </Card>
+
+      {/* ETD Mismatch Table */}
+      <Card
+        title="ETD, Vessel / Voyage Mismatch Details"
+        style={{ 
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+          marginTop: '16px'
+        }}
+        headStyle={{
+          fontSize: '16px',
+          fontWeight: '600',
+          color: '#333333',
+          backgroundColor: '#fafafa',
+          borderBottom: '1px solid #f0f0f0'
+        }}
+        bodyStyle={{ padding: '16px' }}
+      >
+        <Table
+          columns={etdMismatchColumns}
+          dataSource={etdMismatchData}
+          rowKey="key"
+          pagination={false}
+          size="small"
+          bordered
+          style={{ 
+            backgroundColor: 'white',
+            borderRadius: '6px'
+          }}
+        />
       </Card>
     </div>
   );
