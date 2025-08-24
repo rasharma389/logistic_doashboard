@@ -177,7 +177,6 @@ const ViewsTab: React.FC = () => {
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
             gap: '16px',
-            flex: 1,
             overflowY: 'auto',
             paddingRight: '8px',
             paddingBottom: '20px'
