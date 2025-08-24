@@ -82,20 +82,21 @@ const ViewsTab: React.FC = () => {
   const handleModalOk = useCallback(async () => {
     try {
       const values = await form.validateFields();
-      console.log('Form values submitted:', values); // Debug log
+      // Use selectedColumns state instead of form values for columns
+      const columns = selectedColumns.length > 0 ? selectedColumns : allColumns.slice(0, 10);
       
       if (editingView) {
         dispatch(updateCustomView({
           id: editingView.id,
           name: values.name,
-          columns: values.columns
+          columns: columns
         }));
         message.success('View updated successfully');
       } else {
         dispatch(createCustomView({
           id: `view_${Date.now()}`,
           name: values.name,
-          columns: values.columns
+          columns: columns
         }));
         message.success('View created successfully');
       }
@@ -107,7 +108,7 @@ const ViewsTab: React.FC = () => {
     } catch (error) {
       console.error('Validation failed:', error);
     }
-  }, [form, editingView, dispatch, message]);
+  }, [form, editingView, dispatch, message, selectedColumns, allColumns]);
 
   const handleModalCancel = useCallback(() => {
     setIsModalVisible(false);
@@ -120,21 +121,18 @@ const ViewsTab: React.FC = () => {
   const handleSelectAllColumns = useCallback(() => {
     const newSelection = [...filteredColumns];
     setSelectedColumns(newSelection);
-    form.setFieldsValue({ columns: newSelection });
-  }, [filteredColumns, form]);
+  }, [filteredColumns]);
 
   const handleDeselectAllColumns = useCallback(() => {
     setSelectedColumns([]);
-    form.setFieldsValue({ columns: [] });
-  }, [form]);
+  }, []);
 
   const handleColumnToggle = useCallback((column: string, checked: boolean) => {
     const newSelection = checked
       ? [...selectedColumns, column]
       : selectedColumns.filter((col: string) => col !== column);
     setSelectedColumns(newSelection);
-    form.setFieldsValue({ columns: newSelection });
-  }, [selectedColumns, form]);
+  }, [selectedColumns]);
 
   return (
     <div style={{ 
@@ -304,51 +302,51 @@ const ViewsTab: React.FC = () => {
             <Input placeholder="Enter view name" />
           </Form.Item>
           
-          <Form.Item
-            name="columns"
-            label="Select Columns"
-            rules={[{ required: true, message: 'Please select at least one column' }]}
-          >
-            <div>
-              {/* Search and Controls */}
-              <Row gutter={[16, 16]} style={{ marginBottom: '16px' }}>
-                <Col span={16}>
-                  <Input
-                    placeholder="Search columns..."
-                    prefix={<SearchOutlined />}
-                    value={columnSearchQuery}
-                    onChange={(e) => setColumnSearchQuery(e.target.value)}
-                    allowClear
-                  />
-                </Col>
-                <Col span={8}>
-                  <Space>
-                    <Button 
-                      size="small" 
-                      onClick={handleSelectAllColumns}
-                      icon={<CheckOutlined />}
-                    >
-                      Select All
-                    </Button>
-                    <Button 
-                      size="small" 
-                      onClick={handleDeselectAllColumns}
-                      icon={<CloseOutlined />}
-                    >
-                      Deselect All
-                    </Button>
-                  </Space>
-                </Col>
-              </Row>
+          <div style={{ marginBottom: '16px' }}>
+            <label style={{ display: 'block', marginBottom: '8px', color: '#dc2626' }}>* Select Columns</label>
+            
+            {/* Search and Controls */}
+            <Row gutter={[16, 16]} style={{ marginBottom: '16px' }}>
+              <Col span={16}>
+                <Input
+                  placeholder="Search columns..."
+                  prefix={<SearchOutlined />}
+                  value={columnSearchQuery}
+                  onChange={(e) => setColumnSearchQuery(e.target.value)}
+                  allowClear
+                />
+              </Col>
+              <Col span={8}>
+                <Space>
+                  <Button 
+                    size="small" 
+                    onClick={handleSelectAllColumns}
+                    icon={<CheckOutlined />}
+                  >
+                    Select All
+                  </Button>
+                  <Button 
+                    size="small" 
+                    onClick={handleDeselectAllColumns}
+                    icon={<CloseOutlined />}
+                  >
+                    Deselect All
+                  </Button>
+                </Space>
+              </Col>
+            </Row>
 
-              {/* Column Selection Grid */}
-              <div style={{ 
-                border: '1px solid #d1d5db',
-                borderRadius: '6px',
-                padding: '16px',
-                maxHeight: '400px',
-                overflow: 'auto'
-              }}>
+            {/* Column Selection Grid */}
+            <div style={{ 
+              border: '1px solid #d1d5db',
+              borderRadius: '6px',
+              padding: '16px',
+              maxHeight: '400px',
+              overflow: 'auto'
+            }}>
+
+              
+              {filteredColumns.length > 0 ? (
                 <Row gutter={[8, 8]}>
                   {filteredColumns.map((column) => (
                     <Col span={8} key={column}>
@@ -380,22 +378,46 @@ const ViewsTab: React.FC = () => {
                     </Col>
                   ))}
                 </Row>
-              </div>
-
-              {/* Selection Summary */}
-              <div style={{ 
-                marginTop: '12px', 
-                padding: '8px 12px', 
-                backgroundColor: '#f8fafc', 
-                borderRadius: '4px',
-                fontSize: '12px',
-                color: '#64748b'
-              }}>
-                {selectedColumns.length} of {filteredColumns.length} columns selected
-                {columnSearchQuery && ` (filtered from ${allColumns.length} total)`}
-              </div>
+              ) : (
+                <div style={{ 
+                  textAlign: 'center', 
+                  padding: '40px 20px',
+                  color: '#6b7280'
+                }}>
+                  {allColumns.length === 0 ? (
+                    <div>
+                      <p style={{ marginBottom: '8px' }}>No columns available</p>
+                      <p style={{ fontSize: '12px' }}>Loading booking data...</p>
+                      <p style={{ fontSize: '10px', color: '#dc2626' }}>shipperBookingsData length: {shipperBookingsData.length}</p>
+                    </div>
+                  ) : columnSearchQuery ? (
+                    <div>
+                      <p style={{ marginBottom: '8px' }}>No columns match your search</p>
+                      <p style={{ fontSize: '12px' }}>Try a different search term</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <p style={{ marginBottom: '8px' }}>No columns found</p>
+                      <p style={{ fontSize: '12px' }}>Debug info: allColumns length = {allColumns.length}</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-          </Form.Item>
+
+            {/* Selection Summary */}
+            <div style={{ 
+              marginTop: '12px', 
+              padding: '8px 12px', 
+              backgroundColor: '#f8fafc', 
+              borderRadius: '4px',
+              fontSize: '12px',
+              color: '#64748b'
+            }}>
+              {selectedColumns.length} of {filteredColumns.length} columns selected
+              {columnSearchQuery && ` (filtered from ${allColumns.length} total)`}
+            </div>
+          </div>
         </Form>
       </Modal>
 
