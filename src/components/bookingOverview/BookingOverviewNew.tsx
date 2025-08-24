@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App } from 'antd';
+import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button } from 'antd';
 import type { SortOrder } from 'antd/es/table/interface';
-import { SearchOutlined, FilterTwoTone } from '@ant-design/icons';
+import { SearchOutlined, FilterTwoTone, DownloadOutlined } from '@ant-design/icons';
+import { BsFiletypeCsv } from "react-icons/bs";
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 import { FilterOutlined } from '@ant-design/icons';
 import { MenuOutlined } from '@ant-design/icons';
@@ -95,6 +96,57 @@ const BookingOverviewNew: React.FC = () => {
     // Clear all filters
     const clearAllFilters = () => {
         dispatch(clearNewFilters());
+    };
+
+    // CSV Export function
+    const exportToCSV = () => {
+        // Get the data to export (either filtered data or selected rows)
+        const dataToExport = showOnlySelected && selectedRows.length > 0 
+            ? filteredData.filter(item => selectedRows.includes(item.id))
+            : filteredData;
+
+        if (dataToExport.length === 0) {
+            return;
+        }
+
+        // Get active view columns if available
+        const activeView = activeViewId ? customViews.find(view => view.id === activeViewId) : null;
+        const columnKeys = activeView && Array.isArray(activeView.columns) 
+            ? activeView.columns 
+            : Object.keys(dataToExport[0]);
+
+        // Create CSV header
+        const headers = columnKeys.map(key => `"${key}"`).join(',');
+        
+        // Create CSV rows
+        const csvRows = dataToExport.map(item => {
+            return columnKeys.map(key => {
+                const value = (item as any)[key];
+                // Handle values that contain commas, quotes, or newlines
+                if (value === null || value === undefined) {
+                    return '""';
+                }
+                const stringValue = String(value);
+                if (stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n')) {
+                    return `"${stringValue.replace(/"/g, '""')}"`;
+                }
+                return `"${stringValue}"`;
+            }).join(',');
+        });
+
+        // Combine header and rows
+        const csvContent = [headers, ...csvRows].join('\n');
+        
+        // Create and download the file
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `booking-overview-${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     // Selection functions
@@ -195,7 +247,7 @@ const BookingOverviewNew: React.FC = () => {
                 title="Carrier Bookings"
                 style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
                 extra={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginRight: 10 }}>
                         <Tooltip title="Go to Carrier Bookings">
                             <MenuOutlined 
                                 style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
@@ -217,6 +269,22 @@ const BookingOverviewNew: React.FC = () => {
                                 />
                             </Tooltip>
                         )}
+                        <Tooltip title="Export to CSV">
+                                <BsFiletypeCsv 
+                                    style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
+                                    onClick={exportToCSV}
+                                />
+                                {/* <DownloadOutlined style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} /> */}
+                            </Tooltip>
+                        {/* <Button
+                            type="outlined"
+                            icon={<DownloadOutlined />}
+                            onClick={exportToCSV}
+                            size="small"
+                            style={{ borderRadius: '6px' }}
+                        >
+                            <BsFiletypeCsv />
+                        </Button> */}
                     </div>
                  }
              >
@@ -426,6 +494,21 @@ const BookingOverviewNew: React.FC = () => {
                                         </div>
                                     )}
                                 </div>
+                                
+                                {/* <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                                    <div style={{ fontSize: '12px', color: '#6b7280' }}>
+                                        Export data to CSV format
+                                    </div>
+                                    <Button
+                                        type="primary"
+                                        icon={<DownloadOutlined />}
+                                        onClick={exportToCSV}
+                                        size="small"
+                                        style={{ borderRadius: '6px' }}
+                                    >
+                                        Export to CSV
+                                    </Button>
+                                </div> */}
                                 
                                 <div style={{ flex: 1, overflow: 'auto' }}>
                                     <Table
