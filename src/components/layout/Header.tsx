@@ -6,7 +6,8 @@ import {
   FileTextOutlined,
   MailOutlined,
   UserOutlined,
-  DownOutlined
+  DownOutlined,
+  BarChartOutlined
 } from '@ant-design/icons';
 import { FaGlobe } from 'react-icons/fa';
 
@@ -48,6 +49,11 @@ const Header: React.FC = () => {
       key: 'email-reader',
       label: 'Email Reader',
       icon: <MailOutlined />,
+    },
+    {
+      key: 'capacity-management',
+      label: 'Capacity Management',
+      icon: <BarChartOutlined />,
     },
   ];
 

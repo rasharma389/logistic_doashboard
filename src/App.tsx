@@ -9,6 +9,7 @@ import BookingOverview from './components/bookingOverview/BookingOverview';
 import BookingOverviewNew from './components/bookingOverview/BookingOverviewNew';
 import Dashboard from './components/dashboard/Dashboard';
 import EmailReader from './components/email/EmailReader';
+import CapacityManagement from './components/capacity/CapacityManagement';
 import 'antd/dist/reset.css';
 
 const theme = {
@@ -47,6 +48,7 @@ function App() {
             <Route path="booking-overview/carrier-bookings" element={<MainLayout />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="email-reader" element={<EmailReader />} />
+            <Route path="capacity-management" element={<CapacityManagement />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
           </Route>
         </Routes>
