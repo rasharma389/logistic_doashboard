@@ -32,7 +32,7 @@ const CapacityManagement: React.FC = () => {
         )}
         
         <iframe
-          src="http://localhost:8501/"
+          src="http://localhost:8501/?embed=true"
           style={{
             width: '100%',
             height: '100%',
@@ -41,7 +41,7 @@ const CapacityManagement: React.FC = () => {
           }}
           onLoad={handleIframeLoad}
           title="Capacity Management System"
-          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-downloads allow-modals allow-same-origin"
         />
       </Card>
     </div>
