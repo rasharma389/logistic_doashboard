@@ -21,7 +21,7 @@ interface ExceptionData {
 const CBRequestsExceptions: React.FC = () => {
   // Filter states
   const [exceptionTypeFilter, setExceptionTypeFilter] = useState<string>('All');
-  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>([]);
+  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>(['31', '32']);
 
   // Get unique filter options
   const filterOptions = useMemo(() => {

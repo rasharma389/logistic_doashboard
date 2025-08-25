@@ -12,7 +12,7 @@ export const emailMessages: EmailMessage[] = [
   {
     id: 'email-001',
     from: 'john.smith@logistics.com',
-    to: ['operations@slync.io'],
+    to: ['operations@winmore.app'],
     subject: 'Urgent: Container CB-185901640 Delayed at Port',
     date: '2025-01-24T10:30:00Z',
     body: `Dear Operations Team,
@@ -48,8 +48,8 @@ Port Operations Manager`,
   {
     id: 'email-002',
     from: 'sarah.johnson@maersk.com',
-    to: ['bookings@slync.io'],
-    cc: ['operations@slync.io'],
+    to: ['bookings@winmore.app'],
+    cc: ['operations@winmore.app'],
     subject: 'Booking Confirmation - MAEU-229120444',
     date: '2025-01-24T09:15:00Z',
     body: `Hello,
@@ -76,8 +76,8 @@ Maersk Line`,
   },
   {
     id: 'email-003',
-    from: 'alerts@slync.io',
-    to: ['operations@slync.io'],
+    from: 'alerts@winmore.app',
+    to: ['operations@winmore.app'],
     subject: 'System Alert: Exception Detected for CB-186512627',
     date: '2025-01-24T08:45:00Z',
     body: `AUTOMATED SYSTEM ALERT
@@ -99,10 +99,10 @@ This is an automated message. Please do not reply.`,
   {
     id: 'email-004',
     from: 'mike.chen@cosco.com',
-    to: ['bookings@slync.io'],
+    to: ['bookings@winmore.app'],
     subject: 'Rate Quote Request - Asia to Europe Route',
     date: '2025-01-24T07:20:00Z',
-    body: `Dear Slync Team,
+    body: `Dear Winmore Team,
 
 We would like to request a rate quote for the following:
 
@@ -125,7 +125,7 @@ COSCO Shipping`,
   {
     id: 'email-005',
     from: 'lisa.wang@hm.com',
-    to: ['customer.service@slync.io'],
+    to: ['customer.service@winmore.app'],
     subject: 'Delivery Schedule Update Required',
     date: '2025-01-23T16:30:00Z',
     body: `Hi Team,
@@ -150,7 +150,7 @@ H&M Logistics`,
   {
     id: 'email-006',
     from: 'noreply@customs.gov',
-    to: ['compliance@slync.io'],
+    to: ['compliance@winmore.app'],
     subject: 'Customs Clearance Documentation Required',
     date: '2025-01-23T14:15:00Z',
     body: `OFFICIAL CUSTOMS NOTICE
@@ -179,7 +179,7 @@ Port of Los Angeles`,
   {
     id: 'email-007',
     from: 'david.brown@evergreen.com',
-    to: ['operations@slync.io'],
+    to: ['operations@winmore.app'],
     subject: 'Vessel Schedule Update - EMC Service',
     date: '2025-01-23T11:45:00Z',
     body: `Dear Partners,
@@ -208,7 +208,7 @@ Evergreen Marine`,
   },
   {
     id: 'email-008',
-    from: 'billing@slync.io',
+    from: 'billing@winmore.app',
     to: ['finance@client.com'],
     subject: 'Invoice #INV-2025-0124 - Logistics Services',
     date: '2025-01-23T09:30:00Z',
@@ -224,7 +224,7 @@ Invoice Details:
 Payment can be made via wire transfer or ACH. Please contact us if you have any questions.
 
 Best regards,
-Slync Billing Department`,
+Winmore Billing Department`,
     attachments: [
       { id: 'att-004', name: 'INV-2025-0124.pdf', size: 327680, type: 'application/pdf' }
     ],
@@ -236,13 +236,13 @@ Slync Billing Department`,
   },
   {
     id: 'email-009',
-    from: 'support@slync.io',
+    from: 'support@winmore.app',
     to: ['user@client.com'],
-    subject: 'Welcome to Slync Platform',
+    subject: 'Welcome to Winmore Platform',
     date: '2025-01-22T15:20:00Z',
-    body: `Welcome to Slync!
+    body: `Welcome to Winmore!
 
-Thank you for choosing Slync for your logistics management needs. Your account has been successfully created.
+Thank you for choosing Winmore for your logistics management needs. Your account has been successfully created.
 
 Getting Started:
 1. Complete your company profile
@@ -253,7 +253,7 @@ Getting Started:
 If you need any assistance, our support team is available 24/7.
 
 Welcome aboard!
-Slync Support Team`,
+Winmore Support Team`,
     isRead: true,
     isStarred: false,
     priority: 'normal',
@@ -263,10 +263,10 @@ Slync Support Team`,
   {
     id: 'email-010',
     from: 'marketing@logistics-expo.com',
-    to: ['info@slync.io'],
+    to: ['info@winmore.app'],
     subject: 'Invitation: Global Logistics Summit 2025',
     date: '2025-01-22T10:00:00Z',
-    body: `Dear Slync Team,
+    body: `Dear Winmore Team,
 
 You are cordially invited to participate in the Global Logistics Summit 2025.
 
@@ -275,7 +275,7 @@ Event Details:
 - Location: Singapore Expo
 - Theme: "Digital Transformation in Supply Chain"
 
-As a leading logistics technology company, we would love to have Slync as a speaker or exhibitor.
+As a leading logistics technology company, we would love to have Winmore as a speaker or exhibitor.
 
 Please let us know your interest by February 1st.
 

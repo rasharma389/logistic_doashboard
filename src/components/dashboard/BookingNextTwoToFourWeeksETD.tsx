@@ -7,7 +7,7 @@ const { Text } = Typography;
 
 const BookingNextTwoToFourWeeksETD: React.FC = () => {
   // Filter states
-  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>([]);
+  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>(['33']);
   const [contractFilter, setContractFilter] = useState<string[]>([]);
 
   // Get unique filter options

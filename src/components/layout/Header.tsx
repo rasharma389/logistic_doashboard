@@ -29,14 +29,14 @@ const Header: React.FC = () => {
       label: 'Dashboards',
       icon: <DashboardOutlined />,
     },
-    {
-      key: 'booking-overview',
-      label: 'Booking Overview',
-      icon: <FileTextOutlined />,
-    },
+    // {
+    //   key: 'booking-overview',
+    //   label: 'Booking Overview',
+    //   icon: <FileTextOutlined />,
+    // },
     {
       key: 'booking-overview-new',
-      label: 'Booking Overview New',
+      label: 'Booking Overview',
       icon: <FileTextOutlined />,
     },
     // {

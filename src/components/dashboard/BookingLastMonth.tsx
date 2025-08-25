@@ -7,7 +7,7 @@ const { Text } = Typography;
 
 const BookingLastMonth: React.FC = () => {
   // Filter states
-  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>([]);
+  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>(['28', '29', '31','32']);
   const [contractFilter, setContractFilter] = useState<string[]>([]);
 
   // Get unique filter options

@@ -310,7 +310,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.trades.map(trade => (
@@ -328,7 +328,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.originRegions.map(region => (
@@ -346,7 +346,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.destinationRegions.map(region => (
@@ -364,7 +364,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.originCountries.map(country => (
@@ -382,7 +382,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.districts.map(district => (
@@ -400,7 +400,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.reqEtdWeeks.map(week => (
@@ -418,7 +418,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.carriers.map(carrier => (
@@ -436,7 +436,7 @@ const BookingOverviewNew: React.FC = () => {
                                             allowClear
                                             style={{ width: '100%' }}
                                             size="small"
-                                            maxTagCount={2}
+                                            maxTagCount={0}
                                             maxTagTextLength={10}
                                         >
                                             {filterOptions.bookingStatuses.map(status => (
@@ -589,7 +589,8 @@ const BookingOverviewNew: React.FC = () => {
           font-size: 12px !important;
         }
         .ant-select-selector {
-          border-radius: 6px !important;
+        padding: '3px';
+          border-radius: 45px !important;
         }
         .ant-input-affix-wrapper {
           border-radius: 6px !important;

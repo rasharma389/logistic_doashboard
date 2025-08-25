@@ -231,7 +231,8 @@ const ExceptionDetailsNew: React.FC = () => {
           style={{ 
             fontSize: '13px', 
             fontWeight: record.isTotal || record.isFeuEquivalent ? '600' : '500',
-            color: value < 0 ? '#ff4d4f' : value > 0 ? '#52c41a' : 'inherit'
+            // color: value < 0 ? '#ff4d4f' : value > 0 ? '#52c41a' : 'inherit'
+            color: record.isTotal || record.isFeuEquivalent ? '#1890ff' : 'inherit'
           }}
         >
           {value}
@@ -385,13 +386,6 @@ const ExceptionDetailsNew: React.FC = () => {
             }
             .total-row:hover {
               background-color: #e0f2fe !important;
-            }
-            .feu-row {
-              background-color: #f6ffed !important;
-              font-weight: 600;
-            }
-            .feu-row:hover {
-              background-color: #d9f7be !important;
             }
             .ant-table-thead > tr > th {
               font-size: 12px;

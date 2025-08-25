@@ -152,7 +152,7 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
                           <Card 
                             key={`${entry.term}-${entry.departureArrival}-${entryIndex}`} 
                             style={portCardStyle}
-                            bodyStyle={{ padding: '10px' }}
+                            styles={{ body: { padding: '10px' } }}
                           >
                             <Row justify="space-between" align="middle">
                               <Col>
@@ -217,14 +217,16 @@ const TransportPlanNew: React.FC<{data: any}> = ({data}) => {
                 borderRadius: '8px',
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
               }}
-              headStyle={{
-                fontSize: '14px',
-                fontWeight: '600',
-                color: '#333333',
-                backgroundColor: '#fafafa',
-                borderBottom: '1px solid #f0f0f0'
+              styles={{
+                header: {
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#333333',
+                  backgroundColor: '#fafafa',
+                  borderBottom: '1px solid #f0f0f0'
+                },
+                body: { padding: '16px' }
               }}
-              bodyStyle={{ padding: '16px' }}
             >
               <Space direction="vertical" size="middle" style={{ width: '100%' }}>
                 <Row justify="space-between" align="middle" style={milestoneRowStyle}>
