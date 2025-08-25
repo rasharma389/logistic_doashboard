@@ -7,7 +7,6 @@ import DashboardFilters from './DashboardFilters';
 import CBRequestsByStatusChart from './CBRequestsByStatusChart';
 import DaysBeforeETDChart from './DaysBeforeETDChart';
 import AllocationsByCarrierChart from './AllocationsByCarrierChart';
-import BookingLastMonth from './BookingLastMonth';
 import ExceptionsTable from './ExceptionsTable';
 
 const Dashboard: React.FC = () => {
@@ -49,25 +48,16 @@ const Dashboard: React.FC = () => {
         )}
         
         <Row gutter={[16, 16]}>
-          <Col xs={24} lg={12}>
+          <Col xs={24} lg={8}>
             <CBRequestsByStatusChart />
           </Col>
-          <Col xs={24} lg={12}>
-            <BookingLastMonth />
-          </Col>
-        </Row>
-        
-        {/* <Row gutter={[16, 16]}>
           <Col xs={24} lg={8}>
             <DaysBeforeETDChart />
           </Col>
           <Col xs={24} lg={8}>
             <AllocationsByCarrierChart />
           </Col>
-          <Col xs={24} lg={8}>
-            
-          </Col>
-        </Row> */}
+        </Row>
         
         <Row gutter={[16, 16]}>
           <Col span={24}>
