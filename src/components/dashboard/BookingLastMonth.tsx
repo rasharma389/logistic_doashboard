@@ -1,19 +1,45 @@
-import React, { useMemo } from 'react';
-import { Card, Typography, Spin } from 'antd';
+import React, { useMemo, useState } from 'react';
+import { Card, Typography, Spin, Select, Space } from 'antd';
 import { ResponsiveBar } from '@nivo/bar';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 
 const { Text } = Typography;
 
 const BookingLastMonth: React.FC = () => {
+  // Filter states
+  const [reqEtdWeekFilter, setReqEtdWeekFilter] = useState<string[]>([]);
+  const [contractFilter, setContractFilter] = useState<string[]>([]);
+
+  // Get unique filter options
+  const filterOptions = useMemo(() => {
+    const reqEtdWeeks = [...new Set(shipperBookingsData.map(item => item['req ETD wk']).filter(Boolean))].sort();
+    const contracts = [...new Set(shipperBookingsData.map(item => item['Contract #']).filter(Boolean))].sort();
+    
+    return {
+      reqEtdWeeks,
+      contracts
+    };
+  }, []);
+
   // Process data for the chart
   const chartData = useMemo(() => {
-    // Get unique carriers
-    const carriers = [...new Set(shipperBookingsData.map(item => item['Carrier (Std)']).filter(Boolean))];
+    // Apply filters to the data
+    let filteredData = shipperBookingsData;
+    
+    if (reqEtdWeekFilter.length > 0) {
+      filteredData = filteredData.filter(item => reqEtdWeekFilter.includes(item['req ETD wk']));
+    }
+    
+    if (contractFilter.length > 0) {
+      filteredData = filteredData.filter(item => contractFilter.includes(item['Contract #']));
+    }
+    
+    // Get unique carriers from filtered data
+    const carriers = [...new Set(filteredData.map(item => item['Carrier (Std)']).filter(Boolean))];
     
     // Process data for each carrier
     return carriers.map(carrier => {
-      const carrierBookings = shipperBookingsData.filter(item => item['Carrier (Std)'] === carrier);
+      const carrierBookings = filteredData.filter(item => item['Carrier (Std)'] === carrier);
       
       // Calculate totals for each status
       const confirmed = carrierBookings
@@ -57,7 +83,7 @@ const BookingLastMonth: React.FC = () => {
         total: Math.round((confirmed + canceledByCarrier + canceledByRequestor + pending) * 1000) / 1000
       };
     }).sort((a, b) => b.total - a.total); // Sort by total descending
-  }, []);
+  }, [reqEtdWeekFilter, contractFilter]);
 
   // Calculate total bookings across all carriers
   const totalBookings = useMemo(() => {
@@ -75,18 +101,57 @@ const BookingLastMonth: React.FC = () => {
   return (
     <Card
       title={
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Text style={{ fontSize: '14px', fontWeight: '600', color: '#374151' }}>Booking within the last month</Text>
-          <div style={{
-            backgroundColor: '#1f2937',
-            color: 'white',
-            padding: '2px 8px',
-            borderRadius: '12px',
-            fontSize: '12px',
-            fontWeight: 'bold'
-          }}>
-            {Math.round(totalBookings)}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Text style={{ fontSize: '14px', fontWeight: '600', color: '#374151' }}>Booking within the last month</Text>
+            <div style={{
+              backgroundColor: '#1f2937',
+              color: 'white',
+              padding: '2px 8px',
+              borderRadius: '12px',
+              fontSize: '12px',
+              fontWeight: 'bold'
+            }}>
+              {Math.round(totalBookings)}
+            </div>
           </div>
+          
+          {/* Filters */}
+          <Space size="small">
+            <Select
+              mode="multiple"
+              placeholder="req ETD wk"
+              value={reqEtdWeekFilter}
+              onChange={setReqEtdWeekFilter}
+              style={{ width: 80, fontSize: '12px' }}
+              size="small"
+              allowClear
+              maxTagCount={0}
+            >
+              {filterOptions.reqEtdWeeks.map(week => (
+                <Select.Option key={week} value={week}>
+                  {week}
+                </Select.Option>
+              ))}
+            </Select>
+            
+            <Select
+              mode="multiple"
+              placeholder="Contract #"
+              value={contractFilter}
+              onChange={setContractFilter}
+              style={{ width: 80, fontSize: '12px' }}
+              size="small"
+              allowClear
+              maxTagCount={0}
+            >
+              {filterOptions.contracts.map(contract => (
+                <Select.Option key={contract} value={contract}>
+                  {contract}
+                </Select.Option>
+              ))}
+            </Select>
+          </Space>
         </div>
       }
       style={{ height: '320px' }}
