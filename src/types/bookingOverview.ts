@@ -1,6 +1,5 @@
 export interface ShipperBooking {
   id: string;
-  Golden: string; // New field for PDF status and flags
   Trade: string;
   'Origin region': string;
   'Destination region': string;

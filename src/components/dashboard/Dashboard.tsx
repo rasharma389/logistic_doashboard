@@ -10,6 +10,7 @@ import AllocationsByCarrierChart from './AllocationsByCarrierChart';
 import BookingLastMonth from './BookingLastMonth';
 import BookingNextTwoWeeksETD from './BookingNextTwoWeeksETD';
 import BookingNextTwoToFourWeeksETD from './BookingNextTwoToFourWeeksETD';
+import CBRequestsExceptions from './CBRequestsExceptions';
 import ExceptionsTable from './ExceptionsTable';
 
 const Dashboard: React.FC = () => {
@@ -79,9 +80,15 @@ const Dashboard: React.FC = () => {
         
         <Row gutter={[16, 16]}>
           <Col span={24}>
-            <ExceptionsTable />
+            <CBRequestsExceptions />
           </Col>
         </Row>
+        
+        {/* <Row gutter={[16, 16]}>
+          <Col span={24}>
+            <ExceptionsTable />
+          </Col>
+        </Row> */}
       </div>
     </div>
   );

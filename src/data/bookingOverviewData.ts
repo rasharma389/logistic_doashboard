@@ -3,7 +3,6 @@ import type { ShipperBooking } from '../types/bookingOverview';
 export const shipperBookingsData: ShipperBooking[] = [
   {
     "id": "1",
-    "Golden": "yes no pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -109,7 +108,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "2",
-    "Golden": "yes no pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -215,7 +213,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "3",
-    "Golden": "yes no pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -321,7 +318,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "4",
-    "Golden": "yes no pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -427,7 +423,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "5",
-    "Golden": "yes no pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -533,7 +528,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "6",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -639,7 +633,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "7",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -745,7 +738,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "8",
-    "Golden": "yes pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -851,7 +843,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "9",
-    "Golden": "yes pdf issue mismatch eqp",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -957,7 +948,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "10",
-    "Golden": "yes reefer no pdf",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -1063,7 +1053,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "11",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -1169,7 +1158,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "12",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -1275,7 +1263,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "13",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -1381,7 +1368,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "14",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -1487,7 +1473,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "15",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -1593,7 +1578,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "16",
-    "Golden": "YES",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -1699,7 +1683,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "17",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -1805,7 +1788,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "18",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -1911,7 +1893,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "19",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -2017,7 +1998,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "20",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -2123,7 +2103,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "21",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -2229,7 +2208,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "22",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -2335,7 +2313,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "23",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -2441,7 +2418,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "24",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -2547,7 +2523,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "25",
-    "Golden": "show transport plan",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -2653,7 +2628,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "26",
-    "Golden": "YES",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -2759,7 +2733,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "27",
-    "Golden": "YES",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -2865,7 +2838,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "28",
-    "Golden": "YES",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -2971,7 +2943,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "29",
-    "Golden": "YES",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3077,7 +3048,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "30",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3183,7 +3153,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "31",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3289,7 +3258,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "32",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3395,7 +3363,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "33",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3501,7 +3468,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "34",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3607,7 +3573,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "35",
-    "Golden": "yes pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -3713,7 +3678,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "36",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -3819,7 +3783,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "37",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -3925,7 +3888,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "38",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -4031,7 +3993,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "39",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -4137,7 +4098,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "40",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4243,7 +4203,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "41",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4349,7 +4308,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "42",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4455,7 +4413,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "43",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4561,7 +4518,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "44",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4667,7 +4623,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "45",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4773,7 +4728,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "46",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4879,7 +4833,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "47",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -4985,7 +4938,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "48",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -5091,7 +5043,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "49",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -5197,7 +5148,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "50",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -5303,7 +5253,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "51",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -5409,7 +5358,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "52",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -5515,7 +5463,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "53",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -5621,7 +5568,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "54",
-    "Golden": "YES",
     "Trade": "AP > NA",
     "Origin region": "AP",
     "Destination region": "",
@@ -5727,7 +5673,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "55",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -5833,7 +5778,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "56",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -5939,7 +5883,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "57",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6045,7 +5988,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "58",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6151,7 +6093,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "59",
-    "Golden": "yes pdf (2X) issue ETD good example for timeline",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6257,7 +6198,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "60",
-    "Golden": "Yes transport plan - 2 T/S",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6363,7 +6303,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "61",
-    "Golden": "yes",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6469,7 +6408,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "62",
-    "Golden": "yes pdf",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6575,7 +6513,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "63",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6681,7 +6618,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "64",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6787,7 +6723,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "65",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6893,7 +6828,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "66",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -6999,7 +6933,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "67",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7105,7 +7038,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "68",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7211,7 +7143,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "69",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7317,7 +7248,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "70",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7423,7 +7353,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "71",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7529,7 +7458,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "72",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7635,7 +7563,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "73",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7741,7 +7668,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "74",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
@@ -7847,7 +7773,6 @@ export const shipperBookingsData: ShipperBooking[] = [
   },
   {
     "id": "75",
-    "Golden": "yes 1 vessel - allocation",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
