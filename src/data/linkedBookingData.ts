@@ -534,7 +534,7 @@ const linkedBookingData: Record<string, LinkedBooking[]> = {
   "CB-185901648": [
     {
       "id": "59",
-      "shipper_bkg_no": "",
+      "shipper_bkg_no": "202347293434",
       "crd_date": "05-Aug",
       "consignee": "H&M Home",
       "shipWindow": "7 days"
