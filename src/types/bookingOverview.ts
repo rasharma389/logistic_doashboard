@@ -159,7 +159,8 @@ export interface BookingOverviewState {
     id: string;
     name: string;
     columns: string[];
-    createdAt: string;
+    createdAt?: string;
+    isPredefined?: boolean;
   }[];
   // Current active view
   activeViewId: string | null;
