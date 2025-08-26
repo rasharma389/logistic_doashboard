@@ -6162,7 +6162,7 @@ export const shipperBookingsData: ShipperBooking[] = [
     "Bkg Form Email Sent Date": "",
     "Created At": "2025-07-17T08:16:20.270Z",
     "Updated At": "2025-07-16T08:46:44.622Z",
-    "BR create date": "2025-07-17",
+    "BR create date": "2025-07-13",
     "Updated At (Date)": "2025-07-16",
     "BR Month": "7",
     "300/301 Status": "",

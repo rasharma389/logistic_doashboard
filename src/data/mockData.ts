@@ -49,6 +49,8 @@ export interface ActivityItem {
   severity: 'info' | 'success' | 'warning' | 'error' | 'high';
   highlight: boolean;
   tags: string[];
+  reqETD?: string;
+  createDate?: string;
 }
 
 export interface DocumentItem {
@@ -1907,14 +1909,14 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     "equipments": "45HCx1",
     "crd": "Aug 05, 2025",
     "moveType": "CYP/CYP",
-    "placeOfReceiptEtd": "Aug 12, 2025",
+    "placeOfReceiptEtd": "Aug 16, 2025",
     "portOfLoadEtd": "Aug 16, 2025",
     "portOfDischargeEta": "Sep 15, 2025",
     "placeOfDeliveryEta": "Sep 15, 2025",
     "requestedEtdWeek": "33",
     "contractNumber": "90-0080",
     "tradeLane": "AP > EU",
-    "vesselNVoyage": "MARGRETHE MAERSK 532W",
+    "vesselNVoyage": "MUNICH MAERSK 532W",
     "exception": true
   },
   "CB-180080022": {
@@ -3011,6 +3013,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3130,6 +3135,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3249,6 +3257,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3368,6 +3379,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3487,6 +3501,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3606,6 +3623,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3752,6 +3772,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -3898,6 +3921,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4017,6 +4043,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4163,6 +4192,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4282,6 +4314,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4428,6 +4463,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4574,6 +4612,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4720,6 +4761,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -4866,6 +4910,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5012,6 +5059,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5131,6 +5181,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5159,6 +5212,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5187,6 +5243,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5306,6 +5365,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5425,6 +5487,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5544,6 +5609,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5663,6 +5731,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5691,6 +5762,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5747,6 +5821,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5866,6 +5943,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -5985,6 +6065,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6104,6 +6187,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6223,6 +6309,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6369,6 +6458,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6425,6 +6517,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6467,6 +6562,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6523,6 +6621,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6579,6 +6680,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6635,6 +6739,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6663,6 +6770,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6782,6 +6892,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6838,6 +6951,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6894,6 +7010,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6922,6 +7041,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -6978,6 +7100,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7097,6 +7222,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7153,6 +7281,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7209,6 +7340,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7265,6 +7399,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7321,6 +7458,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7377,6 +7517,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7433,6 +7576,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7552,6 +7698,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7608,6 +7757,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7664,6 +7816,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7720,6 +7875,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7776,6 +7934,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7832,6 +7993,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7888,6 +8052,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -7944,6 +8111,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8000,6 +8170,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8056,6 +8229,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8112,6 +8288,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8258,6 +8437,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8391,6 +8573,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8447,6 +8632,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8580,6 +8768,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8699,6 +8890,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8818,6 +9012,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -8937,6 +9134,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9056,6 +9256,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9112,6 +9315,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9168,6 +9374,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9224,6 +9433,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9280,6 +9492,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9336,6 +9551,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9392,6 +9610,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9448,6 +9669,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",
@@ -9504,6 +9728,9 @@ export const activitiesData: Record<string, ActivityItem[]> = {
       "tags": [
         "lifecycle"
       ]
+      ,
+      "reqETD": "01-Jul",
+      "createDate": "2025-06-16"
     },
     {
       "id": "2",

@@ -9,7 +9,7 @@ import ActivityPanel from '../activity/ActivityPanel';
 import { RootState } from '../../store';
 import { toggleRightPanel } from '../../store/slices/uiSlice';
 import { DoubleLeftOutlined } from '@ant-design/icons';
-import ActivityPanelNew from '../activity/ActivityPanelNew';
+import ActivityPanelNewFinal from '../activity/ActivityPanelNewFinal';
 
 const MainLayout: React.FC = () => {
   const dispatch = useDispatch();
@@ -94,7 +94,7 @@ const MainLayout: React.FC = () => {
             </div>
           ) : (
             // <ActivityPanel />
-            <ActivityPanelNew />
+            <ActivityPanelNewFinal />
           )}
         </div>
       </div>

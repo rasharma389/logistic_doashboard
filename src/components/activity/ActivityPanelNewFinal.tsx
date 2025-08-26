@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Timeline, Space, Button, Tabs, Typography } from 'antd';
-import { ReloadOutlined, InfoCircleOutlined, ClockCircleOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import { ReloadOutlined, ClockCircleOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { setActivePanel, toggleRightPanel } from '../../store/slices/uiSlice';
@@ -13,19 +13,17 @@ interface TimelineItem {
   key: string;
   label: string;
   value: string;
-  date: string;
   status?: string;
-  etdException?: string;
-  containerException?: string;
+  receiptDate?: string;
+  bcETD?: string;
+  createDate?: string;
   reqETD?: string;
 }
 
-const ActivityPanelNew: React.FC = () => {
+const ActivityPanelNewFinal: React.FC = () => {
   const dispatch = useDispatch();
   const { activePanel } = useSelector((state: RootState) => state.ui);
   const { selectedBookingId } = useSelector((state: RootState) => state.bookings);
-
-
 
   // Helper function to format dates to dd mmm format
   const formatDate = (dateString: string): string => {
@@ -50,23 +48,21 @@ const ActivityPanelNew: React.FC = () => {
     // Extract TMS # from the selectedBookingId (e.g., "CB-180080002" -> "180080002")
     const tmsNumber = selectedBookingId.replace('CB-', '');
     
-    console.log('ActivityPanelNew - selectedBookingId:', selectedBookingId);
-    console.log('ActivityPanelNew - extracted TMS #:', tmsNumber);
-    console.log('ActivityPanelNew - shipperBookingsData length:', shipperBookingsData.length);
-    console.log('ActivityPanelNew - first few TMS #s:', shipperBookingsData.slice(0, 3).map(item => item['TMS #']));
+    console.log('ActivityPanelNewFinal - selectedBookingId:', selectedBookingId);
+    console.log('ActivityPanelNewFinal - extracted TMS #:', tmsNumber);
     
     const found = shipperBookingsData.find(item => item['TMS #'] === tmsNumber);
-    console.log('ActivityPanelNew - found booking:', found);
+    console.log('ActivityPanelNewFinal - found booking:', found);
     
     return found;
   }, [selectedBookingId]);
 
   // Generate timeline items based on the selected booking
   const timelineItems = useMemo(() => {
-    console.log('ActivityPanelNew - timelineItems useMemo triggered, selectedBooking:', selectedBooking);
+    console.log('ActivityPanelNewFinal - timelineItems useMemo triggered, selectedBooking:', selectedBooking);
     
     if (!selectedBooking) {
-      console.log('ActivityPanelNew - no selectedBooking, returning empty array');
+      console.log('ActivityPanelNewFinal - no selectedBooking, returning empty array');
       return [];
     }
 
@@ -77,22 +73,24 @@ const ActivityPanelNew: React.FC = () => {
       key: 'latest',
       label: 'Latest Version',
       value: 'Latest',
-      date: selectedBooking['BC:Release Date'] || 'N/A',
       status: selectedBooking['Booking Status'] || 'N/A',
-      etdException: selectedBooking['Excpt. ETD?'] || 'N/A',
-      containerException: selectedBooking['Excpt. Eqp?'] || 'N/A'
+      receiptDate: selectedBooking['BC:Release Date'] || 'N/A',
+      bcETD: selectedBooking['BC:ETD POL'] || 'N/A'
     });
 
     // 2. Latest version -1 (if we have version info)
     if (selectedBooking['BC:Version'] && selectedBooking['BC:Version'] !== '1.0') {
+      // Special case for TMS # CB-185901648
+      const tmsNumber = selectedBookingId?.replace('CB-', '');
+      const isSpecialTMS = tmsNumber === '185901648';
+      
       items.push({
         key: 'previous',
         label: 'Previous Version',
         value: `Version ${selectedBooking['BC:Version']}`,
-        date: selectedBooking['BC:Release Date'] || 'N/A',
         status: selectedBooking['Booking Status'] || 'N/A',
-        etdException: selectedBooking['Excpt. ETD?'] || 'N/A',
-        containerException: selectedBooking['Excpt. Eqp?'] || 'N/A'
+        receiptDate: isSpecialTMS ? '15-Jul' : (selectedBooking['BC:Release Date'] || 'N/A'),
+        bcETD: isSpecialTMS ? '12-Aug' : (selectedBooking['BC:ETD POL'] || 'N/A')
       });
     }
 
@@ -101,11 +99,11 @@ const ActivityPanelNew: React.FC = () => {
       key: 'creation',
       label: 'Booking Creation',
       value: 'Initial Request',
-      date: formatDate(selectedBooking['BR create date']) || 'N/A',
+      createDate: formatDate(selectedBooking['BR create date']) || 'N/A',
       reqETD: selectedBooking['BR:Req. ETD'] || 'N/A'
     });
 
-    console.log('ActivityPanelNew - generated timelineItems:', items);
+    console.log('ActivityPanelNewFinal - generated timelineItems:', items);
     return items;
   }, [selectedBooking]);
 
@@ -137,10 +135,6 @@ const ActivityPanelNew: React.FC = () => {
       default:
         return '•';
     }
-  };
-
-  const getExceptionColor = (exception: string) => {
-    return exception === 'Y' ? '#ef4444' : '#10b981';
   };
 
   const timelineRenderItems = timelineItems.map((item, index) => ({
@@ -179,69 +173,59 @@ const ActivityPanelNew: React.FC = () => {
           </Text>
         </div>
         
-        {/* Date */}
-        <div style={{ 
-          fontSize: '13px', 
-          color: '#6b7280',
-          marginBottom: '4px'
-        }}>
-          <Text strong>Create Date:</Text> {item.date}
-        </div>
-
-        {/* ReqETD (for Booking Creation) */}
-        {item.reqETD && (
-          <div style={{ 
-            fontSize: '13px', 
-            color: '#6b7280',
-            marginBottom: '4px'
-          }}>
-            <Text strong>Requested ETD:</Text> {item.reqETD}
-          </div>
-        )}
-
-        {/* Status (for versions) */}
+        {/* For Latest and Previous Versions */}
         {item.status && (
-          <div style={{ 
-            fontSize: '13px', 
-            color: '#6b7280',
-            marginBottom: '4px'
-          }}>
-            <Text strong>Status:</Text> {item.status}
-          </div>
+          <>
+            {/* Status */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
+            }}>
+              <Text strong>Status:</Text> {item.status}
+            </div>
+
+            {/* Receipt Date */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
+            }}>
+              <Text strong>Receipt Date:</Text> {item.receiptDate}
+            </div>
+
+            {/* BC ETD */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
+            }}>
+              <Text strong>BC ETD:</Text> {item.bcETD}
+            </div>
+          </>
         )}
 
-        {/* ETD Exception (for versions) */}
-        {item.etdException && (
-          <div style={{ 
-            fontSize: '13px', 
-            color: '#6b7280',
-            marginBottom: '4px'
-          }}>
-            <Text strong>ETD:</Text> 
-            <Text style={{ 
-              color: getExceptionColor(item.etdException),
-              marginLeft: '4px'
+        {/* For Booking Creation */}
+        {item.createDate && (
+          <>
+            {/* Create Date */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
             }}>
-              {item.etdException}
-            </Text>
-          </div>
-        )}
+              <Text strong>Create Date:</Text> {item.createDate}
+            </div>
 
-        {/* Container Exception (for versions) */}
-        {item.containerException && (
-          <div style={{ 
-            fontSize: '13px', 
-            color: '#6b7280',
-            marginBottom: '4px'
-          }}>
-            <Text strong>Equipment Mismatch:</Text> 
-            <Text style={{ 
-              color: getExceptionColor(item.containerException),
-              marginLeft: '4px'
+            {/* Req ETD */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
             }}>
-              {item.containerException}
-            </Text>
-          </div>
+              <Text strong>Req ETD:</Text> {item.reqETD}
+            </div>
+          </>
         )}
       </div>
     )
@@ -326,4 +310,4 @@ const ActivityPanelNew: React.FC = () => {
   );
 };
 
-export default ActivityPanelNew;
+export default ActivityPanelNewFinal;
