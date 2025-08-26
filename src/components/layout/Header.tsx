@@ -45,11 +45,11 @@ const Header: React.FC = () => {
     //   label: 'Carrier Bookings',
     //   icon: <FileTextOutlined />,
     // },
-    {
-      key: 'email-reader',
-      label: 'Email Reader',
-      icon: <MailOutlined />,
-    },
+    // {
+    //   key: 'email-reader',
+    //   label: 'Email Reader',
+    //   icon: <MailOutlined />,
+    // },
     {
       key: 'capacity-management',
       label: 'Capacity Management',
