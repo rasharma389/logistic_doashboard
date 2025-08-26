@@ -9587,7 +9587,15 @@ export const documentsData: Record<string, DocumentItem[]> = {
       "tmsId": "CB-185901648",
       "pdfRevision": "Original Version",
       "pdfLink": "/HLCU-38538244_1.pdf",
-      "uploadDate": "2024-01-15",
+      "uploadDate": "2025-07-15",
+      "fileSize": "2.3 MB"
+    },
+    {
+      "id": "1",
+      "tmsId": "CB-185901648",
+      "pdfRevision": "Version 1",
+      "pdfLink": "/HL-38538244 NLRTM BC 1ST UPDATE.pdf",
+      "uploadDate": "2025-07-16",
       "fileSize": "2.3 MB"
     }
   ],
