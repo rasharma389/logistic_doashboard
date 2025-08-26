@@ -12,7 +12,7 @@ export default defineConfig({
     proxy: {
       // Do NOT rewrite away /analytics if Streamlit uses baseUrlPath=analytics
       '/analytics': {
-        target: 'http://localhost:8501',
+        target: 'http://10.140.8.143:8501',
         changeOrigin: true,
         ws: true,
         // no rewrite
