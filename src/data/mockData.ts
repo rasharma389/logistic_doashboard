@@ -1035,7 +1035,7 @@ export const bookingDetailsData: Record<string, BookingDetail> = {
     "crd": "Jul 24, 2025",
     "moveType": "CYP/CYP",
     "placeOfReceiptEtd": "Aug 02, 2025",
-    "portOfLoadEtd": "",
+    "portOfLoadEtd": "Aug 02, 2025",
     "portOfDischargeEta": "",
     "placeOfDeliveryEta": "",
     "requestedEtdWeek": "31",
