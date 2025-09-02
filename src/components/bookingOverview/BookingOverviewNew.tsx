@@ -12,7 +12,7 @@ import ViewsTab from './ViewsTab';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
-import { setNewFilters, clearNewFilters, setNewPageSize, setSelectedRows, toggleRowSelection, clearSelectedRows } from '../../store/slices/bookingOverviewSlice';
+import { setNewFilters, clearNewFilters, setColumnFilter, clearColumnFilters, setNewPageSize, setSelectedRows, toggleRowSelection, clearSelectedRows } from '../../store/slices/bookingOverviewSlice';
 const { Search } = Input;
 const { Option } = Select;
 
@@ -22,7 +22,7 @@ const BookingOverviewNew: React.FC = () => {
     const navigate = useNavigate();
     
     // Get filter states, page size, selected rows, and custom views from Redux
-    const { newFilters, newPageSize, selectedRows, customViews, activeViewId } = useSelector((state: RootState) => state.bookingOverview);
+    const { newFilters, columnFilters, newPageSize, selectedRows, customViews, activeViewId } = useSelector((state: RootState) => state.bookingOverview);
     const {
         tradeFilter,
         originRegionFilter,
@@ -87,15 +87,23 @@ const BookingOverviewNew: React.FC = () => {
                 item['TMS #']?.toLowerCase().includes(tmsSearchQuery.toLowerCase()) ||
                 item.id?.toLowerCase().includes(tmsSearchQuery.toLowerCase());
 
+            // Check column filters
+            const matchesColumnFilters = Object.entries(columnFilters).every(([columnKey, filterValues]) => {
+                if (filterValues.length === 0) return true;
+                const itemValue = String((item as any)[columnKey] || '');
+                return filterValues.includes(itemValue);
+            });
+
             return matchesTrade && matchesOriginRegion && matchesDestinationRegion &&
                 matchesOriginCountry && matchesDistrict && matchesReqEtdWeek && 
-                matchesCarrier && matchesBookingStatus && matchesTmsSearch;
+                matchesCarrier && matchesBookingStatus && matchesTmsSearch && matchesColumnFilters;
         });
-    }, [tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, carrierFilter, bookingStatusFilter, tmsSearchQuery]);
+    }, [tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, carrierFilter, bookingStatusFilter, tmsSearchQuery, columnFilters]);
 
     // Clear all filters
     const clearAllFilters = () => {
         dispatch(clearNewFilters());
+        dispatch(clearColumnFilters());
     };
 
     // CSV Export function
@@ -207,6 +215,7 @@ const BookingOverviewNew: React.FC = () => {
                 },
                 sortDirections: ['ascend', 'descend'] as SortOrder[],
                 filters: filterOptions.length > 0 ? filterOptions : undefined,
+                filteredValue: columnFilters[key] || null,
                 onFilter: (value: any, record: any) => record[key] === value,
                 filterSearch: true, // Enable search within filter dropdown
                 render: (text: any, record: any) => {
@@ -261,7 +270,8 @@ const BookingOverviewNew: React.FC = () => {
                         </Tooltip>
                         {(tradeFilter.length > 0 || originRegionFilter.length > 0 || destinationRegionFilter.length > 0 || 
                          originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || 
-                         carrierFilter.length > 0 || bookingStatusFilter.length > 0 || tmsSearchQuery) && (
+                         carrierFilter.length > 0 || bookingStatusFilter.length > 0 || tmsSearchQuery || 
+                         Object.keys(columnFilters).length > 0) && (
                             <Tooltip title="Clear All Filters">
                                 <FilterOutlined 
                                     style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
@@ -516,6 +526,20 @@ const BookingOverviewNew: React.FC = () => {
                                         columns={columns}
                                         dataSource={showOnlySelected ? filteredData.filter(item => selectedRows.includes(item.id)) : filteredData}
                                         rowKey="id"
+                                        onChange={(pagination, filters, sorter) => {
+                                            // Handle filter changes
+                                            Object.entries(filters).forEach(([columnKey, filterValues]) => {
+                                                if (filterValues && filterValues.length > 0) {
+                                                    dispatch(setColumnFilter({ columnKey, values: filterValues as string[] }));
+                                                } else {
+                                                    // Remove the filter if no values are selected
+                                                    const currentFilters = { ...columnFilters };
+                                                    delete currentFilters[columnKey];
+                                                    // We need to dispatch individual actions for each cleared filter
+                                                    dispatch(setColumnFilter({ columnKey, values: [] }));
+                                                }
+                                            });
+                                        }}
                                         rowSelection={{
                                             selectedRowKeys: selectedRows,
                                             onChange: handleRowSelection,

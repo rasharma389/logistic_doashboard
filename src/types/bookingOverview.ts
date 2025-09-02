@@ -150,6 +150,8 @@ export interface BookingOverviewState {
     bkgTypeFilter: string[];
     tmsSearchQuery: string;
   };
+  // Column filters for table columns
+  columnFilters: Record<string, string[]>;
   // Page size for BookingOverviewNew
   newPageSize: number;
   // Selected rows for BookingOverviewNew

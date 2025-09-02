@@ -44,6 +44,8 @@ const initialState: BookingOverviewState = {
     bkgTypeFilter: [],
     tmsSearchQuery: ''
   },
+  // Column filters for table columns
+  columnFilters: {} as Record<string, string[]>,
   // Page size for BookingOverviewNew
   newPageSize: 20,
   // Selected rows for BookingOverviewNew
@@ -314,6 +316,19 @@ const bookingOverviewSlice = createSlice({
         bkgTypeFilter: [],
         tmsSearchQuery: ''
       };
+      state.columnFilters = {};
+    },
+    // Column filter actions
+    setColumnFilter: (state, action: PayloadAction<{ columnKey: string; values: string[] }>) => {
+      const { columnKey, values } = action.payload;
+      if (values.length === 0) {
+        delete state.columnFilters[columnKey];
+      } else {
+        state.columnFilters[columnKey] = values;
+      }
+    },
+    clearColumnFilters: (state) => {
+      state.columnFilters = {};
     },
     setNewPageSize: (state, action: PayloadAction<number>) => {
       state.newPageSize = action.payload;
@@ -388,6 +403,8 @@ export const {
   clearError,
   setNewFilters,
   clearNewFilters,
+  setColumnFilter,
+  clearColumnFilters,
   setNewPageSize,
   setSelectedRows,
   toggleRowSelection,
