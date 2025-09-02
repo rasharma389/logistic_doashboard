@@ -6316,7 +6316,7 @@ export const shipperBookingsData: ShipperBooking[] = [
     "BR:1st Voyage #": "533W",
     "Bkg Party #": "TBD",
     "TMS #": "180080053",
-    "Booking Status": "pending",
+    "Booking Status": "Pending",
     "Exception?": "N",
     "BR:PRE": "CNYTN",
     "BR:POL": "CNYTN",
