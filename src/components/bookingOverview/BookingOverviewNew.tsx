@@ -103,7 +103,6 @@ const BookingOverviewNew: React.FC = () => {
     // Clear all filters
     const clearAllFilters = () => {
         dispatch(clearNewFilters());
-        dispatch(clearColumnFilters());
     };
 
     // CSV Export function
@@ -247,7 +246,7 @@ const BookingOverviewNew: React.FC = () => {
                                 key.includes('Contract') || key.includes('Carrier') ? 120 : 110)
             };
         });
-    }, [shipperBookingsData, customViews, activeViewId]);
+    }, [shipperBookingsData, customViews, activeViewId, columnFilters]);
 
          return (
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
