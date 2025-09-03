@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button } from 'antd';
+import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button, Tag } from 'antd';
 import type { SortOrder } from 'antd/es/table/interface';
-import { SearchOutlined, FilterTwoTone, DownloadOutlined } from '@ant-design/icons';
+import { SearchOutlined, FilterTwoTone, DownloadOutlined, CloseOutlined } from '@ant-design/icons';
 import { BsFiletypeCsv } from "react-icons/bs";
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 import { FilterOutlined } from '@ant-design/icons';
@@ -103,6 +103,53 @@ const BookingOverviewNew: React.FC = () => {
     // Clear all filters
     const clearAllFilters = () => {
         dispatch(clearNewFilters());
+    };
+
+    // Remove individual filter functions
+    const removeTradeFilter = (value: string) => {
+        dispatch(setNewFilters({ tradeFilter: tradeFilter.filter(item => item !== value) }));
+    };
+
+    const removeOriginRegionFilter = (value: string) => {
+        dispatch(setNewFilters({ originRegionFilter: originRegionFilter.filter(item => item !== value) }));
+    };
+
+    const removeDestinationRegionFilter = (value: string) => {
+        dispatch(setNewFilters({ destinationRegionFilter: destinationRegionFilter.filter(item => item !== value) }));
+    };
+
+    const removeOriginCountryFilter = (value: string) => {
+        dispatch(setNewFilters({ originCountryFilter: originCountryFilter.filter(item => item !== value) }));
+    };
+
+    const removeDistrictFilter = (value: string) => {
+        dispatch(setNewFilters({ districtFilter: districtFilter.filter(item => item !== value) }));
+    };
+
+    const removeReqEtdWeekFilter = (value: string) => {
+        dispatch(setNewFilters({ reqEtdWeekFilter: reqEtdWeekFilter.filter(item => item !== value) }));
+    };
+
+    const removeCarrierFilter = (value: string) => {
+        dispatch(setNewFilters({ carrierFilter: carrierFilter.filter(item => item !== value) }));
+    };
+
+    const removeBookingStatusFilter = (value: string) => {
+        dispatch(setNewFilters({ bookingStatusFilter: bookingStatusFilter.filter(item => item !== value) }));
+    };
+
+    const removeTmsSearchQuery = () => {
+        dispatch(setNewFilters({ tmsSearchQuery: '' }));
+    };
+
+    const removeColumnFilter = (columnKey: string, value: string) => {
+        const currentValues = columnFilters[columnKey] || [];
+        const newValues = currentValues.filter(item => item !== value);
+        if (newValues.length === 0) {
+            dispatch(setColumnFilter({ columnKey, values: [] }));
+        } else {
+            dispatch(setColumnFilter({ columnKey, values: newValues }));
+        }
     };
 
     // CSV Export function
@@ -468,6 +515,210 @@ const BookingOverviewNew: React.FC = () => {
                                         />
                                     </Col>
                                 </Row>
+
+                                {/* Filter Pills */}
+                                {(tradeFilter.length > 0 || originRegionFilter.length > 0 || destinationRegionFilter.length > 0 || 
+                                 originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || 
+                                 carrierFilter.length > 0 || bookingStatusFilter.length > 0 || tmsSearchQuery || 
+                                 Object.keys(columnFilters).length > 0) && (
+                                    <div style={{ marginBottom: '16px', padding: '8px 16px', backgroundColor: '#f0f9ff', borderRadius: '6px', border: '1px solid #e0f2fe' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                                            <span style={{ fontSize: '12px', fontWeight: '500', color: '#0c4a6e', marginRight: '8px' }}>Applied Filters:</span>
+                                            
+                                            {/* Trade Filter Pills */}
+                                            {tradeFilter.map(value => (
+                                                <Tag
+                                                    key={`trade-${value}`}
+                                                    closable
+                                                    onClose={() => removeTradeFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Trade: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* Origin Region Filter Pills */}
+                                            {originRegionFilter.map(value => (
+                                                <Tag
+                                                    key={`origin-region-${value}`}
+                                                    closable
+                                                    onClose={() => removeOriginRegionFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Origin Region: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* Destination Region Filter Pills */}
+                                            {destinationRegionFilter.map(value => (
+                                                <Tag
+                                                    key={`destination-region-${value}`}
+                                                    closable
+                                                    onClose={() => removeDestinationRegionFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Destination Region: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* Origin Country Filter Pills */}
+                                            {originCountryFilter.map(value => (
+                                                <Tag
+                                                    key={`origin-country-${value}`}
+                                                    closable
+                                                    onClose={() => removeOriginCountryFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Origin Country: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* District Filter Pills */}
+                                            {districtFilter.map(value => (
+                                                <Tag
+                                                    key={`district-${value}`}
+                                                    closable
+                                                    onClose={() => removeDistrictFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    District: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* Req ETD Week Filter Pills */}
+                                            {reqEtdWeekFilter.map(value => (
+                                                <Tag
+                                                    key={`req-etd-week-${value}`}
+                                                    closable
+                                                    onClose={() => removeReqEtdWeekFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Req ETD Week: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* Carrier Filter Pills */}
+                                            {carrierFilter.map(value => (
+                                                <Tag
+                                                    key={`carrier-${value}`}
+                                                    closable
+                                                    onClose={() => removeCarrierFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Carrier: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* Booking Status Filter Pills */}
+                                            {bookingStatusFilter.map(value => (
+                                                <Tag
+                                                    key={`booking-status-${value}`}
+                                                    closable
+                                                    onClose={() => removeBookingStatusFilter(value)}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Booking Status: {value}
+                                                </Tag>
+                                            ))}
+
+                                            {/* TMS Search Query Pill */}
+                                            {tmsSearchQuery && (
+                                                <Tag
+                                                    key="tms-search"
+                                                    closable
+                                                    onClose={removeTmsSearchQuery}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    TMS Search: {tmsSearchQuery}
+                                                </Tag>
+                                            )}
+
+                                            {/* Column Filter Pills */}
+                                            {Object.entries(columnFilters).map(([columnKey, values]) => 
+                                                values.map(value => (
+                                                    <Tag
+                                                        key={`column-${columnKey}-${value}`}
+                                                        closable
+                                                        onClose={() => removeColumnFilter(columnKey, value)}
+                                                        style={{ 
+                                                            backgroundColor: '#0ea5e9', 
+                                                            color: 'white', 
+                                                            border: 'none',
+                                                            borderRadius: '16px',
+                                                            padding: '4px 12px',
+                                                            fontSize: '12px'
+                                                        }}
+                                                    >
+                                                        {columnKey}: {value}
+                                                    </Tag>
+                                                ))
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div style={{ 
                                     display: 'flex', 
