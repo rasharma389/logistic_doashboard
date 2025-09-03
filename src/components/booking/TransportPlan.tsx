@@ -139,7 +139,7 @@ const TransportPlan: React.FC = () => {
       port: bookingData['BR:POD'] || '',
       terminal: "",
       timestamps: "",
-      date: bookingData['BC:1st ETA POD'] || '',
+      date: bookingData['BC: ETA POD'] || '',
       time: "",
       type: "",
       vesselVoyage: ""

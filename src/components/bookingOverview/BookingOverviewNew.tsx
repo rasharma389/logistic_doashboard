@@ -303,7 +303,7 @@ const BookingOverviewNew: React.FC = () => {
                 style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
                 extra={
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginRight: 10 }}>
-                        <Tooltip title="Go to Carrier Bookings">
+                        <Tooltip title="Splitview">
                             <MenuOutlined 
                                 style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
                                 onClick={() => {

@@ -38,9 +38,9 @@ const LinkedBookingsTable: React.FC = () => {
       render: (text: string) => (
         <Space>
           <span style={{ color: '#0ea5e9', fontWeight: '500' }}>{text}</span>
-          <Tooltip title="Shipper booking number">
+          {/* <Tooltip title="Shipper booking number">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },
@@ -51,9 +51,9 @@ const LinkedBookingsTable: React.FC = () => {
       render: (text: string) => (
         <Space>
           <span>{text}</span>
-          <Tooltip title="Cargo ready date">
+          {/* <Tooltip title="Cargo ready date">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },
@@ -64,9 +64,9 @@ const LinkedBookingsTable: React.FC = () => {
       render: (text: string) => (
         <Space>
           <span>{text}</span>
-          <Tooltip title="Consignee information">
+          {/* <Tooltip title="Consignee information">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },
@@ -77,9 +77,9 @@ const LinkedBookingsTable: React.FC = () => {
       render: (text: string) => (
         <Space>
           <span style={{ color: '#059669', fontWeight: '500' }}>{text}</span>
-          <Tooltip title="Ship window duration">
+          {/* <Tooltip title="Ship window duration">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },

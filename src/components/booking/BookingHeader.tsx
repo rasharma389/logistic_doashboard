@@ -5,7 +5,18 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { BsBoxes } from "react-icons/bs";
 import dayjs from 'dayjs';
+import { shipperBookingsData } from '../../data/bookingOverviewData';
 
+const ShowExceptionDot = <Tooltip title="This booking has exceptions that require attention">
+  <div style={{
+    width: '8px',
+    height: '8px',
+    backgroundColor: '#ff4d4f',
+    borderRadius: '50%',
+    cursor: 'help',
+    flexShrink: 0
+  }} />
+</Tooltip>;
 const BookingHeader: React.FC = () => {
   const { bookingDetails, selectedBookingId } = useSelector((state: RootState) => state.bookings);
 
@@ -50,33 +61,56 @@ const BookingHeader: React.FC = () => {
 
   const statusColors = getStatusColor(bookingDetails.status);
 
+  // Function to check if a TMS number has exceptions
+  const hasEquipmentException = (tmsNumber: string): boolean => {
+    // Remove CB- prefix if present
+    const cleanTmsNumber = tmsNumber.startsWith('CB-') ? tmsNumber.substring(3) : tmsNumber;
+
+    // Find the booking in shipperBookingsData
+    const booking = shipperBookingsData.find(booking => booking['TMS #'] === cleanTmsNumber);
+
+    // Return true if exception exists
+    return booking ? booking['Exception?']=== 'Y' && booking['Excpt. Eqp?'] === 'Y' : false;
+  };
+
+  const hasETDVesselVoyageException = (tmsNumber: string): boolean => {
+    // Remove CB- prefix if present
+    const cleanTmsNumber = tmsNumber.startsWith('CB-') ? tmsNumber.substring(3) : tmsNumber;
+
+    // Find the booking in shipperBookingsData
+    const booking = shipperBookingsData.find(booking => booking['TMS #'] === cleanTmsNumber);
+
+    // Return true if exception exists
+    return booking ? booking['Exception?']=== 'Y' && booking['Excpt. ETD?'] === 'Y' : false;
+  };
+
   return (
-    <Card 
-      style={{ 
+    <Card
+      style={{
         marginBottom: '16px',
         border: 'none',
         borderBottom: '1px solid #f0f0f0',
         borderRadius: '0'
       }}
-      styles={{ 
-        body: { 
+      styles={{
+        body: {
           padding: '0',
         }
       }}
     >
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
         alignItems: 'center',
-      padding: '12px',
-      height: '65px'
+        padding: '12px',
+        height: '65px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937' }}>
             {selectedBookingId}
           </span>
         </div>
-        
+
         <Space>
           <Button type="text" icon={<ShareAltOutlined />}>
             Share
@@ -86,11 +120,11 @@ const BookingHeader: React.FC = () => {
           </Button>
         </Space>
       </div>
-    <Divider style={{ margin: '0' }}/>
-      <Row gutter={[8, 0]} style={{ padding: '12px', marginBottom: 0, flexWrap: 'nowrap', display: 'flex' }}>
-        <Col flex="1" style={{ marginBottom: 8, minWidth: 0 }}>
+      <Divider style={{ margin: '0' }} />
+      <Row gutter={[8, 0]} style={{ padding: '5px 12px', marginBottom: 0, flexWrap: 'nowrap', display: 'flex', height: '70px' }}>
+        <Col flex="1" style={{ marginBottom: 0, minWidth: 0 }}>
           <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '2px' }}>Status</div>
-          <div style={{ fontSize: '14px', fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
+          <div style={{ fontSize: '14px', fontWeight: '500', overflow: 'hidden', textOverflow: 'ellipsis', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
             <span style={{ color: statusColors.textColor }}>
               {bookingDetails.status}
             </span>
@@ -140,7 +174,7 @@ const BookingHeader: React.FC = () => {
               }}
             />
             <span style={{ color: bookingDetails.exception ? '#ef4444' : '#10b981' }}>
-              {bookingDetails.exception ? "Exception" : "Normal"}
+              {bookingDetails.exception ? "YES" : "NO"}
             </span>
           </div>
         </Col>
@@ -154,7 +188,7 @@ const BookingHeader: React.FC = () => {
               <span style={{ fontSize: '14px', fontWeight: '500', color: '#0ea5e9' }}>
                 {bookingDetails.placeOfReceipt}
               </span>
-              <Tooltip title="Place of receipt">
+              <Tooltip title={bookingDetails.placeOfReceiptFullName}>
                 <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
               </Tooltip>
             </div>
@@ -168,7 +202,7 @@ const BookingHeader: React.FC = () => {
               <span style={{ fontSize: '14px', fontWeight: '500', color: '#0ea5e9' }}>
                 {bookingDetails.portOfLoad}
               </span>
-              <Tooltip title="Port of load">
+              <Tooltip title={bookingDetails.portOfLoadFullName}>
                 <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
               </Tooltip>
             </div>
@@ -182,7 +216,7 @@ const BookingHeader: React.FC = () => {
               <span style={{ fontSize: '14px', fontWeight: '500', color: '#0ea5e9' }}>
                 {bookingDetails.portOfDischarge}
               </span>
-              <Tooltip title="Port of discharge">
+              <Tooltip title={bookingDetails.portOfDischargeFullName}>
                 <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
               </Tooltip>
             </div>
@@ -196,7 +230,7 @@ const BookingHeader: React.FC = () => {
               <span style={{ fontSize: '14px', fontWeight: '500', color: '#0ea5e9' }}>
                 {bookingDetails.placeOfDelivery}
               </span>
-              <Tooltip title="Place of delivery">
+              <Tooltip title={bookingDetails.placeOfDeliveryFullName}>
                 <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
               </Tooltip>
             </div>
@@ -205,13 +239,16 @@ const BookingHeader: React.FC = () => {
 
         <Col xs={24} sm={12} md={4}>
           <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Equipments</div>
-              <Space align="center">
-                <BsBoxes />
-                <div style={{ fontSize: '14px', fontWeight: '500' }}>
-                  {bookingDetails.equipments}
-                </div>
-              </Space>
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>
+              <Space align="center">Equipments{hasEquipmentException(bookingDetails.id) && (
+                ShowExceptionDot
+              )}</Space></div>
+            <Space align="center">
+              <BsBoxes />
+              <div style={{ fontSize: '14px', fontWeight: '500' }}>
+                {bookingDetails.equipments}
+              </div>
+            </Space>
           </div>
         </Col>
 
@@ -228,7 +265,9 @@ const BookingHeader: React.FC = () => {
       <Row gutter={[24, 16]} style={{ marginTop: '8px', padding: '12px' }}>
         <Col xs={24} sm={12} md={4}>
           <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Place of Receipt ETD</div>
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">Place of Receipt ETD{hasETDVesselVoyageException(bookingDetails.id) && (
+                ShowExceptionDot
+              )}</Space></div>
             <Tag color="cyan" style={{ fontSize: '12px' }}>
               {dayjs(bookingDetails.placeOfReceiptEtd).isValid() ? dayjs(bookingDetails.placeOfReceiptEtd).format('DD MMM') : bookingDetails.placeOfReceiptEtd}
             </Tag>
@@ -237,7 +276,9 @@ const BookingHeader: React.FC = () => {
 
         <Col xs={24} sm={12} md={4}>
           <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Port of Load ETD</div>
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">Port of Load ETD{hasETDVesselVoyageException(bookingDetails.id) && (
+                ShowExceptionDot
+              )}</Space></div>
             <Tag color="cyan" style={{ fontSize: '12px' }}>
               {dayjs(bookingDetails.portOfLoadEtd).isValid() ? dayjs(bookingDetails.portOfLoadEtd).format('DD MMM') : bookingDetails.portOfLoadEtd}
             </Tag>
@@ -246,7 +287,9 @@ const BookingHeader: React.FC = () => {
 
         <Col xs={24} sm={12} md={4}>
           <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Port of Discharge ETA</div>
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">Port of Discharge ETA{hasETDVesselVoyageException(bookingDetails.id) && (
+                ShowExceptionDot
+              )}</Space></div>
             <span style={{ fontSize: '14px', color: '#6b7280' }}>
               {dayjs(bookingDetails.portOfDischargeEta).isValid() ? dayjs(bookingDetails.portOfDischargeEta).format('DD MMM') : bookingDetails.portOfDischargeEta}
             </span>
@@ -273,14 +316,15 @@ const BookingHeader: React.FC = () => {
 
         <Col xs={24} sm={12} md={4}>
           <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Vessel & Voyage</div>
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">1st Vessel & Voyage{hasETDVesselVoyageException(bookingDetails.id) && (
+                ShowExceptionDot
+              )}</Space></div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ fontSize: '14px', fontWeight: '500', color: '#dc2626' }}>
+              {/* <span style={{ fontSize: '14px', fontWeight: '500', color: '#dc2626' }}> */}
+              <Tag color="cyan" style={{ fontSize: '12px', fontWeight: 'bold' }}>
                 {bookingDetails.vesselNVoyage}
-              </span>
-              <Tooltip title="Vessel and voyage number">
-                <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-              </Tooltip>
+                </Tag>
+              {/* </span> */}
             </div>
           </div>
         </Col>

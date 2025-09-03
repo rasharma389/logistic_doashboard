@@ -1,6 +1,6 @@
 import { 
   carrierBookingsList, 
-  bookingDetailsData, 
+  bookingDetailsDataNew,
   linkedBookingsData, 
   activitiesData,
   documentsData,
@@ -10,6 +10,59 @@ import {
   type ActivityItem,
   type DocumentItem
 } from '../data/mockData';
+import { ShipperBooking } from '../types/bookingOverview';
+
+const STATUS = ['Canceled by carrier', 'Canceled by requestor', 'Pending']
+
+// Mapping function to convert ShipperBooking to BookingDetail
+const mapShipperBookingToBookingDetail = (shipperBooking: ShipperBooking): BookingDetail => {
+  return {
+    id: shipperBooking.id,
+    customer: shipperBooking['Cust. Code'],
+    carrier: shipperBooking['Carrier (Std)'],
+    carrierBookingNumber: shipperBooking['Bkg Party #'],
+    region: shipperBooking.district,
+    status: shipperBooking['Booking Status'],
+    statusLevel: getStatusLevel(shipperBooking['Booking Status']),
+    placeOfReceipt: shipperBooking['BR:PRE'],
+    portOfLoad: shipperBooking['BR:POL'],
+    portOfDischarge: shipperBooking['BR:POD'],
+    placeOfDelivery: shipperBooking['BR:DEL'],
+    equipments: STATUS.includes(shipperBooking['Booking Status']) ? shipperBooking['BR:Eqp.']: shipperBooking['BC:Eqp.'],
+    crd: shipperBooking.CRD,
+    moveType: shipperBooking['Move Type'],
+    placeOfReceiptEtd: STATUS.includes(shipperBooking['Booking Status']) ? shipperBooking['BR:Req. ETD PRE'] : shipperBooking['BC: ETD PRE'],
+    portOfLoadEtd: STATUS.includes(shipperBooking['Booking Status']) ? shipperBooking['BR:Req. ETD POL'] : shipperBooking['BC:ETD POL'],
+    portOfDischargeEta: STATUS.includes(shipperBooking['Booking Status']) ? shipperBooking['BR: ETA POD'] : shipperBooking['BC: ETA POD'],
+    placeOfDeliveryEta: shipperBooking['BR: ETA DEL'],
+    requestedEtdWeek: shipperBooking['req ETD wk'],
+    contractNumber: shipperBooking['Contract #'],
+    tradeLane: shipperBooking.Trade,
+    vesselNVoyage: STATUS.includes(shipperBooking['Booking Status']) ? `${shipperBooking['BR:1st Vessel']} ${shipperBooking['BR:1st Voyage #']}` : `${shipperBooking['BC:1st Vessel']} ${shipperBooking['BC:1st Voyage #']}`,
+    exception: shipperBooking['Exception?'] === 'Y',
+    placeOfReceiptFullName: shipperBooking['BR:PRE (full name)'],
+    portOfLoadFullName: shipperBooking['BR:POL (full name)'],
+    portOfDischargeFullName: shipperBooking['BR:POD (full name)'],
+    placeOfDeliveryFullName: shipperBooking['BR:DEL (full name)'],
+  };
+};
+
+// Helper function to determine status level
+const getStatusLevel = (status: string): number => {
+  switch (status.toLowerCase()) {
+    case 'confirmed':
+      return 5;
+    case 'pending':
+      return 3;
+    case 'cancelled by requestor':
+    case 'cancelled by carrier':
+      return 1;
+    case 'closed':
+      return 4;
+    default:
+      return 2;
+  }
+};
 
 // Simulate API delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -41,8 +94,13 @@ export class BookingAPI {
       throw new Error(`Failed to fetch booking details for ${bookingId}`);
     }
     
-    const booking = bookingDetailsData[bookingId];
-    return booking ? { ...booking } : null; // Return a copy
+    // Get from bookingDetailsDataNew (new data structure)
+    const shipperBooking = bookingDetailsDataNew[bookingId];
+    if (shipperBooking) {
+      return mapShipperBookingToBookingDetail(shipperBooking);
+    }
+    
+    return null;
   }
 
   /**
@@ -100,12 +158,15 @@ export class BookingAPI {
       throw new Error(`Failed to update booking ${bookingId}`);
     }
     
-    const booking = bookingDetailsData[bookingId];
-    if (booking) {
-      // Update the mock data
-      Object.assign(booking, updates);
-      return { ...booking }; // Return a copy
+    // Get from new data structure
+    const shipperBooking = bookingDetailsDataNew[bookingId];
+    if (shipperBooking) {
+      // For now, we'll return the mapped data without updating the source
+      // In a real implementation, you'd update the source data
+      const mappedBooking = mapShipperBookingToBookingDetail(shipperBooking);
+      return { ...mappedBooking, ...updates };
     }
+    
     return null;
   }
 
@@ -131,29 +192,29 @@ export class BookingAPI {
     // Apply filters based on query parameters
     if (query.customer) {
       filteredBookings = filteredBookings.filter(booking => {
-        const details = bookingDetailsData[booking.id];
-        return details?.customer.toLowerCase().includes(query.customer!.toLowerCase());
+        const details = bookingDetailsDataNew[booking.id];
+        return details ? details['Cust. Code'].toLowerCase().includes(query.customer!.toLowerCase()) : false;
       });
     }
     
     if (query.carrier) {
       filteredBookings = filteredBookings.filter(booking => {
-        const details = bookingDetailsData[booking.id];
-        return details?.carrier.toLowerCase().includes(query.carrier!.toLowerCase());
+        const details = bookingDetailsDataNew[booking.id];
+        return details ? details['Carrier (Std)'].toLowerCase().includes(query.carrier!.toLowerCase()) : false;
       });
     }
     
     if (query.status) {
       filteredBookings = filteredBookings.filter(booking => {
-        const details = bookingDetailsData[booking.id];
-        return details?.status.toLowerCase().includes(query.status!.toLowerCase());
+        const details = bookingDetailsDataNew[booking.id];
+        return details ? details['Booking Status'].toLowerCase().includes(query.status!.toLowerCase()) : false;
       });
     }
     
     if (query.region) {
       filteredBookings = filteredBookings.filter(booking => {
-        const details = bookingDetailsData[booking.id];
-        return details?.region.toLowerCase().includes(query.region!.toLowerCase());
+        const details = bookingDetailsDataNew[booking.id];
+        return details ? details.district.toLowerCase().includes(query.region!.toLowerCase()) : false;
       });
     }
     
@@ -184,16 +245,16 @@ export class BookingAPI {
     
     // Calculate statistics
     carrierBookingsList.forEach(booking => {
-      const details = bookingDetailsData[booking.id];
+      const details = bookingDetailsDataNew[booking.id];
       if (details) {
         // Count by status
-        stats.byStatus[details.status] = (stats.byStatus[details.status] || 0) + 1;
+        stats.byStatus[details['Booking Status']] = (stats.byStatus[details['Booking Status']] || 0) + 1;
         
         // Count by carrier
-        stats.byCarrier[details.carrier] = (stats.byCarrier[details.carrier] || 0) + 1;
+        stats.byCarrier[details['Carrier (Std)']] = (stats.byCarrier[details['Carrier (Std)']] || 0) + 1;
         
         // Count by region
-        stats.byRegion[details.region] = (stats.byRegion[details.region] || 0) + 1;
+        stats.byRegion[details.district] = (stats.byRegion[details.district] || 0) + 1;
       }
     });
     

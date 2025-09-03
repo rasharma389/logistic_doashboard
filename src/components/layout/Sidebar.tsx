@@ -82,7 +82,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
           </Text>
           </div>
           <Space>
-            <Tooltip title="Go to Booking Overview">
+            <Tooltip title="Booking Overview">
                 <MenuOutlined style={{ color: '#0ea5e9', fontSize: 16}} onClick={() => onMenuClick?.('booking-overview-new')}/>
             </Tooltip>
             <Tooltip title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}>
@@ -90,7 +90,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuClick, displayBookings }) => {
             </Tooltip>
           </Space>
         </Space>
-        
       </div>
       
       {!collapsed && (
