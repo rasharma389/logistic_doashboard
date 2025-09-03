@@ -90,9 +90,9 @@ const DocumentsTable: React.FC = () => {
           >
             {text}
           </Tag>
-          <Tooltip title="PDF document revision">
+          {/* <Tooltip title="PDF document revision">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },
