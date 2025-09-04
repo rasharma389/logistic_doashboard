@@ -338,11 +338,17 @@ const bookingOverviewSlice = createSlice({
         bkgTypeFilter: [],
         tmsSearchQuery: '',
         dateRangeFilter: {
-          startDate: defaultDateRange.startDate,
-          endDate: defaultDateRange.endDate
+          startDate: null,
+          endDate: null
         }
       };
       state.columnFilters = {};
+    },
+    resetDateRangeToDefault: (state) => {
+      state.newFilters.dateRangeFilter = {
+        startDate: defaultDateRange.startDate,
+        endDate: defaultDateRange.endDate
+      };
     },
     // Column filter actions
     setColumnFilter: (state, action: PayloadAction<{ columnKey: string; values: string[] }>) => {
@@ -429,6 +435,7 @@ export const {
   clearError,
   setNewFilters,
   clearNewFilters,
+  resetDateRangeToDefault,
   setColumnFilter,
   clearColumnFilters,
   setNewPageSize,
@@ -489,21 +496,79 @@ export const changePageSizeAndRefresh = (pageSize: number) => async (dispatch: a
 export const shareFilteredDataWithCarrierBookings = () => async (dispatch: any, getState: any) => {
   try {
     const { bookingOverview } = getState();
-    const { bookings, filters, searchQuery } = bookingOverview;
+    const { newFilters } = bookingOverview;
     
-    // Get the current filtered data
-    let filteredData = bookings;
+    // Import the data and dayjs
+    const { shipperBookingsData } = await import('../../data/bookingOverviewData');
+    const dayjs = (await import('dayjs')).default;
+    const isBetween = (await import('dayjs/plugin/isBetween')).default;
+    const isSameOrAfter = (await import('dayjs/plugin/isSameOrAfter')).default;
+    const isSameOrBefore = (await import('dayjs/plugin/isSameOrBefore')).default;
     
-    // If we have filters applied, we need to re-apply them to get the complete filtered dataset
-    if (Object.values(filters).some(filter => filter !== 'All') || searchQuery) {
-      const result = await BookingOverviewService.getShipperBookings(
-        1, // Start from first page
-        1000, // Get a large number to capture all filtered results
-        filters,
-        searchQuery
-      );
-      filteredData = result.bookings;
-    }
+    // Extend dayjs with plugins
+    dayjs.extend(isBetween);
+    dayjs.extend(isSameOrAfter);
+    dayjs.extend(isSameOrBefore);
+    
+    // Apply the same filtering logic as in BookingOverviewNew component
+    const filteredData = shipperBookingsData.filter(item => {
+      const {
+        tradeFilter,
+        originRegionFilter,
+        destinationRegionFilter,
+        originCountryFilter,
+        districtFilter,
+        reqEtdWeekFilter,
+        carrierFilter,
+        bookingStatusFilter,
+        tmsSearchQuery,
+        dateRangeFilter
+      } = newFilters;
+      
+      // Utility function to parse date format "DD-MMM" to dayjs object
+      const parseDate = (dateStr: string) => {
+        if (!dateStr) return null;
+        // Add current year to the date string to make it parseable
+        const currentYear = new Date().getFullYear();
+        return dayjs(`${dateStr}-${currentYear}`, 'DD-MMM-YYYY');
+      };
+      
+      const matchesTrade = tradeFilter.length === 0 || tradeFilter.includes(item['Trade']);
+      const matchesOriginRegion = originRegionFilter.length === 0 || originRegionFilter.includes(item['Origin region']);
+      const matchesDestinationRegion = destinationRegionFilter.length === 0 || destinationRegionFilter.includes(item['Destination region']);
+      const matchesOriginCountry = originCountryFilter.length === 0 || originCountryFilter.includes(item['Origin country']);
+      const matchesDistrict = districtFilter.length === 0 || districtFilter.includes(item['district']);
+      const matchesReqEtdWeek = reqEtdWeekFilter.length === 0 || reqEtdWeekFilter.includes(item['req ETD wk']);
+      const matchesCarrier = carrierFilter.length === 0 || carrierFilter.includes(item['Carrier (Std)']);
+      const matchesBookingStatus = bookingStatusFilter.length === 0 || bookingStatusFilter.includes(item['Booking Status']);
+      const matchesTmsSearch = !tmsSearchQuery ||
+        item['TMS #']?.toLowerCase().includes(tmsSearchQuery.toLowerCase()) ||
+        item.id?.toLowerCase().includes(tmsSearchQuery.toLowerCase());
+
+      // Date range filtering
+      const matchesDateRange = (() => {
+        if (!dateRangeFilter.startDate && !dateRangeFilter.endDate) return true;
+        
+        const itemDate = parseDate(item['BR:Req. ETD POL']);
+        if (!itemDate) return false;
+
+        const startDate = dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate) : null;
+        const endDate = dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate) : null;
+
+        if (startDate && endDate) {
+          return itemDate.isBetween(startDate, endDate, 'day', '[]'); // inclusive
+        } else if (startDate) {
+          return itemDate.isSameOrAfter(startDate, 'day');
+        } else if (endDate) {
+          return itemDate.isSameOrBefore(endDate, 'day');
+        }
+        return true;
+      })();
+
+      return matchesTrade && matchesOriginRegion && matchesDestinationRegion &&
+        matchesOriginCountry && matchesDistrict && matchesReqEtdWeek && 
+        matchesCarrier && matchesBookingStatus && matchesTmsSearch && matchesDateRange;
+    });
     
     // Import the mapping function
     const { mapShipperBookingToCarrierBooking } = await import('../../utils/dataMapping');

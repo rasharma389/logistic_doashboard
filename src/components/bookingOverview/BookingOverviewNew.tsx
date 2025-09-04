@@ -21,7 +21,7 @@ dayjs.extend(isSameOrBefore);
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
-import { setNewFilters, clearNewFilters, setColumnFilter, clearColumnFilters, setNewPageSize, setSelectedRows, toggleRowSelection, clearSelectedRows } from '../../store/slices/bookingOverviewSlice';
+import { setNewFilters, clearNewFilters, setColumnFilter, setNewPageSize, setSelectedRows, toggleRowSelection, clearSelectedRows, resetDateRangeToDefault } from '../../store/slices/bookingOverviewSlice';
 const { Search } = Input;
 const { Option } = Select;
 
@@ -143,6 +143,11 @@ const BookingOverviewNew: React.FC = () => {
     // Clear all filters
     const clearAllFilters = () => {
         dispatch(clearNewFilters());
+    };
+
+    // Reset date range to default
+    const resetDateRangeToDefaultHandler = () => {
+        dispatch(resetDateRangeToDefault());
     };
 
     // Remove individual filter functions
@@ -579,29 +584,43 @@ const BookingOverviewNew: React.FC = () => {
                                     </Col>
 
                                     <Col xs={24} sm={12} md={4} lg={4}>
-                                        <DatePicker.RangePicker
-                                            placeholder={['Start Date', 'End Date']}
-                                            value={[
-                                                dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate) : null,
-                                                dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate) : null
-                                            ]}
-                                            onChange={(dates) => {
-                                                if (dates) {
-                                                    setDateRangeFilter({
-                                                        startDate: dates[0]?.format('YYYY-MM-DD') || null,
-                                                        endDate: dates[1]?.format('YYYY-MM-DD') || null
-                                                    });
-                                                } else {
-                                                    setDateRangeFilter({
-                                                        startDate: null,
-                                                        endDate: null
-                                                    });
-                                                }
-                                            }}
-                                            style={{ width: '100%' }}
-                                            size="small"
-                                            format="DD-MMM-YYYY"
-                                        />
+                                        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                            <DatePicker.RangePicker
+                                                placeholder={['Start Date', 'End Date']}
+                                                value={[
+                                                    dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate) : null,
+                                                    dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate) : null
+                                                ]}
+                                                onChange={(dates) => {
+                                                    if (dates) {
+                                                        setDateRangeFilter({
+                                                            startDate: dates[0]?.format('YYYY-MM-DD') || null,
+                                                            endDate: dates[1]?.format('YYYY-MM-DD') || null
+                                                        });
+                                                    } else {
+                                                        setDateRangeFilter({
+                                                            startDate: null,
+                                                            endDate: null
+                                                        });
+                                                    }
+                                                }}
+                                                style={{ flex: 1 }}
+                                                size="small"
+                                                format="DD-MMM-YYYY"
+                                            />
+                                            <Button
+                                                size="small"
+                                                onClick={resetDateRangeToDefaultHandler}
+                                                style={{ 
+                                                    padding: '4px 8px', 
+                                                    fontSize: '10px',
+                                                    height: '24px',
+                                                    minWidth: 'auto'
+                                                }}
+                                            >
+                                                Reset
+                                            </Button>
+                                        </div>
                                     </Col>
 
 
