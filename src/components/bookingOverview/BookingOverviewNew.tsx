@@ -385,14 +385,20 @@ const BookingOverviewNew: React.FC = () => {
                 style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
                 extra={
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginRight: 10 }}>
-                        <Tooltip title="Splitview">
+                        <Tooltip title={filteredData.length > 0 ? "Splitview" : "No data to show in split view"}>
                             <MenuOutlined 
-                                style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
+                                style={{ 
+                                    color: filteredData.length > 0 ? '#0ea5e9' : '#d1d5db', 
+                                    fontSize: 16, 
+                                    cursor: filteredData.length > 0 ? 'pointer' : 'not-allowed' 
+                                }} 
                                 onClick={() => {
-                                    // Share the current filtered data with carrier bookings
-                                    const mappedCarrierBookings = mapShipperBookingToCarrierBooking(filteredData);
-                                    dispatch({ type: 'bookings/setFilteredBookingsFromOverview', payload: mappedCarrierBookings });
-                                    navigate('/booking-overview/carrier-bookings');
+                                    if (filteredData.length > 0) {
+                                        // Share the current filtered data with carrier bookings
+                                        const mappedCarrierBookings = mapShipperBookingToCarrierBooking(filteredData);
+                                        dispatch({ type: 'bookings/setFilteredBookingsFromOverview', payload: mappedCarrierBookings });
+                                        navigate('/booking-overview/carrier-bookings');
+                                    }
                                 }}
                             />
                         </Tooltip>
