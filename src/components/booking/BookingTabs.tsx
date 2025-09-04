@@ -4,12 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { setActiveTab } from '../../store/slices/bookingsSlice';
 import TransportPlan from './TransportPlan';
-import ExceptionDetails from './ExceptionDetails';
 import ExceptionDetailsNew from './ExceptionDetailsNew';
 import LinkedBookingsTable from './LinkedBookingsTable';
-import DocumentsTable from './DocumentsTable';
 import EmailReader from '../email/EmailReader';
 import { shipperBookingsData } from '../../data/bookingOverviewData';
+import DocumentsTableNew from './DocumentsTableNew';
 
 const BookingTabs: React.FC = () => {
   const dispatch = useDispatch();
@@ -80,7 +79,7 @@ const BookingTabs: React.FC = () => {
     {
       key: 'documents',
       label: 'Documents',
-      children: <DocumentsTable />
+      children: <DocumentsTableNew />
     },
     {
       key: 'emails',
