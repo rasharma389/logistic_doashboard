@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button, Tag } from 'antd';
+import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button, Tag, DatePicker } from 'antd';
 import type { SortOrder } from 'antd/es/table/interface';
 import { SearchOutlined, FilterTwoTone, DownloadOutlined, CloseOutlined } from '@ant-design/icons';
 import { BsFiletypeCsv } from "react-icons/bs";
@@ -8,6 +8,15 @@ import { FilterOutlined } from '@ant-design/icons';
 import { MenuOutlined } from '@ant-design/icons';
 import { mapShipperBookingToCarrierBooking } from '../../utils/dataMapping';
 import ViewsTab from './ViewsTab';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+
+// Extend dayjs with plugins
+dayjs.extend(isBetween);
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
 
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
@@ -32,7 +41,8 @@ const BookingOverviewNew: React.FC = () => {
         reqEtdWeekFilter,
         carrierFilter,
         bookingStatusFilter,
-        tmsSearchQuery
+        tmsSearchQuery,
+        dateRangeFilter
     } = newFilters;
 
     // Setter functions that dispatch to Redux
@@ -45,6 +55,7 @@ const BookingOverviewNew: React.FC = () => {
     const setCarrierFilter = (value: string[]) => dispatch(setNewFilters({ carrierFilter: value }));
     const setBookingStatusFilter = (value: string[]) => dispatch(setNewFilters({ bookingStatusFilter: value }));
     const setTmsSearchQuery = (value: string) => dispatch(setNewFilters({ tmsSearchQuery: value }));
+    const setDateRangeFilter = (value: { startDate: string | null; endDate: string | null }) => dispatch(setNewFilters({ dateRangeFilter: value }));
 
     // Toggle for showing only selected rows
     const [showOnlySelected, setShowOnlySelected] = useState(false);
@@ -74,6 +85,14 @@ const BookingOverviewNew: React.FC = () => {
 
     // Filter data based on all filters
     const filteredData = useMemo(() => {
+        // Utility function to parse date format "DD-MMM" to dayjs object
+        const parseDate = (dateStr: string) => {
+            if (!dateStr) return null;
+            // Add current year to the date string to make it parseable
+            const currentYear = new Date().getFullYear();
+            return dayjs(`${dateStr}-${currentYear}`, 'DD-MMM-YYYY');
+        };
+
         return shipperBookingsData.filter(item => {
             const matchesTrade = tradeFilter.length === 0 || tradeFilter.includes(item['Trade']);
             const matchesOriginRegion = originRegionFilter.length === 0 || originRegionFilter.includes(item['Origin region']);
@@ -87,6 +106,26 @@ const BookingOverviewNew: React.FC = () => {
                 item['TMS #']?.toLowerCase().includes(tmsSearchQuery.toLowerCase()) ||
                 item.id?.toLowerCase().includes(tmsSearchQuery.toLowerCase());
 
+            // Date range filtering
+            const matchesDateRange = (() => {
+                if (!dateRangeFilter.startDate && !dateRangeFilter.endDate) return true;
+                
+                const itemDate = parseDate(item['BR:Req. ETD POL']);
+                if (!itemDate) return false;
+
+                const startDate = dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate) : null;
+                const endDate = dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate) : null;
+
+                if (startDate && endDate) {
+                    return itemDate.isBetween(startDate, endDate, 'day', '[]'); // inclusive
+                } else if (startDate) {
+                    return itemDate.isSameOrAfter(startDate, 'day');
+                } else if (endDate) {
+                    return itemDate.isSameOrBefore(endDate, 'day');
+                }
+                return true;
+            })();
+
             // Check column filters
             const matchesColumnFilters = Object.entries(columnFilters).every(([columnKey, filterValues]) => {
                 if (filterValues.length === 0) return true;
@@ -96,9 +135,10 @@ const BookingOverviewNew: React.FC = () => {
 
             return matchesTrade && matchesOriginRegion && matchesDestinationRegion &&
                 matchesOriginCountry && matchesDistrict && matchesReqEtdWeek && 
-                matchesCarrier && matchesBookingStatus && matchesTmsSearch && matchesColumnFilters;
+                matchesCarrier && matchesBookingStatus && matchesTmsSearch && 
+                matchesDateRange && matchesColumnFilters;
         });
-    }, [tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, carrierFilter, bookingStatusFilter, tmsSearchQuery, columnFilters]);
+    }, [tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, carrierFilter, bookingStatusFilter, tmsSearchQuery, dateRangeFilter, columnFilters]);
 
     // Clear all filters
     const clearAllFilters = () => {
@@ -538,9 +578,35 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-
-
                                     <Col xs={24} sm={12} md={6} lg={6}>
+                                        <DatePicker.RangePicker
+                                            placeholder={['Start Date', 'End Date']}
+                                            value={[
+                                                dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate) : null,
+                                                dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate) : null
+                                            ]}
+                                            onChange={(dates) => {
+                                                if (dates) {
+                                                    setDateRangeFilter({
+                                                        startDate: dates[0]?.format('YYYY-MM-DD') || null,
+                                                        endDate: dates[1]?.format('YYYY-MM-DD') || null
+                                                    });
+                                                } else {
+                                                    setDateRangeFilter({
+                                                        startDate: null,
+                                                        endDate: null
+                                                    });
+                                                }
+                                            }}
+                                            style={{ width: '100%' }}
+                                            size="small"
+                                            format="DD-MMM-YYYY"
+                                        />
+                                    </Col>
+
+
+
+                                    <Col xs={24} sm={12} md={4} lg={4}>
                                         <Search
                                             placeholder="Search by TMS ID or Booking ID"
                                             value={tmsSearchQuery}
@@ -557,7 +623,7 @@ const BookingOverviewNew: React.FC = () => {
                                 {(tradeFilter.length > 0 || originRegionFilter.length > 0 || destinationRegionFilter.length > 0 || 
                                  originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || 
                                  carrierFilter.length > 0 || bookingStatusFilter.length > 0 || tmsSearchQuery || 
-                                 Object.keys(columnFilters).length > 0) && (
+                                 dateRangeFilter.startDate || dateRangeFilter.endDate || Object.keys(columnFilters).length > 0) && (
                                     <div style={{ marginBottom: '16px', padding: '8px 16px', backgroundColor: '#f0f9ff', borderRadius: '6px', border: '1px solid #e0f2fe' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                                             <span style={{ fontSize: '12px', fontWeight: '500', color: '#0c4a6e', marginRight: '8px' }}>Applied Filters:</span>
@@ -713,6 +779,25 @@ const BookingOverviewNew: React.FC = () => {
                                                     Booking Status: {value}
                                                 </Tag>
                                             ))}
+
+                                            {/* Date Range Filter Pill */}
+                                            {(dateRangeFilter.startDate || dateRangeFilter.endDate) && (
+                                                <Tag
+                                                    key="date-range"
+                                                    closable
+                                                    onClose={() => setDateRangeFilter({ startDate: null, endDate: null })}
+                                                    style={{ 
+                                                        backgroundColor: '#0ea5e9', 
+                                                        color: 'white', 
+                                                        border: 'none',
+                                                        borderRadius: '16px',
+                                                        padding: '4px 12px',
+                                                        fontSize: '12px'
+                                                    }}
+                                                >
+                                                    Date Range: {dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate).format('DD-MMM-YYYY') : 'Start'} - {dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate).format('DD-MMM-YYYY') : 'End'}
+                                                </Tag>
+                                            )}
 
                                             {/* TMS Search Query Pill */}
                                             {tmsSearchQuery && (

@@ -42,7 +42,11 @@ const initialState: BookingOverviewState = {
     exceptionStatusFilter: [],
     moveTypeFilter: [],
     bkgTypeFilter: [],
-    tmsSearchQuery: ''
+    tmsSearchQuery: '',
+    dateRangeFilter: {
+      startDate: null,
+      endDate: null
+    }
   },
   // Column filters for table columns
   columnFilters: {} as Record<string, string[]>,
@@ -298,6 +302,10 @@ const bookingOverviewSlice = createSlice({
       moveTypeFilter: string[];
       bkgTypeFilter: string[];
       tmsSearchQuery: string;
+      dateRangeFilter: {
+        startDate: string | null;
+        endDate: string | null;
+      };
     }>>) => {
       state.newFilters = { ...state.newFilters, ...action.payload };
     },
@@ -314,7 +322,11 @@ const bookingOverviewSlice = createSlice({
         exceptionStatusFilter: [],
         moveTypeFilter: [],
         bkgTypeFilter: [],
-        tmsSearchQuery: ''
+        tmsSearchQuery: '',
+        dateRangeFilter: {
+          startDate: null,
+          endDate: null
+        }
       };
       state.columnFilters = {};
     },

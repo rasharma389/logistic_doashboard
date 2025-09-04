@@ -209,6 +209,10 @@ export interface BookingOverviewState {
     moveTypeFilter: string[];
     bkgTypeFilter: string[];
     tmsSearchQuery: string;
+    dateRangeFilter: {
+      startDate: string | null;
+      endDate: string | null;
+    };
   };
   // Column filters for table columns
   columnFilters: Record<string, string[]>;
