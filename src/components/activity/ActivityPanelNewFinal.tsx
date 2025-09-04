@@ -18,6 +18,9 @@ interface TimelineItem {
   bcETD?: string;
   createDate?: string;
   reqETD?: string;
+  reqETA?: string;
+  vessel?: string;
+  voyage?: string;
 }
 
 const ActivityPanelNewFinal: React.FC = () => {
@@ -69,30 +72,30 @@ const ActivityPanelNewFinal: React.FC = () => {
     const items: TimelineItem[] = [];
 
     // 1. Timeline Display order (latest on top)
-    items.push({
-      key: 'latest',
-      label: 'Latest Version',
-      value: 'Latest',
-      status: selectedBooking['Booking Status'] || 'N/A',
-      receiptDate: selectedBooking['BC:Release Date'] || 'N/A',
-      bcETD: selectedBooking['BC:ETD POL'] || 'N/A'
-    });
+    // items.push({
+    //   key: 'latest',
+    //   label: 'Latest Version',
+    //   value: 'Latest',
+    //   status: selectedBooking['Booking Status'] || 'N/A',
+    //   receiptDate: selectedBooking['BC:Release Date (latest)'] || 'N/A',
+    //   bcETD: selectedBooking['BC:ETD POL'] || 'N/A'
+    // });
 
     // 2. Latest version -1 (if we have version info)
-    if (selectedBooking['BC:Version'] && selectedBooking['BC:Version'] !== '1.0') {
-      // Special case for TMS # CB-185901648
-      const tmsNumber = selectedBookingId?.replace('CB-', '');
-      const isSpecialTMS = tmsNumber === '185901648';
+    // if (selectedBooking['BC:Version'] && selectedBooking['BC:Version'] !== '1.0') {
+    //   // Special case for TMS # CB-185901648
+    //   const tmsNumber = selectedBookingId?.replace('CB-', '');
+    //   const isSpecialTMS = tmsNumber === '185901648';
       
-      items.push({
-        key: 'previous',
-        label: 'Previous Version',
-        value: `Version ${selectedBooking['BC:Version']}`,
-        status: selectedBooking['Booking Status'] || 'N/A',
-        receiptDate: isSpecialTMS ? '15-Jul' : (selectedBooking['BC:Release Date'] || 'N/A'),
-        bcETD: isSpecialTMS ? '12-Aug' : (selectedBooking['BC:ETD POL'] || 'N/A')
-      });
-    }
+    //   items.push({
+    //     key: 'previous',
+    //     label: 'Previous Version',
+    //     value: `Version ${selectedBooking['BC:Version']}`,
+    //     status: selectedBooking['Booking Status'] || 'N/A',
+    //     receiptDate: isSpecialTMS ? '15-Jul' : (selectedBooking['BC:Release Date (latest)'] || 'N/A'),
+    //     bcETD: isSpecialTMS ? '12-Aug' : (selectedBooking['BC:ETD POL'] || 'N/A')
+    //   });
+    // }
 
     // 3. Booking creation
     items.push({
@@ -100,7 +103,10 @@ const ActivityPanelNewFinal: React.FC = () => {
       label: 'Booking Creation',
       value: 'Initial Request',
       createDate: formatDate(selectedBooking['BR create date']) || 'N/A',
-      reqETD: selectedBooking['BR:Req. ETD'] || 'N/A'
+      reqETD: selectedBooking['BR:Req. ETD POL'] || 'N/A',
+      reqETA: selectedBooking['BR: ETA POD'] || 'N/A',
+      vessel: selectedBooking['BR:1st Vessel'] || 'N/A',
+      voyage: selectedBooking['BR:1st Voyage #'] || 'N/A'
     });
 
     console.log('ActivityPanelNewFinal - generated timelineItems:', items);
@@ -224,6 +230,31 @@ const ActivityPanelNewFinal: React.FC = () => {
               marginBottom: '4px'
             }}>
               <Text strong>Req ETD:</Text> {item.reqETD}
+            </div>
+
+            {/* Req ETA */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
+            }}>
+              <Text strong>Req ETA:</Text> {item.reqETA}
+            </div>
+            {/* Req Vessel */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
+            }}>
+              <Text strong>1st Vessel:</Text> {item.vessel}
+            </div>
+            {/* Req Voyage */}
+            <div style={{ 
+              fontSize: '13px', 
+              color: '#6b7280',
+              marginBottom: '4px'
+            }}>
+              <Text strong>1st Voyage:</Text> {item.voyage}
             </div>
           </>
         )}
