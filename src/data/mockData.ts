@@ -90,7 +90,7 @@ export const carrierBookingsList: CarrierBooking[] = [
   {
     "id": "CB-180080077",
     "destination": "CN E. - HMH",
-    "date": "06-Aug"
+    "date": "07-Aug"
   },
   {
     "id": "CB-180080080",
@@ -2339,682 +2339,682 @@ export const linkedBookingsData: Record<string, LinkedBooking[]> = {
       "shipper_bkg_no": "202347293044",
       "crd_date": "24-Jun",
       "consignee": "H&M Home",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080004": [
     {
-      "id": "2",
+      "id": "1",
       "shipper_bkg_no": "202347293046",
       "crd_date": "21-Jun",
       "consignee": "UNILEVER",
-      "shipWindow": "14 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080003": [
     {
-      "id": "3",
+      "id": "1",
       "shipper_bkg_no": "202347293048",
       "crd_date": "25-Jun",
       "consignee": "UNILEVER",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080077": [
     {
-      "id": "4",
+      "id": "1",
       "shipper_bkg_no": "202347293049",
-      "crd_date": "06-Aug",
+      "crd_date": "07-Aug",
       "consignee": "H&M Home",
-      "shipWindow": "20 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080080": [
     {
-      "id": "5",
+      "id": "1",
       "shipper_bkg_no": "202347293050",
       "crd_date": "07-Aug",
       "consignee": "Siemens AG",
-      "shipWindow": "19 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080006": [
     {
-      "id": "6",
+      "id": "1",
       "shipper_bkg_no": "202347293045",
       "crd_date": "23-Jun",
       "consignee": "H&M Home",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080007": [
     {
-      "id": "7",
+      "id": "1",
       "shipper_bkg_no": "202347220982",
       "crd_date": "23-Jun",
       "consignee": "Lidl",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080073": [
     {
-      "id": "8",
+      "id": "1",
       "shipper_bkg_no": "202347356278",
       "crd_date": "27-Jun",
       "consignee": "H&M Home",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080072": [
     {
-      "id": "9",
+      "id": "1",
       "shipper_bkg_no": "202347356278",
       "crd_date": "28-Jun",
       "consignee": "UNILEVER",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080008": [
     {
-      "id": "10",
+      "id": "1",
       "shipper_bkg_no": "202347261043",
       "crd_date": "05-Jul",
       "consignee": "Walmart",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080011": [
     {
-      "id": "11",
+      "id": "1",
       "shipper_bkg_no": "202347346614",
       "crd_date": "07-Jul",
       "consignee": "Nike",
-      "shipWindow": "9 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080009": [
     {
-      "id": "12",
+      "id": "1",
       "shipper_bkg_no": "202347240915",
       "crd_date": "07-Jul",
       "consignee": "H&M Home",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080010": [
     {
-      "id": "13",
+      "id": "1",
       "shipper_bkg_no": "202347268065",
       "crd_date": "07-Jul",
       "consignee": "Lidl",
-      "shipWindow": "14 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080014": [
     {
-      "id": "14",
+      "id": "1",
       "shipper_bkg_no": "202347314945",
       "crd_date": "21-Jul",
       "consignee": "Nike",
-      "shipWindow": "12 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080015": [
     {
-      "id": "15",
+      "id": "1",
       "shipper_bkg_no": "202347406636",
       "crd_date": "21-Jul",
       "consignee": "Best Buy",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080013": [
     {
-      "id": "16",
+      "id": "1",
       "shipper_bkg_no": "202347194539",
       "crd_date": "23-Jul",
       "consignee": "Kaufland",
-      "shipWindow": "16 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080016": [
     {
-      "id": "17",
+      "id": "1",
       "shipper_bkg_no": "202347292223",
       "crd_date": "23-Jul",
       "consignee": "Costco",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080017": [
     {
-      "id": "18",
+      "id": "1",
       "shipper_bkg_no": "202347300260",
       "crd_date": "26-Jul",
       "consignee": "Walmart",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080018": [
     {
-      "id": "19",
+      "id": "1",
       "shipper_bkg_no": "202347375215",
       "crd_date": "25-Jul",
       "consignee": "Costco",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080019": [
     {
-      "id": "20",
+      "id": "1",
       "shipper_bkg_no": "202347423449",
       "crd_date": "25-Jul",
       "consignee": "Home Depot",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080020": [
     {
-      "id": "21",
+      "id": "1",
       "shipper_bkg_no": "202347423480",
       "crd_date": "25-Jul",
       "consignee": "Walmart",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080021": [
     {
-      "id": "22",
+      "id": "1",
       "shipper_bkg_no": "202347318180",
       "crd_date": "25-Jul",
       "consignee": "Home Depot",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080023": [
     {
-      "id": "23",
+      "id": "1",
       "shipper_bkg_no": "202347307339",
       "crd_date": "23-Jul",
       "consignee": "Costco",
-      "shipWindow": "14 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080035": [
     {
-      "id": "24",
+      "id": "1",
       "shipper_bkg_no": "202347498157",
       "crd_date": "24-Jul",
       "consignee": "Target",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080024": [
     {
-      "id": "25",
+      "id": "1",
       "shipper_bkg_no": "202347392887",
       "crd_date": "28-Jul",
       "consignee": "H&M Home",
-      "shipWindow": "16 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080036": [
     {
-      "id": "26",
+      "id": "1",
       "shipper_bkg_no": "202347291829",
       "crd_date": "30-Jul",
       "consignee": "Kaufland",
-      "shipWindow": "16 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080037": [
     {
-      "id": "27",
+      "id": "1",
       "shipper_bkg_no": "202347310239",
       "crd_date": "30-Jul",
       "consignee": "Lidl",
-      "shipWindow": "14 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080051": [
     {
-      "id": "28",
+      "id": "1",
       "shipper_bkg_no": "202347314010",
       "crd_date": "30-Jul",
       "consignee": "Kaufland",
-      "shipWindow": "13 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080052": [
     {
-      "id": "29",
+      "id": "1",
       "shipper_bkg_no": "202347433357",
       "crd_date": "30-Jul",
       "consignee": "H&M Home",
-      "shipWindow": "13 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080025": [
     {
-      "id": "30",
+      "id": "1",
       "shipper_bkg_no": "202347320098",
       "crd_date": "31-Jul",
       "consignee": "Siemens AG",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080026": [
     {
-      "id": "31",
+      "id": "1",
       "shipper_bkg_no": "202347341746",
       "crd_date": "31-Jul",
       "consignee": "Triumph",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080027": [
     {
-      "id": "32",
+      "id": "1",
       "shipper_bkg_no": "202347238889, 202347443978",
       "crd_date": "01-Aug",
       "consignee": "Siemens AG",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080038": [
     {
-      "id": "33",
+      "id": "1",
       "shipper_bkg_no": "202347471558, 202347291582, 202347326823, 202347465267, 202347403134, 202347384223, 202347185490, 202347056575, 202347374241, 202347364836, 202347355804, 202347338355",
       "crd_date": "31-Jul",
       "consignee": "UNILEVER",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080039": [
     {
-      "id": "34",
+      "id": "1",
       "shipper_bkg_no": "202347239816",
       "crd_date": "31-Jul",
       "consignee": "Triumph",
-      "shipWindow": "15 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080071": [
     {
-      "id": "35",
+      "id": "1",
       "shipper_bkg_no": "202347228216",
       "crd_date": "31-Jul",
       "consignee": "Siemens AG",
-      "shipWindow": "18 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080012": [
     {
-      "id": "36",
+      "id": "1",
       "shipper_bkg_no": "202347316017",
       "crd_date": "31-Jul",
       "consignee": "Walmart",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080028": [
     {
-      "id": "37",
+      "id": "1",
       "shipper_bkg_no": "202347333994",
       "crd_date": "30-Jul",
       "consignee": "Home Depot",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080029": [
     {
-      "id": "38",
+      "id": "1",
       "shipper_bkg_no": "202347309368",
       "crd_date": "30-Jul",
       "consignee": "Home Depot",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080030": [
     {
-      "id": "39",
+      "id": "1",
       "shipper_bkg_no": "202347466828",
       "crd_date": "30-Jul",
       "consignee": "Costco",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080031": [
     {
-      "id": "40",
+      "id": "1",
       "shipper_bkg_no": "202347424080",
       "crd_date": "02-Aug",
       "consignee": "Siemens AG",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080032": [
     {
-      "id": "41",
+      "id": "1",
       "shipper_bkg_no": "202347398240",
       "crd_date": "02-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080033": [
     {
-      "id": "42",
+      "id": "1",
       "shipper_bkg_no": "202347393130",
       "crd_date": "02-Aug",
       "consignee": "UNILEVER",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080034": [
     {
-      "id": "43",
+      "id": "1",
       "shipper_bkg_no": "202347384578",
       "crd_date": "02-Aug",
       "consignee": "Lenovo",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080040": [
     {
-      "id": "44",
+      "id": "1",
       "shipper_bkg_no": "202347308733",
       "crd_date": "03-Aug",
       "consignee": "Siemens AG",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080041": [
     {
-      "id": "45",
+      "id": "1",
       "shipper_bkg_no": "202347318607",
       "crd_date": "02-Aug",
       "consignee": "UNILEVER",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080042": [
     {
-      "id": "46",
+      "id": "1",
       "shipper_bkg_no": "202347347566",
       "crd_date": "03-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080043": [
     {
-      "id": "47",
+      "id": "1",
       "shipper_bkg_no": "202347381798",
       "crd_date": "02-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080044": [
     {
-      "id": "48",
+      "id": "1",
       "shipper_bkg_no": "202347455376",
       "crd_date": "04-Aug",
       "consignee": "Lenovo",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080045": [
     {
-      "id": "49",
+      "id": "1",
       "shipper_bkg_no": "202347214171",
       "crd_date": "01-Aug",
       "consignee": "Target",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080046": [
     {
-      "id": "50",
+      "id": "1",
       "shipper_bkg_no": "202347207051",
       "crd_date": "01-Aug",
       "consignee": "Target",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080047": [
     {
-      "id": "51",
+      "id": "1",
       "shipper_bkg_no": "202347206887",
       "crd_date": "01-Aug",
       "consignee": "Target",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080048": [
     {
-      "id": "52",
+      "id": "1",
       "shipper_bkg_no": "202347288477",
       "crd_date": "01-Aug",
       "consignee": "Costco",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080049": [
     {
-      "id": "53",
+      "id": "1",
       "shipper_bkg_no": "202347310977",
       "crd_date": "01-Aug",
       "consignee": "Home Depot",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080050": [
     {
-      "id": "54",
+      "id": "1",
       "shipper_bkg_no": "202347351762",
       "crd_date": "01-Aug",
       "consignee": "Home Depot",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080067": [
     {
-      "id": "55",
+      "id": "1",
       "shipper_bkg_no": "202347523428",
       "crd_date": "05-Aug",
       "consignee": "H&M Home",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080068": [
     {
-      "id": "56",
+      "id": "1",
       "shipper_bkg_no": "202347523667",
       "crd_date": "04-Aug",
       "consignee": "Kaufland",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080069": [
     {
-      "id": "57",
+      "id": "1",
       "shipper_bkg_no": "202347523845",
       "crd_date": "04-Aug",
       "consignee": "H&M Home",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080070": [
     {
-      "id": "58",
+      "id": "1",
       "shipper_bkg_no": "202347524036",
       "crd_date": "05-Aug",
       "consignee": "Kaufland",
-      "shipWindow": "11 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080074": [
     {
-      "id": "59",
+      "id": "1",
       "shipper_bkg_no": "202347409533",
       "crd_date": "05-Aug",
       "consignee": "Siemens AG",
-      "shipWindow": "30 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080076": [
     {
-      "id": "60",
+      "id": "1",
       "shipper_bkg_no": "202347",
       "crd_date": "06-Aug",
       "consignee": "Kaufland",
-      "shipWindow": "26 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080022": [
     {
-      "id": "61",
+      "id": "1",
       "shipper_bkg_no": "202347409533",
       "crd_date": "05-Aug",
       "consignee": "H&M Home",
-      "shipWindow": "26 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080053": [
     {
-      "id": "62",
+      "id": "1",
       "shipper_bkg_no": "202347449932",
       "crd_date": "07-Aug",
       "consignee": "Best Buy",
-      "shipWindow": "20 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080075": [
     {
-      "id": "63",
+      "id": "1",
       "shipper_bkg_no": "202347449845",
       "crd_date": "07-Aug",
       "consignee": "H&M Home",
-      "shipWindow": "20 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080054": [
     {
-      "id": "64",
+      "id": "1",
       "shipper_bkg_no": "202347454779",
       "crd_date": "31-Jul",
       "consignee": "Siemens AG",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080055": [
     {
-      "id": "65",
+      "id": "1",
       "shipper_bkg_no": "202347438464",
       "crd_date": "02-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080056": [
     {
-      "id": "66",
+      "id": "1",
       "shipper_bkg_no": "202347438464",
       "crd_date": "02-Aug",
       "consignee": "UNILEVER",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080057": [
     {
-      "id": "67",
+      "id": "1",
       "shipper_bkg_no": "202347423479",
       "crd_date": "01-Aug",
       "consignee": "UNILEVER",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080058": [
     {
-      "id": "68",
+      "id": "1",
       "shipper_bkg_no": "202347483465",
       "crd_date": "08-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080059": [
     {
-      "id": "69",
+      "id": "1",
       "shipper_bkg_no": "202347482774",
       "crd_date": "07-Aug",
       "consignee": "Lenovo",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080060": [
     {
-      "id": "70",
+      "id": "1",
       "shipper_bkg_no": "202347482774",
       "crd_date": "08-Aug",
       "consignee": "Lenovo",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080061": [
     {
-      "id": "71",
+      "id": "1",
       "shipper_bkg_no": "202347482774",
       "crd_date": "07-Aug",
       "consignee": "Lenovo",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080062": [
     {
-      "id": "72",
+      "id": "1",
       "shipper_bkg_no": "202347482774",
       "crd_date": "08-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080063": [
     {
-      "id": "73",
+      "id": "1",
       "shipper_bkg_no": "202347482774",
       "crd_date": "09-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080064": [
     {
-      "id": "74",
+      "id": "1",
       "shipper_bkg_no": "202347323346",
       "crd_date": "08-Aug",
       "consignee": "UNILEVER",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080065": [
     {
-      "id": "75",
+      "id": "1",
       "shipper_bkg_no": "202347323346",
       "crd_date": "08-Aug",
       "consignee": "Philips Healthcare",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ],
   "CB-180080066": [
     {
-      "id": "76",
+      "id": "1",
       "shipper_bkg_no": "202347323346",
       "crd_date": "09-Aug",
       "consignee": "UNILEVER",
-      "shipWindow": "7 days"
+      "shipWindow": ""
     }
   ]
 };
@@ -9888,7 +9888,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "2",
     "BC:Eqp.": "40HCx2",
     "BC:Eqp. Cnt": "2.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "20-Jun",
     "BC:Version": "1.0",
     "BR:Req. FEU": "2.25",
     "BC:Conf. FEU": "2.25",
@@ -10054,7 +10054,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "20-Jun",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -10220,7 +10220,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "20-Jun",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -10369,7 +10369,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Cust. Code": "HMH",
     "Carrier (Std)": "EGLV",
     "Contract #": "SC50089",
-    "BR:1st Vessel": "COSCO SHIPPING SAGITTARIUS",
+    "BR:1st Vessel": "COSCO SHIPPING SAGITTARIUS ",
     "BR:1st Voyage #": "031W",
     "Bkg Party #": "142502368333",
     "TMS #": "180080077",
@@ -10380,8 +10380,8 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:POD": "BEANR",
     "BR:DEL": "BEANR",
     "Move Type": "CYP/CYP",
-    "BR:Req. ETD POL": "14-Aug",
-    "BC:ETD POL": "01-Jul",
+    "BR:Req. ETD POL": "15-Aug",
+    "BC:ETD POL": "17-Aug",
     "BR:Eqp.": "40HCx1",
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
@@ -10392,10 +10392,10 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Conf. FEU": "1.125",
     "FEU difference (BC-BR)": "0",
     "Excpt. Eqp?": "N",
-    "ETD difference (BC-BR)": "-44",
-    "ETD range (BC-BR) formula": "--",
-    "ETD info": "--",
-    "Excpt. ETD?": "--",
+    "ETD difference (BC-BR)": "2",
+    "ETD range (BC-BR) formula": "8",
+    "ETD info": "ETD within tolerance later",
+    "Excpt. ETD?": "N",
     "BC: CY Cut-off Date": "15-Aug",
     "BC: CY Cut-off Time": "12:00",
     "BC: VGM Cut-off Date": "14-Aug",
@@ -10434,8 +10434,8 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR Month": "7",
     "300/301 Status": "Accepted",
     "Bkg Agent ID": "",
-    "CRD": "06-Aug",
-    "Date between BR creation / ETD req": "20.0",
+    "CRD": "07-Aug",
+    "Date between BR creation / ETD req": "21.0",
     "Check": "-38",
     "T/S port 1": "",
     "T/S port 2": "",
@@ -10462,12 +10462,12 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Eqp type 1 - row seq": "3.0",
     "BC:Eqp type 2 - row seq": "",
     "BC:Eqp type 3 - row seq": "",
-    "BR:Req. ETD PRE": "14-Aug",
+    "BR:Req. ETD PRE": "15-Aug",
     "Check PRE/POL differ": "False",
-    "BC: ETD PRE": "01-Jul",
+    "BC: ETD PRE": "17-Aug",
     "Check POD/DEL differ": "False",
-    "BR: ETA POD": "--",
-    "BR: ETA DEL": "--",
+    "BR: ETA POD": "14-Aug",
+    "BR: ETA DEL": "14-Aug",
     "POL_POD": "CNSHABEANR",
     "Days transit": "--",
     "BC Release date original": "28-Jul",
@@ -10535,11 +10535,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Cust. Code": "SIE",
     "Carrier (Std)": "EGLV",
     "Contract #": "SC50089",
-    "BR:1st Vessel": "COSCO SHIPPING SAGITTARIUS",
+    "BR:1st Vessel": "COSCO SHIPPING SAGITTARIUS ",
     "BR:1st Voyage #": "031W",
     "Bkg Party #": "229120426",
     "TMS #": "180080080",
-    "Booking Status": "Pending",
+    "Booking Status": "pending",
     "Exception?": "N",
     "BR:PRE": "CNSHA",
     "BR:POL": "CNSHA",
@@ -10718,7 +10718,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "20GPx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "03-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "0.5",
     "BC:Conf. FEU": "0.5",
@@ -10884,7 +10884,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "07-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -11105,7 +11105,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "T/S port 2": "",
     "BC:3rd Vessel": "",
     "BC:3rd Voyage #": "",
-    "BC:1st Vessel": "ELLY MAERSK",
+    "BC:1st Vessel": "ELLY MAERSK ",
     "BC:1st Voyage #": "527W",
     "Vessel mismatch": "Vessel Change",
     "BR:Eqp type 1": "40HC",
@@ -11138,13 +11138,13 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "10:14:00",
     "BC ETD POL original": "5-Jul",
     "BC ETA POD original": "15-Aug",
-    "BC 1st Vessel  original": "ELLY MAERSK",
+    "BC 1st Vessel  original": "ELLY MAERSK ",
     "BC 1st Vessel Voyage original": "527W",
     "BC Release date v1": "15-Jul",
     "BC Release Time v1": "6:31:00",
     "BC ETD POL v1": "5-Jul",
     "BC ETA POD v1": "15-Aug",
-    "BC 1st Vessel  v1": "ELLY MAERSK",
+    "BC 1st Vessel  v1": "ELLY MAERSK ",
     "BC 1st Vessel Voyage v1": "527W",
     "BC Release date v2": "",
     "BC Release Time v2": "",
@@ -11185,7 +11185,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest release date calc": "15-Jul",
     "BC Lastest POL ETD CALC": "5-Jul",
     "BC Lastest POD ETA CALC": "15-Aug",
-    "BC Lastest 1st Vessel name CALC": "ELLY MAERSK",
+    "BC Lastest 1st Vessel name CALC": "ELLY MAERSK ",
     "BC Lastest 1st Vessel Voyage CALC": "527W"
   },
   "CB-180080072": {
@@ -11273,7 +11273,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:3rd Voyage #": "",
     "BC:1st Vessel": "ELLY MAERSK",
     "BC:1st Voyage #": "527W",
-    "Vessel mismatch": "Vessel Change",
+    "Vessel mismatch": "--",
     "BR:Eqp type 1": "40GP",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",
@@ -11358,7 +11358,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080008",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN S.",
     "req ETD wk": "28",
@@ -11382,7 +11382,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40RFx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "25-Jun",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -11548,7 +11548,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "07-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -11714,7 +11714,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "20GPx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "18-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "0.5",
     "BC:Conf. FEU": "0.5",
@@ -11730,7 +11730,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "12:00:00 PM",
     "BC: SI Cut-off Date": "19-Jul",
     "BC: SI Cut-off Time": "1:00:00 PM",
-    "BC: ETD POL": "22-Jul",
+    "BC: ETD POL": "17-Jul",
     "BC: ETA POD": "17-Aug",
     "BC:1st Release Date": "12-Jul",
     "BC:Released": "Yes",
@@ -11880,7 +11880,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "20GPx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "13-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "0.5",
     "BC:Conf. FEU": "0.5",
@@ -12046,7 +12046,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "20GPx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "25-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "0.5",
     "BC:Conf. FEU": "0.5",
@@ -12062,7 +12062,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "12:00:00 PM",
     "BC: SI Cut-off Date": "02-Aug",
     "BC: SI Cut-off Time": "1:00:00 PM",
-    "BC: ETD POL": "05-Aug",
+    "BC: ETD POL": "29-Jul",
     "BC: ETA POD": "31-Aug",
     "BC:1st Release Date": "17-Jul",
     "BC:Released": "Yes",
@@ -12212,7 +12212,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "18-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -12378,7 +12378,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "20GPx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "05-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "0.5",
     "BC:Conf. FEU": "0.5",
@@ -12520,7 +12520,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080016",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -12686,7 +12686,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080017",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -12852,7 +12852,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080018",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -12876,7 +12876,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "5",
     "BC:Eqp.": "40HCx5",
     "BC:Eqp. Cnt": "5.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "10-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "5.625",
     "BC:Conf. FEU": "5.625",
@@ -13018,7 +13018,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080019",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13042,7 +13042,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "3",
     "BC:Eqp.": "40HCx3",
     "BC:Eqp. Cnt": "3.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "19-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "3.375",
     "BC:Conf. FEU": "3.375",
@@ -13184,7 +13184,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080020",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13208,7 +13208,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "3",
     "BC:Eqp.": "40HCx3",
     "BC:Eqp. Cnt": "3.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "19-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "3.375",
     "BC:Conf. FEU": "3.375",
@@ -13350,7 +13350,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080021",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13374,7 +13374,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "19-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -13516,7 +13516,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080023",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13682,7 +13682,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080035",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13872,7 +13872,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "20GPx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "20-Jul",
     "BC:Version": "5.0",
     "BR:Req. FEU": "0.5",
     "BC:Conf. FEU": "0.5",
@@ -13888,7 +13888,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "12:00:00 PM",
     "BC: SI Cut-off Date": "02-Aug",
     "BC: SI Cut-off Time": "1:00:00 PM",
-    "BC: ETD POL": "05-Aug",
+    "BC: ETD POL": "08-Aug",
     "BC: ETA POD": "07-Sep",
     "BC:1st Release Date": "19-Jul",
     "BC:Released": "Yes",
@@ -14038,7 +14038,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "10-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -14204,7 +14204,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "10-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -14370,7 +14370,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "10-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -14536,7 +14536,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "02-Aug",
     "BC:Version": "2.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -14552,7 +14552,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "",
     "BC: SI Cut-off Date": "",
     "BC: SI Cut-off Time": "",
-    "BC: ETD POL": "15-Aug",
+    "BC: ETD POL": "07-Aug",
     "BC: ETA POD": "13-Sep",
     "BC:1st Release Date": "18-Jul",
     "BC:Released": "Yes",
@@ -14868,7 +14868,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "2",
     "BC:Eqp.": "40HCx2",
     "BC:Eqp. Cnt": "2.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "09-Jul",
     "BC:Version": "",
     "BR:Req. FEU": "2.25",
     "BC:Conf. FEU": "2.25",
@@ -15620,7 +15620,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "10:22:00",
     "BC ETD POL original": "8-Aug",
     "BC ETA POD original": "15-Sep",
-    "BC 1st Vessel  original": "ESTELLE MAERSK",
+    "BC 1st Vessel  original": "ESTELLE MAERSK ",
     "BC 1st Vessel Voyage original": "532W",
     "BC Release date v1": "",
     "BC Release Time v1": "",
@@ -15667,14 +15667,14 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest release date calc": "31-Jul",
     "BC Lastest POL ETD CALC": "8-Aug",
     "BC Lastest POD ETA CALC": "15-Sep",
-    "BC Lastest 1st Vessel name CALC": "ESTELLE MAERSK",
+    "BC Lastest 1st Vessel name CALC": "ESTELLE MAERSK ",
     "BC Lastest 1st Vessel Voyage CALC": "532W"
   },
   "CB-180080012": {
     "id": "CB-180080012",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -15698,7 +15698,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "2",
     "BC:Eqp.": "40HCx2",
     "BC:Eqp. Cnt": "2.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "17-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "2.25",
     "BC:Conf. FEU": "2.25",
@@ -15840,7 +15840,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080028",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -16006,7 +16006,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080029",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -16172,7 +16172,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080030",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -16528,7 +16528,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "3",
     "BC:Eqp.": "45HCx3",
     "BC:Eqp. Cnt": "3.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "28-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "3.795",
     "BC:Conf. FEU": "3.795",
@@ -16544,7 +16544,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "10:30:00 AM",
     "BC: SI Cut-off Date": "09-Aug",
     "BC: SI Cut-off Time": "2:00:00 PM",
-    "BC: ETD POL": "11-Aug",
+    "BC: ETD POL": "09-Aug",
     "BC: ETA POD": "21-Sep",
     "BC:1st Release Date": "28-Jul",
     "BC:Released": "Yes",
@@ -17690,7 +17690,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "3",
     "BC:Eqp.": "40HCx1, 45HCx2",
     "BC:Eqp. Cnt": "3.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "28-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "3.655",
     "BC:Conf. FEU": "3.655",
@@ -17706,7 +17706,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "10:30:00 AM",
     "BC: SI Cut-off Date": "09-Aug",
     "BC: SI Cut-off Time": "2:00:00 PM",
-    "BC: ETD POL": "11-Aug",
+    "BC: ETD POL": "09-Aug",
     "BC: ETA POD": "21-Sep",
     "BC:1st Release Date": "28-Jul",
     "BC:Released": "Yes",
@@ -17832,7 +17832,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080045",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -17998,7 +17998,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080046",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18164,7 +18164,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080047",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18330,7 +18330,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080048",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18496,7 +18496,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080049",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18662,7 +18662,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "id": "CB-180080050",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "",
+    "Destination region": "NA",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -19532,7 +19532,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "13:00",
     "BC: SI Cut-off Date": "16-Aug",
     "BC: SI Cut-off Time": "14:00",
-    "BC: ETD POL": "16-Aug",
+    "BC: ETD POL": "20-Aug",
     "BC: ETA POD": "22-Sep",
     "BC:1st Release Date": "15-Jul",
     "BC:Released": "yes",
@@ -19604,19 +19604,19 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "11:39:12",
     "BC ETD POL original": "12-Aug",
     "BC ETA POD original": "15-Sep",
-    "BC 1st Vessel  original": "MARGRETHE MAERSK",
+    "BC 1st Vessel  original": "MARGRETHE MAERSK ",
     "BC 1st Vessel Voyage original": "533W",
     "BC Release date v1": "16-Jul",
     "BC Release Time v1": "5:30:12",
     "BC ETD POL v1": "16-Aug",
     "BC ETA POD v1": "5-Oct",
-    "BC 1st Vessel  v1": "MUNICH MAERSK",
+    "BC 1st Vessel  v1": "MUNICH MAERSK ",
     "BC 1st Vessel Voyage v1": "533W",
     "BC Release date v2": "1-Aug",
     "BC Release Time v2": "18:31:32",
     "BC ETD POL v2": "16-Aug",
     "BC ETA POD v2": "5-Oct",
-    "BC 1st Vessel  v2": "MUNICH MAERSK",
+    "BC 1st Vessel  v2": "MUNICH MAERSK ",
     "BC 1st Vessel Voyage v2": "533W",
     "BC Release date v3": "13-Aug",
     "BC Release Time v3": "12:29:48",
@@ -19666,7 +19666,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Carrier (Std)": "HLCU",
     "Contract #": "HH2000",
     "BR:1st Vessel": "MARGRETHE MAERSK",
-    "BR:1st Voyage #": "329W",
+    "BR:1st Voyage #": "532W",
     "Bkg Party #": "93396744",
     "TMS #": "180080076",
     "Booking Status": "Confirmed",
@@ -19739,7 +19739,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:3rd Voyage #": "",
     "BC:1st Vessel": "MARGRETHE MAERSK",
     "BC:1st Voyage #": "532W",
-    "Vessel mismatch": "Vessel Change",
+    "Vessel mismatch": "--",
     "BR:Eqp type 1": "40HC",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",
@@ -19770,25 +19770,25 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "2:48:49",
     "BC ETD POL original": "12-Aug",
     "BC ETA POD original": "18-Sep",
-    "BC 1st Vessel  original": "MARGRETHE MAERSK",
+    "BC 1st Vessel  original": "MARGRETHE MAERSK ",
     "BC 1st Vessel Voyage original": "532W",
     "BC Release date v1": "6-Aug",
     "BC Release Time v1": "10:23:34",
     "BC ETD POL v1": "13-Aug",
     "BC ETA POD v1": "18-Sep",
-    "BC 1st Vessel  v1": "MARGRETHE MAERSK",
+    "BC 1st Vessel  v1": "MARGRETHE MAERSK ",
     "BC 1st Vessel Voyage v1": "532W",
     "BC Release date v2": "7-Aug",
     "BC Release Time v2": "15:37:35",
     "BC ETD POL v2": "13-Aug",
     "BC ETA POD v2": "18-Sep",
-    "BC 1st Vessel  v2": "MARGRETHE MAERSK",
+    "BC 1st Vessel  v2": "MARGRETHE MAERSK ",
     "BC 1st Vessel Voyage v2": "532W",
     "BC Release date v3": "8-Aug",
     "BC Release Time v3": "7:28:42",
     "BC ETD POL v3": "13-Aug",
     "BC ETA POD v3": "18-Sep",
-    "BC 1st Vessel  v3": "MARGRETHE MAERSK",
+    "BC 1st Vessel  v3": "MARGRETHE MAERSK ",
     "BC 1st Vessel Voyage v3": "532W",
     "BC Release date v4": "8-Aug",
     "BC Release Time v4": "13:38:46",
@@ -19831,7 +19831,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Cust. Code": "HMH",
     "Carrier (Std)": "HLCU",
     "Contract #": "HH2000",
-    "BR:1st Vessel": "MARGRETHE MAERSK",
+    "BR:1st Vessel": "MARGRETHE MAERSK ",
     "BR:1st Voyage #": "532W",
     "Bkg Party #": "37549729",
     "TMS #": "180080022",
@@ -19848,7 +19848,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "45HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "24-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.265",
     "BC:Conf. FEU": "1.265",
@@ -19864,7 +19864,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "13:00",
     "BC: SI Cut-off Date": "09-Aug",
     "BC: SI Cut-off Time": "14:00",
-    "BC: ETD POL": "12-Aug",
+    "BC: ETD POL": "13-Aug",
     "BC: ETA POD": "30-Sep",
     "BC:1st Release Date": "24-Jul",
     "BC:Released": "Yes",
@@ -19901,9 +19901,9 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Check": "0",
     "T/S port 1": "MYTPP",
     "T/S port 2": "DEWVN",
-    "BC:3rd Vessel": "SONGA PANTHER",
+    "BC:3rd Vessel": "SONGA PANTHER ",
     "BC:3rd Voyage #": "2538E",
-    "BC:1st Vessel": "MARGRETHE MAERSK",
+    "BC:1st Vessel": "MARGRETHE MAERSK ",
     "BC:1st Voyage #": "532W",
     "Vessel mismatch": "--",
     "BR:Eqp type 1": "45HC",
@@ -20030,7 +20030,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "",
     "BC: SI Cut-off Date": "",
     "BC: SI Cut-off Time": "",
-    "BC: ETD POL": "16-Aug",
+    "BC: ETD POL": "",
     "BC: ETA POD": "",
     "BC:1st Release Date": "",
     "BC:Released": "Yes",
@@ -20180,7 +20180,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "45HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "1-Aug",
+    "BC:Release Date (latest)": "01-Aug",
     "BC:Version": "2.0",
     "BR:Req. FEU": "1.265",
     "BC:Conf. FEU": "1.265",
@@ -20235,7 +20235,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "T/S port 2": "",
     "BC:3rd Vessel": "",
     "BC:3rd Voyage #": "",
-    "BC:1st Vessel": "MUNICH MAERSK",
+    "BC:1st Vessel": "MUNICH MAERSK ",
     "BC:1st Voyage #": "533W",
     "Vessel mismatch": "Vessel Change",
     "BR:Eqp type 1": "45HC",
@@ -20268,13 +20268,13 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "3:07:34",
     "BC ETD POL original": "16-Aug",
     "BC ETA POD original": "23-Sep",
-    "BC 1st Vessel  original": "MUNICH MAERSK",
+    "BC 1st Vessel  original": "MUNICH MAERSK ",
     "BC 1st Vessel Voyage original": "533W",
     "BC Release date v1": "1-Aug",
     "BC Release Time v1": "18:31:48",
     "BC ETD POL v1": "16-Aug",
     "BC ETA POD v1": "23-Sep",
-    "BC 1st Vessel  v1": "MUNICH MAERSK",
+    "BC 1st Vessel  v1": "MUNICH MAERSK ",
     "BC 1st Vessel Voyage v1": "533W",
     "BC Release date v2": "",
     "BC Release Time v2": "",
@@ -20315,7 +20315,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest release date calc": "1-Aug",
     "BC Lastest POL ETD CALC": "16-Aug",
     "BC Lastest POD ETA CALC": "23-Sep",
-    "BC Lastest 1st Vessel name CALC": "MUNICH MAERSK",
+    "BC Lastest 1st Vessel name CALC": "MUNICH MAERSK ",
     "BC Lastest 1st Vessel Voyage CALC": "533W"
   },
   "CB-180080054": {
@@ -20346,7 +20346,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "6",
     "BC:Eqp.": "40HCx6",
     "BC:Eqp. Cnt": "6.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "26-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "6.75",
     "BC:Conf. FEU": "6.75",
@@ -20512,7 +20512,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "3",
     "BC:Eqp.": "40HCx1, 45HCx2",
     "BC:Eqp. Cnt": "3.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "27-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "3.655",
     "BC:Conf. FEU": "3.655",
@@ -20678,7 +20678,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "26-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
@@ -20844,7 +20844,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "",
+    "BC:Release Date (latest)": "27-Jul",
     "BC:Version": "1.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
