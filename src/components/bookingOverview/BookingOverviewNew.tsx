@@ -394,7 +394,7 @@ const BookingOverviewNew: React.FC = () => {
                         {(tradeFilter.length > 0 || originRegionFilter.length > 0 || destinationRegionFilter.length > 0 || 
                          originCountryFilter.length > 0 || districtFilter.length > 0 || reqEtdWeekFilter.length > 0 || 
                          carrierFilter.length > 0 || bookingStatusFilter.length > 0 || tmsSearchQuery || 
-                         Object.keys(columnFilters).length > 0) && (
+                         dateRangeFilter.startDate || dateRangeFilter.endDate || Object.keys(columnFilters).length > 0) && (
                             <Tooltip title="Clear All Filters">
                                 <FilterOutlined 
                                     style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
@@ -560,7 +560,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12}  md={4} lg={3}>
+                                    <Col xs={24} sm={12}  md={3} lg={2}>
                                         <Select
                                             mode="multiple"
                                             placeholder="Booking Status"
@@ -578,7 +578,7 @@ const BookingOverviewNew: React.FC = () => {
                                         </Select>
                                     </Col>
 
-                                    <Col xs={24} sm={12} md={6} lg={6}>
+                                    <Col xs={24} sm={12} md={4} lg={4}>
                                         <DatePicker.RangePicker
                                             placeholder={['Start Date', 'End Date']}
                                             value={[
@@ -639,7 +639,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -658,7 +658,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -677,7 +677,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -696,7 +696,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -715,7 +715,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -734,7 +734,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -753,7 +753,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -772,7 +772,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -791,7 +791,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -810,7 +810,7 @@ const BookingOverviewNew: React.FC = () => {
                                                         color: 'white', 
                                                         border: 'none',
                                                         borderRadius: '16px',
-                                                        padding: '4px 12px',
+                                                        padding: '2px 12px',
                                                         fontSize: '12px'
                                                     }}
                                                 >
@@ -830,7 +830,7 @@ const BookingOverviewNew: React.FC = () => {
                                                             color: 'white', 
                                                             border: 'none',
                                                             borderRadius: '16px',
-                                                            padding: '4px 12px',
+                                                            padding: '2px 12px',
                                                             fontSize: '12px'
                                                         }}
                                                     >
@@ -938,7 +938,7 @@ const BookingOverviewNew: React.FC = () => {
                                                 dispatch(setNewPageSize(size));
                                             }
                                         }}
-                                        scroll={{ x: 'max-content', y: 'calc(100vh - 450px)' }}
+                                        scroll={{ x: 'max-content', y: 'calc(100vh - 550px)' }}
                                         size="small"
                                         bordered
                                         style={{
@@ -994,6 +994,9 @@ const BookingOverviewNew: React.FC = () => {
         .ant-card-body {
             padding: 0 24px !important;
         }
+        .ant-table-cell {
+            padding: 2px 8px !important;     
+        }    
       `}</style>
         </div>
     );
