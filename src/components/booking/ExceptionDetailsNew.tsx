@@ -151,7 +151,7 @@ const ExceptionDetailsNew: React.FC = () => {
       {
         key: 'etd',
         field: 'ETD',
-        bkgRequest: bookingData['BR:Req. ETD'] || '-',
+        bkgRequest: bookingData['BR:Req. ETD POL'] || '-',
         confirmation: bookingData['BC:ETD POL'] || '-',
         comment: bookingData['ETD info'] || '-'
       },
@@ -231,8 +231,7 @@ const ExceptionDetailsNew: React.FC = () => {
           style={{ 
             fontSize: '13px', 
             fontWeight: record.isTotal || record.isFeuEquivalent ? '600' : '500',
-            // color: value < 0 ? '#ff4d4f' : value > 0 ? '#52c41a' : 'inherit'
-            color: record.isTotal || record.isFeuEquivalent ? '#1890ff' : 'inherit'
+            color: value !== 0 ? '#ff4d4f' : 'inherit'
           }}
         >
           {value}
