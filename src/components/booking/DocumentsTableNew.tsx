@@ -12,6 +12,7 @@ interface DocumentVersion {
   key: string;
   pdfRevision: string;
   receiptDateTime: string;
+  receiptTime: string;
   polEtd: string;
   podEta: string;
   vesselName: string;
@@ -21,6 +22,90 @@ interface DocumentVersion {
 const DocumentsTableNew: React.FC = () => {
   const dispatch = useDispatch();
   const { selectedBookingId } = useSelector((state: RootState) => state.bookings);
+
+  // Helper function to convert time to 24-hour format
+  const convertTo24HourFormat = (timeStr: string): string => {
+    if (!timeStr || timeStr.trim() === '') return '-';
+    
+    // Remove any extra spaces and trim
+    const cleanTime = timeStr.trim();
+    
+    // If it's already in 24-hour format with seconds (HH:MM:SS), return as-is
+    if (/^\d{1,2}:\d{2}:\d{2}$/.test(cleanTime)) {
+      return cleanTime;
+    }
+    
+    // If it's already in 24-hour format without seconds (HH:MM), return as-is
+    if (/^\d{1,2}:\d{2}$/.test(cleanTime)) {
+      return cleanTime;
+    }
+    
+    // Check if it contains AM/PM
+    if (cleanTime.match(/[AP]M/i)) {
+      try {
+        // Create a date object to parse the time
+        const date = new Date(`2000-01-01 ${cleanTime}`);
+        if (isNaN(date.getTime())) {
+          return cleanTime; // Return original if parsing fails
+        }
+        
+        // Format to 24-hour format with seconds if original had seconds
+        const hasSeconds = cleanTime.match(/:\d{2}$/);
+        return date.toLocaleTimeString('en-US', { 
+          hour12: false, 
+          hour: '2-digit', 
+          minute: '2-digit',
+          second: hasSeconds ? '2-digit' : undefined
+        });
+      } catch (error) {
+        return cleanTime; // Return original if parsing fails
+      }
+    }
+    
+    // If it's just numbers, try to parse as time
+    if (/^\d{1,6}$/.test(cleanTime)) {
+      try {
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+        
+        if (cleanTime.length <= 2) {
+          // Just hours
+          hours = parseInt(cleanTime);
+        } else if (cleanTime.length === 3) {
+          // Format like "930" (9:30)
+          hours = parseInt(cleanTime[0]);
+          minutes = parseInt(cleanTime.slice(1));
+        } else if (cleanTime.length === 4) {
+          // Format like "0930" (9:30) or "1430" (14:30)
+          hours = parseInt(cleanTime.slice(0, 2));
+          minutes = parseInt(cleanTime.slice(2));
+        } else if (cleanTime.length === 5) {
+          // Format like "93045" (9:30:45)
+          hours = parseInt(cleanTime[0]);
+          minutes = parseInt(cleanTime.slice(1, 3));
+          seconds = parseInt(cleanTime.slice(3));
+        } else if (cleanTime.length === 6) {
+          // Format like "093045" (9:30:45) or "143045" (14:30:45)
+          hours = parseInt(cleanTime.slice(0, 2));
+          minutes = parseInt(cleanTime.slice(2, 4));
+          seconds = parseInt(cleanTime.slice(4));
+        }
+        
+        if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59 && seconds >= 0 && seconds <= 59) {
+          if (seconds > 0) {
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          } else {
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+          }
+        }
+      } catch (error) {
+        // Fall through to return original
+      }
+    }
+    
+    return cleanTime; // Return original if no conversion possible
+  };
 
   // Get the TMS number from the selected booking
   const getTmsNumber = (): string | null => {
@@ -129,7 +214,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v7',
         pdfRevision: 'Version 7',
-        receiptDateTime: `${bookingData['BC Release date v7'] || ''} ${bookingData['BC Release Time v7'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v7'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v7'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v7'] || '',
         podEta: bookingData['BC ETA POD v7'] || '',
         vesselName: bookingData['BC 1st Vessel  v7'] || '',
@@ -142,7 +228,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v6',
         pdfRevision: 'Version 6',
-        receiptDateTime: `${bookingData['BC Release date v6'] || ''} ${bookingData['BC Release Time v6'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v6'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v6'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v6'] || '',
         podEta: bookingData['BC ETA POD v6'] || '',
         vesselName: bookingData['BC 1st Vessel  v6'] || '',
@@ -155,7 +242,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v5',
         pdfRevision: 'Version 5',
-        receiptDateTime: `${bookingData['BC Release date v5'] || ''} ${bookingData['BC Release Time v5'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v5'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v5'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v5'] || '',
         podEta: bookingData['BC ETA POD v5'] || '',
         vesselName: bookingData['BC 1st Vessel  v5'] || '',
@@ -168,7 +256,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v4',
         pdfRevision: 'Version 4',
-        receiptDateTime: `${bookingData['BC Release date v4'] || ''} ${bookingData['BC Release Time v4'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v4'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v4'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v4'] || '',
         podEta: bookingData['BC ETA POD v4'] || '',
         vesselName: bookingData['BC 1st Vessel  v4'] || '',
@@ -181,7 +270,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v3',
         pdfRevision: 'Version 3',
-        receiptDateTime: `${bookingData['BC Release date v3'] || ''} ${bookingData['BC Release Time v3'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v3'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v3'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v3'] || '',
         podEta: bookingData['BC ETA POD v3'] || '',
         vesselName: bookingData['BC 1st Vessel  v3'] || '',
@@ -194,7 +284,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v2',
         pdfRevision: 'Version 2',
-        receiptDateTime: `${bookingData['BC Release date v2'] || ''} ${bookingData['BC Release Time v2'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v2'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v2'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v2'] || '',
         podEta: bookingData['BC ETA POD v2'] || '',
         vesselName: bookingData['BC 1st Vessel  v2'] || '',
@@ -207,7 +298,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'v1',
         pdfRevision: 'Version 1',
-        receiptDateTime: `${bookingData['BC Release date v1'] || ''} ${bookingData['BC Release Time v1'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date v1'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time v1'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL v1'] || '',
         podEta: bookingData['BC ETA POD v1'] || '',
         vesselName: bookingData['BC 1st Vessel  v1'] || '',
@@ -220,7 +312,8 @@ const DocumentsTableNew: React.FC = () => {
       versions.push({
         key: 'original',
         pdfRevision: 'Original',
-        receiptDateTime: `${bookingData['BC Release date original'] || ''} ${bookingData['BC Release Time original'] || ''}`.trim(),
+        receiptDateTime: `${bookingData['BC Release date original'] || ''}`.trim(),
+        receiptTime: `${bookingData['BC Release Time original'] || ''}`.trim(),
         polEtd: bookingData['BC ETD POL original'] || '',
         podEta: bookingData['BC ETA POD original'] || '',
         vesselName: bookingData['BC 1st Vessel  original'] || '',
@@ -242,6 +335,7 @@ const DocumentsTableNew: React.FC = () => {
       dataIndex: 'pdfRevision',
       key: 'pdfRevision',
       width: 120,
+      align: 'right' as const,
       sorter: (a: DocumentVersion, b: DocumentVersion) => {
         const versionA = getVersionNumber(a.pdfRevision);
         const versionB = getVersionNumber(b.pdfRevision);
@@ -263,13 +357,29 @@ const DocumentsTableNew: React.FC = () => {
       ),
     },
     {
-      title: 'Receipt date + time',
+      title: 'Receipt date',
       dataIndex: 'receiptDateTime',
       key: 'receiptDateTime',
-      width: 200,
+      width: 100,
+      align: 'right' as const,
       render: (text: string) => (
         <Space>
-          <span style={{ color: '#6b7280' }}>{text || '-'}</span>
+          <span style={{ color: '#6b7280', textAlign: 'right' }}>{text || '-'}</span>
+          {/* <Tooltip title="Document receipt date and time">
+            <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
+          </Tooltip> */}
+        </Space>
+      ),
+    },
+    {
+      title: 'Receipt time',
+      dataIndex: 'receiptTime',
+      key: 'receiptTime',
+      width: 100,
+      align: 'right' as const,
+      render: (text: string) => (
+        <Space>
+          <span style={{ color: '#6b7280', textAlign: 'right' }}>{convertTo24HourFormat(text)}</span>
           {/* <Tooltip title="Document receipt date and time">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip> */}
@@ -280,10 +390,11 @@ const DocumentsTableNew: React.FC = () => {
       title: 'POL ETD',
       dataIndex: 'polEtd',
       key: 'polEtd',
-      width: 120,
+      width: 80,
+      align: 'right' as const,
       render: (text: string) => (
         <Space>
-          <span style={{ color: '#6b7280' }}>{text || '-'}</span>
+          <span style={{ color: '#6b7280', textAlign: 'right' }}>{text || '-'}</span>
           {/* <Tooltip title="Port of Loading Estimated Time of Departure">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip> */}
@@ -294,10 +405,11 @@ const DocumentsTableNew: React.FC = () => {
       title: 'POD ETA',
       dataIndex: 'podEta',
       key: 'podEta',
-      width: 120,
+      width: 80,
+      align: 'right' as const,
       render: (text: string) => (
         <Space>
-          <span style={{ color: '#6b7280' }}>{text || '-'}</span>
+          <span style={{ color: '#6b7280', textAlign: 'right' }}>{text || '-'}</span>
           {/* <Tooltip title="Port of Discharge Estimated Time of Arrival">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip> */}
@@ -308,10 +420,11 @@ const DocumentsTableNew: React.FC = () => {
       title: '1st Vessel Name',
       dataIndex: 'vesselName',
       key: 'vesselName',
-      width: 150,
+      width: 250,
+      align: 'right' as const,
       render: (text: string) => (
         <Space>
-          <span style={{ color: '#6b7280' }}>{text || '-'}</span>
+          <span style={{ color: '#6b7280', textAlign: 'right' }}>{text || '-'}</span>
           {/* <Tooltip title="First vessel name">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip> */}
@@ -322,10 +435,11 @@ const DocumentsTableNew: React.FC = () => {
       title: '1 vessel Voyage #',
       dataIndex: 'vesselVoyage',
       key: 'vesselVoyage',
-      width: 150,
+      width: 120,
+      align: 'right' as const,
       render: (text: string) => (
         <Space>
-          <span style={{ color: '#6b7280' }}>{text || '-'}</span>
+          <span style={{ color: '#6b7280', textAlign: 'right' }}>{text || '-'}</span>
           {/* <Tooltip title="First vessel voyage number">
             <InfoCircleOutlined style={{ fontSize: '12px', color: '#9ca3af' }} />
           </Tooltip> */}
@@ -336,6 +450,7 @@ const DocumentsTableNew: React.FC = () => {
       title: 'Link',
       key: 'link',
       width: 100,
+      align: 'right' as const,
       render: (_, record: DocumentVersion, index: number) => {
         const pdfFiles = getPDFFilesForTMS(tmsNumber || '');
         const hasPDF = pdfFiles[record.pdfRevision];

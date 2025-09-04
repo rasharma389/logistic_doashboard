@@ -268,9 +268,10 @@ const BookingHeader: React.FC = () => {
             <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">Place of Receipt ETD{hasETDVesselVoyageException(bookingDetails.id) && (
                 ShowExceptionDot
               )}</Space></div>
-            <Tag color="cyan" style={{ fontSize: '12px' }}>
+              <span style={{ fontSize: '14px', color: '#6b7280' }}>
               {dayjs(bookingDetails.placeOfReceiptEtd).isValid() ? dayjs(bookingDetails.placeOfReceiptEtd).format('DD MMM') : bookingDetails.placeOfReceiptEtd}
-            </Tag>
+              </span>
+              
           </div>
         </Col>
 
@@ -279,7 +280,7 @@ const BookingHeader: React.FC = () => {
             <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">Port of Load ETD{hasETDVesselVoyageException(bookingDetails.id) && (
                 ShowExceptionDot
               )}</Space></div>
-            <Tag color="cyan" style={{ fontSize: '12px' }}>
+            <Tag color="cyan" style={{ fontSize: '14px', fontWeight: 'bold' }}>
               {dayjs(bookingDetails.portOfLoadEtd).isValid() ? dayjs(bookingDetails.portOfLoadEtd).format('DD MMM') : bookingDetails.portOfLoadEtd}
             </Tag>
           </div>
@@ -291,7 +292,9 @@ const BookingHeader: React.FC = () => {
                 ShowExceptionDot
               )}</Space></div>
             <span style={{ fontSize: '14px', color: '#6b7280' }}>
+            <Tag color="yellow" style={{ fontSize: '14px', fontWeight: 'bold', color: '#9e8614' }}>
               {dayjs(bookingDetails.portOfDischargeEta).isValid() ? dayjs(bookingDetails.portOfDischargeEta).format('DD MMM') : bookingDetails.portOfDischargeEta}
+            </Tag>
             </span>
           </div>
         </Col>
@@ -300,7 +303,9 @@ const BookingHeader: React.FC = () => {
           <div>
             <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>Place of Delivery ETA</div>
             <span style={{ fontSize: '14px', color: '#6b7280' }}>
+            
               {dayjs(bookingDetails.placeOfDeliveryEta).isValid() ? dayjs(bookingDetails.placeOfDeliveryEta).format('DD MMM') : bookingDetails.placeOfDeliveryEta}
+
             </span>
           </div>
         </Col>

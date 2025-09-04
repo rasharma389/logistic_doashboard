@@ -9807,7 +9807,7 @@ export const shipperBookingsData: ShipperBooking[] = [
     "Carrier (Std)": "HLCU",
     "Contract #": "HH2000",
     "BR:1st Vessel": "MARGRETHE MAERSK",
-    "BR:1st Voyage #": "329W",
+    "BR:1st Voyage #": "532W",
     "Bkg Party #": "93396744",
     "TMS #": "180080076",
     "Booking Status": "Confirmed",

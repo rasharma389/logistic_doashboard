@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Timeline, Space, Button, Tabs, Typography } from 'antd';
+import { Timeline, Space, Button, Tabs, Typography, Tag } from 'antd';
 import { ReloadOutlined, ClockCircleOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
@@ -229,7 +229,12 @@ const ActivityPanelNewFinal: React.FC = () => {
               color: '#6b7280',
               marginBottom: '4px'
             }}>
-              <Text strong>Req ETD:</Text> {item.reqETD}
+              <Space>
+                <Text strong>Req ETD:</Text> 
+                <Tag color="cyan" style={{ fontSize: '12px' }}>
+                {item.reqETD}
+                </Tag>
+              </Space>
             </div>
 
             {/* Req ETA */}
@@ -238,7 +243,13 @@ const ActivityPanelNewFinal: React.FC = () => {
               color: '#6b7280',
               marginBottom: '4px'
             }}>
-              <Text strong>Req ETA:</Text> {item.reqETA}
+              <Space>
+              <Text strong>Req ETA:</Text>
+                <Tag color="yellow" style={{ fontSize: '12px', fontWeight: 'bold', color: '#9e8614' }}>
+                {item.reqETA}
+                </Tag>
+              </Space>
+               
             </div>
             {/* Req Vessel */}
             <div style={{ 
