@@ -9880,7 +9880,7 @@ export const shipperBookingsData: ShipperBooking[] = [
     "BC:3rd Voyage #": "",
     "BC:1st Vessel": "MARGRETHE MAERSK ",
     "BC:1st Voyage #": "532W",
-    "Vessel mismatch": "Vessel Change",
+    "Vessel mismatch": "",
     "BR:Eqp type 1": "40HC",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",

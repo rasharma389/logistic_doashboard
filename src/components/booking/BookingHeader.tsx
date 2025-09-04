@@ -84,6 +84,17 @@ const BookingHeader: React.FC = () => {
     return booking ? booking['Exception?']=== 'Y' && booking['Excpt. ETD?'] === 'Y' : false;
   };
 
+  const hasVesselVoyageException = (tmsNumber: string): boolean => {
+    // Remove CB- prefix if present
+    const cleanTmsNumber = tmsNumber.startsWith('CB-') ? tmsNumber.substring(3) : tmsNumber;
+
+    // Find the booking in shipperBookingsData
+    const booking = shipperBookingsData.find(booking => booking['TMS #'] === cleanTmsNumber);
+
+    // Return true if exception exists
+    return booking ? booking['Exception?']=== 'Y' && booking['Vessel mismatch'] === 'Vessel Change' : false;
+  };
+
   return (
     <Card
       style={{
@@ -321,7 +332,7 @@ const BookingHeader: React.FC = () => {
 
         <Col xs={24} sm={12} md={4}>
           <div>
-            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">1st Vessel & Voyage{hasETDVesselVoyageException(bookingDetails.id) && (
+            <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}><Space align="center">1st Vessel & Voyage{hasVesselVoyageException(bookingDetails.id) && (
                 ShowExceptionDot
               )}</Space></div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
