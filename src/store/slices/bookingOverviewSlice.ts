@@ -2,6 +2,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BookingOverviewService } from '../../services/bookingOverviewService';
 import type { ShipperBooking, BookingOverviewFilters, BookingOverviewState } from '../../types/bookingOverview';
 
+// Calculate default date range: past week to 2 weeks later
+const getDefaultDateRange = () => {
+  const now = new Date();
+  const pastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
+  const twoWeeksLater = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000); // 14 days later
+  
+  return {
+    startDate: pastWeek.toISOString().split('T')[0], // YYYY-MM-DD format
+    endDate: twoWeeksLater.toISOString().split('T')[0]
+  };
+};
+
+const defaultDateRange = getDefaultDateRange();
+
 const initialState: BookingOverviewState = {
   bookings: [],
   totalItems: 0,
@@ -44,8 +58,8 @@ const initialState: BookingOverviewState = {
     bkgTypeFilter: [],
     tmsSearchQuery: '',
     dateRangeFilter: {
-      startDate: null,
-      endDate: null
+      startDate: defaultDateRange.startDate,
+      endDate: defaultDateRange.endDate
     }
   },
   // Column filters for table columns
@@ -324,8 +338,8 @@ const bookingOverviewSlice = createSlice({
         bkgTypeFilter: [],
         tmsSearchQuery: '',
         dateRangeFilter: {
-          startDate: null,
-          endDate: null
+          startDate: defaultDateRange.startDate,
+          endDate: defaultDateRange.endDate
         }
       };
       state.columnFilters = {};
