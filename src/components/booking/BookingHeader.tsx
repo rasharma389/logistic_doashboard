@@ -37,8 +37,8 @@ const BookingHeader: React.FC = () => {
           color: '#000000',
           textColor: '#fbbf24'
         };
-      case 'cancelled by requestor':
-      case 'cancelled by carrier':
+      case 'canceled by requestor':
+      case 'canceled by carrier':
         return {
           backgroundColor: '#a78bfa', // light purple
           color: '#ffffff',

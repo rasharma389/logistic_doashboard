@@ -281,6 +281,43 @@ const BookingOverviewNew: React.FC = () => {
                     if (key === 'req ETD wk') {
                         return <span style={{ color: '#7c3aed', fontWeight: '500' }}>{text}</span>;
                     }
+                    if (key === 'Booking Status') {
+                        const getStatusColor = (status: string) => {
+                            switch (status?.toLowerCase()) {
+                                case 'confirmed':
+                                    return { backgroundColor: '#10b981', color: 'white' };
+                                case 'pending':
+                                    return { backgroundColor: '#fbbf24', color: 'black' };
+                                case 'cancelled by requestor':
+                                case 'cancelled by carrier':
+                                case 'canceled by requestor':
+                                case 'canceled by carrier':
+                                    return { backgroundColor: '#a78bfa', color: 'white' };
+                                case 'closed':
+                                    return { backgroundColor: '#3b82f6', color: 'white' };
+                                default:
+                                    return { backgroundColor: '#6b7280', color: 'white' };
+                            }
+                        };
+                        
+                        const statusStyle = getStatusColor(text);
+                        return (
+                            <span
+                                style={{
+                                    ...statusStyle,
+                                    padding: '2px 8px',
+                                    borderRadius: '12px',
+                                    fontSize: '11px',
+                                    fontWeight: '500',
+                                    display: 'inline-block',
+                                    minWidth: '60px',
+                                    textAlign: 'center'
+                                }}
+                            >
+                                {text}
+                            </span>
+                        );
+                    }
                     return text;
                 },
                 ellipsis: true,
@@ -868,6 +905,9 @@ const BookingOverviewNew: React.FC = () => {
         }
         .ant-input-affix-wrapper {
           border-radius: 6px !important;
+        }
+        .ant-card-body {
+            padding: 0 24px !important;
         }
       `}</style>
         </div>
