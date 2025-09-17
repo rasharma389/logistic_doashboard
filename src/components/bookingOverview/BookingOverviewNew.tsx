@@ -60,16 +60,71 @@ const BookingOverviewNew: React.FC = () => {
     // Toggle for showing only selected rows
     const [showOnlySelected, setShowOnlySelected] = useState(false);
 
-    // Get unique values for filter options
+    // Get unique values for filter options with cascading logic
     const filterOptions = useMemo(() => {
-        const trades = [...new Set(shipperBookingsData.map(item => item['Trade']).filter(Boolean))];
-        const originRegions = [...new Set(shipperBookingsData.map(item => item['Origin region']).filter(Boolean))];
-        const destinationRegions = [...new Set(shipperBookingsData.map(item => item['Destination region']).filter(Boolean))];
-        const originCountries = [...new Set(shipperBookingsData.map(item => item['Origin country']).filter(Boolean))];
-        const districts = [...new Set(shipperBookingsData.map(item => item['district']).filter(Boolean))];
-        const reqEtdWeeks = [...new Set(shipperBookingsData.map(item => item['req ETD wk']).filter(Boolean))];
-        const carriers = [...new Set(shipperBookingsData.map(item => item['Carrier (Std)']).filter(Boolean))];
-        const bookingStatuses = [...new Set(shipperBookingsData.map(item => item['Booking Status']).filter(Boolean))];
+        // Helper function to get filtered data excluding one specific filter
+        const getFilteredDataExcluding = (excludeFilter: string) => {
+            return shipperBookingsData.filter(item => {
+                const matchesTrade = excludeFilter === 'trade' || tradeFilter.length === 0 || tradeFilter.includes(item['Trade']);
+                const matchesOriginRegion = excludeFilter === 'originRegion' || originRegionFilter.length === 0 || originRegionFilter.includes(item['Origin region']);
+                const matchesDestinationRegion = excludeFilter === 'destinationRegion' || destinationRegionFilter.length === 0 || destinationRegionFilter.includes(item['Destination region']);
+                const matchesOriginCountry = excludeFilter === 'originCountry' || originCountryFilter.length === 0 || originCountryFilter.includes(item['Origin country']);
+                const matchesDistrict = excludeFilter === 'district' || districtFilter.length === 0 || districtFilter.includes(item['district']);
+                const matchesReqEtdWeek = excludeFilter === 'reqEtdWeek' || reqEtdWeekFilter.length === 0 || reqEtdWeekFilter.includes(item['req ETD wk']);
+                const matchesCarrier = excludeFilter === 'carrier' || carrierFilter.length === 0 || carrierFilter.includes(item['Carrier (Std)']);
+                const matchesBookingStatus = excludeFilter === 'bookingStatus' || bookingStatusFilter.length === 0 || bookingStatusFilter.includes(item['Booking Status']);
+                const matchesTmsSearch = !tmsSearchQuery ||
+                    item['TMS #']?.toLowerCase().includes(tmsSearchQuery.toLowerCase()) ||
+                    item.id?.toLowerCase().includes(tmsSearchQuery.toLowerCase());
+
+                // Date range filtering
+                const parseDate = (dateStr: string) => {
+                    if (!dateStr) return null;
+                    const currentYear = new Date().getFullYear();
+                    return dayjs(`${dateStr}-${currentYear}`, 'DD-MMM-YYYY');
+                };
+
+                const matchesDateRange = (() => {
+                    if (!dateRangeFilter.startDate && !dateRangeFilter.endDate) return true;
+                    
+                    const itemDate = parseDate(item['BR:Req. ETD POL']);
+                    if (!itemDate) return false;
+
+                    const startDate = dateRangeFilter.startDate ? dayjs(dateRangeFilter.startDate) : null;
+                    const endDate = dateRangeFilter.endDate ? dayjs(dateRangeFilter.endDate) : null;
+
+                    if (startDate && endDate) {
+                        return itemDate.isBetween(startDate, endDate, 'day', '[]');
+                    } else if (startDate) {
+                        return itemDate.isSameOrAfter(startDate, 'day');
+                    } else if (endDate) {
+                        return itemDate.isSameOrBefore(endDate, 'day');
+                    }
+                    return true;
+                })();
+
+                // Check column filters
+                const matchesColumnFilters = Object.entries(columnFilters).every(([columnKey, filterValues]) => {
+                    if (filterValues.length === 0) return true;
+                    const itemValue = String((item as any)[columnKey] || '');
+                    return filterValues.includes(itemValue);
+                });
+
+                return matchesTrade && matchesOriginRegion && matchesDestinationRegion &&
+                    matchesOriginCountry && matchesDistrict && matchesReqEtdWeek && 
+                    matchesCarrier && matchesBookingStatus && matchesTmsSearch && 
+                    matchesDateRange && matchesColumnFilters;
+            });
+        };
+
+        const trades = [...new Set(getFilteredDataExcluding('trade').map(item => item['Trade']).filter(Boolean))];
+        const originRegions = [...new Set(getFilteredDataExcluding('originRegion').map(item => item['Origin region']).filter(Boolean))];
+        const destinationRegions = [...new Set(getFilteredDataExcluding('destinationRegion').map(item => item['Destination region']).filter(Boolean))];
+        const originCountries = [...new Set(getFilteredDataExcluding('originCountry').map(item => item['Origin country']).filter(Boolean))];
+        const districts = [...new Set(getFilteredDataExcluding('district').map(item => item['district']).filter(Boolean))];
+        const reqEtdWeeks = [...new Set(getFilteredDataExcluding('reqEtdWeek').map(item => item['req ETD wk']).filter(Boolean))];
+        const carriers = [...new Set(getFilteredDataExcluding('carrier').map(item => item['Carrier (Std)']).filter(Boolean))];
+        const bookingStatuses = [...new Set(getFilteredDataExcluding('bookingStatus').map(item => item['Booking Status']).filter(Boolean))];
 
         return {
             trades: trades.sort(),
@@ -81,7 +136,7 @@ const BookingOverviewNew: React.FC = () => {
             carriers: carriers.sort(),
             bookingStatuses: bookingStatuses.sort()
         };
-    }, [shipperBookingsData]);
+    }, [shipperBookingsData, tradeFilter, originRegionFilter, destinationRegionFilter, originCountryFilter, districtFilter, reqEtdWeekFilter, carrierFilter, bookingStatusFilter, tmsSearchQuery, dateRangeFilter, columnFilters]);
 
     // Filter data based on all filters
     const filteredData = useMemo(() => {
@@ -296,6 +351,27 @@ const BookingOverviewNew: React.FC = () => {
                     const aVal = a[key];
                     const bVal = b[key];
 
+                    // Check if this is a date field (contains "ETD", "ETA", "Date", or "POL", "POD")
+                    const isDateField = key.includes('ETD') || key.includes('ETA') || key.includes('Date') || key.includes('POL') || key.includes('POD');
+                    
+                    if (isDateField && typeof aVal === 'string' && typeof bVal === 'string') {
+                        // Parse DD-MMM format dates
+                        const parseDate = (dateStr: string) => {
+                            if (!dateStr) return null;
+                            const currentYear = new Date().getFullYear();
+                            return dayjs(`${dateStr}-${currentYear}`, 'DD-MMM-YYYY');
+                        };
+                        
+                        const aDate = parseDate(aVal);
+                        const bDate = parseDate(bVal);
+                        
+                        if (aDate && bDate) {
+                            return aDate.valueOf() - bDate.valueOf();
+                        }
+                        // Fallback to string comparison if parsing fails
+                        return aVal.localeCompare(bVal);
+                    }
+                    
                     if (typeof aVal === 'string' && typeof bVal === 'string') {
                         return aVal.localeCompare(bVal);
                     }
