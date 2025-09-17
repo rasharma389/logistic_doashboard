@@ -279,8 +279,8 @@ const BookingOverviewNew: React.FC = () => {
             : allColumnKeys;
 
         return columnKeys.map(key => {
-            // Get unique values for this column for filter options
-            const uniqueValues = [...new Set(shipperBookingsData.map(item => (item as any)[key]).filter(Boolean))].sort();
+            // Get unique values for this column for filter options from filtered data
+            const uniqueValues = [...new Set(filteredData.map(item => (item as any)[key]).filter(Boolean))].sort();
             
             // Create filter options
             const filterOptions = uniqueValues.map(value => ({
@@ -368,7 +368,7 @@ const BookingOverviewNew: React.FC = () => {
                 width: ["TMS #","id", "Trade", "Origin region", "Destination region", "Origin country"].includes(key) ? 130 : Math.max(key.length * 12 + 30, 200) // Dynamic width based on text length
             };
         });
-    }, [shipperBookingsData, customViews, activeViewId, columnFilters]);
+    }, [shipperBookingsData, customViews, activeViewId, columnFilters, filteredData]);
 
          return (
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
