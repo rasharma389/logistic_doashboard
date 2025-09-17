@@ -365,14 +365,7 @@ const BookingOverviewNew: React.FC = () => {
                     }
                     return text;
                 },
-                ellipsis: true,
-                width: key === 'TMS #' || key === 'id' ? 120 :
-                    key === 'Exception?' ? 80 :
-                        key === 'Trade Lane' ? 150 :
-                            key === 'Origin Region' || key === 'Destination Region' ? 140 :
-                                key === 'Origin Country' || key === 'District' ? 120 :
-                                (key.includes('Vessel') || key.includes('Voyage') ? 130 :
-                                key.includes('Contract') || key.includes('Carrier') ? 120 : 110)
+                width: ["TMS #","id", "Trade", "Origin region", "Destination region", "Origin country"].includes(key) ? 130 : Math.max(key.length * 12 + 30, 200) // Dynamic width based on text length
             };
         });
     }, [shipperBookingsData, customViews, activeViewId, columnFilters]);
@@ -937,22 +930,22 @@ const BookingOverviewNew: React.FC = () => {
                                                 }
                                             });
                                         }}
-                                        rowSelection={{
-                                            selectedRowKeys: selectedRows,
-                                            onChange: handleRowSelection,
-                                            selections: [
-                                                {
-                                                    key: 'all',
-                                                    text: 'Select All',
-                                                    onSelect: handleSelectAll,
-                                                },
-                                                {
-                                                    key: 'clear',
-                                                    text: 'Clear Selection',
-                                                    onSelect: handleClearSelection,
-                                                },
-                                            ],
-                                        }}
+                                        // rowSelection={{
+                                        //     selectedRowKeys: selectedRows,
+                                        //     onChange: handleRowSelection,
+                                        //     selections: [
+                                        //         {
+                                        //             key: 'all',
+                                        //             text: 'Select All',
+                                        //             onSelect: handleSelectAll,
+                                        //         },
+                                        //         {
+                                        //             key: 'clear',
+                                        //             text: 'Clear Selection',
+                                        //             onSelect: handleClearSelection,
+                                        //         },
+                                        //     ],
+                                        // }}
                                         pagination={{
                                             pageSize: newPageSize,
                                             showSizeChanger: true,
@@ -966,6 +959,7 @@ const BookingOverviewNew: React.FC = () => {
                                         scroll={{ x: 'max-content', y: 'calc(100vh - 550px)' }}
                                         size="small"
                                         bordered
+                                        locale={{ emptyText: 'No bookings found' }}
                                         style={{
                                             backgroundColor: 'white',
                                             borderRadius: '6px'

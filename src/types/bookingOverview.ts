@@ -88,7 +88,6 @@ export interface ShipperBooking {
   'BR:Eqp Qty 1': string;
   'BR:Eqp type 2': string;
   'BR:Eqp Qty 2': string;
-  'BC:Eqp qty 2.1': string;
   'BR:Eqp type 3': string;
   'BR:Eqp Qty 3': string;
   'BR:Eqp type 1 - row seq': string;
@@ -97,6 +96,7 @@ export interface ShipperBooking {
   'BC:Eqp type 1': string;
   'BC:Eqp qty 2': string;
   'BC:Eqp type 2': string;
+  'BC:Eqp qty 2.1': string;
   'BC:Eqp type 3': string;
   'BC:Eqp qty 3': string;
   'BC:Eqp type 1 - row seq': string;
@@ -108,7 +108,7 @@ export interface ShipperBooking {
   'Check POD/DEL differ': string;
   'BR: ETA POD': string;
   'BR: ETA DEL': string;
-  'POL_POD': string;
+  POL_POD: string;
   'Days transit': string;
   'BC Release date original': string;
   'BC Release Time original': string;
@@ -163,9 +163,12 @@ export interface ShipperBooking {
   'BC Lastest POD ETA CALC': string;
   'BC Lastest 1st Vessel name CALC': string;
   'BC Lastest 1st Vessel Voyage CALC': string;
+  'Vessel / Routing Change exception?': string;
+  'BR eqp. Full name': string;
+  'BC eqp. Full name': string;
+  'Carrier Name common name': string;
   selected?: boolean;
 }
-
 export interface BookingOverviewFilters {
   Trade: string;
   'Origin region': string;
@@ -182,6 +185,9 @@ export interface BookingOverviewFilters {
   'Excpt. Eqp?': string;
   'Excpt. ETD?': string;
   '300/301 Status': string;
+  'Vessel / Routing Change exception?': string;
+  'BR eqp. Full name': string;
+  'BC eqp. Full name': string;
 }
 
 export interface BookingOverviewState {

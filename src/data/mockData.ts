@@ -398,9 +398,9 @@ export const carrierBookingsList: CarrierBooking[] = [
     "date": "02-Aug"
   },
   {
-    "id": "CB-180080056",
+    "id": "CB-180080081",
     "destination": "CN E. - UNI",
-    "date": "02-Aug"
+    "date": "25-Aug"
   },
   {
     "id": "CB-180080057",
@@ -10024,7 +10024,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080004": {
     "id": "CB-180080004",
@@ -10190,7 +10194,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080003": {
     "id": "CB-180080003",
@@ -10356,7 +10364,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080077": {
     "id": "CB-180080077",
@@ -10369,7 +10381,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Cust. Code": "HMH",
     "Carrier (Std)": "EGLV",
     "Contract #": "SC50089",
-    "BR:1st Vessel": "COSCO SHIPPING SAGITTARIUS ",
+    "BR:1st Vessel": "COSCO SHIPPING SAGITTARIUS",
     "BR:1st Voyage #": "031W",
     "Bkg Party #": "142502368333",
     "TMS #": "180080077",
@@ -10402,9 +10414,9 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "17:00",
     "BC: SI Cut-off Date": "14-Aug",
     "BC: SI Cut-off Time": "17:00",
-    "BC: ETD POL": "01-Jul",
-    "BC: ETA POD": "15-Aug",
-    "BC:1st Release Date": "20-Jun",
+    "BC: ETD POL": "17-Aug",
+    "BC: ETA POD": "30-Sep",
+    "BC:1st Release Date": "28-Jul",
     "BC:Released": "Yes",
     "BC:2nd Vessel": "",
     "BC:2nd Voyage #": "",
@@ -10413,14 +10425,14 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Bkg Type": "Direct",
     "Shipper Bkg Linked?": "yes",
     "Linked Shipper bkg #": "202347293049",
-    "BR:Req. ETD intial": "14-Aug",
+    "BR:Req. ETD intial": "15-Aug",
     "BR:PRE (full name)": "CNSHA - Shanghai, CN",
     "BR:POL (full name)": "CNSHA - Shanghai, CN",
     "BR:POD (full name)": "BEANR - Antwerp, BE",
     "BR:DEL (full name)": "BEANR - Antwerp, BE",
     "BR:POL Group": "Ports of Shanghai",
     "BR:POD Group": "Antwerp",
-    "Ack:301 ETD POL": "14-Aug",
+    "Ack:301 ETD POL": "15-Aug",
     "Ack: 301 ETA POD": "30-Sep",
     "Ack:301 ETA PODelivery": "",
     "NVOCC/Agent Bkg #": "",
@@ -10436,14 +10448,14 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Bkg Agent ID": "",
     "CRD": "07-Aug",
     "Date between BR creation / ETD req": "21.0",
-    "Check": "-38",
+    "Check": "0",
     "T/S port 1": "",
     "T/S port 2": "",
     "BC:3rd Vessel": "",
     "BC:3rd Voyage #": "",
     "BC:1st Vessel": "COSCO SHIPPING SAGITTARIUS",
     "BC:1st Voyage #": "031W",
-    "Vessel mismatch": "Vessel Change",
+    "Vessel mismatch": "--",
     "BR:Eqp type 1": "40HC",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",
@@ -10466,8 +10478,8 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Check PRE/POL differ": "False",
     "BC: ETD PRE": "17-Aug",
     "Check POD/DEL differ": "False",
-    "BR: ETA POD": "14-Aug",
-    "BR: ETA DEL": "14-Aug",
+    "BR: ETA POD": "29-Sep",
+    "BR: ETA DEL": "29-Sep",
     "POL_POD": "CNSHABEANR",
     "Days transit": "--",
     "BC Release date original": "28-Jul",
@@ -10522,7 +10534,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "17-Aug",
     "BC Lastest POD ETA CALC": "30-Sep",
     "BC Lastest 1st Vessel name CALC": "COSCO SHIPPING SAGITTARIUS",
-    "BC Lastest 1st Vessel Voyage CALC": "031W"
+    "BC Lastest 1st Vessel Voyage CALC": "031W",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Evergreen"
   },
   "CB-180080080": {
     "id": "CB-180080080",
@@ -10619,13 +10635,13 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp type 1 - row seq": "3",
     "BR:Eqp type 2 - row seq": "",
     "BR:Eqp type 3 - row seq": "",
-    "BC:Eqp type 1": "40HC",
+    "BC:Eqp type 1": "",
     "BC:Eqp qty 2": "",
     "BC:Eqp type 2": "",
     "BC:Eqp qty 2.1": "",
     "BC:Eqp type 3": "",
     "BC:Eqp qty 3": "",
-    "BC:Eqp type 1 - row seq": "3.0",
+    "BC:Eqp type 1 - row seq": "",
     "BC:Eqp type 2 - row seq": "",
     "BC:Eqp type 3 - row seq": "",
     "BR:Req. ETD PRE": "14-Aug",
@@ -10688,7 +10704,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Evergreen"
   },
   "CB-180080006": {
     "id": "CB-180080006",
@@ -10854,7 +10874,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "20' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080007": {
     "id": "CB-180080007",
@@ -11020,7 +11044,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080073": {
     "id": "CB-180080073",
@@ -11105,9 +11133,9 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "T/S port 2": "",
     "BC:3rd Vessel": "",
     "BC:3rd Voyage #": "",
-    "BC:1st Vessel": "ELLY MAERSK ",
+    "BC:1st Vessel": "ELLY MAERSK",
     "BC:1st Voyage #": "527W",
-    "Vessel mismatch": "Vessel Change",
+    "Vessel mismatch": "--",
     "BR:Eqp type 1": "40HC",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",
@@ -11138,13 +11166,13 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "10:14:00",
     "BC ETD POL original": "5-Jul",
     "BC ETA POD original": "15-Aug",
-    "BC 1st Vessel  original": "ELLY MAERSK ",
+    "BC 1st Vessel  original": "ELLY MAERSK",
     "BC 1st Vessel Voyage original": "527W",
     "BC Release date v1": "15-Jul",
     "BC Release Time v1": "6:31:00",
     "BC ETD POL v1": "5-Jul",
     "BC ETA POD v1": "15-Aug",
-    "BC 1st Vessel  v1": "ELLY MAERSK ",
+    "BC 1st Vessel  v1": "ELLY MAERSK",
     "BC 1st Vessel Voyage v1": "527W",
     "BC Release date v2": "",
     "BC Release Time v2": "",
@@ -11185,8 +11213,12 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest release date calc": "15-Jul",
     "BC Lastest POL ETD CALC": "5-Jul",
     "BC Lastest POD ETA CALC": "15-Aug",
-    "BC Lastest 1st Vessel name CALC": "ELLY MAERSK ",
-    "BC Lastest 1st Vessel Voyage CALC": "527W"
+    "BC Lastest 1st Vessel name CALC": "ELLY MAERSK",
+    "BC Lastest 1st Vessel Voyage CALC": "527W",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080072": {
     "id": "CB-180080072",
@@ -11352,13 +11384,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "5-Jul",
     "BC Lastest POD ETA CALC": "15-Aug",
     "BC Lastest 1st Vessel name CALC": "ELLY MAERSK",
-    "BC Lastest 1st Vessel Voyage CALC": "527W"
+    "BC Lastest 1st Vessel Voyage CALC": "527W",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080008": {
     "id": "CB-180080008",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN S.",
     "req ETD wk": "28",
@@ -11518,7 +11554,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "",
+    "BR eqp. Full name": "40' Reefer",
+    "BC eqp. Full name": "40' Reefer",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080011": {
     "id": "CB-180080011",
@@ -11684,7 +11724,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080009": {
     "id": "CB-180080009",
@@ -11850,7 +11894,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "20' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080010": {
     "id": "CB-180080010",
@@ -12016,7 +12064,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "20' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080014": {
     "id": "CB-180080014",
@@ -12182,7 +12234,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "20' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080015": {
     "id": "CB-180080015",
@@ -12348,7 +12404,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "transport plan change",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080013": {
     "id": "CB-180080013",
@@ -12514,13 +12574,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "20' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080016": {
     "id": "CB-180080016",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -12680,13 +12744,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "HMM"
   },
   "CB-180080017": {
     "id": "CB-180080017",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -12846,13 +12914,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "HMM"
   },
   "CB-180080018": {
     "id": "CB-180080018",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13012,13 +13084,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "HMM"
   },
   "CB-180080019": {
     "id": "CB-180080019",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13178,13 +13254,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "MSC"
   },
   "CB-180080020": {
     "id": "CB-180080020",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13344,13 +13424,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "MSC"
   },
   "CB-180080021": {
     "id": "CB-180080021",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13510,13 +13594,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "MSC"
   },
   "CB-180080023": {
     "id": "CB-180080023",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13676,13 +13764,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "MSC"
   },
   "CB-180080035": {
     "id": "CB-180080035",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "31",
@@ -13842,7 +13934,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "HMM"
   },
   "CB-180080024": {
     "id": "CB-180080024",
@@ -14008,7 +14104,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "20' Dry",
+    "BC eqp. Full name": "20' Dry",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080036": {
     "id": "CB-180080036",
@@ -14174,7 +14274,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080037": {
     "id": "CB-180080037",
@@ -14340,7 +14444,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080051": {
     "id": "CB-180080051",
@@ -14506,7 +14614,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080052": {
     "id": "CB-180080052",
@@ -14672,7 +14784,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080025": {
     "id": "CB-180080025",
@@ -14838,7 +14954,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080026": {
     "id": "CB-180080026",
@@ -14863,15 +14983,15 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:DEL": "NLRTM",
     "Move Type": "CYP/CYP",
     "BR:Req. ETD POL": "08-Aug",
-    "BC:ETD POL": "09-Aug",
+    "BC:ETD POL": "",
     "BR:Eqp.": "40HCx2",
     "BR:Eqp. Cnt": "2",
-    "BC:Eqp.": "40HCx2",
-    "BC:Eqp. Cnt": "2.0",
-    "BC:Release Date (latest)": "09-Jul",
+    "BC:Eqp.": "",
+    "BC:Eqp. Cnt": "",
+    "BC:Release Date (latest)": "",
     "BC:Version": "",
     "BR:Req. FEU": "2.25",
-    "BC:Conf. FEU": "2.25",
+    "BC:Conf. FEU": "",
     "FEU difference (BC-BR)": "--",
     "Excpt. Eqp?": "N",
     "ETD difference (BC-BR)": "--",
@@ -14884,9 +15004,9 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: VGM Cut-off Time": "",
     "BC: SI Cut-off Date": "",
     "BC: SI Cut-off Time": "",
-    "BC: ETD POL": "09-Aug",
-    "BC: ETA POD": "15-Sep",
-    "BC:1st Release Date": "09-Jul",
+    "BC: ETD POL": "",
+    "BC: ETA POD": "",
+    "BC:1st Release Date": "",
     "BC:Released": "Yes",
     "BC:2nd Vessel": "",
     "BC:2nd Voyage #": "",
@@ -14935,18 +15055,18 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:Eqp type 1 - row seq": "3",
     "BR:Eqp type 2 - row seq": "",
     "BR:Eqp type 3 - row seq": "",
-    "BC:Eqp type 1": "40HC",
-    "BC:Eqp qty 2": "2.0",
+    "BC:Eqp type 1": "",
+    "BC:Eqp qty 2": "",
     "BC:Eqp type 2": "",
     "BC:Eqp qty 2.1": "",
     "BC:Eqp type 3": "",
     "BC:Eqp qty 3": "",
-    "BC:Eqp type 1 - row seq": "3.0",
+    "BC:Eqp type 1 - row seq": "",
     "BC:Eqp type 2 - row seq": "",
     "BC:Eqp type 3 - row seq": "",
     "BR:Req. ETD PRE": "08-Aug",
     "Check PRE/POL differ": "False",
-    "BC: ETD PRE": "09-Aug",
+    "BC: ETD PRE": "",
     "Check POD/DEL differ": "False",
     "BR: ETA POD": "--",
     "BR: ETA DEL": "--",
@@ -15004,7 +15124,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080027": {
     "id": "CB-180080027",
@@ -15170,7 +15294,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080038": {
     "id": "CB-180080038",
@@ -15336,7 +15464,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080039": {
     "id": "CB-180080039",
@@ -15502,7 +15634,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080071": {
     "id": "CB-180080071",
@@ -15559,7 +15695,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Bkg Type": "Bkg Agnt",
     "Shipper Bkg Linked?": "Yes",
     "Linked Shipper bkg #": "202347228216",
-    "BR:Req. ETD intial": "09-Aug",
+    "BR:Req. ETD intial": "08-Aug",
     "BR:PRE (full name)": "CNNGB - Ningbo, CN",
     "BR:POL (full name)": "CNNGB - Ningbo, CN",
     "BR:POD (full name)": "NLRTM - Rotterdam, NL",
@@ -15668,13 +15804,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "8-Aug",
     "BC Lastest POD ETA CALC": "15-Sep",
     "BC Lastest 1st Vessel name CALC": "ESTELLE MAERSK ",
-    "BC Lastest 1st Vessel Voyage CALC": "532W"
+    "BC Lastest 1st Vessel Voyage CALC": "532W",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080012": {
     "id": "CB-180080012",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -15834,13 +15974,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Evergreen"
   },
   "CB-180080028": {
     "id": "CB-180080028",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -16000,13 +16144,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Evergreen"
   },
   "CB-180080029": {
     "id": "CB-180080029",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -16166,13 +16314,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Evergreen"
   },
   "CB-180080030": {
     "id": "CB-180080030",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -16197,7 +16349,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Eqp.": "",
     "BC:Eqp. Cnt": "",
     "BC:Release Date (latest)": "",
-    "BC:Version": "1.0",
+    "BC:Version": "",
     "BR:Req. FEU": "2.0",
     "BC:Conf. FEU": "",
     "FEU difference (BC-BR)": "--",
@@ -16215,7 +16367,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC: ETD POL": "",
     "BC: ETA POD": "",
     "BC:1st Release Date": "",
-    "BC:Released": "Yes",
+    "BC:Released": "",
     "BC:2nd Vessel": "",
     "BC:2nd Voyage #": "",
     "Consignee": "Costco",
@@ -16332,7 +16484,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Evergreen"
   },
   "CB-180080031": {
     "id": "CB-180080031",
@@ -16498,7 +16654,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080032": {
     "id": "CB-180080032",
@@ -16664,7 +16824,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "45' Dry High",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080033": {
     "id": "CB-180080033",
@@ -16830,7 +16994,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080034": {
     "id": "CB-180080034",
@@ -16996,7 +17164,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080040": {
     "id": "CB-180080040",
@@ -17162,7 +17334,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080041": {
     "id": "CB-180080041",
@@ -17328,7 +17504,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080042": {
     "id": "CB-180080042",
@@ -17494,7 +17674,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080043": {
     "id": "CB-180080043",
@@ -17660,7 +17844,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080044": {
     "id": "CB-180080044",
@@ -17826,13 +18014,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High, 45' Dry High",
+    "BC eqp. Full name": "40' Dry High, 45' Dry High",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080045": {
     "id": "CB-180080045",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -17992,13 +18184,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080046": {
     "id": "CB-180080046",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18158,13 +18354,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry, 40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080047": {
     "id": "CB-180080047",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18324,13 +18524,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080048": {
     "id": "CB-180080048",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18490,13 +18694,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080049": {
     "id": "CB-180080049",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18656,13 +18864,17 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080050": {
     "id": "CB-180080050",
     "Trade": "AP > NA",
     "Origin region": "AP",
-    "Destination region": "NA",
+    "Destination region": "",
     "Origin country": "CN",
     "district": "CN E.",
     "req ETD wk": "32",
@@ -18822,7 +19034,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080067": {
     "id": "CB-180080067",
@@ -18988,7 +19204,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080068": {
     "id": "CB-180080068",
@@ -19154,7 +19374,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080069": {
     "id": "CB-180080069",
@@ -19320,7 +19544,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080070": {
     "id": "CB-180080070",
@@ -19486,7 +19714,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080074": {
     "id": "CB-180080074",
@@ -19504,14 +19736,14 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Bkg Party #": "38538244",
     "TMS #": "180080074",
     "Booking Status": "Confirmed",
-    "Exception?": "Y",
+    "Exception?": "N",
     "BR:PRE": "CNYTN",
     "BR:POL": "CNYTN",
     "BR:POD": "NLRTM",
     "BR:DEL": "NLRTM",
     "Move Type": "CYP/CYP",
     "BR:Req. ETD POL": "12-Aug",
-    "BC:ETD POL": "16-Aug",
+    "BC:ETD POL": "12-Aug",
     "BR:Eqp.": "45HCx1",
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "45HCx1",
@@ -19522,10 +19754,10 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Conf. FEU": "1.265",
     "FEU difference (BC-BR)": "0",
     "Excpt. Eqp?": "N",
-    "ETD difference (BC-BR)": "4",
-    "ETD range (BC-BR) formula": "9",
-    "ETD info": "ETD is 3 to 6 days later than req.",
-    "Excpt. ETD?": "Y",
+    "ETD difference (BC-BR)": "0",
+    "ETD range (BC-BR) formula": "7",
+    "ETD info": "ETD as req",
+    "Excpt. ETD?": "N",
     "BC: CY Cut-off Date": "17-Aug",
     "BC: CY Cut-off Time": "13:00",
     "BC: VGM Cut-off Date": "17-Aug",
@@ -19550,7 +19782,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:DEL (full name)": "NLRTM - Rotterdam, NL",
     "BR:POL Group": "CN S.",
     "BR:POD Group": "Rotterdam, NL",
-    "Ack:301 ETD POL": "",
+    "Ack:301 ETD POL": "13-Aug",
     "Ack: 301 ETA POD": "",
     "Ack:301 ETA PODelivery": "",
     "NVOCC/Agent Bkg #": "",
@@ -19594,10 +19826,10 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Eqp type 3 - row seq": "",
     "BR:Req. ETD PRE": "12-Aug",
     "Check PRE/POL differ": "False",
-    "BC: ETD PRE": "16-Aug",
+    "BC: ETD PRE": "12-Aug",
     "Check POD/DEL differ": "False",
-    "BR: ETA POD": "19-Sep",
-    "BR: ETA DEL": "19-Sep",
+    "BR: ETA POD": "22-Sep",
+    "BR: ETA DEL": "22-Sep",
     "POL_POD": "CNYTNNLRTM",
     "Days transit": "--",
     "BC Release date original": "15-Jul",
@@ -19652,7 +19884,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "20-Aug",
     "BC Lastest POD ETA CALC": "22-Sep",
     "BC Lastest 1st Vessel name CALC": "MARCHEN MAERSK",
-    "BC Lastest 1st Vessel Voyage CALC": "533W"
+    "BC Lastest 1st Vessel Voyage CALC": "533W",
+    "Vessel / Routing Change exception?": "Vessel Change",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "45' Dry High",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080076": {
     "id": "CB-180080076",
@@ -19670,14 +19906,14 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "Bkg Party #": "93396744",
     "TMS #": "180080076",
     "Booking Status": "Confirmed",
-    "Exception?": "Y",
+    "Exception?": "N",
     "BR:PRE": "CNYTN",
     "BR:POL": "CNYTN",
     "BR:POD": "DEHAM",
     "BR:DEL": "DEHAM",
     "Move Type": "CYP/CYP",
     "BR:Req. ETD POL": "12-Aug",
-    "BC:ETD POL": "15-Aug",
+    "BC:ETD POL": "12-Aug",
     "BR:Eqp.": "40HCx1",
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
@@ -19688,10 +19924,10 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Conf. FEU": "1.125",
     "FEU difference (BC-BR)": "0",
     "Excpt. Eqp?": "N",
-    "ETD difference (BC-BR)": "3",
-    "ETD range (BC-BR) formula": "9",
-    "ETD info": "ETD is 3 to 6 days later than req.",
-    "Excpt. ETD?": "Y",
+    "ETD difference (BC-BR)": "0",
+    "ETD range (BC-BR) formula": "7",
+    "ETD info": "ETD as req",
+    "Excpt. ETD?": "N",
     "BC: CY Cut-off Date": "13-Aug",
     "BC: CY Cut-off Time": "12:00",
     "BC: VGM Cut-off Date": "13-Aug",
@@ -19716,7 +19952,7 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:DEL (full name)": "DEHAM - Hamburg, DE",
     "BR:POL Group": "CN S.",
     "BR:POD Group": "Hamburg, DE",
-    "Ack:301 ETD POL": "",
+    "Ack:301 ETD POL": "12-Aug",
     "Ack: 301 ETA POD": "",
     "Ack:301 ETA PODelivery": "",
     "NVOCC/Agent Bkg #": "",
@@ -19760,10 +19996,10 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Eqp type 3 - row seq": "",
     "BR:Req. ETD PRE": "12-Aug",
     "Check PRE/POL differ": "False",
-    "BC: ETD PRE": "15-Aug",
+    "BC: ETD PRE": "12-Aug",
     "Check POD/DEL differ": "False",
-    "BR: ETA POD": "15-Sep",
-    "BR: ETA DEL": "15-Sep",
+    "BR: ETA POD": "18-Sep",
+    "BR: ETA DEL": "18-Sep",
     "POL_POD": "CNYTNDEHAM",
     "Days transit": "--",
     "BC Release date original": "23-Jul",
@@ -19818,7 +20054,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "15-Aug",
     "BC Lastest POD ETA CALC": "18-Sep",
     "BC Lastest 1st Vessel name CALC": "MARGRETHE MAERSK",
-    "BC Lastest 1st Vessel Voyage CALC": "532W"
+    "BC Lastest 1st Vessel Voyage CALC": "532W",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080022": {
     "id": "CB-180080022",
@@ -19984,7 +20224,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "45' Dry High",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080053": {
     "id": "CB-180080053",
@@ -20150,7 +20394,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "Maersk"
   },
   "CB-180080075": {
     "id": "CB-180080075",
@@ -20214,8 +20462,8 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BR:DEL (full name)": "DEHAM - Hamburg, DE",
     "BR:POL Group": "CN S.",
     "BR:POD Group": "Hamburg, DE",
-    "Ack:301 ETD POL": "16-Aug",
-    "Ack: 301 ETA POD": "01-Sep",
+    "Ack:301 ETD POL": "15-Sep",
+    "Ack: 301 ETA POD": "23-Sep",
     "Ack:301 ETA PODelivery": "",
     "NVOCC/Agent Bkg #": "",
     "Bkg Template?": "No",
@@ -20235,9 +20483,9 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "T/S port 2": "",
     "BC:3rd Vessel": "",
     "BC:3rd Voyage #": "",
-    "BC:1st Vessel": "MUNICH MAERSK ",
+    "BC:1st Vessel": "MUNICH MAERSK",
     "BC:1st Voyage #": "533W",
-    "Vessel mismatch": "Vessel Change",
+    "Vessel mismatch": "--",
     "BR:Eqp type 1": "45HC",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",
@@ -20268,13 +20516,13 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Release Time original": "3:07:34",
     "BC ETD POL original": "16-Aug",
     "BC ETA POD original": "23-Sep",
-    "BC 1st Vessel  original": "MUNICH MAERSK ",
+    "BC 1st Vessel  original": "MUNICH MAERSK",
     "BC 1st Vessel Voyage original": "533W",
     "BC Release date v1": "1-Aug",
     "BC Release Time v1": "18:31:48",
     "BC ETD POL v1": "16-Aug",
     "BC ETA POD v1": "23-Sep",
-    "BC 1st Vessel  v1": "MUNICH MAERSK ",
+    "BC 1st Vessel  v1": "MUNICH MAERSK",
     "BC 1st Vessel Voyage v1": "533W",
     "BC Release date v2": "",
     "BC Release Time v2": "",
@@ -20315,8 +20563,12 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest release date calc": "1-Aug",
     "BC Lastest POL ETD CALC": "16-Aug",
     "BC Lastest POD ETA CALC": "23-Sep",
-    "BC Lastest 1st Vessel name CALC": "MUNICH MAERSK ",
-    "BC Lastest 1st Vessel Voyage CALC": "533W"
+    "BC Lastest 1st Vessel name CALC": "MUNICH MAERSK",
+    "BC Lastest 1st Vessel Voyage CALC": "533W",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "45' Dry High",
+    "BC eqp. Full name": "45' Dry High",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080054": {
     "id": "CB-180080054",
@@ -20482,7 +20734,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080055": {
     "id": "CB-180080055",
@@ -20648,38 +20904,42 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High, 45' Dry High",
+    "BC eqp. Full name": "40' Dry High, 45' Dry High",
+    "Carrier Name common name": "CMA CGM"
   },
-  "CB-180080056": {
-    "id": "CB-180080056",
+  "CB-180080081": {
+    "id": "CB-180080081",
     "Trade": "AP > EU",
     "Origin region": "AP",
     "Destination region": "EU",
     "Origin country": "CN",
     "district": "CN E.",
-    "req ETD wk": "32",
+    "req ETD wk": "36",
     "Cust. Code": "UNI",
-    "Carrier (Std)": "CMDU",
-    "Contract #": "89-0000",
-    "BR:1st Vessel": "EVER ARM",
-    "BR:1st Voyage #": "0LAKVW1MA",
-    "Bkg Party #": "6362376650",
-    "TMS #": "180080056",
+    "Carrier (Std)": "HLCU",
+    "Contract #": "HH2000",
+    "BR:1st Vessel": "AXEL MAERSK",
+    "BR:1st Voyage #": "536W",
+    "Bkg Party #": "38550286",
+    "TMS #": "180080081",
     "Booking Status": "Confirmed",
     "Exception?": "N",
     "BR:PRE": "CNSHA",
     "BR:POL": "CNSHA",
-    "BR:POD": "GBFXT",
-    "BR:DEL": "GBFXT",
+    "BR:POD": "ITSPE",
+    "BR:DEL": "ITSPE",
     "Move Type": "CYP/CYP",
-    "BR:Req. ETD POL": "09-Aug",
-    "BC:ETD POL": "09-Aug",
+    "BR:Req. ETD POL": "01-Sep",
+    "BC:ETD POL": "01-Sep",
     "BR:Eqp.": "40HCx1",
     "BR:Eqp. Cnt": "1",
     "BC:Eqp.": "40HCx1",
     "BC:Eqp. Cnt": "1.0",
-    "BC:Release Date (latest)": "26-Jul",
-    "BC:Version": "1.0",
+    "BC:Release Date (latest)": "29-Aug",
+    "BC:Version": "2.0",
     "BR:Req. FEU": "1.125",
     "BC:Conf. FEU": "1.125",
     "FEU difference (BC-BR)": "0",
@@ -20688,54 +20948,54 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "ETD range (BC-BR) formula": "7",
     "ETD info": "ETD as req",
     "Excpt. ETD?": "N",
-    "BC: CY Cut-off Date": "12-Aug",
-    "BC: CY Cut-off Time": "1:30:00 PM",
-    "BC: VGM Cut-off Date": "12-Aug",
-    "BC: VGM Cut-off Time": "1:30:00 PM",
-    "BC: SI Cut-off Date": "11-Aug",
-    "BC: SI Cut-off Time": "11:00:00 AM",
-    "BC: ETD POL": "09-Aug",
-    "BC: ETA POD": "21-Sep",
-    "BC:1st Release Date": "26-Jul",
+    "BC: CY Cut-off Date": "31-Aug",
+    "BC: CY Cut-off Time": "6:00:00 PM",
+    "BC: VGM Cut-off Date": "03-Sep",
+    "BC: VGM Cut-off Time": "12:00:00 PM",
+    "BC: SI Cut-off Date": "03-Sep",
+    "BC: SI Cut-off Time": "5:00:00 PM",
+    "BC: ETD POL": "02-Sep",
+    "BC: ETA POD": "19-Oct",
+    "BC:1st Release Date": "27-Aug",
     "BC:Released": "Yes",
-    "BC:2nd Vessel": "",
-    "BC:2nd Voyage #": "",
+    "BC:2nd Vessel": "AXEL MAERSK",
+    "BC:2nd Voyage #": "536W",
     "Consignee": "UNILEVER",
     "Region": "S.China",
     "Bkg Type": "Direct",
     "Shipper Bkg Linked?": "Yes",
-    "Linked Shipper bkg #": "202347438464",
-    "BR:Req. ETD intial": "09-Aug",
+    "Linked Shipper bkg #": "20234743846",
+    "BR:Req. ETD intial": "01-Sep",
     "BR:PRE (full name)": "CNSHA - Shanghai, CN",
     "BR:POL (full name)": "CNSHA - Shanghai, CN",
-    "BR:POD (full name)": "GBFXT - Felixstowe, GB",
-    "BR:DEL (full name)": "GBFXT - Felixstowe, GB",
+    "BR:POD (full name)": "ITSPE - La Spezia, IT",
+    "BR:DEL (full name)": "ITSPE - La Spezia, IT",
     "BR:POL Group": "Ports of Shanghai",
-    "BR:POD Group": "Felixstone",
-    "Ack:301 ETD POL": "09-Aug",
-    "Ack: 301 ETA POD": "25-Sep",
+    "BR:POD Group": "La Spezia",
+    "Ack:301 ETD POL": "01-Sep",
+    "Ack: 301 ETA POD": "19-Oct",
     "Ack:301 ETA PODelivery": "",
     "NVOCC/Agent Bkg #": "",
     "Bkg Template?": "No",
     "Bkg Form Sent?": "No",
     "Bkg Form Email Sent Date": "",
-    "Created At": "2025-07-31T10:26:02.116Z",
+    "Created At": "2025-08-21T10:26:02.116Z",
     "Updated At": "2025-08-04T02:10:45.013Z",
-    "BR create date": "2025-07-31",
+    "BR create date": "2025-08-21",
     "Updated At (Date)": "2025-08-04",
-    "BR Month": "7",
+    "BR Month": "8",
     "300/301 Status": "Accepted",
     "Bkg Agent ID": "",
-    "CRD": "02-Aug",
-    "Date between BR creation / ETD req": "",
-    "Check": "0",
-    "T/S port 1": "",
+    "CRD": "25-Aug",
+    "Date between BR creation / ETD req": "11.0",
+    "Check": "-2",
+    "T/S port 1": "CNXMN",
     "T/S port 2": "",
     "BC:3rd Vessel": "",
     "BC:3rd Voyage #": "",
-    "BC:1st Vessel": "EVER ARM",
-    "BC:1st Voyage #": "0LAKVW1MA",
-    "Vessel mismatch": "--",
+    "BC:1st Vessel": "MARSEILLE MAERSK",
+    "BC:1st Voyage #": "536E",
+    "Vessel mismatch": "Vessel Change",
     "BR:Eqp type 1": "40HC",
     "BR:Eqp Qty 1": "1",
     "BR:Eqp type 2": "",
@@ -20754,26 +21014,26 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC:Eqp type 1 - row seq": "3.0",
     "BC:Eqp type 2 - row seq": "",
     "BC:Eqp type 3 - row seq": "",
-    "BR:Req. ETD PRE": "09-Aug",
+    "BR:Req. ETD PRE": "01-Sep",
     "Check PRE/POL differ": "False",
-    "BC: ETD PRE": "09-Aug",
+    "BC: ETD PRE": "01-Sep",
     "Check POD/DEL differ": "False",
-    "BR: ETA POD": "21-Sep",
-    "BR: ETA DEL": "21-Sep",
-    "POL_POD": "CNSHAGBFXT",
+    "BR: ETA POD": "19-Oct",
+    "BR: ETA DEL": "19-Oct",
+    "POL_POD": "CNSHAITSPE",
     "Days transit": "--",
-    "BC Release date original": "",
-    "BC Release Time original": "",
-    "BC ETD POL original": "",
-    "BC ETA POD original": "",
-    "BC 1st Vessel  original": "",
-    "BC 1st Vessel Voyage original": "",
-    "BC Release date v1": "",
-    "BC Release Time v1": "",
-    "BC ETD POL v1": "",
-    "BC ETA POD v1": "",
-    "BC 1st Vessel  v1": "",
-    "BC 1st Vessel Voyage v1": "",
+    "BC Release date original": "27-Aug",
+    "BC Release Time original": "6:58:46",
+    "BC ETD POL original": "1-Sep",
+    "BC ETA POD original": "19-Oct",
+    "BC 1st Vessel  original": "AXEL MAERSK",
+    "BC 1st Vessel Voyage original": "536W",
+    "BC Release date v1": "29-Aug",
+    "BC Release Time v1": "7:50:11",
+    "BC ETD POL v1": "2-Sep",
+    "BC ETA POD v1": "19-Oct",
+    "BC 1st Vessel  v1": "MARSEILLE MAERSK",
+    "BC 1st Vessel Voyage v1": "536E",
     "BC Release date v2": "",
     "BC Release Time v2": "",
     "BC ETD POL v2": "",
@@ -20810,11 +21070,15 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC ETA POD v7": "",
     "BC 1st Vessel  v7": "",
     "BC 1st Vessel Voyage v7": "",
-    "BC Lastest release date calc": "",
-    "BC Lastest POL ETD CALC": "",
-    "BC Lastest POD ETA CALC": "",
-    "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest release date calc": "29-Aug",
+    "BC Lastest POL ETD CALC": "2-Sep",
+    "BC Lastest POD ETA CALC": "19-Oct",
+    "BC Lastest 1st Vessel name CALC": "MARSEILLE MAERSK",
+    "BC Lastest 1st Vessel Voyage CALC": "536E",
+    "Vessel / Routing Change exception?": "Routing Change",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "Hapag Llyod"
   },
   "CB-180080057": {
     "id": "CB-180080057",
@@ -20980,7 +21244,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "--",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "40' Dry High",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080058": {
     "id": "CB-180080058",
@@ -21146,7 +21414,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080059": {
     "id": "CB-180080059",
@@ -21312,7 +21584,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080060": {
     "id": "CB-180080060",
@@ -21478,7 +21754,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080061": {
     "id": "CB-180080061",
@@ -21644,7 +21924,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080062": {
     "id": "CB-180080062",
@@ -21810,7 +22094,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080063": {
     "id": "CB-180080063",
@@ -21976,7 +22264,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080064": {
     "id": "CB-180080064",
@@ -22142,7 +22434,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080065": {
     "id": "CB-180080065",
@@ -22308,7 +22604,11 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   },
   "CB-180080066": {
     "id": "CB-180080066",
@@ -22474,6 +22774,10 @@ export const bookingDetailsDataNew: Record<string, ShipperBooking> = {
     "BC Lastest POL ETD CALC": "",
     "BC Lastest POD ETA CALC": "",
     "BC Lastest 1st Vessel name CALC": "",
-    "BC Lastest 1st Vessel Voyage CALC": ""
+    "BC Lastest 1st Vessel Voyage CALC": "",
+    "Vessel / Routing Change exception?": "no vessel",
+    "BR eqp. Full name": "40' Dry High",
+    "BC eqp. Full name": "",
+    "Carrier Name common name": "CMA CGM"
   }
 };
