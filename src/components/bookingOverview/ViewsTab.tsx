@@ -215,26 +215,294 @@ const ViewsTab: React.FC = () => {
               key={view.id}
               style={{
                 border: activeViewId === view.id ? '2px solid #0ea5e9' : '1px solid #e2e8f0',
-                backgroundColor: activeViewId === view.id ? '#f0f9ff' : 'white'
+                backgroundColor: activeViewId === view.id ? '#f0f9ff' : 'white',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
               }}
-              actions={[
+              bodyStyle={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '16px'
+              }}
+            >
+              <div style={{ flex: 1 }}>
+                <div style={{ marginBottom: '12px', padding: '10px 0' }}>
+                  <h4 style={{ 
+                    margin: '0 0 8px 0', 
+                    fontSize: '16px', 
+                    fontWeight: '600',
+                    color: activeViewId === view.id ? '#0ea5e9' : '#374151'
+                  }}>
+                    {view.name}
+                  </h4>
+                  <p style={{ 
+                    margin: 0, 
+                    fontSize: '12px', 
+                    color: '#6b7280'
+                  }}>
+                    {Array.isArray(view.columns) ? view.columns.length : 0} columns • Created {new Date(view.createdAt).toLocaleDateString()}
+                  </p>
+                </div>
+                
+                <div style={{ 
+                  display: 'flex', 
+                  flexWrap: 'wrap', 
+                  gap: '4px',
+                  maxHeight: '60px',
+                  overflow: 'hidden'
+                }}>
+                  {Array.isArray(view.columns) && view.columns.slice(0, 5).map((column, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        padding: '2px 6px',
+                        backgroundColor: '#f3f4f6',
+                        borderRadius: '4px',
+                        fontSize: '11px',
+                        color: '#6b7280'
+                      }}
+                    >
+                      {column}
+                    </span>
+                  ))}
+                  {Array.isArray(view.columns) && view.columns.length > 5 && (
+                    <span style={{ 
+                      padding: '2px 6px',
+                      backgroundColor: '#f3f4f6',
+                      borderRadius: '4px',
+                      fontSize: '11px',
+                      color: '#6b7280'
+                    }}>
+                      +{view.columns.length - 5} more
+                    </span>
+                  )}
+                </div>
+
+                {/* Global Filters Section */}
+                <div style={{ marginTop: '12px' }}>
+                  <div style={{ 
+                    fontSize: '12px', 
+                    fontWeight: '600', 
+                    color: '#374151', 
+                    marginBottom: '6px' 
+                  }}>
+                    Global Filters:
+                  </div>
+                  <div style={{ 
+                    display: 'flex', 
+                    flexWrap: 'wrap', 
+                    gap: '4px'
+                  }}>
+                    {view.savedFilters && (
+                      <>
+                        {view.savedFilters.tradeFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Trade: {view.savedFilters.tradeFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.originRegionFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Origin: {view.savedFilters.originRegionFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.destinationRegionFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Dest: {view.savedFilters.destinationRegionFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.originCountryFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Origin Country: {view.savedFilters.originCountryFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.districtFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            District: {view.savedFilters.districtFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.reqEtdWeekFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Req ETD Week: {view.savedFilters.reqEtdWeekFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.carrierFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Carrier: {view.savedFilters.carrierFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.bookingStatusFilter.length > 0 && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Status: {view.savedFilters.bookingStatusFilter.join(', ')}
+                          </span>
+                        )}
+                        {view.savedFilters.tmsSearchQuery && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Search: {view.savedFilters.tmsSearchQuery}
+                          </span>
+                        )}
+                        {view.savedFilters.dateRangeFilter.startDate && view.savedFilters.dateRangeFilter.endDate && (
+                          <span style={{
+                            padding: '2px 6px',
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: '4px',
+                            fontSize: '10px',
+                            color: 'white'
+                          }}>
+                            Date: {view.savedFilters.dateRangeFilter.startDate} - {view.savedFilters.dateRangeFilter.endDate}
+                          </span>
+                        )}
+                      </>
+                    )}
+                    {(!view.savedFilters || 
+                      (view.savedFilters.tradeFilter.length === 0 && 
+                       view.savedFilters.originRegionFilter.length === 0 && 
+                       view.savedFilters.destinationRegionFilter.length === 0 && 
+                       view.savedFilters.originCountryFilter.length === 0 &&
+                       view.savedFilters.districtFilter.length === 0 &&
+                       view.savedFilters.reqEtdWeekFilter.length === 0 &&
+                       view.savedFilters.carrierFilter.length === 0 && 
+                       view.savedFilters.bookingStatusFilter.length === 0 && 
+                       !view.savedFilters.tmsSearchQuery && 
+                       (!view.savedFilters.dateRangeFilter.startDate || !view.savedFilters.dateRangeFilter.endDate))) && (
+                      <span style={{
+                        padding: '2px 6px',
+                        backgroundColor: '#f3f4f6',
+                        borderRadius: '4px',
+                        fontSize: '10px',
+                        color: '#6b7280'
+                      }}>
+                        None
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Column Filters Section */}
+                <div style={{ marginTop: '12px' }}>
+                  <div style={{ 
+                    fontSize: '12px', 
+                    fontWeight: '600', 
+                    color: '#374151', 
+                    marginBottom: '6px' 
+                  }}>
+                    Column Filters:
+                  </div>
+                  <div style={{ 
+                    display: 'flex', 
+                    flexWrap: 'wrap', 
+                    gap: '4px'
+                  }}>
+                    {view.savedFilters && view.savedFilters.columnFilters && Object.keys(view.savedFilters.columnFilters).length > 0 ? (
+                      Object.entries(view.savedFilters.columnFilters).map(([column, values]) => (
+                        <span key={column} style={{
+                          padding: '2px 6px',
+                          backgroundColor: '#0ea5e9',
+                          borderRadius: '4px',
+                          fontSize: '10px',
+                          color: 'white'
+                        }}>
+                          {column}: {Array.isArray(values) ? values.join(', ') : values}
+                        </span>
+                      ))
+                    ) : (
+                      <span style={{
+                        padding: '2px 6px',
+                        backgroundColor: '#f3f4f6',
+                        borderRadius: '4px',
+                        fontSize: '10px',
+                        color: '#6b7280'
+                      }}>
+                        None
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Fixed Height Action Icons at Bottom */}
+              <div style={{
+                height: '48px',
+                borderTop: '1px solid #e2e8f0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-around',
+                marginTop: '016px',
+                paddingTop: '0px'
+              }}>
                 <Tooltip title="Activate View">
                   <EyeOutlined 
-                    key="activate" 
                     onClick={() => handleActivateView(view.id)}
                     style={{ 
                       color: activeViewId === view.id ? '#0ea5e9' : '#6b7280',
-                      fontSize: '16px'
+                      fontSize: '16px',
+                      cursor: 'pointer'
                     }}
                   />
-                </Tooltip>,
+                </Tooltip>
+                <div style={{ width: '1px', height: '20px', backgroundColor: '#e2e8f0' }} />
                 <Tooltip title="Edit View">
                   <EditOutlined 
-                    key="edit" 
                     onClick={() => handleEditView(view)}
-                    style={{ color: '#0ea5e9', fontSize: '16px' }}
+                    style={{ color: '#0ea5e9', fontSize: '16px', cursor: 'pointer' }}
                   />
-                </Tooltip>,
+                </Tooltip>
+                <div style={{ width: '1px', height: '20px', backgroundColor: '#e2e8f0' }} />
                 <Tooltip title="Delete View">
                   <Popconfirm
                     title="Delete this view?"
@@ -244,257 +512,10 @@ const ViewsTab: React.FC = () => {
                     cancelText="No"
                   >
                     <DeleteOutlined 
-                      key="delete" 
-                      style={{ color: '#ef4444', fontSize: '16px' }}
+                      style={{ color: '#ef4444', fontSize: '16px', cursor: 'pointer' }}
                     />
                   </Popconfirm>
                 </Tooltip>
-              ]}
-            >
-              <div style={{ marginBottom: '12px', padding: '10px 0' }}>
-                <h4 style={{ 
-                  margin: '0 0 8px 0', 
-                  fontSize: '16px', 
-                  fontWeight: '600',
-                  color: activeViewId === view.id ? '#0ea5e9' : '#374151'
-                }}>
-                  {view.name}
-                </h4>
-                <p style={{ 
-                  margin: 0, 
-                  fontSize: '12px', 
-                  color: '#6b7280'
-                }}>
-                  {Array.isArray(view.columns) ? view.columns.length : 0} columns • Created {new Date(view.createdAt).toLocaleDateString()}
-                </p>
-              </div>
-              
-              <div style={{ 
-                display: 'flex', 
-                flexWrap: 'wrap', 
-                gap: '4px',
-                maxHeight: '60px',
-                overflow: 'hidden'
-              }}>
-                {Array.isArray(view.columns) && view.columns.slice(0, 5).map((column, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      padding: '2px 6px',
-                      backgroundColor: '#f3f4f6',
-                      borderRadius: '4px',
-                      fontSize: '11px',
-                      color: '#6b7280'
-                    }}
-                  >
-                    {column}
-                  </span>
-                ))}
-                {Array.isArray(view.columns) && view.columns.length > 5 && (
-                  <span style={{ 
-                    padding: '2px 6px',
-                    backgroundColor: '#f3f4f6',
-                    borderRadius: '4px',
-                    fontSize: '11px',
-                    color: '#6b7280'
-                  }}>
-                    +{view.columns.length - 5} more
-                  </span>
-                )}
-              </div>
-
-              {/* Global Filters Section */}
-              <div style={{ marginTop: '12px' }}>
-                <div style={{ 
-                  fontSize: '12px', 
-                  fontWeight: '600', 
-                  color: '#374151', 
-                  marginBottom: '6px' 
-                }}>
-                  Global Filters:
-                </div>
-                <div style={{ 
-                  display: 'flex', 
-                  flexWrap: 'wrap', 
-                  gap: '4px'
-                }}>
-                  {view.savedFilters && (
-                    <>
-                      {view.savedFilters.tradeFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Trade: {view.savedFilters.tradeFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.originRegionFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Origin: {view.savedFilters.originRegionFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.destinationRegionFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Dest: {view.savedFilters.destinationRegionFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.originCountryFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Origin Country: {view.savedFilters.originCountryFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.districtFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          District: {view.savedFilters.districtFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.reqEtdWeekFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Req ETD Week: {view.savedFilters.reqEtdWeekFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.carrierFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Carrier: {view.savedFilters.carrierFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.bookingStatusFilter.length > 0 && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Status: {view.savedFilters.bookingStatusFilter.join(', ')}
-                        </span>
-                      )}
-                      {view.savedFilters.tmsSearchQuery && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Search: {view.savedFilters.tmsSearchQuery}
-                        </span>
-                      )}
-                      {view.savedFilters.dateRangeFilter.startDate && view.savedFilters.dateRangeFilter.endDate && (
-                        <span style={{
-                          padding: '2px 6px',
-                          backgroundColor: '#0ea5e9',
-                          borderRadius: '4px',
-                          fontSize: '10px',
-                          color: 'white'
-                        }}>
-                          Date: {view.savedFilters.dateRangeFilter.startDate} - {view.savedFilters.dateRangeFilter.endDate}
-                        </span>
-                      )}
-                    </>
-                  )}
-                  {(!view.savedFilters || 
-                    (view.savedFilters.tradeFilter.length === 0 && 
-                     view.savedFilters.originRegionFilter.length === 0 && 
-                     view.savedFilters.destinationRegionFilter.length === 0 && 
-                     view.savedFilters.originCountryFilter.length === 0 &&
-                     view.savedFilters.districtFilter.length === 0 &&
-                     view.savedFilters.reqEtdWeekFilter.length === 0 &&
-                     view.savedFilters.carrierFilter.length === 0 && 
-                     view.savedFilters.bookingStatusFilter.length === 0 && 
-                     !view.savedFilters.tmsSearchQuery && 
-                     (!view.savedFilters.dateRangeFilter.startDate || !view.savedFilters.dateRangeFilter.endDate))) && (
-                    <span style={{
-                      padding: '2px 6px',
-                      backgroundColor: '#f3f4f6',
-                      borderRadius: '4px',
-                      fontSize: '10px',
-                      color: '#6b7280'
-                    }}>
-                      None
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Column Filters Section */}
-              <div style={{ marginTop: '12px' }}>
-                <div style={{ 
-                  fontSize: '12px', 
-                  fontWeight: '600', 
-                  color: '#374151', 
-                  marginBottom: '6px' 
-                }}>
-                  Column Filters:
-                </div>
-                <div style={{ 
-                  display: 'flex', 
-                  flexWrap: 'wrap', 
-                  gap: '4px'
-                }}>
-                  {view.savedFilters && view.savedFilters.columnFilters && Object.keys(view.savedFilters.columnFilters).length > 0 ? (
-                    Object.entries(view.savedFilters.columnFilters).map(([column, values]) => (
-                      <span key={column} style={{
-                        padding: '2px 6px',
-                        backgroundColor: '#0ea5e9',
-                        borderRadius: '4px',
-                        fontSize: '10px',
-                        color: 'white'
-                      }}>
-                        {column}: {Array.isArray(values) ? values.join(', ') : values}
-                      </span>
-                    ))
-                  ) : (
-                    <span style={{
-                      padding: '2px 6px',
-                      backgroundColor: '#f3f4f6',
-                      borderRadius: '4px',
-                      fontSize: '10px',
-                      color: '#6b7280'
-                    }}>
-                      None
-                    </span>
-                  )}
-                </div>
               </div>
             </Card>
           ))}
