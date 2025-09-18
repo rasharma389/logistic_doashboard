@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button, Tag, DatePicker } from 'antd';
+import { Table, Input, Select, Space, Card, Typography, Row, Col, Tooltip, Tabs, App, Button, Tag, DatePicker, Modal, Checkbox } from 'antd';
 import type { SortOrder } from 'antd/es/table/interface';
 import { SearchOutlined, FilterTwoTone, DownloadOutlined, CloseOutlined } from '@ant-design/icons';
 import { BsFiletypeCsv } from "react-icons/bs";
 import { shipperBookingsData } from '../../data/bookingOverviewData';
 import { FilterOutlined } from '@ant-design/icons';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, SaveOutlined } from '@ant-design/icons';
 import { mapShipperBookingToCarrierBooking } from '../../utils/dataMapping';
 import ViewsTab from './ViewsTab';
 import dayjs from 'dayjs';
@@ -21,7 +21,7 @@ dayjs.extend(isSameOrBefore);
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
-import { setNewFilters, clearNewFilters, setColumnFilter, setNewPageSize, setSelectedRows, toggleRowSelection, clearSelectedRows, resetDateRangeToDefault } from '../../store/slices/bookingOverviewSlice';
+import { setNewFilters, clearNewFilters, setColumnFilter, setNewPageSize, setSelectedRows, toggleRowSelection, clearSelectedRows, resetDateRangeToDefault, saveFiltersToView, createViewWithFilters } from '../../store/slices/bookingOverviewSlice';
 const { Search } = Input;
 const { Option } = Select;
 
@@ -59,6 +59,11 @@ const BookingOverviewNew: React.FC = () => {
 
     // Toggle for showing only selected rows
     const [showOnlySelected, setShowOnlySelected] = useState(false);
+
+    // Modal state for saving filters
+    const [isSaveFilterModalVisible, setIsSaveFilterModalVisible] = useState(false);
+    const [saveFilterName, setSaveFilterName] = useState('');
+    const [cloneActiveView, setCloneActiveView] = useState(false);
 
     // Get unique values for filter options with cascading logic
     const filterOptions = useMemo(() => {
@@ -482,6 +487,16 @@ const BookingOverviewNew: React.FC = () => {
                                 />
                             </Tooltip>
                         )}
+                        <Tooltip title="Save Current Filters">
+                            <SaveOutlined 
+                                style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
+                                onClick={() => {
+                                    const activeView = activeViewId ? customViews.find(view => view.id === activeViewId) : null;
+                                    setSaveFilterName(activeView?.name || '');
+                                    setIsSaveFilterModalVisible(true);
+                                }}
+                            />
+                        </Tooltip>
                         <Tooltip title="Export to CSV">
                                 <BsFiletypeCsv 
                                     style={{ color: '#0ea5e9', fontSize: 16, cursor: 'pointer' }} 
@@ -1093,6 +1108,88 @@ const BookingOverviewNew: React.FC = () => {
             padding: 2px 8px !important;     
         }    
       `}</style>
+
+            {/* Save Filter Modal */}
+            <Modal
+                title="Save Current Filters"
+                open={isSaveFilterModalVisible}
+                onOk={() => {
+                    if (!saveFilterName.trim()) {
+                        return; // Don't save if name is empty
+                    }
+
+                    const currentFilters = {
+                        tradeFilter,
+                        originRegionFilter,
+                        destinationRegionFilter,
+                        originCountryFilter,
+                        districtFilter,
+                        reqEtdWeekFilter,
+                        carrierFilter,
+                        bookingStatusFilter,
+                        tmsSearchQuery,
+                        dateRangeFilter,
+                        columnFilters
+                    };
+
+                    if (cloneActiveView) {
+                        // Create new view with current columns and filters
+                        const activeView = activeViewId ? customViews.find(view => view.id === activeViewId) : null;
+                        const columns = activeView?.columns || [];
+                        
+                        dispatch(createViewWithFilters({
+                            name: saveFilterName,
+                            columns,
+                            filters: currentFilters
+                        }));
+                    } else {
+                        // Update active view with current filters
+                        if (activeViewId) {
+                            dispatch(saveFiltersToView({
+                                viewId: activeViewId,
+                                filters: currentFilters
+                            }));
+                        }
+                    }
+
+                    setIsSaveFilterModalVisible(false);
+                    setSaveFilterName('');
+                    setCloneActiveView(false);
+                }}
+                onCancel={() => {
+                    setIsSaveFilterModalVisible(false);
+                    setSaveFilterName('');
+                    setCloneActiveView(false);
+                }}
+                okText="Save"
+                cancelText="Cancel"
+            >
+                <div style={{ marginBottom: 16 }}>
+                    <label style={{ display: 'block', marginBottom: 8, fontWeight: 500 }}>
+                        View Name:
+                    </label>
+                    <Input
+                        value={saveFilterName}
+                        onChange={(e) => setSaveFilterName(e.target.value)}
+                        placeholder="Enter view name"
+                        style={{ marginBottom: 16 }}
+                    />
+                </div>
+                <div>
+                    <Checkbox
+                        checked={cloneActiveView}
+                        onChange={(e) => setCloneActiveView(e.target.checked)}
+                    >
+                        Clone
+                    </Checkbox>
+                    <div style={{ marginTop: 8, fontSize: 12, color: '#666' }}>
+                        {cloneActiveView 
+                            ? "Create a new view with current columns and applied filters"
+                            : "Update the active view with current filters"
+                        }
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };

@@ -233,6 +233,22 @@ export interface BookingOverviewState {
     columns: string[];
     createdAt?: string;
     isPredefined?: boolean;
+    savedFilters?: {
+      tradeFilter: string[];
+      originRegionFilter: string[];
+      destinationRegionFilter: string[];
+      originCountryFilter: string[];
+      districtFilter: string[];
+      reqEtdWeekFilter: string[];
+      carrierFilter: string[];
+      bookingStatusFilter: string[];
+      tmsSearchQuery: string;
+      dateRangeFilter: {
+        startDate: string | null;
+        endDate: string | null;
+      };
+      columnFilters: Record<string, string[]>;
+    };
   }[];
   // Current active view
   activeViewId: string | null;

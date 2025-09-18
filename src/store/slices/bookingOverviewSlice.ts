@@ -417,6 +417,61 @@ const bookingOverviewSlice = createSlice({
     },
     setActiveView: (state, action: PayloadAction<string | null>) => {
       state.activeViewId = action.payload;
+    },
+    saveFiltersToView: (state, action: PayloadAction<{
+      viewId: string;
+      filters: {
+        tradeFilter: string[];
+        originRegionFilter: string[];
+        destinationRegionFilter: string[];
+        originCountryFilter: string[];
+        districtFilter: string[];
+        reqEtdWeekFilter: string[];
+        carrierFilter: string[];
+        bookingStatusFilter: string[];
+        tmsSearchQuery: string;
+        dateRangeFilter: {
+          startDate: string | null;
+          endDate: string | null;
+        };
+        columnFilters: Record<string, string[]>;
+      };
+    }>) => {
+      const view = state.customViews.find(v => v.id === action.payload.viewId);
+      if (view) {
+        view.savedFilters = action.payload.filters;
+      }
+    },
+    createViewWithFilters: (state, action: PayloadAction<{
+      name: string;
+      columns: string[];
+      filters: {
+        tradeFilter: string[];
+        originRegionFilter: string[];
+        destinationRegionFilter: string[];
+        originCountryFilter: string[];
+        districtFilter: string[];
+        reqEtdWeekFilter: string[];
+        carrierFilter: string[];
+        bookingStatusFilter: string[];
+        tmsSearchQuery: string;
+        dateRangeFilter: {
+          startDate: string | null;
+          endDate: string | null;
+        };
+        columnFilters: Record<string, string[]>;
+      };
+    }>) => {
+      const newView = {
+        id: `custom-${Date.now()}`,
+        name: action.payload.name,
+        columns: action.payload.columns,
+        createdAt: new Date().toISOString(),
+        isPredefined: false,
+        savedFilters: action.payload.filters
+      };
+      state.customViews.push(newView);
+      state.activeViewId = newView.id;
     }
   },
 });
@@ -445,7 +500,9 @@ export const {
   createCustomView,
   updateCustomView,
   deleteCustomView,
-  setActiveView
+  setActiveView,
+  saveFiltersToView,
+  createViewWithFilters
 } = bookingOverviewSlice.actions;
 
 // Async thunks
