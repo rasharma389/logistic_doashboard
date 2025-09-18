@@ -37,7 +37,10 @@ const initialState: BookingOverviewState = {
     'Bkg Type': 'All',
     'Excpt. Eqp?': 'All',
     'Excpt. ETD?': 'All',
-    '300/301 Status': 'All'
+    '300/301 Status': 'All',
+    'Vessel / Routing Change exception?': 'All',
+    'BR eqp. Full name': 'All',
+    'BC eqp. Full name': 'All'
   },
   searchQuery: '',
   selectedBookings: [],

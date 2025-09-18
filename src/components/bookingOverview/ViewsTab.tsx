@@ -242,7 +242,7 @@ const ViewsTab: React.FC = () => {
                     fontSize: '12px', 
                     color: '#6b7280'
                   }}>
-                    {Array.isArray(view.columns) ? view.columns.length : 0} columns • Created {new Date(view.createdAt).toLocaleDateString()}
+                    {Array.isArray(view.columns) ? view.columns.length : 0} columns • Created {new Date(view.createdAt || Date.now()).toLocaleDateString()}
                   </p>
                 </div>
                 
