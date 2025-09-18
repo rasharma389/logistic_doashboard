@@ -451,11 +451,113 @@ const BookingOverviewNew: React.FC = () => {
         });
     }, [shipperBookingsData, customViews, activeViewId, columnFilters, filteredData]);
 
+    // Calculate count tiles based on filtered data
+    const countTiles = useMemo(() => {
+        const tiles = [
+            {
+                label: 'TMS #',
+                count: filteredData.length,
+                color: '#93c5fd'
+            },
+            {
+                label: 'BR:Eqp. Cnt',
+                count: filteredData.reduce((sum, item) => {
+                    const value = item['BR:Eqp. Cnt'];
+                    return sum + (value ? parseInt(value.toString()) || 0 : 0);
+                }, 0),
+                color: '#86efac'
+            },
+            {
+                label: 'BR:Req. FEU',
+                count: filteredData.reduce((sum, item) => {
+                    const value = item['BR:Req. FEU'];
+                    return sum + (value ? parseFloat(value.toString()) || 0 : 0);
+                }, 0).toFixed(1),
+                color: '#fbbf24'
+            },
+            {
+                label: 'BC:Eqp. Cnt',
+                count: filteredData.reduce((sum, item) => {
+                    const value = item['BC:Eqp. Cnt'];
+                    return sum + (value ? parseInt(value.toString()) || 0 : 0);
+                }, 0),
+                color: '#c4b5fd'
+            },
+            {
+                label: 'BC:Conf. FEU',
+                count: filteredData.reduce((sum, item) => {
+                    const value = item['BC:Conf. FEU'];
+                    return sum + (value ? parseFloat(value.toString()) || 0 : 0);
+                }, 0).toFixed(1),
+                color: '#fca5a5'
+            }
+        ];
+        return tiles;
+    }, [filteredData]);
+
+    // Custom title component with count tiles
+    const CustomTitle = () => (
+        <div style={{ display: 'flex', alignItems: 'center', width: '100%', position: 'relative' }}>
+            {/* Left Section - Title */}
+            <div style={{ flex: '0 0 auto' }}>
+                <span style={{ fontSize: '18px', fontWeight: '600', color: '#374151' }}>
+                    Carrier Bookings
+                </span>
+            </div>
+            
+            {/* Center Section - Count Tiles */}
+            <div style={{ 
+                position: 'absolute', 
+                left: '50%', 
+                transform: 'translateX(-50%)',
+                display: 'flex', 
+                gap: '12px' 
+            }}>
+                {countTiles.map((tile, index) => (
+                    <div
+                        key={index}
+                        style={{
+                            backgroundColor: tile.color,
+                            color: '#374151',
+                            padding: '8px 16px',
+                            borderRadius: '8px',
+                            fontSize: '13px',
+                            fontWeight: '600',
+                            minWidth: '100px',
+                            textAlign: 'center',
+                            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '8px'
+                        }}
+                    >
+                        <span style={{ fontSize: '14px', fontWeight: '700' }}>
+                            {tile.count}
+                        </span>
+                        <div style={{ 
+                            width: '1px', 
+                            height: '16px', 
+                            backgroundColor: '#6b7280',
+                            opacity: 0.3
+                        }} />
+                        <span style={{ fontSize: '11px', fontWeight: '500' }}>
+                            {tile.label}
+                        </span>
+                    </div>
+                ))}
+            </div>
+            
+            {/* Right Section - Placeholder for action icons */}
+            <div style={{ flex: '0 0 auto', width: '200px' }} />
+        </div>
+    );
+
          return (
          <div style={{ padding: '16px', height: 'calc(100vh - 100px)', overflow: 'hidden' }}>
             {/* Main Card with Tabs */}
             <Card
-                title="Carrier Bookings"
+                title={<CustomTitle />}
                 style={{ height: 'calc(100vh - 100px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
                 extra={
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginRight: 10 }}>
